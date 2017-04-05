@@ -38,11 +38,11 @@ io.on('connection', function(socket){
       });
       socket.on('AppNewUserRequest',function(data){
 	  		console.log('AppNewUserRequest');
-	    		connection.query('INSERT INTO person_temp VALUES (?,?,?,?,?,?,?)',[data.ci,data.name,data.lastName,data.phone,data.address,data.ruc,data.role],function(err, rows, fields) {
+	    		connection.query('INSERT INTO USER_TEMP VALUES (?,?,?,?,?,?,?)',[data.ci,data.name,data.lastName,data.phone,data.address,data.ruc,data.role],function(err, rows, fields) {
 		        	if(err){
 		         	console.log("Error "+ err.message);
 		         	}else{
-			         	connection.query('INSERT INTO user_temp VALUES (?,?,?,?)',[data.email,data.pass,'cliente',data.ci],function(err, rows, fields) {
+			         	connection.query('INSERT INTO USER_TEMP VALUES (?,?,?,?)',[data.email,data.pass,'cliente',data.ci],function(err, rows, fields) {
 					       	if(err){
 					        	console.log("Error "+ err.message);
 					        }else{
@@ -57,12 +57,12 @@ io.on('connection', function(socket){
 		var lstTempUsers=[];
 		var lstTempPerson=[];
 
-		connection.query('SELECT * FROM users;',function(error, result){
+		connection.query('SELECT * FROM USERS;',function(error, result){
 			if(error){
 			    throw error;
 			}else{
 			  	lstTempUsers=result;
-			  	connection.query('SELECT * FROM person;',function(error, result){
+			  	connection.query('SELECT * FROM PERSON;',function(error, result){
 					if(error){
 					    throw error;
 					}else{
@@ -112,7 +112,7 @@ io.on('connection', function(socket){
       });
       socket.on('RequestJourneyRoute',function(data){
       	console.log('RequestJourneyRoute cedula: '+data);
-      		connection.query("select j.JourneyId, j.JourneyRoute, j.RECYCLING_CENTER_recycling_center_id from journey j, trucks t, person p where j.TRUCK_truck_id=t.TruckId and t.TruckDriver=p.PersonCi and  p.PersonCi='"+data+"'",function(error, result){
+      		connection.query("select j.JourneyId, j.JourneyRoute, j.RECYCLING_CENTER_recycling_center_id from journey j, trucks t, PERSON p where j.TRUCK_truck_id=t.TruckId and t.TruckDriver=p.PersonCi and  p.PersonCi='"+data+"'",function(error, result){
 				if(error){
 				    throw error;
 				}else{
@@ -140,7 +140,7 @@ io.on('connection', function(socket){
 	SelectJourneys();
 	SelectActiveOrders()
 	SelectUsers();
-	// selectWaste();
+	selectWaste();
 	SelectPersons();
 	SendNotification(socket); 
 	SelectOrders();
@@ -255,12 +255,12 @@ function AppSelectUsers(socket){
 	var lstTempUsers=[];
 	var lstTempPerson=[];
 
-	connection.query('SELECT * FROM users',function(error, result){
+	connection.query('SELECT * FROM USERS',function(error, result){
 		if(error){
 		    throw error;
 		}else{
 		  	lstTempUsers=result;
-		  	connection.query('SELECT * FROM person',function(error, result){
+		  	connection.query('SELECT * FROM PERSON',function(error, result){
 				if(error){
 				    throw error;
 				}else{
@@ -348,7 +348,7 @@ function SelectImporters(){
 }
 
 function SelectDrivers(){
-	connection.query('SELECT * FROM person WHERE PersonRole LIKE "conductor"  ',function(error, result){
+	connection.query('SELECT * FROM PERSON WHERE PersonRole LIKE "conductor"  ',function(error, result){
 		if(error){
 		    throw error;
 		}else{
@@ -394,7 +394,7 @@ function SelectRecyclingCenters(){
 }
 
 function selectWaste(){
-	connection.query('SELECT * FROM waste',function(error, result){
+	connection.query('SELECT * FROM WASTE',function(error, result){
 		if(error){
 		    throw error;
 		}else{
@@ -429,7 +429,7 @@ function SelectPersons(){
 
 function SaveNewUser(socket){
 	socket.on('SaveNewUser',function(data){
-		connection.query('INSERT INTO person VALUES (?,?,?,?,?,?,?)',[data.person.PersonCi,data.person.PersonName,data.person.PersonLastName,
+		connection.query('INSERT INTO PERSON VALUES (?,?,?,?,?,?,?)',[data.person.PersonCi,data.person.PersonName,data.person.PersonLastName,
 																	  data.person.PersonPhone,data.person.PersonAddress,data.person.PersonRuc,data.person.PersonRole],function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
@@ -437,14 +437,14 @@ function SaveNewUser(socket){
 	 			console.log("Insert new person execute");
 	 		}
 	 	});
-	 	connection.query('INSERT INTO users VALUES (?,?,?,?)',[data.user.UserEmail,data.user.UserPassword,data.user.UserProfile,data.user.PERSON_TEMP_PersonCi],function(err, rows, fields) {
+	 	connection.query('INSERT INTO USERS VALUES (?,?,?,?)',[data.user.UserEmail,data.user.UserPassword,data.user.UserProfile,data.user.PERSON_TEMP_PersonCi],function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{
 	 			console.log("Insert new user execute");
 	 		}
 	 	});
-	 	connection.query('DELETE FROM user_temp WHERE UserEmail = ?',[data.user.UserEmail],function(err, rows, fields) {
+	 	connection.query('DELETE FROM USERS_TEMP WHERE UserEmail = ?',[data.user.UserEmail],function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{
@@ -464,7 +464,7 @@ function SaveNewUser(socket){
 
 function UpdateUser(socket){
 	socket.on('UserUpdate',function(data){
-		connection.query('UPDATE person SET PersonName ="'+data.name+'", PersonLastName="'+data.lastName+'", PersonPhone="'+data.phone+'", PersonAddress="'+data.address+'", PersonRuc="'+data.ruc+'", PersonRole="'+data.role+'" WHERE PersonCi = "'+data.ci+'"',function(err, rows, fields) {
+		connection.query('UPDATE PERSON SET PersonName ="'+data.name+'", PersonLastName="'+data.lastName+'", PersonPhone="'+data.phone+'", PersonAddress="'+data.address+'", PersonRuc="'+data.ruc+'", PersonRole="'+data.role+'" WHERE PersonCi = "'+data.ci+'"',function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{
@@ -472,7 +472,7 @@ function UpdateUser(socket){
 	 		}
 	 	});
 
-	 	connection.query('UPDATE users SET UserPassword = "'+data.password+'" WHERE UserEmail = "'+data.email+'"',function(err, rows, fields) {
+	 	connection.query('UPDATE USERS SET UserPassword = "'+data.password+'" WHERE UserEmail = "'+data.email+'"',function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{

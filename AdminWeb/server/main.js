@@ -287,7 +287,7 @@ function SendNotification(socket){
 	var lstTempUsers=[];
 	var lstTempPerson=[];
 
-	connection.query('SELECT * FROM user_temp',function(error, result){
+	connection.query('SELECT * FROM USER_TEMP',function(error, result){
 		if(error){
 		    throw error;
 		}else{

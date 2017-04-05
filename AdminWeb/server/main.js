@@ -10,8 +10,8 @@ var lstPersons=[];
 var connection = MariaDB.createConnection({
 	host	: 'localhost',
 	user	: 'root',
-	password: '',
-	database: 'grinpv2'
+	password: 'REDdatabase17',
+	database: 'red'
 });
 app.use(express.static('public'));
 app.get('/', function(req, res){
@@ -140,7 +140,7 @@ io.on('connection', function(socket){
 	SelectJourneys();
 	SelectActiveOrders()
 	SelectUsers();
-	selectWaste();
+	// selectWaste();
 	SelectPersons();
 	SendNotification(socket); 
 	SelectOrders();

@@ -417,7 +417,7 @@ function ChangeStateOrder(){
 }
 
 function SelectPersons(){
-	connection.query('SELECT * FROM person ORDER BY PersonName',function(error, result){
+	connection.query('SELECT * FROM PERSON ORDER BY PersonName',function(error, result){
 		if(error){
 		 throw error;
 		}else{

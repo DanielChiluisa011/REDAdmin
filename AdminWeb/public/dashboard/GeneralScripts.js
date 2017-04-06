@@ -1,4 +1,4 @@
-var socket = io.connect("http://localhost:8080",{"forceNew": true});
+var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
 var lstNewUsers=[];
 $(document).ready(function(){
 })

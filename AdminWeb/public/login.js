@@ -1,4 +1,4 @@
-var socket = io.connect("localhost:8080",{"forceNew": true});
+var socket = io.connect("34.195.35.232:8080",{"forceNew": true});
 var User;
 var lstUsers=[];
 var CorrectPassword=false;

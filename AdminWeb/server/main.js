@@ -80,7 +80,7 @@ io.on('connection', function(socket){
 							}
 						}
 						console.log('Usuarios devueltos: '+lstNotificationUsers.length);
-						io.emit('AppSelectUsers',lstNotificationUsers);
+						io.sockets.emit('AppSelectUsers',lstNotificationUsers);
 			       }
 				})
 	       }

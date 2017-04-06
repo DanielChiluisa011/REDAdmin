@@ -10,8 +10,8 @@ var lstPersons=[];
 var connection = MariaDB.createConnection({
 	host	: 'localhost',
 	user	: 'root',
-	password: '',
-	database: 'grinpv2'
+	password: 'REDdatabase17',
+	database: 'red'
 });
 app.use(express.static('public'));
 app.get('/', function(req, res){

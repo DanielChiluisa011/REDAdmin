@@ -125,12 +125,13 @@ io.on('connection', function(socket){
 			});
       });
       socket.on('RequestDistOrders',function(data){
+		  	console.log(data);
       		connection.query("select * from orders WHERE DistributorId= "+data+"",function(error, result){
 				if(error){
 				    throw error;
 				}else{
 				  	var JourneyRoute=result;
-					io.emit('DistOrders',JourneyRoute);
+					socket.emit('DistOrders',JourneyRoute);
 					// console.log('Select Distributors executed');
 		       }
 			});

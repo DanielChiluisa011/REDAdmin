@@ -53,6 +53,7 @@ io.on('connection', function(socket){
 	         })
     	});
       socket.on('AppDataUsersRequest',function(data){
+		  console.log(data);
       	var lstNotificationUsers=[];
 		var lstTempUsers=[];
 		var lstTempPerson=[];

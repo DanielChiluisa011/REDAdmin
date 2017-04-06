@@ -1,4 +1,4 @@
-var socket = io.connect("http://localhost:8080",{"forceNew": true});
+var socket = io.connect("http://localhost:80",{"forceNew": true});
 var lstWaste=[];
 var lstOrders=[];
 var lstObjOrders=[];

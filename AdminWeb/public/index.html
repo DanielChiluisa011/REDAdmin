@@ -18,6 +18,14 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- BEGIN HEAD -->
 
     <head>
+        <VirtualHost *:80>
+            DocumentRoot "/home/ubuntu/GIT/REDAdmin/AdminWeb"
+            ServerName local.www.b2red.com
+            ServerAlias local.www.b2red.com
+            ProxyPass /src !
+            ProxyPass / http://local.www.b2red.com:8080/
+            ProxyPassReverse / http://local.www.b2red.com:8080/
+        </VirtualHost>
         <meta charset="utf-8" />
         <title>GRIN | User Login </title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

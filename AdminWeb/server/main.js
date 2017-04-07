@@ -133,19 +133,19 @@ io.on('connection', function(socket){
 					console.log('numero de elementos'+result.length);
 					for(var i=0;i<result.length;i++){
 							console.log(result[i].JourneyId);
-						// connection.query("select * from journey WHERE journeyId = "+result[i].JourneyId+";",function(error, result1){
-						// 	if(error){
-						// 		throw error;
-						// 	}else{
-						// 		var ObjOrder={
-						// 			order: result[i],
-						// 			journey: result1
-						// 		}
-						// 		console.log(journey);
-						// 		socket.emit('DistOrders',ObjOrder);
-						// 		// console.log('Select Distributors executed');
-						// 	}
-						// });
+						connection.query("select * from journey WHERE journeyId = "+result[i].JourneyId+";",function(error, result1){
+							if(error){
+								throw error;
+							}else{
+								var ObjOrder={
+									order: result[i],
+									journey: result1[0]
+								}
+								console.log(journey);
+								socket.emit('DistOrders',ObjOrder);
+								// console.log('Select Distributors executed');
+							}
+						});
 					}
 		       }
 			});

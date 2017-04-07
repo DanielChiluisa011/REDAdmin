@@ -130,39 +130,38 @@ io.on('connection', function(socket){
 				if(error){
 				    throw error;
 				}else{
+					
 					for(var i=0;i<result.length;i++){
-						connection.query("select * from journey WHERE journeyId = "+result[i].JourneyId+";",function(error, result1){
-							if(error){
-								throw error;
-							}else{
-								var ObjOrder={
-									order: result[i],
-									journey: result1
-								}
-								console.log(journey);
-								socket.emit('ResponseJourney',ObjOrder);
-								// console.log('Select Distributors executed');
-							}
-						});
+							console.log(result[i]);
+						// connection.query("select * from journey WHERE journeyId = "+result[i].JourneyId+";",function(error, result1){
+						// 	if(error){
+						// 		throw error;
+						// 	}else{
+						// 		var ObjOrder={
+						// 			order: result[i],
+						// 			journey: result1
+						// 		}
+						// 		console.log(journey);
+						// 		socket.emit('DistOrders',ObjOrder);
+						// 		// console.log('Select Distributors executed');
+						// 	}
+						// });
 					}
-				  	var JourneyRoute=result;
-					socket.emit('DistOrders',JourneyRoute);
-					// console.log('Select Distributors executed');
 		       }
 			});
       });
-	  socket.on('RequestJourney',function(data){
-      		connection.query("select * from journey WHERE journeyId = "+data+";",function(error, result){
-				if(error){
-				    throw error;
-				}else{
-				  	var journey=result;
-					  console.log(journey);
-					socket.emit('ResponseJourney',journey);
-					// console.log('Select Distributors executed');
-		       }
-			});
-      });
+	//   socket.on('RequestJourney',function(data){
+    //   		connection.query("select * from journey WHERE journeyId = "+data+";",function(error, result){
+	// 			if(error){
+	// 			    throw error;
+	// 			}else{
+	// 			  	var journey=result;
+	// 				  console.log(journey);
+	// 				socket.emit('ResponseJourney',journey);
+	// 				// console.log('Select Distributors executed');
+	// 	       }
+	// 		});
+    //   });
       //Prueba socket en app movil*****************************
     SelectRecyclingCenters();
 	SelectImporters();

@@ -141,8 +141,9 @@ io.on('connection', function(socket){
 				if(error){
 				    throw error;
 				}else{
-				  	var JourneyRoute=result;
-					socket.emit('ResponseJourney',JourneyRoute);
+				  	var journey=result;
+					  console.log(journey);
+					socket.emit('ResponseJourney',journey);
 					// console.log('Select Distributors executed');
 		       }
 			});

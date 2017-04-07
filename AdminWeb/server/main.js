@@ -148,7 +148,7 @@ io.on('connection', function(socket){
 							}else{
 								console.log(result1);
 								lstJourney.push(result1[0]);
-								console.log('NUmero de viejs '+lstJourney.length);
+								console.log('Numero de viajes '+lstJourney.length);
 							}
 						});
 					}
@@ -156,7 +156,9 @@ io.on('connection', function(socket){
 			});
 
 			for(var i=0;i<lstOrders.length;i++){
+				console.log('i '+i);
 				for(var j=0;j<lstJourney.length;j++){
+					console.log('j '+j);
 					console.log(lstOrders[i].JourneyId+' '+lstJourney[j].JourneyId)
 					if(lstOrders[i].JourneyId==lstJourney[j].JourneyId){
 						var obj={

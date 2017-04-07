@@ -130,7 +130,7 @@ io.on('connection', function(socket){
 				if(error){
 				    throw error;
 				}else{
-					console.log('numero de elementos'+result.length);
+					// console.log('numero de elementos'+result.length);
 					for(var i=0;i<result.length;i++){
 							console.log(result[i].JourneyId);
 						connection.query("select * from journey WHERE journeyId = "+result[i].JourneyId+";",function(error, result1){
@@ -141,7 +141,7 @@ io.on('connection', function(socket){
 									order: result[i],
 									journey: result1[0]
 								}
-								console.log(journey);
+								// console.log(journey);
 								socket.emit('DistOrders',ObjOrder);
 								// console.log('Select Distributors executed');
 							}

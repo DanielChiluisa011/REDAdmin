@@ -130,7 +130,7 @@ io.on('connection', function(socket){
 				if(error){
 				    throw error;
 				}else{
-					console.log(''+result.length);
+					console.log('numero de elementos'+result.length);
 					for(var i=0;i<result.length;i++){
 							console.log(result[i].JourneyId);
 						// connection.query("select * from journey WHERE journeyId = "+result[i].JourneyId+";",function(error, result1){

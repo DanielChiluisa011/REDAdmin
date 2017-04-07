@@ -136,6 +136,17 @@ io.on('connection', function(socket){
 		       }
 			});
       });
+	  socket.on('RequestJourney',function(data){
+      		connection.query("select * from journey WHERE journeyId = "+data+";",function(error, result){
+				if(error){
+				    throw error;
+				}else{
+				  	var JourneyRoute=result;
+					socket.emit('ResponseJourney',JourneyRoute);
+					// console.log('Select Distributors executed');
+		       }
+			});
+      });
       //Prueba socket en app movil*****************************
     SelectRecyclingCenters();
 	SelectImporters();

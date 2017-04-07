@@ -138,7 +138,7 @@ io.on('connection', function(socket){
 				    throw error;
 				}else{
 					lstOrders = result;
-					console
+					console.log('NUmero de ordenes '+lstOrders.length);
 					console.log(result);
 					for(var i=0;i<result.length;i++){
 						console.log(result[i].JourneyId);
@@ -148,10 +148,10 @@ io.on('connection', function(socket){
 							}else{
 								console.log(result1);
 								lstJourney.push(result1[0]);
+								console.log('NUmero de viejs '+lstJourney.length);
 							}
 						});
 					}
-					// console.log('numero de elementos'+result.length);
 		       }
 			});
 

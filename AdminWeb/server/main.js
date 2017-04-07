@@ -157,6 +157,7 @@ io.on('connection', function(socket){
 
 			for(var i=0;i<lstOrders.length;i++){
 				for(var j=0;j<lstJourney.length;j++){
+					console.log(lstOrders[i].JourneyId+' '+lstJourney[j].JourneyId)
 					if(lstOrders[i].JourneyId==lstJourney[j].JourneyId){
 						var obj={
 							order: lstOrders[i],

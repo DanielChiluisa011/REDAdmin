@@ -132,7 +132,7 @@ io.on('connection', function(socket){
 				}else{
 					
 					for(var i=0;i<result.length;i++){
-							console.log(result[i]);
+							console.log(result[i].JourneyId);
 						// connection.query("select * from journey WHERE journeyId = "+result[i].JourneyId+";",function(error, result1){
 						// 	if(error){
 						// 		throw error;

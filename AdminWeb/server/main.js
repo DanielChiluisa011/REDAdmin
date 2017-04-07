@@ -138,6 +138,7 @@ io.on('connection', function(socket){
 				    throw error;
 				}else{
 					lstOrders = result;
+					console
 					console.log(result);
 					for(var i=0;i<result.length;i++){
 						console.log(result[i].JourneyId);
@@ -167,7 +168,9 @@ io.on('connection', function(socket){
 			}
 
 			for(var i=0;i<lst.length;i++){
+				console.log('Order');
 				console.log(lst[i].order);
+				console.log('Order');
 				console.log(lst[i].journey);
 			}
 			

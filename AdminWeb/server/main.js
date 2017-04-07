@@ -126,29 +126,49 @@ io.on('connection', function(socket){
       });
       socket.on('RequestDistOrders',function(data){
 		  	console.log(data);
+			var ObjOrder = {
+				order: '',
+				journey: ''
+			}
+			var lstOrders=[];
+			var lstJourney=[];
+			var lst=[];
       		connection.query("select * from orders WHERE DistributorId= "+data+"",function(error, result){
 				if(error){
 				    throw error;
 				}else{
-					// console.log('numero de elementos'+result.length);
+					lstOrders = result;
 					for(var i=0;i<result.length;i++){
-							console.log(result[i].JourneyId);
+						console.log(result[i].JourneyId);
 						connection.query("select * from journey WHERE journeyId = "+result[i].JourneyId+";",function(error, result1){
 							if(error){
 								throw error;
 							}else{
-								var ObjOrder = {
-									order: result[i],
-									journey: result1[0]
-								}
-								console.log(ObjOrder);
-								socket.emit('DistOrders',ObjOrder);
-								// console.log('Select Distributors executed');
+								lstJourney.push(result1[0]);
 							}
 						});
 					}
+					// console.log('numero de elementos'+result.length);
 		       }
 			});
+
+			for(var i=0;i<lstOrders.length;i++){
+				for(var j=0;j<lstJourney.length;j++){
+					if(lstOrders[i].JourneyId==lstJourney[j].JourneyId){
+						var obj={
+							order: lstOrders[i],
+							journey: lstJourney[j]
+						}
+						lst.push(obj);
+					}
+				}
+			}
+
+			for(var i=0;i<lst.length;i++){
+				console.log(lst[i].order);
+				console.log(lst[i].journey);
+			}
+			
       });
 	//   socket.on('RequestJourney',function(data){
     //   		connection.query("select * from journey WHERE journeyId = "+data+";",function(error, result){

@@ -137,11 +137,11 @@ io.on('connection', function(socket){
 							if(error){
 								throw error;
 							}else{
-								var ObjOrder={
+								var ObjOrder = {
 									order: result[i],
 									journey: result1[0]
 								}
-								// console.log(journey);
+								console.log(ObjOrder);
 								socket.emit('DistOrders',ObjOrder);
 								// console.log('Select Distributors executed');
 							}

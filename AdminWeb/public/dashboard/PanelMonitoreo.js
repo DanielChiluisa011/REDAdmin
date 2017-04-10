@@ -87,7 +87,7 @@ $(document).ready(function(data){
 			    	}
 			    }
 			    for (var i = 0; i < lstRecyclingCenters.length; i++) {
-					console.log("id centro de reciclaje "+lstRecyclingCenters[i].RecyclingCenterId+" "+lstJourneys[j].RecyclingCenterId);
+					console.log("id centro de reciclaje "+lstRecyclingCenters[i].RecyclingCenterId+" "+lstJourneys[j].RECYCLINGCENTERID);
 			    	if(lstRecyclingCenters[i].RecyclingCenterId==lstJourneys[j].RecyclingCenterId){
 						// console.log(lstRecyclingCenters[i].RECYCLINGCENTERID+" "+lstJourneys[j].RECYCLINGCENTERID);
 			    		RCName=lstRecyclingCenters[i].RECYCLINGCENTERNAME;

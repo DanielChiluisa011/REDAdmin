@@ -63,11 +63,11 @@ io.on('connection', function(socket){
 			    throw error;
 			}else{
 			  	lstTempUsers=result;
-			  	connection.query('SELECT * FROM person;',function(error, result){
+			  	connection.query('SELECT * FROM person;',function(error, result1){
 					if(error){
 					    throw error;
 					}else{
-					  	lstTempPerson=result;
+					  	lstTempPerson=result1;
 						for (var i = 0; i < lstTempUsers.length; i++) {
 							for (var j = 0; j < lstTempPerson.length; j++) {
 								if(lstTempUsers[i].PersonId==lstTempPerson[j].PersonId){

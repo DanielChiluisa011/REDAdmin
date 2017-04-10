@@ -78,7 +78,7 @@ $(document).ready(function(data){
     //    	}
        	for (var j = 0; j <lstJourneys.length; j++) {
        		// if('2017-02-13'==CurrentDate()){
-       			// console.log('Importadores ' +lstImporters.length)
+       			console.log('Importadores ' +lstImporters.length)
        			for (var i = 0; i < lstImporters.length; i++) {
        				console.log('Journey '+lstJourneys[j].ImporterId+' Importer '+lstImporters[i].ImporterId);
 			    	if(lstImporters[i].ImporterId==lstJourneys[j].ImporterId){

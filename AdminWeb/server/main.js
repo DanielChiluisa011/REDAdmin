@@ -70,12 +70,14 @@ io.on('connection', function(socket){
 					  	lstTempPerson=result1;
 						for (var i = 0; i < lstTempUsers.length; i++) {
 							for (var j = 0; j < lstTempPerson.length; j++) {
+								console.log(lstTempUsers[i].PersonId+"  "+lstTempPerson[j].PersonId);
 								if(lstTempUsers[i].PersonId==lstTempPerson[j].PersonId){
 									aux = {
 										person: lstTempPerson[j],
 										user: lstTempUsers[i]
 									}
 									lstNotificationUsers.push(aux);
+
 								}
 							}
 						}

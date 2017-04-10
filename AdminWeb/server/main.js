@@ -70,7 +70,6 @@ io.on('connection', function(socket){
 					  	lstTempPerson=result1;
 						for (var i = 0; i < lstTempUsers.length; i++) {
 							for (var j = 0; j < lstTempPerson.length; j++) {
-								console.log(lstTempUsers[i].PERSONID+"  "+lstTempPerson[j].PERSONID);
 								if(lstTempUsers[i].PERSONID==lstTempPerson[j].PERSONID){
 									aux = {
 										person: lstTempPerson[j],
@@ -81,8 +80,6 @@ io.on('connection', function(socket){
 								}
 							}
 						}
-						console.log(aux.person);
-						console.log(aux.user);
 						// console.log('Usuarios devueltos: '+lstNotificationUsers.length);
 						io.sockets.emit('AppSelectUsers',lstNotificationUsers);
 			       }

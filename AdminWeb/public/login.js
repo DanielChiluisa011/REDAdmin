@@ -6,7 +6,6 @@ var CorrectPassword=false;
 	socket.on('Select Users', function(data){
        	lstUsers=data;
    	})
-
 });  
 
 $('#btnLogin').click(function(){

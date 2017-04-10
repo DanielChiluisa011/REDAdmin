@@ -11,7 +11,7 @@ var connection = MariaDB.createConnection({
 	host	: 'localhost',
 	user	: 'root',
 	password: 'REDdatabase17',
-	database: 'red'
+	database: 'red2'
 });
 app.use(express.static('public'));
 app.get('/', function(req, res){

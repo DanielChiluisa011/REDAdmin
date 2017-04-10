@@ -80,7 +80,7 @@ $(document).ready(function(data){
        		// if('2017-02-13'==CurrentDate()){
        			// console.log('Importadores ' +lstImporters.length)
        			for (var i = 0; i < lstImporters.length; i++) {
-       				// console.log('Journey '+lstJourneys[j].ImporterId+' Importer '+lstImporters[i].ImporterId);
+       				console.log('Journey '+lstJourneys[j].ImporterId+' Importer '+lstImporters[i].ImporterId);
 			    	if(lstImporters[i].ImporterId==lstJourneys[j].ImporterId){
 			    		importerName=lstImporters[i].ImporterName;
 			    		break;
@@ -88,13 +88,13 @@ $(document).ready(function(data){
 			    }
 			    // console.log(importerName);
 			    for (var i = 0; i < lstRecyclingCenters.length; i++) {
-			    	if(lstRecyclingCenters[i].RecyclingCenterId==lstJourneys[j].RECYCLING_CENTER_recycling_center_id){
-			    		RCName=lstRecyclingCenters[i].RecyclingCenterName;
+			    	if(lstRecyclingCenters[i].RECYCLINGCENTERID==lstJourneys[j].RECYCLINGCENTERID){
+			    		RCName=lstRecyclingCenters[i].RECYCLINGCENTERNAME;
 			    		break;
 			    	}
 			    }
 			    $('#ActiveOrders').append("<tbody><tr><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='ShowJourney("+j+")'>"+
-		       							lstJourneys[j].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].TRUCK_truck_id+"</td><td onclick='ShowJourney("+j+")'>"+RCName+
+		       							lstJourneys[j].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].truckid+"</td><td onclick='ShowJourney("+j+")'>"+RCName+
 		       							"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='' onclick='CurrentDate()'> <i class='fa fa-close'> </i> Suspender </a></td></tr><tbody>");  
        		// }
 		}

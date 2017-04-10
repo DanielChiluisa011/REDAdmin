@@ -12,7 +12,7 @@ var CorrectPassword=false;
 $('#btnLogin').click(function(){
 	var UserExist=false;
 	for (var i = 0; i < lstUsers.length; i++) {
-		if(lstUsers[i].UserEmail===$('#txtLogEmail').val() && lstUsers[i].UserPassword===$('#txtLogPassword').val() && lstUsers[i].UserProfile==='administrador'){
+		if(lstUsers[i].USEREMAIL===$('#txtLogEmail').val() && lstUsers[i].USERPASSWORD===$('#txtLogPassword').val() && lstUsers[i].USERPROFILE==='administrador'){
 			var url="dashboard/PanelMonitoreo.html?"+lstUsers[i].UserEmail;
 			UserExist=true;
 			break;

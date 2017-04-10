@@ -75,6 +75,8 @@ io.on('connection', function(socket){
 										person: lstTempPerson[j],
 										user: lstTempUsers[i]
 									}
+									console.log(aux.person);
+									console.log(aux.user);
 									lstNotificationUsers.push(aux);
 								}
 							}

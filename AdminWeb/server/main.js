@@ -102,7 +102,7 @@ io.on('connection', function(socket){
       });
 
       socket.on('RequestDistributorData',function(data){
-      		connection.query("SELECT DistributorId,DistributorName,DistributorRuc,DistributorAddress,DistributorPhone,DistributorStock,DistributorEnvironmentalLicense,PersonId,IMPORTER_ImporterId,X(GeometryFromText(AsText(DistributorCoordinates)))CoordX, Y(GeometryFromText(AsText(DistributorCoordinates))) CoordY FROM distributor where PersonId='"+data+"'",function(error, result){
+      		connection.query("SELECT DistributorId,DistributorName,DistributorRuc,DistributorAddress,DistributorPhone,DistributorStock,DistributorEnvironmentalLicense,PersonId,ImporterId,X(GeometryFromText(AsText(DistributorCoordinates)))CoordX, Y(GeometryFromText(AsText(DistributorCoordinates))) CoordY FROM distributor where PersonId='"+data+"'",function(error, result){
 				if(error){
 				    throw error;
 				}else{

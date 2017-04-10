@@ -80,8 +80,8 @@ $(document).ready(function(data){
        			// console.log('Importadores ' +lstImporters.length)
        			for (var i = 0; i < lstImporters.length; i++) {
        				console.log(+i+' Journey '+lstJourneys[j].ImporterId+' Importer '+lstImporters[i].IMPORTERID);
-			    	if(lstImporters[i].IMPORTERID==lstJourneys[j].IMPORTERID){
-						console.log(lstImporters[i].IMPORTERNAME	)
+			    	if(lstImporters[i].ImporterId==lstJourneys[j].IMPORTERID){
+						console.log(lstImporters[i].IMPORTERNAME)
 			    		importerName=lstImporters[i].IMPORTERNAME;
 			    		break;
 			    	}

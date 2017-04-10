@@ -90,7 +90,7 @@ $(document).ready(function(data){
 					console.log("id centro de reciclaje "+lstRecyclingCenters[i].RecyclingCenterId+" "+lstJourneys[j].recyclingcenterid);
 			    	if(lstRecyclingCenters[i].RecyclingCenterId==lstJourneys[j].recyclingcenterid){
 						// console.log(lstRecyclingCenters[i].RECYCLINGCENTERID+" "+lstJourneys[j].RECYCLINGCENTERID);
-			    		RCName=lstRecyclingCenters[i].RECYCLINGCENTERNAME;
+			    		RCName=lstRecyclingCenters[i].RecyclingCenterName;
 			    		break;
 			    	}
 			    }

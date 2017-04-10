@@ -129,60 +129,13 @@ io.on('connection', function(socket){
 			});
       });
       socket.on('RequestDistOrders',function(data){
-		  	console.log(data);
-			var ObjOrder = {
-				order: '',
-				journey: ''
-			}
-			var lstOrders=[];
-			var lstJourney=[];
-			var lst=[];
-      		connection.query("select * from orders WHERE DistributorId= "+data+"",function(error, result){
+      		connection.query("select O.OrderId,O.OrderDate,O.OrderState,O.WasteONU,O.OrderQuantity,J.JourneyId,J.JourneyDate,J.JourneyState from orders O, journey J Where O.JourneyId=J.JourneyId AND O.DistributorId=1;"+data+"",function(error, result){
 				if(error){
 				    throw error;
 				}else{
-					lstOrders = result;
-					ObjOrder.order=result;
-					console.log('NUmero de ordenes '+lstOrders.length);
-					console.log(ObjOrder.order);
-					for(var i=0;i<result.length;i++){
-						console.log(result[i].JourneyId);
-						connection.query("select * from journey WHERE journeyId = "+result[i].JOURNEYID+";",function(error, result1){
-							if(error){
-								throw error;
-							}else{
-								ObjOrder.journey=result1;
-								console.log(ObjOrder.journey);
-								lstJourney.push(result1[0]);
-								console.log('Numero de viajes '+lstJourney.length);
-							}
-						});
-					}
+					socket.emit('DistOrders',result);
 		       }
-			});
-
-			for(var i=0;i<lstOrders.length;i++){
-				console.log('i '+i);
-				for(var j=0;j<lstJourney.length;j++){
-					console.log('j '+j);
-					console.log(lstOrders[i].JourneyId+' '+lstJourney[j].JourneyId)
-					if(lstOrders[i].JourneyId==lstJourney[j].JourneyId){
-						var obj={
-							order: lstOrders[i],
-							journey: lstJourney[j]
-						}
-						lst.push(obj);
-					}
-				}
-			}
-
-			for(var i=0;i<lst.length;i++){
-				console.log('Order');
-				console.log(lst[i].order);
-				console.log('Order');
-				console.log(lst[i].journey);
-			}
-			
+			});	
       });
 	//   socket.on('RequestJourney',function(data){
     //   		connection.query("select * from journey WHERE journeyId = "+data+";",function(error, result){

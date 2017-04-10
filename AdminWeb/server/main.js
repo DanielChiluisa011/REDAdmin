@@ -129,7 +129,7 @@ io.on('connection', function(socket){
 			});
       });
       socket.on('RequestDistOrders',function(data){
-      		connection.query("select O.OrderId,O.OrderDate,O.OrderState,O.WasteONU,O.OrderQuantity,J.JourneyId,J.JourneyDate,J.JourneyState from orders O, journey J Where O.JourneyId=J.JourneyId AND O.DistributorId=1;"+data+"",function(error, result){
+      		connection.query("select O.OrderId,O.OrderDate,O.OrderState,O.WasteONU,O.OrderQuantity,J.JourneyId,J.JourneyDate,J.JourneyState from orders O, journey J Where O.JourneyId=J.JourneyId AND O.DistributorId="+data+"",function(error, result){
 				if(error){
 				    throw error;
 				}else{

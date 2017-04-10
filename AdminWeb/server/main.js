@@ -71,7 +71,7 @@ io.on('connection', function(socket){
 						for (var i = 0; i < lstTempUsers.length; i++) {
 							for (var j = 0; j < lstTempPerson.length; j++) {
 								console.log(lstTempUsers[i].PersonId+"  "+lstTempPerson[j].PersonId);
-								if(lstTempUsers[i].PersonId==lstTempPerson[j].PersonId){
+								if(lstTempUsers[i].PERSONID==lstTempPerson[j].PERSONID){
 									aux = {
 										person: lstTempPerson[j],
 										user: lstTempUsers[i]

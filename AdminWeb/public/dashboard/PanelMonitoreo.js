@@ -79,9 +79,9 @@ $(document).ready(function(data){
        	for (var j = 0; j <lstJourneys.length; j++) {
        			// console.log('Importadores ' +lstImporters.length)
        			for (var i = 0; i < lstImporters.length; i++) {
-       				
+       				console.log('Journey '+lstJourneys[j].ImporterId+' Importer '+lstImporters[i].IMPORTERID);
 			    	if(lstImporters[i].IMPORTERID==lstJourneys[j].IMPORTERID){
-						// console.log('Journey '+lstJourneys[j].ImporterId+' Importer '+lstImporters[i].IMPORTERID);
+						
 			    		importerName=lstImporters[i].IMPORTERNAME;
 			    		break;
 			    	}

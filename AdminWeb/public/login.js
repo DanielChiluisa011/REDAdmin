@@ -10,7 +10,7 @@ var CorrectPassword=false;
 
 $('#btnLogin').click(function(){
 	var UserExist=false;
-	alert(lstUsers.length);
+	alert(" hola");
 	for (var i = 0; i < lstUsers.length; i++) {
 		console.log(lstUsers[i].USEREMAIL+" "+lstUsers[i].USERPASSWORD+" "+lstUsers[i].USERPROFILE);
 		if(lstUsers[i].USEREMAIL===$('#txtLogEmail').val() && lstUsers[i].USERPASSWORD===$('#txtLogPassword').val() && lstUsers[i].USERPROFILE==='administrador'){

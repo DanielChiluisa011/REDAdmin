@@ -147,6 +147,7 @@ function ShowJourney(i){
  	var route=ObjJourney.JourneyRoute.split(',');
  	var RouteSelected=[];
  	for (var j = 0; j < lstOrders.length; j++) {
+		 console.log(lstOrders[j].JourneyId+"  "+lstJourneys[i].JourneyId)
  		if(lstOrders[j].JourneyId==lstJourneys[i].JourneyId){
  			Orders.push(lstOrders[j])
  		}	

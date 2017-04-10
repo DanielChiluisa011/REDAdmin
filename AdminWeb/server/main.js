@@ -57,7 +57,7 @@ io.on('connection', function(socket){
       	var lstNotificationUsers=[];
 		var lstTempUsers=[];
 		var lstTempPerson=[];
-
+		var aux;
 		connection.query('SELECT * FROM users;',function(error, result){
 			if(error){
 			    throw error;
@@ -71,16 +71,16 @@ io.on('connection', function(socket){
 						for (var i = 0; i < lstTempUsers.length; i++) {
 							for (var j = 0; j < lstTempPerson.length; j++) {
 								if(lstTempUsers[i].PersonId==lstTempPerson[j].PersonId){
-									var aux = {
+									aux = {
 										person: lstTempPerson[j],
 										user: lstTempUsers[i]
 									}
-									console.log(aux.person);
-									console.log(aux.user);
 									lstNotificationUsers.push(aux);
 								}
 							}
 						}
+						console.log(aux.person);
+						console.log(aux.user);
 						// console.log('Usuarios devueltos: '+lstNotificationUsers.length);
 						io.sockets.emit('AppSelectUsers',lstNotificationUsers);
 			       }

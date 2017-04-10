@@ -26,23 +26,23 @@ io.on('connection', function(socket){
       
       //Prueba socket en app movil********************************
       socket.on('appUsuarios', function(msg){
-			connection.query('SELECT * FROM USERS ','',function(error, result){
+			connection.query('SELECT * FROM users ','',function(error, result){
 				      if(error){
 				         throw error;
 				      }else{
 				      	lstUsers=result;
 						socket.emit('AppSelectUsers', lstUsers);
-						console.log('numero de usuarios: '+lstUsers.length)
+						// console.log('numero de usuarios: '+lstUsers.length)
 				      }
 					});	
       });
       socket.on('AppNewUserRequest',function(data){
 	  		console.log('AppNewUserRequest');
-	    		connection.query('INSERT INTO USER_TEMP VALUES (?,?,?,?,?,?,?)',[data.ci,data.name,data.lastName,data.phone,data.address,data.ruc,data.role],function(err, rows, fields) {
+	    		connection.query('INSERT INTO user_temp VALUES (?,?,?,?,?,?,?)',[data.ci,data.name,data.lastName,data.phone,data.address,data.ruc,data.role],function(err, rows, fields) {
 		        	if(err){
 		         	console.log("Error "+ err.message);
 		         	}else{
-			         	connection.query('INSERT INTO USER_TEMP VALUES (?,?,?,?)',[data.email,data.pass,'cliente',data.ci],function(err, rows, fields) {
+			         	connection.query('INSERT INTO user_temp VALUES (?,?,?,?)',[data.email,data.pass,'cliente',data.ci],function(err, rows, fields) {
 					       	if(err){
 					        	console.log("Error "+ err.message);
 					        }else{
@@ -58,12 +58,12 @@ io.on('connection', function(socket){
 		var lstTempUsers=[];
 		var lstTempPerson=[];
 
-		connection.query('SELECT * FROM USERS;',function(error, result){
+		connection.query('SELECT * FROM users;',function(error, result){
 			if(error){
 			    throw error;
 			}else{
 			  	lstTempUsers=result;
-			  	connection.query('SELECT * FROM PERSON;',function(error, result){
+			  	connection.query('SELECT * FROM person;',function(error, result){
 					if(error){
 					    throw error;
 					}else{
@@ -296,7 +296,7 @@ io.on('connection', function(socket){
 
 function SelectUsers(){
 	lstUsers.length=0;
-	connection.query('SELECT * FROM USERS ','',function(error, result){
+	connection.query('SELECT * FROM users ','',function(error, result){
       if(error){
          throw error;
       }else{
@@ -312,12 +312,12 @@ function AppSelectUsers(socket){
 	var lstTempUsers=[];
 	var lstTempPerson=[];
 
-	connection.query('SELECT * FROM USERS',function(error, result){
+	connection.query('SELECT * FROM users',function(error, result){
 		if(error){
 		    throw error;
 		}else{
 		  	lstTempUsers=result;
-		  	connection.query('SELECT * FROM PERSON',function(error, result){
+		  	connection.query('SELECT * FROM person',function(error, result){
 				if(error){
 				    throw error;
 				}else{
@@ -344,7 +344,7 @@ function SendNotification(socket){
 	var lstTempUsers=[];
 	var lstTempPerson=[];
 
-	connection.query('SELECT * FROM USER_TEMP',function(error, result){
+	connection.query('SELECT * FROM user_temp',function(error, result){
 		if(error){
 		    throw error;
 		}else{
@@ -405,7 +405,7 @@ function SelectImporters(){
 }
 
 function SelectDrivers(){
-	connection.query('SELECT * FROM PERSON WHERE PersonRole LIKE "conductor"  ',function(error, result){
+	connection.query('SELECT * FROM person WHERE PersonRole LIKE "conductor"  ',function(error, result){
 		if(error){
 		    throw error;
 		}else{
@@ -427,7 +427,7 @@ function SelectTrucks(){
 }
 
 function SelectDistributor(){
-	connection.query('SELECT DistributorId,DistributorName,DistributorRuc,DistributorAddress,DistributorPhone,DistributorStock,DistributorEnvironmentalLicense,PersonContact,IMPORTER_ImporterId,X(GeometryFromText(AsText(DistributorCoordinates)))CoordX, Y(GeometryFromText(AsText(DistributorCoordinates))) CoordY FROM distributor',function(error, result){
+	connection.query('SELECT DistributorId,DistributorName,DistributorRuc,DistributorAddress,DistributorPhone,DistributorStock,DistributorEnvironmentalLicense,PersonId,ImporterId,X(GeometryFromText(AsText(DistributorCoordinates)))CoordX, Y(GeometryFromText(AsText(DistributorCoordinates))) CoordY FROM distributor',function(error, result){
 		if(error){
 		    throw error;
 		}else{
@@ -439,7 +439,7 @@ function SelectDistributor(){
 }
 
 function SelectRecyclingCenters(){
-	connection.query('SELECT RecyclingCenterId,RecyclingCenterName,RecyclingCenterAddress,RecyclingCenterPhone,RecyclingEnviromentalLicense,PERSON_Contact,X(GeometryFromText(AsText(RecyclingCenterCoordinates))) CoordX, Y(GeometryFromText(AsText(RecyclingCenterCoordinates))) CoordY FROM Recycling_Centers',function(error, result){
+	connection.query('SELECT RecyclingCenterId,RecyclingCenterName,RecyclingCenterAddress,RecyclingCenterPhone,RecyclingEnviromentalLicense,PERSON_Contact,X(GeometryFromText(AsText(RecyclingCenterCoordinates))) CoordX, Y(GeometryFromText(AsText(RecyclingCenterCoordinates))) CoordY FROM recycling_centers',function(error, result){
 		if(error){
 		    throw error;
 		}else{
@@ -451,7 +451,7 @@ function SelectRecyclingCenters(){
 }
 
 function selectWaste(){
-	connection.query('SELECT * FROM WASTE',function(error, result){
+	connection.query('SELECT * FROM waste',function(error, result){
 		if(error){
 		    throw error;
 		}else{
@@ -474,7 +474,7 @@ function ChangeStateOrder(){
 }
 
 function SelectPersons(){
-	connection.query('SELECT * FROM PERSON ORDER BY PersonName',function(error, result){
+	connection.query('SELECT * FROM person ORDER BY PersonName',function(error, result){
 		if(error){
 		 throw error;
 		}else{
@@ -486,7 +486,7 @@ function SelectPersons(){
 
 function SaveNewUser(socket){
 	socket.on('SaveNewUser',function(data){
-		connection.query('INSERT INTO PERSON VALUES (?,?,?,?,?,?,?)',[data.person.PersonCi,data.person.PersonName,data.person.PersonLastName,
+		connection.query('INSERT INTO person VALUES (?,?,?,?,?,?,?)',[data.person.PersonCi,data.person.PersonName,data.person.PersonLastName,
 																	  data.person.PersonPhone,data.person.PersonAddress,data.person.PersonRuc,data.person.PersonRole],function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
@@ -494,14 +494,14 @@ function SaveNewUser(socket){
 	 			console.log("Insert new person execute");
 	 		}
 	 	});
-	 	connection.query('INSERT INTO USERS VALUES (?,?,?,?)',[data.user.UserEmail,data.user.UserPassword,data.user.UserProfile,data.user.PERSON_TEMP_PersonCi],function(err, rows, fields) {
+	 	connection.query('INSERT INTO users VALUES (?,?,?,?)',[data.user.UserEmail,data.user.UserPassword,data.user.UserProfile,data.user.PERSON_TEMP_PersonCi],function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{
 	 			console.log("Insert new user execute");
 	 		}
 	 	});
-	 	connection.query('DELETE FROM USERS_TEMP WHERE UserEmail = ?',[data.user.UserEmail],function(err, rows, fields) {
+	 	connection.query('DELETE FROM user_temp WHERE UserEmail = ?',[data.user.UserEmail],function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{
@@ -521,7 +521,7 @@ function SaveNewUser(socket){
 
 function UpdateUser(socket){
 	socket.on('UserUpdate',function(data){
-		connection.query('UPDATE PERSON SET PersonName ="'+data.name+'", PersonLastName="'+data.lastName+'", PersonPhone="'+data.phone+'", PersonAddress="'+data.address+'", PersonRuc="'+data.ruc+'", PersonRole="'+data.role+'" WHERE PersonCi = "'+data.ci+'"',function(err, rows, fields) {
+		connection.query('UPDATE person SET PersonName ="'+data.name+'", PersonLastName="'+data.lastName+'", PersonPhone="'+data.phone+'", PersonAddress="'+data.address+'", PersonRuc="'+data.ruc+'", PersonRole="'+data.role+'" WHERE PersonCi = "'+data.ci+'"',function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{
@@ -529,7 +529,7 @@ function UpdateUser(socket){
 	 		}
 	 	});
 
-	 	connection.query('UPDATE USERS SET UserPassword = "'+data.password+'" WHERE UserEmail = "'+data.email+'"',function(err, rows, fields) {
+	 	connection.query('UPDATE users SET UserPassword = "'+data.password+'" WHERE UserEmail = "'+data.email+'"',function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{
@@ -540,7 +540,7 @@ function UpdateUser(socket){
 }
 
 function SelectJourneys(){
-	connection.query("SELECT JourneyId,DATE_FORMAT(JourneyDate ,'%Y-%m-%d') AS JourneyDate,JourneyState,TRUCK_truck_id,RECYCLING_CENTER_recycling_center_id,JourneyRoute,ImporterId FROM journey",function(error, result){
+	connection.query("SELECT JourneyId,DATE_FORMAT(JourneyDate ,'%Y-%m-%d') AS JourneyDate,JourneyState,truckId,recyclingcenterid,JourneyRoute,ImporterId FROM journey",function(error, result){
 		if(error){
 		    throw error;
 		}else{

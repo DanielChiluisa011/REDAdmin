@@ -80,15 +80,15 @@ $(document).ready(function(data){
        			console.log('Importadores ' +lstImporters.length)
        			for (var i = 0; i < lstImporters.length; i++) {
        				
-			    	if(lstImporters[i].ImporterId==lstJourneys[j].ImporterId){
+			    	if(lstImporters[i].IMPORTERID==lstJourneys[j].IMPORTERID){
 						console.log('Journey '+lstJourneys[j].ImporterId+' Importer '+lstImporters[i].IMPORTERID);
 			    		importerName=lstImporters[i].ImporterName;
 			    		break;
 			    	}
 			    }
 			    for (var i = 0; i < lstRecyclingCenters.length; i++) {
-					console.log("id centro de reciclaje "+lstRecyclingCenters[i].RECYCLINGCENTERID+" "+lstJourneys[j].RECYCLINGCENTERID);
-			    	if(lstRecyclingCenters[i].RECYCLINGCENTERID==lstJourneys[j].RECYCLINGCENTERID){
+					console.log("id centro de reciclaje "+lstRecyclingCenters[i].RecyclingCenterId+" "+lstJourneys[j].RecyclingCenterId);
+			    	if(lstRecyclingCenters[i].RecyclingCenterId==lstJourneys[j].RecyclingCenterId){
 						// console.log(lstRecyclingCenters[i].RECYCLINGCENTERID+" "+lstJourneys[j].RECYCLINGCENTERID);
 			    		RCName=lstRecyclingCenters[i].RECYCLINGCENTERNAME;
 			    		break;

@@ -79,20 +79,22 @@ $(document).ready(function(data){
        	for (var j = 0; j <lstJourneys.length; j++) {
        			console.log('Importadores ' +lstImporters.length)
        			for (var i = 0; i < lstImporters.length; i++) {
-       				console.log('Journey '+lstJourneys[j].ImporterId+' Importer '+lstImporters[i].IMPORTERID);
+       				
 			    	if(lstImporters[i].ImporterId==lstJourneys[j].ImporterId){
+						console.log('Journey '+lstJourneys[j].ImporterId+' Importer '+lstImporters[i].IMPORTERID);
 			    		importerName=lstImporters[i].ImporterName;
 			    		break;
 			    	}
 			    }
 			    for (var i = 0; i < lstRecyclingCenters.length; i++) {
 			    	if(lstRecyclingCenters[i].RECYCLINGCENTERID==lstJourneys[j].RECYCLINGCENTERID){
+						console.log(lstRecyclingCenters[i].RECYCLINGCENTERID+" "+lstJourneys[j].RECYCLINGCENTERID);
 			    		RCName=lstRecyclingCenters[i].RECYCLINGCENTERNAME;
 			    		break;
 			    	}
 			    }
 			    $('#ActiveOrders').append("<tbody><tr><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='ShowJourney("+j+")'>"+
-		       							lstJourneys[j].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].truckid+"</td><td onclick='ShowJourney("+j+")'>"+RCName+
+		       							lstJourneys[j].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].TRUCKID+"</td><td onclick='ShowJourney("+j+")'>"+RCName+
 		       							"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='' onclick='CurrentDate()'> <i class='fa fa-close'> </i> Suspender </a></td></tr><tbody>");  
 		}
     }) 	

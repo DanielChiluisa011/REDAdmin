@@ -106,7 +106,7 @@ io.on('connection', function(socket){
       });
 
       socket.on('RequestDistributorData',function(data){
-      		connection.query("SELECT DistributorId,DistributorName,DistributorRuc,DistributorAddress,DistributorPhone,DistributorStock,DistributorEnvironmentalLicense,PersonId,ImporterId,X(GeometryFromText(AsText(DistributorCoordinates)))CoordX, Y(GeometryFromText(AsText(DistributorCoordinates))) CoordY FROM distributor where PERSONID='"+data+"'",function(error, result){
+      		connection.query("SELECT DistributorId, DistributorName, DistributorRuc,DistributorAddress,DistributorPhone,DistributorStock,DistributorEnvironmentalLicense,PersonId,ImporterId,X(GeometryFromText(AsText(DistributorCoordinates)))CoordX, Y(GeometryFromText(AsText(DistributorCoordinates))) CoordY FROM distributor where PERSONID='"+data+"'",function(error, result){
 				if(error){
 				    throw error;
 				}else{
@@ -142,15 +142,17 @@ io.on('connection', function(socket){
 				    throw error;
 				}else{
 					lstOrders = result;
+					ObjOrder.order=result;
 					console.log('NUmero de ordenes '+lstOrders.length);
-					console.log(result);
+					console.log(ObjOrder.order);
 					for(var i=0;i<result.length;i++){
 						console.log(result[i].JourneyId);
 						connection.query("select * from journey WHERE journeyId = "+result[i].JOURNEYID+";",function(error, result1){
 							if(error){
 								throw error;
 							}else{
-								console.log(result1);
+								ObjOrder.journey=result1;
+								console.log(ObjOrder.journey);
 								lstJourney.push(result1[0]);
 								console.log('Numero de viajes '+lstJourney.length);
 							}

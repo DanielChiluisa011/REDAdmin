@@ -70,7 +70,7 @@ io.on('connection', function(socket){
 					  	lstTempPerson=result;
 						for (var i = 0; i < lstTempUsers.length; i++) {
 							for (var j = 0; j < lstTempPerson.length; j++) {
-								if(lstTempUsers[i].PERSON_person_ci==lstTempPerson[j].PersonCi){
+								if(lstTempUsers[i].PersonId==lstTempPerson[j].PersonId){
 									var aux = {
 										person: lstTempPerson[j],
 										user: lstTempUsers[i]
@@ -79,7 +79,7 @@ io.on('connection', function(socket){
 								}
 							}
 						}
-						console.log('Usuarios devueltos: '+lstNotificationUsers.length);
+						// console.log('Usuarios devueltos: '+lstNotificationUsers.length);
 						io.sockets.emit('AppSelectUsers',lstNotificationUsers);
 			       }
 				})

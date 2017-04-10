@@ -77,17 +77,17 @@ $(document).ready(function(data){
     //    		}
     //    	}
        	for (var j = 0; j <lstJourneys.length; j++) {
-       			console.log('Importadores ' +lstImporters.length)
+       			// console.log('Importadores ' +lstImporters.length)
        			for (var i = 0; i < lstImporters.length; i++) {
        				
 			    	if(lstImporters[i].IMPORTERID==lstJourneys[j].IMPORTERID){
-						console.log('Journey '+lstJourneys[j].ImporterId+' Importer '+lstImporters[i].IMPORTERID);
-			    		importerName=lstImporters[i].ImporterName;
+						// console.log('Journey '+lstJourneys[j].ImporterId+' Importer '+lstImporters[i].IMPORTERID);
+			    		importerName=lstImporters[i].IMPORTERNAME;
 			    		break;
 			    	}
 			    }
 			    for (var i = 0; i < lstRecyclingCenters.length; i++) {
-					console.log("id centro de reciclaje "+lstRecyclingCenters[i].RecyclingCenterId+" "+lstJourneys[j].recyclingcenterid);
+					// console.log("id centro de reciclaje "+lstRecyclingCenters[i].RecyclingCenterId+" "+lstJourneys[j].recyclingcenterid);
 			    	if(lstRecyclingCenters[i].RecyclingCenterId==lstJourneys[j].recyclingcenterid){
 						// console.log(lstRecyclingCenters[i].RECYCLINGCENTERID+" "+lstJourneys[j].RECYCLINGCENTERID);
 			    		RCName=lstRecyclingCenters[i].RecyclingCenterName;
@@ -95,7 +95,7 @@ $(document).ready(function(data){
 			    	}
 			    }
 			    $('#ActiveOrders').append("<tbody><tr><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='ShowJourney("+j+")'>"+
-		       							lstJourneys[j].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].TRUCKID+"</td><td onclick='ShowJourney("+j+")'>"+RCName+
+		       							lstJourneys[j].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].truckId+"</td><td onclick='ShowJourney("+j+")'>"+RCName+
 		       							"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='' onclick='CurrentDate()'> <i class='fa fa-close'> </i> Suspender </a></td></tr><tbody>");  
 		}
     }) 	
@@ -147,7 +147,7 @@ function ShowJourney(i){
  	var route=ObjJourney.JourneyRoute.split(',');
  	var RouteSelected=[];
  	for (var j = 0; j < lstOrders.length; j++) {
-		 console.log(lstOrders[j].JourneyId+"  "+lstJourneys[i].JourneyId)
+		//  console.log(lstOrders[j].JourneyId+"  "+lstJourneys[i].JourneyId)
  		if(lstOrders[j].JourneyId==lstJourneys[i].JourneyId){
  			Orders.push(lstOrders[j])
  		}	

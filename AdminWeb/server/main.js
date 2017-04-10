@@ -329,6 +329,8 @@ function AppSelectUsers(socket){
 									person: lstTempPerson[j],
 									user: lstTempUsers[i]
 								}
+								console.log(aux.person);
+								console.log(aux.user);
 								lstNotificationUsers.push(aux);
 							}
 						}

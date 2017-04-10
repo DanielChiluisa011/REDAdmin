@@ -10,21 +10,19 @@ var CorrectPassword=false;
 
 $('#btnLogin').click(function(){
 	var UserExist=false;
-	alert(lstUsers.length);
-	console.log('fdsfc');
-	// for (var i = 0; i < lstUsers.length; i++) {
-	// 	console.log(lstUsers[i].USEREMAIL+" "+lstUsers[i].USERPASSWORD+" "+lstUsers[i].USERPROFILE);
-	// 	if(lstUsers[i].USEREMAIL===$('#txtLogEmail').val() && lstUsers[i].USERPASSWORD===$('#txtLogPassword').val() && lstUsers[i].USERPROFILE==='administrador'){
-	// 		var url="dashboard/PanelMonitoreo.html?"+lstUsers[i].UserEmail;
-	// 		UserExist=true;
-	// 		break;
-	// 	}
-	// }
-	// if(UserExist){
-	// 	window.location = url; // Redirecting to other page.
-	// 	return false;
-	// }else{
-	// 	$('.alert-danger', $('.login-form')).show();
-	// }
+	for (var i = 0; i < lstUsers.length; i++) {
+		console.log(lstUsers[i].USEREMAIL+" "+lstUsers[i].USERPASSWORD+" "+lstUsers[i].USERPROFILE);
+		if(lstUsers[i].USEREMAIL===$('#txtLogEmail').val() && lstUsers[i].USERPASSWORD===$('#txtLogPassword').val() && lstUsers[i].USERPROFILE==='administrador'){
+			var url="dashboard/PanelMonitoreo.html?"+lstUsers[i].UserEmail;
+			UserExist=true;
+			break;
+		}
+	}
+	if(UserExist){
+		window.location = url; // Redirecting to other page.
+		return false;
+	}else{
+		$('.alert-danger', $('.login-form')).show();
+	}
 })
 

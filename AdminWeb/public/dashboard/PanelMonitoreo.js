@@ -77,7 +77,6 @@ $(document).ready(function(data){
     //    		}
     //    	}
        	for (var j = 0; j <lstJourneys.length; j++) {
-       		// if('2017-02-13'==CurrentDate()){
        			console.log('Importadores ' +lstImporters.length)
        			for (var i = 0; i < lstImporters.length; i++) {
        				console.log('Journey '+lstJourneys[j].ImporterId+' Importer '+lstImporters[i].ImporterId);
@@ -86,7 +85,6 @@ $(document).ready(function(data){
 			    		break;
 			    	}
 			    }
-			    // console.log(importerName);
 			    for (var i = 0; i < lstRecyclingCenters.length; i++) {
 			    	if(lstRecyclingCenters[i].RECYCLINGCENTERID==lstJourneys[j].RECYCLINGCENTERID){
 			    		RCName=lstRecyclingCenters[i].RECYCLINGCENTERNAME;
@@ -96,7 +94,6 @@ $(document).ready(function(data){
 			    $('#ActiveOrders').append("<tbody><tr><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='ShowJourney("+j+")'>"+
 		       							lstJourneys[j].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].truckid+"</td><td onclick='ShowJourney("+j+")'>"+RCName+
 		       							"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='' onclick='CurrentDate()'> <i class='fa fa-close'> </i> Suspender </a></td></tr><tbody>");  
-       		// }
 		}
     }) 	
 })

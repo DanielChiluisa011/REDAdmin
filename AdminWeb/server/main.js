@@ -258,7 +258,7 @@ function SelectUsers(){
       }else{
       	lstUsers=result;
 		io.emit('Select Users', lstUsers);
-		//console.log('numero de usuarios: '+lstUsers.length)
+		console.log('numero de usuarios: '+lstUsers.length)
       }
 	});	
 }

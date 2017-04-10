@@ -115,7 +115,7 @@ io.on('connection', function(socket){
       });
       socket.on('RequestJourneyRoute',function(data){
       	console.log('RequestJourneyRoute cedula: '+data);
-      		connection.query("select j.JourneyId, j.JourneyRoute, j.RECYCLING_CENTER_recycling_center_id from journey j, trucks t, person p where j.TRUCK_truck_id=t.TruckId and t.TruckDriver=p.PersonCi and  p.PersonCi='"+data+"'",function(error, result){
+      		connection.query("select j.JourneyId, j.JourneyRoute, j.recyclingcenterid from journey j, trucks t, person p where j.truckid=t.TruckId and t.TruckDriver=p.PersonCi and  p.PersonCi='"+data+"'",function(error, result){
 				if(error){
 				    throw error;
 				}else{

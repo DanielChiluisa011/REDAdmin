@@ -176,7 +176,7 @@ function ShowJourney(i){
  		}	
 	}	
 	for (var i = 0; i < lstRecyclingCenters.length; i++) {
-		if(lstRecyclingCenters[i].RecyclingCenterId==ObjJourney.RECYCLING_CENTER_recycling_center_id){
+		if(lstRecyclingCenters[i].RecyclingCenterId==ObjJourney.recyclingcenterid){
 			var finishPosition=lstRecyclingCenters[i];
 			mapa.addMarker({
 			   	lat: lstRecyclingCenters[i].CoordX,

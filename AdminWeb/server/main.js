@@ -324,7 +324,7 @@ function AppSelectUsers(socket){
 				  	lstTempPerson=result;
 					for (var i = 0; i < lstTempUsers.length; i++) {
 						for (var j = 0; j < lstTempPerson.length; j++) {
-							if(lstTempUsers[i].PERSON_TEMP_PersonId==lstTempPerson[j].PersonId){
+							if(lstTempUsers[i].PersonId==lstTempPerson[j].PersonId){
 								var aux = {
 									person: lstTempPerson[j],
 									user: lstTempUsers[i]

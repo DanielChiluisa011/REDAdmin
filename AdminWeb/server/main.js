@@ -42,7 +42,7 @@ io.on('connection', function(socket){
 		        	if(err){
 		         	console.log("Error "+ err.message);
 		         	}else{
-			         	connection.query("INSERT INTO user_temp (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID) VALUES (?,?,?,'select max(PERSONID) from person_temp')",[data.email,data.pass,'cliente'],function(err, rows, fields) {
+			         	connection.query("INSERT INTO user_temp (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID) VALUES (?,?,?,'select max(PERSONID) from person_temp)",[data.email,data.pass,'cliente'],function(err, rows, fields) {
 					       	if(err){
 					        	console.log("Error "+ err.message);
 					        }else{
@@ -323,7 +323,7 @@ function SendNotification(socket){
 				  	lstTempPerson=result;
 					for (var i = 0; i < lstTempUsers.length; i++) {
 						for (var j = 0; j < lstTempPerson.length; j++) {
-							if(lstTempUsers[i].PERSON_TEMP_PersonCi==lstTempPerson[j].PersonCi){
+							if(lstTempUsers[i].PERSONID==lstTempPerson[j].PERSONID){
 								var aux = {
 									person: lstTempPerson[j],
 									user: lstTempUsers[i]

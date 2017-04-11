@@ -148,6 +148,7 @@ io.on('connection', function(socket){
 
 	  socket.on('AppEmergecyNotification',function(msg){ 
 	  	socket.emit('EmergencyNotification',msg); 
+	  	console.log(msg);
 	  });
 	//   socket.on('RequestJourney',function(data){
     //   		connection.query("select * from journey WHERE journeyId = "+data+";",function(error, result){

@@ -134,6 +134,15 @@ io.on('connection', function(socket){
 		       }
 			});	
       });
+	  socket.on('RequestNumOrder',function(){
+			connection.query("SELECT OrderId FROM orders;",function(error, result){
+				if(error){
+				    throw error;
+				}else{
+					socket.emit('RespondeNumOrder',result);
+		       }
+			});	
+	  });
 	//   socket.on('RequestJourney',function(data){
     //   		connection.query("select * from journey WHERE journeyId = "+data+";",function(error, result){
 	// 			if(error){

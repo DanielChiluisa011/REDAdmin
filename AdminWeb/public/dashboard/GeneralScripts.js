@@ -11,3 +11,7 @@ socket.on('NotificationNewUser', function(data){
 		$.notific8('Nueva solicitud de usuario recibida');
 	}
 });
+
+socket.on('EmergencyNotification', function(msg){
+	$.notific8(msg);
+})

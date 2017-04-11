@@ -143,6 +143,12 @@ io.on('connection', function(socket){
 		       }
 			});	
 	  });
+
+	  
+
+	  socket.on('AppEmergecyNotification',function(msg){ 
+	  	socket.emit('EmergencyNotification',msg); 
+	  });
 	//   socket.on('RequestJourney',function(data){
     //   		connection.query("select * from journey WHERE journeyId = "+data+";",function(error, result){
 	// 			if(error){
@@ -527,6 +533,11 @@ function SelectMaxOrder(socket){
        }
 	})
 	}
+
+
+
 server.listen(8080, function(){
    console.log('listening on *:8080');
  });
+
+

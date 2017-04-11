@@ -323,6 +323,7 @@ function SendNotification(socket){
 				  	lstTempPerson=result;
 					for (var i = 0; i < lstTempUsers.length; i++) {
 						for (var j = 0; j < lstTempPerson.length; j++) {
+							console.log(lstTempUsers[i].PERSONID+" "+lstTempPerson[j].PERSONID);
 							if(lstTempUsers[i].PERSONID==lstTempPerson[j].PERSONID){
 								var aux = {
 									person: lstTempPerson[j],

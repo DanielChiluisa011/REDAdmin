@@ -135,7 +135,7 @@ io.on('connection', function(socket){
 			});	
       });
 	  socket.on('RequestNumOrder',function(){
-			connection.query("SELECT OrderId FROM orders;",function(error, result){
+			connection.query("SELECT MAX(OrderId) MAXORDER FROM orders;",function(error, result){
 				if(error){
 				    throw error;
 				}else{

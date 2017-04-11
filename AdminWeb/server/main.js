@@ -38,7 +38,7 @@ io.on('connection', function(socket){
       });
       socket.on('AppNewUserRequest',function(data){
 	  		console.log('AppNewUserRequest');
-	    		connection.query('INSERT INTO person_temp(PERSONCI,PERSONNAME,PERSONALASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE) VALUES (?,?,?,?,?,?,?)',[,data.ci,data.name,data.lastName,data.phone,data.address,data.role],function(err, rows, fields) {
+	    		connection.query('INSERT INTO person_temp (PERSONCI,PERSONNAME,PERSONALASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE) VALUES (?,?,?,?,?,?)',[data.ci,data.name,data.lastName,data.phone,data.address,data.role],function(err, rows, fields) {
 		        	if(err){
 		         	console.log("Error "+ err.message);
 		         	}else{

@@ -11,13 +11,13 @@ function FillTable(){
 		$("#UsersTable > tbody").html("");
 		var UsersAux=[];
 		UsersAux=data;
-		socket.on('SelectPersons', function(data){
+		socket.on('SelectPersons', function(data1){
 			lstUsers=[];
 			var PersonAux=[];
-			PersonAux=data;
+			PersonAux=data1;
 			for (var j = 0; j < PersonAux.length; j++) {
 				for (var i = 0; i < UsersAux.length; i++) {
-					console.log(UsersAux[i].PERSONCI+"    "+PersonAux[j].PERSONCI)
+					console.log(UsersAux[i].PERSONID+"    "+PersonAux[j].PERSONID)
 					if(UsersAux[i].PERSONCI==PersonAux[j].PERSONCI){
 						var objUser={
 							user: UsersAux[i],

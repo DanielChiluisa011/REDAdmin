@@ -22,6 +22,8 @@ function FillTable(){
 							user: UsersAux[i],
 							person: PersonAux[j]
 						}
+						console.log(objUser.user)
+						console.log(objUser.person)
 						lstUsers.push(objUser);
 					}	
 				}

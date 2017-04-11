@@ -13,5 +13,7 @@ socket.on('NotificationNewUser', function(data){
 });
 
 socket.on('EmergencyNotification', function(msg){
+		console.log(msg);
 	$.notific8(msg);
+
 });

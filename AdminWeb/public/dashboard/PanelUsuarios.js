@@ -17,7 +17,7 @@ function FillTable(){
 			PersonAux=data;
 			for (var j = 0; j < PersonAux.length; j++) {
 				for (var i = 0; i < UsersAux.length; i++) {
-					if(UsersAux[i].PERSON_person_ci==PersonAux[j].PersonCi){
+					if(UsersAux[i].PERSONCI==PersonAux[j].PERSONCI){
 						var objUser={
 							user: UsersAux[i],
 							person: PersonAux[j]
@@ -28,7 +28,7 @@ function FillTable(){
 				
 			}
 			for (var i = 0; i < lstUsers.length; i++) {
-				$('#UsersTable').append("<tbody><tr><td>"+lstUsers[i].person.PersonCi+"</td><td>"+lstUsers[i].person.PersonName+' '+lstUsers[i].person.PersonLastName+"</td><td>"+lstUsers[i].user.UserEmail+"</td><td>"+lstUsers[i].user.UserProfile+
+				$('#UsersTable').append("<tbody><tr><td>"+lstUsers[i].person.PERSONCI+"</td><td>"+lstUsers[i].person.PERSONNAME+' '+lstUsers[i].person.PERSONLASTNAME+"</td><td>"+lstUsers[i].user.USERMAIL+"</td><td>"+lstUsers[i].user.USERPROFILE+
        							"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='#responsive' onclick='ShowUserInformation("+i+")'> <i class='fa fa-edit'> </i> Editar </a></td></tr></tbody>");
 			}
 		})

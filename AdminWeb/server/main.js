@@ -42,7 +42,7 @@ io.on('connection', function(socket){
 		        	if(err){
 		         	console.log("Error "+ err.message);
 		         	}else{
-			         	connection.query("INSERT INTO user_temp (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID) VALUES (?,?,?,'select max(PERSONID) from person_temp)'",[data.email,data.pass,'cliente'],function(err, rows, fields) {
+			         	connection.query("INSERT INTO user_temp (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID) VALUES (?,?,?,'select max(PERSONID) from person_temp')",[data.email,data.pass,'cliente'],function(err, rows, fields) {
 					       	if(err){
 					        	console.log("Error "+ err.message);
 					        }else{

@@ -17,6 +17,7 @@ function FillTable(){
 			PersonAux=data;
 			for (var j = 0; j < PersonAux.length; j++) {
 				for (var i = 0; i < UsersAux.length; i++) {
+					console.log(UsersAux[i].PERSONCI+"    "+PersonAux[j].PERSONCI)
 					if(UsersAux[i].PERSONCI==PersonAux[j].PERSONCI){
 						var objUser={
 							user: UsersAux[i],

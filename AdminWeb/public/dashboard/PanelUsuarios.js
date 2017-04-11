@@ -12,9 +12,11 @@ function FillTable(){
 		var UsersAux=[];
 		UsersAux=data;
 		socket.on('SelectPersons', function(data1){
-			lstUsers=[];
+			lstUsers.length=0;
 			var PersonAux=[];
 			PersonAux=data1;
+			console.log('persona '+PersonAux.length);
+			console.log('usuario '+UsersAux.length);
 			for (var j = 0; j < PersonAux.length; j++) {
 				for (var i = 0; i < UsersAux.length; i++) {
 					console.log(UsersAux[i].PERSONID+"    "+PersonAux[j].PERSONID)

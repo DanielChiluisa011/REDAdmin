@@ -8,7 +8,6 @@ $(document).ready(function(){
 
 function FillTable(){
 	socket.on('Select Users', function(data){
-		$("#UsersTable > tbody").html("");
 		var UsersAux=[];
 		UsersAux=data;
 		socket.on('SelectPersons', function(data1){
@@ -33,7 +32,8 @@ function FillTable(){
 				
 			}
 			for (var i = 0; i < lstUsers.length; i++) {
-				$('#UsersTable').append("<tbody><tr><td>"+lstUsers[i].person.PERSONCI+"</td><td>"+lstUsers[i].person.PERSONNAME+' '+lstUsers[i].person.PERSONLASTNAME+"</td><td>"+lstUsers[i].user.USERMAIL+"</td><td>"+lstUsers[i].user.USERPROFILE+
+				$("#UsersTable > tbody").html("");
+				$('#UsersTable').append("<tbody><tr><td>"+lstUsers[i].person.PERSONCIRUC+"</td><td>"+lstUsers[i].person.PERSONNAME+' '+lstUsers[i].person.PERSONLASTNAME+"</td><td>"+lstUsers[i].user.USEREMAIL+"</td><td>"+lstUsers[i].person.PERSONROLE+
        							"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='#responsive' onclick='ShowUserInformation("+i+")'> <i class='fa fa-edit'> </i> Editar </a></td></tr></tbody>");
 			}
 		})

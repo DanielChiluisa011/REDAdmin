@@ -14,4 +14,4 @@ socket.on('NotificationNewUser', function(data){
 
 socket.on('EmergencyNotification', function(msg){
 	$.notific8(msg);
-})
+});

@@ -147,7 +147,7 @@ io.on('connection', function(socket){
 	  
 
 	  socket.on('AppEmergecyNotification',function(msg){ 
-	  	socket.emit('EmergencyNotification',msg); 
+	  	io.emit('EmergencyNotification',msg); 
 	  	console.log(msg);
 	  });
 	//   socket.on('RequestJourney',function(data){

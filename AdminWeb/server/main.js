@@ -38,11 +38,11 @@ io.on('connection', function(socket){
       });
       socket.on('AppNewUserRequest',function(data){
 	  		console.log('AppNewUserRequest');
-	    		connection.query('INSERT INTO user_temp VALUES (?,?,?,?,?,?,?)',[data.ci,data.name,data.lastName,data.phone,data.address,data.ruc,data.role],function(err, rows, fields) {
+	    		connection.query('INSERT INTO person_temp(PERSONCI,PERSONNAME,PERSONALASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE) VALUES (?,?,?,?,?,?,?)',[,data.ci,data.name,data.lastName,data.phone,data.address,data.role],function(err, rows, fields) {
 		        	if(err){
 		         	console.log("Error "+ err.message);
 		         	}else{
-			         	connection.query('INSERT INTO user_temp VALUES (?,?,?,?)',[data.email,data.pass,'cliente',data.ci],function(err, rows, fields) {
+			         	connection.query('INSERT INTO user_temp (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID) VALUES (?,?,?,select max(PERSONID) from person_temp)',[data.email,data.pass,'cliente'],function(err, rows, fields) {
 					       	if(err){
 					        	console.log("Error "+ err.message);
 					        }else{

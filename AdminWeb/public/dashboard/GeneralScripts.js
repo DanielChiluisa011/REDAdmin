@@ -12,14 +12,14 @@ socket.on('NotificationNewUser', function(data){
 	if(lstNewUsers.length!=0){
 		$.notific8('Nueva solicitud de usuario recibida');
 	}
-})
+});
 
 socket.on('EmergencyNotification', function(data){
 	
 	console.log(data.comment+" "+data.date);
 	$.notific8(data.comment+" "+data.date);
 
-})
+});
 
 socket.on('FullNotification', function(data){
 	

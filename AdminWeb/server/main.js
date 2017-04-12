@@ -166,7 +166,7 @@ io.on('connection', function(socket){
 					socket.emit('ResponseImporters',lstImporters);
 			}
 			})
-	  })
+	  });
 
 	  socket.on('AppInsertOrder',function(order){
 		connection.query('INSERT INTO orders (DISTRIBUTORID,WASTEONU,ORDERDATE,ORDERQUANTITY,ORDERSTATE,ORDERTYPE) VALUES (?,?,?,?,?,?)',[order.distributor,order.waste,order.date,order.quantity,"Pendiente",order.type],function(err, rows, fields) {

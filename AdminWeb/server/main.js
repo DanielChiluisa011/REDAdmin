@@ -143,9 +143,7 @@ io.on('connection', function(socket){
 		       }
 			});	
 	  });
-
 	  
-
 	  socket.on('AppEmergecyNotification',function(data){ 
 	  	io.emit('EmergencyNotification',data); 
 	  	console.log(data);
@@ -179,6 +177,16 @@ io.on('connection', function(socket){
 	 	})
 	  });
 
+	  socket.on('RequestDistOrdersP',function(data){
+      		connection.query("SELECT ORDERID, DISTRIBUTORID, WASTEONU, DATE_FORMAT(ORDERDATE, '%Y-%m-%d') ORDERDATE,ORDERQUANTITY,ORDERSTATE,ORDERTYPE,ORDERDEADLINE,JOURNEYID FROM orders WHERE JOURNEYID IS NULL AND DISTRIBUTORID="+data+";",function(error, result){
+				if(error){
+				    throw error;
+				}else{
+					socket.emit('DistOrdersP',result);
+		       }
+			});	
+      });
+	  
 	//   socket.on('RequestJourney',function(data){
     //   		connection.query("select * from journey WHERE journeyId = "+data+";",function(error, result){
 	// 			if(error){

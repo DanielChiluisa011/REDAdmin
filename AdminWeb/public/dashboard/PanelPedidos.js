@@ -78,8 +78,8 @@ $(document).ready(function(){
        	$('#cmbNewOrderWaste').append('<option selected>Seleccione un tipo de desecho</option>');
        	$('#cmbUpdateWaste').append('<option selected>Seleccione un tipo de desecho</option>');
        	for (var i = 0; i < lstWaste.length; i++) {
-	   		$('#cmbNewOrderWaste').append(new Option(lstWaste[i].WASTENAME, 'names',false,false));
-	   		$('#cmbUpdateWaste').append(new Option(lstWaste[i].WASTENAME, 'names',false,false));
+	   		$('#cmbNewOrderWaste').append(new Option(lstWaste[i].WASTEDESCRIPTION, 'names',false,false));
+	   		$('#cmbUpdateWaste').append(new Option(lstWaste[i].WASTEDESCRIPTION, 'names',false,false));
 	   	}
    	})
    	socket.on('SelectTrucks', function(data){

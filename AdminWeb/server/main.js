@@ -146,7 +146,7 @@ io.on('connection', function(socket){
 
 	  
 
-	  socket.on('AppEmergecyNotification',function(data){ 
+	  socket.on('AppEmergencyNotification',function(data){ 
 	  	io.emit('EmergencyNotification',data); 
 	  	console.log(data);
 	  });

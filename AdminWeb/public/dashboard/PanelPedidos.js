@@ -78,8 +78,8 @@ $(document).ready(function(){
        	$('#cmbNewOrderWaste').append('<option selected>Seleccione un tipo de desecho</option>');
        	$('#cmbUpdateWaste').append('<option selected>Seleccione un tipo de desecho</option>');
        	for (var i = 0; i < lstWaste.length; i++) {
-	   		$('#cmbNewOrderWaste').append(new Option(lstWaste[i].WasteName, 'names',false,false));
-	   		$('#cmbUpdateWaste').append(new Option(lstWaste[i].WasteName, 'names',false,false));
+	   		$('#cmbNewOrderWaste').append(new Option(lstWaste[i].WASTENAME, 'names',false,false));
+	   		$('#cmbUpdateWaste').append(new Option(lstWaste[i].WASTENAME, 'names',false,false));
 	   	}
    	})
    	socket.on('SelectTrucks', function(data){
@@ -259,7 +259,7 @@ function ShowData(i){
 	}
 
 	StockAux=OrderSelected.order.OrderQuantity;
-	$('#txtImporterName').val(lstObjOrders[i].importer.DistributorName);
+	$('#txtImporterName').val(lstObjOrders[i].importer.IMPORTERNAME);
 	$('#txtImporterRUC').val(lstObjOrders[i].importer.DistributorRuc);
 	$('#txtImporterAddress').val(lstObjOrders[i].importer.DistributorAddress);
 	$('#txtImporterPhone').val(lstObjOrders[i].importer.DistributorPhone);

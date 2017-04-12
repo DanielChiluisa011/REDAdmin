@@ -325,6 +325,7 @@ $('#cmbDrivers').change(function(){
 		$('#txtDriverPhone').val('');
 		$('#txtTruckId').val('');	
 	}else{
+		alert(lstDrivers[$("#cmbDrivers option:selected").index()-1].PERSONPHONE)
 		$('#txtDriverPhone').val(lstDrivers[$("#cmbDrivers option:selected").index()-1].PERSONPHONE);	
 		for (var i = 0; i < lstTrucks.length; i++) {
 			if(lstTrucks[i].PERSONID==lstDrivers[$("#cmbDrivers option:selected").index()-1].PERSONID){

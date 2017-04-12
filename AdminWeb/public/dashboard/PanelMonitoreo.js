@@ -101,13 +101,13 @@ $(document).ready(function(data){
 		}
     }) 	
 	socket.emit('RequestAlerts','');
-	
+
 	socket.on('ResponseAlerts',function(data){
 		lstAlerts=data;
 		$("#AlertsTable > tbody").html("");
 
 		for(var i=0;i<lstAlerts.length;i++){
-			$('#AlertsTable').append("<tbody><tr><td>"+lstAlerts[i].ALERTID+"</td></tr></tbody>");
+			$('#AlertsTable').append("<tbody><tr><td>"+lstAlerts[i].ALERTID+"</td><td>"+lstAlerts[i].JOURNEYID+"</td><td>"+lstAlerts[i].ALERTTYPE+"</td><td>"+lstAlerts[i].ALERTDESCRIPTION+"</td><td>"+lstAlerts[i].TRUCKID+"</td><td>"+lstAlerts[i].ALERTTIME+"</td></tr></tbody>");
 		}
 
 	})

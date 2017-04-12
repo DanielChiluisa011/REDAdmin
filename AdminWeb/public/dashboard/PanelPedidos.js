@@ -201,17 +201,17 @@ function showData1(i,TotalQuantity){
 	SortRoute(userPosition,RouteSelected);
 	LocateDistributors(0);
 	ShowRoute();
-	var Difference=lstImporters[0].ImporterMontlyQuotah - TotalQuantity;
+	var Difference=lstImporters[0].IMPORTERMONTLYQUOTAH - TotalQuantity;
 	for (var i = 1; i < lstImporters.length; i++) {
 		console.log(lstImporters[i].ImporterName+' Direncia: '+Difference);
-		if(lstImporters[i].ImporterMontlyQuotah - TotalQuantity<Difference && lstImporters[i].ImporterMontlyQuotah!=0){
-			Difference=lstImporters[i].ImporterMontlyQuotah - TotalQuantity;
-			console.log(lstImporters[i].ImporterName+' Direncia: '+Difference);
+		if(lstImporters[i].IMPORTERMONTLYQUOTAH - TotalQuantity<Difference && lstImporters[i].IMPORTERMONTLYQUOTAH!=0){
+			Difference=lstImporters[i].IMPORTERMONTLYQUOTAH - TotalQuantity;
+			console.log(lstImporters[i].IMPORTERNAME+' Direncia: '+Difference);
 			ImporterSelectd=lstImporters[i];
-			$('#txtImporterName').val(ImporterSelectd.ImporterName);
-			$('#txtImporterRUC').val(ImporterSelectd.ImporterRuc);
-			$('#txtImporterAddress').val(ImporterSelectd.ImporterAddress);
-			$('#txtImporterPhone').val(ImporterSelectd.ImporterPhone);
+			$('#txtImporterName').val(ImporterSelectd.IMPORTERNAME);
+			$('#txtImporterRUC').val(ImporterSelectd.IMPORTERRUC);
+			$('#txtImporterAddress').val(ImporterSelectd.IMPORTERADDRESS);
+			$('#txtImporterPhone').val(ImporterSelectd.IMPORTERPHONE);
 		}
 	}
 

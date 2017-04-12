@@ -64,7 +64,7 @@ $(document).ready(function(){
 		$('#cmbRecyclingCenters').empty();
 		$('#cmbRecyclingCenters').append('<option selected>Seleccione un Centro de Reciclaje</option>');
 		for (var i = 0; i < lstRecyclingCenters.length; i++) {
-	   		$('#cmbRecyclingCenters').append(new Option(lstRecyclingCenters[i].RECYCLINGCENTERNAME, 'names', true, true));
+	   		$('#cmbRecyclingCenters').append(new Option(lstRecyclingCenters[i].RecyclingCenterName, 'names', true, true));
 	   	}
 	   	$("#cmbRecyclingCenters").prop('selectedIndex', 0);
    	})
@@ -179,8 +179,8 @@ function showData1(i,TotalQuantity){
 	$("#cmbDrivers")[0].selectedIndex = getRandomArbitrary(1, lstDrivers.length);
 	$('#txtDriverPhone').val(lstDrivers[$("#cmbDrivers option:selected").index()].PersonPhone);	
 	for (var j = 0; j < lstTrucks.length; j++) {
-		if(lstTrucks[j].TruckDriver==lstDrivers[$("#cmbDrivers option:selected").index()].PersonCi){
-			$('#txtTruckId').val(lstTrucks[j].TruckId);
+		if(lstTrucks[j].PERSONID==lstDrivers[$("#cmbDrivers option:selected").index()].PERSONID){
+			$('#txtTruckId').val(lstTrucks[j].TRUCKID);
 			break;
 		}else{
 			$('#txtTruckId').val('');

@@ -155,8 +155,17 @@ io.on('connection', function(socket){
 
 
 	  socket.on('AppFullNotification',function(data){ 
-	  	io.emit('FullNotification',data); 
-	  	console.log(data);
+	  	connection.query('INSERT INTO alert (ALERTTYPE, ALERTDESCRIPTION, ALERTTIME, JOURNEYID) VALUES (?,?,?,?)', [data.alerttype,data.comment,data.date,data.journeyid],function(error){
+	  		if(error){
+					throw error;
+				}else{
+					
+					io.emit('FullNotification',data);
+					console.log(data); 
+			}
+	  	})
+	  	
+	  	
 	  });
 
 	  socket.on('RequestImporters',function(data){

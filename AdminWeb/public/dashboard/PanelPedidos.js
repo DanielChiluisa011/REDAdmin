@@ -64,7 +64,7 @@ $(document).ready(function(){
 		$('#cmbRecyclingCenters').empty();
 		$('#cmbRecyclingCenters').append('<option selected>Seleccione un Centro de Reciclaje</option>');
 		for (var i = 0; i < lstRecyclingCenters.length; i++) {
-	   		$('#cmbRecyclingCenters').append(new Option(lstRecyclingCenters[i].RecyclingCenterName, 'names', true, true));
+	   		$('#cmbRecyclingCenters').append(new Option(lstRecyclingCenters[i].RECYCLINGCENTERNAME, 'names', true, true));
 	   	}
 	   	$("#cmbRecyclingCenters").prop('selectedIndex', 0);
    	})
@@ -92,7 +92,7 @@ $(document).ready(function(){
        	$('#cmbDrivers').empty();
        	$('#cmbDrivers').append('<option selected>Seleccione un Conductor</option>');
        	for (var i = 0; i < lstDrivers.length; i++) {
-	   		var driver=lstDrivers[i].PersonName+' '+lstDrivers[i].PersonLastName;
+	   		var driver=lstDrivers[i].PERSONNAME+' '+lstDrivers[i].PERSONLASTNAME;
 	   		$('#cmbDrivers').append(new Option(driver, 'names', true, true));
 	   	}
        	$("#cmbDrivers").prop('selectedIndex', 0);
@@ -201,17 +201,17 @@ function showData1(i,TotalQuantity){
 	SortRoute(userPosition,RouteSelected);
 	LocateDistributors(0);
 	ShowRoute();
-	var Difference=lstImporters[0].IMPORTERMONTLYQUOTAH - TotalQuantity;
+	var Difference=lstImporters[0].ImporterMontlyQuotah - TotalQuantity;
 	for (var i = 1; i < lstImporters.length; i++) {
 		console.log(lstImporters[i].ImporterName+' Direncia: '+Difference);
-		if(lstImporters[i].IMPORTERMONTLYQUOTAH - TotalQuantity<Difference && lstImporters[i].IMPORTERMONTLYQUOTAH!=0){
-			Difference=lstImporters[i].IMPORTERMONTLYQUOTAH - TotalQuantity;
-			console.log(lstImporters[i].IMPORTERNAME+' Direncia: '+Difference);
+		if(lstImporters[i].ImporterMontlyQuotah - TotalQuantity<Difference && lstImporters[i].ImporterMontlyQuotah!=0){
+			Difference=lstImporters[i].ImporterMontlyQuotah - TotalQuantity;
+			console.log(lstImporters[i].ImporterName+' Direncia: '+Difference);
 			ImporterSelectd=lstImporters[i];
-			$('#txtImporterName').val(ImporterSelectd.IMPORTERNAME);
-			$('#txtImporterRUC').val(ImporterSelectd.IMPORTERRUC);
-			$('#txtImporterAddress').val(ImporterSelectd.IMPORTERADDRESS);
-			$('#txtImporterPhone').val(ImporterSelectd.IMPORTERPHONE);
+			$('#txtImporterName').val(ImporterSelectd.ImporterName);
+			$('#txtImporterRUC').val(ImporterSelectd.ImporterRuc);
+			$('#txtImporterAddress').val(ImporterSelectd.ImporterAddress);
+			$('#txtImporterPhone').val(ImporterSelectd.ImporterPhone);
 		}
 	}
 
@@ -226,7 +226,7 @@ function showData1(i,TotalQuantity){
 								+'<label for="form_control_1">Número de orden</label>'
 							+'</div>'
 							+'<div class="form-group form-md-line-input has-success">'
-								+'<input id="txtOrderId" value="'+ lstJourney[k][j].importer.DistributorName +'" type="text" class="form-control" id="form_control_1" disabled>'
+								+'<input id="txtOrderId" value="'+ lstJourney[k][j].importer.DISTRIBUTORNAME +'" type="text" class="form-control" id="form_control_1" disabled>'
 								+'<label for="form_control_1">Distibuidor</label>'
 							+'</div>'
 							+'<div class="form-group form-md-line-input has-success">'

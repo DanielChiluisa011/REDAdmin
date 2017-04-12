@@ -15,7 +15,14 @@ socket.on('NotificationNewUser', function(data){
 })
 
 socket.on('EmergencyNotification', function(data){
-	// var commentary: string=data.comment;
+	
+	console.log(data.comment+" "+data.date);
+	$.notific8(data.comment+" "+data.date);
+
+})
+
+socket.on('FullNotification', function(data){
+	
 	console.log(data.comment+" "+data.date);
 	$.notific8(data.comment+" "+data.date);
 

@@ -167,6 +167,7 @@ io.on('connection', function(socket){
 			}
 			})
 	  })
+
 	  socket.on('AppInsertOrder',function(order){
 		connection.query('INSERT INTO orders (DISTRIBUTORID,WASTEONU,ORDERDATE,ORDERQUANTITY,ORDERSTATE,ORDERTYPE) VALUES (?,?,?,?,?,?)',[order.distributor,order.waste,order.date,order.quantity,"Pendiente",order.type],function(err, rows, fields) {
 	 		if(err){
@@ -177,6 +178,7 @@ io.on('connection', function(socket){
 	 		}
 	 	})
 	  });
+
 	//   socket.on('RequestJourney',function(data){
     //   		connection.query("select * from journey WHERE journeyId = "+data+";",function(error, result){
 	// 			if(error){

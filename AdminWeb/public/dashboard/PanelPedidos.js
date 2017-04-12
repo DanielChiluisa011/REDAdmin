@@ -325,10 +325,10 @@ $('#cmbDrivers').change(function(){
 		$('#txtDriverPhone').val('');
 		$('#txtTruckId').val('');	
 	}else{
-		$('#txtDriverPhone').val(lstDrivers[$("#cmbDrivers option:selected").index()-1].PersonPhone);	
+		$('#txtDriverPhone').val(lstDrivers[$("#cmbDrivers option:selected").index()-1].PERSONPHONE);	
 		for (var i = 0; i < lstTrucks.length; i++) {
-			if(lstTrucks[i].TruckDriver==lstDrivers[$("#cmbDrivers option:selected").index()-1].PersonCi){
-				$('#txtTruckId').val(lstTrucks[i].TruckId);
+			if(lstTrucks[i].PERSONID==lstDrivers[$("#cmbDrivers option:selected").index()-1].PERSONID){
+				$('#txtTruckId').val(lstTrucks[i].TRUCKID);
 				break;
 			}else{
 				$('#txtTruckId').val('');

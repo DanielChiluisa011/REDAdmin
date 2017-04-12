@@ -115,7 +115,7 @@ io.on('connection', function(socket){
       });
       socket.on('RequestJourneyRoute',function(data){
       	console.log('RequestJourneyRoute cedula: '+data);
-      		connection.query("select j.JourneyId, j.JourneyRoute, j.recyclingcenterid from journey j, trucks t, person p where j.truckid=t.TruckId and t.PersonId=p.PersonId and  p.PersonId='"+data+"'",function(error, result){
+      		connection.query("select j.JourneyId, j.JourneyRoute, j.recyclingcenterid, j.truckid from journey j, trucks t, person p where j.truckid=t.TruckId and t.PersonId=p.PersonId and  p.PersonId='"+data+"'",function(error, result){
 				if(error){
 				    throw error;
 				}else{
@@ -144,7 +144,12 @@ io.on('connection', function(socket){
 			});	
 	  });
 	  
+<<<<<<< HEAD
 	  socket.on('AppEmergecyNotification',function(data){ 
+=======
+
+	  socket.on('AppEmergencyNotification',function(data){ 
+>>>>>>> origin/master
 	  	io.emit('EmergencyNotification',data); 
 	  	console.log(data);
 	  });
@@ -164,7 +169,7 @@ io.on('connection', function(socket){
 					socket.emit('ResponseImporters',lstImporters);
 			}
 			})
-	  })
+	  });
 
 	  socket.on('AppInsertOrder',function(order){
 		connection.query('INSERT INTO orders (DISTRIBUTORID,WASTEONU,ORDERDATE,ORDERQUANTITY,ORDERSTATE,ORDERTYPE) VALUES (?,?,?,?,?,?)',[order.distributor,order.waste,order.date,order.quantity,"Pendiente",order.type],function(err, rows, fields) {

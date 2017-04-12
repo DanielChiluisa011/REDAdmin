@@ -16,14 +16,14 @@ socket.on('NotificationNewUser', function(data){
 
 socket.on('EmergencyNotification', function(data){
 	
-	console.log(data.comment+" "+data.date);
-	$.notific8(data.comment+" "+data.date);
+	console.log(data.comment+" "+data.date+"\n"+"Camión: "+data.truckid+" Código de Viaje "+data.journeyid);
+	$.notific8(data.comment+" "+data.date+"\n"+"Camión: "+data.truckid+" Código de Viaje "+data.journeyid);
 
 })
 
 socket.on('FullNotification', function(data){
 	
-	console.log(data.comment+" "+data.date);
-	$.notific8(data.comment+" "+data.date);
+	console.log(data.comment+" "+data.date+"\n"+"Camión: "+data.truckid+" Código de Viaje "+data.journeyid);
+	$.notific8(data.comment+" "+data.date+"\n"+"Camión: "+data.truckid+" Código de Viaje "+data.journeyid);
 
-});
+})

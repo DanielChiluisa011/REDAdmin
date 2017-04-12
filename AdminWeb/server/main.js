@@ -146,9 +146,15 @@ io.on('connection', function(socket){
 
 	  
 
-	  socket.on('AppEmergecyNotification',function(msg){ 
-	  	io.emit('EmergencyNotification',msg); 
-	  	console.log(msg);
+	  socket.on('AppEmergecyNotification',function(data){ 
+	  	io.emit('EmergencyNotification',data); 
+	  	console.log(data);
+	  });
+
+
+	  socket.on('AppFullNotification',function(data){ 
+	  	io.emit('FullNotification',data); 
+	  	console.log(data);
 	  });
 
 	  socket.on('RequestImporters',function(data){
@@ -161,6 +167,16 @@ io.on('connection', function(socket){
 			}
 			})
 	  })
+	  socket.on('AppInsertOrder',function(order){
+		connection.query('INSERT INTO orders (DISTRIBUTORID,WASTEONU,ORDERDATE,ORDERQUANTITY,ORDERSTATE,ORDERTYPE) VALUES (?,?,?,?,?,?)',[order.distributor,order.waste,order.date,order.quantity,"Pendiente",order.type],function(err, rows, fields) {
+	 		if(err){
+	 			console.log("Error "+ err.message);
+	 		}else{
+	 			console.log("ok");
+	 			SelectOrders();
+	 		}
+	 	})
+	  });
 	//   socket.on('RequestJourney',function(data){
     //   		connection.query("select * from journey WHERE journeyId = "+data+";",function(error, result){
 	// 			if(error){

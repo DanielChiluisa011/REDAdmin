@@ -47,7 +47,7 @@ $(document).ready(function(){
        	$('#cmbUpdateImporters').append('<option selected>Seleccione un importador</option>');
        	for (var i = 0; i < lstImporters.length; i++) {
 	   		// $('#cmbNewOrderImporters').append(new Option(lstImporters[i].ImporterName, 'names', true, true));
-	   		$('#cmbUpdateImporters').append(new Option(lstImporters[i].ImporterName, 'names'));
+	   		$('#cmbUpdateImporters').append(new Option(lstImporters[i].IMPORTERNAME, 'names'));
 	   	}
    	})
    	socket.on('SelectRecyclingCenters', function(data){

@@ -8,6 +8,7 @@ var lstDistributors=[];
 var lstRecyclingCenters=[];
 var lstUserMarkers=[];
 var lstOrders=[];
+var lstAlerts=[];
 var lstTrucks=[];
 var mapa=new GMaps({
     div: '#gmap_basic',
@@ -99,6 +100,16 @@ $(document).ready(function(data){
 		       							"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='' onclick='CurrentDate()'> <i class='fa fa-close'> </i> Suspender </a></td></tr><tbody>");  
 		}
     }) 	
+
+	socket.on('ResponseAlerts',function(data){
+		lstAlerts=data;
+		$("#AlertsTable > tbody").html("");
+		for(var i=0;i<lstAlerts.length;i++){
+			$('#AlertsTable').append("<tbody><tr><td>"+lstAlerts[i].ALERTID+"</td></tr></tbody>");
+		}
+
+	})
+
 })
 
 var MapsGoogle = function () {

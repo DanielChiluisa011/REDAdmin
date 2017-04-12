@@ -13,8 +13,8 @@ socket.on('NotificationNewUser', function(data){
 	}
 })
 
-socket.on('EmergencyNotification', function(msg){
-	console.log(msg);
-	$.notific8(msg);
+socket.on('EmergencyNotification', function(data){
+	console.log(data.comment);
+	$.notific8(data.comment);
 
 });

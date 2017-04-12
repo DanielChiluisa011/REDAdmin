@@ -146,10 +146,15 @@ io.on('connection', function(socket){
 
 	  
 
-	  socket.on('AppEmergecyNotification',function(msg){ 
-	  	io.emit('EmergencyNotification',msg); 
-	  	console.log(msg);
+	  socket.on('AppEmergecyNotification',function(data){ 
+	  	io.emit('EmergencyNotification',data); 
+	  	console.log(data);
 	  });
+
+	  // socket.on('AppEmergecyNotification',function(msg){ 
+	  // 	io.emit('EmergencyNotification',msg); 
+	  // 	console.log(msg);
+	  // });
 	//   socket.on('RequestJourney',function(data){
     //   		connection.query("select * from journey WHERE journeyId = "+data+";",function(error, result){
 	// 			if(error){

@@ -144,12 +144,11 @@ io.on('connection', function(socket){
 			});	
 	  });
 	  
-<<<<<<< HEAD
+
 	  socket.on('AppEmergecyNotification',function(data){ 
-=======
+
 
 	  socket.on('AppEmergencyNotification',function(data){ 
->>>>>>> origin/master
 	  	io.emit('EmergencyNotification',data); 
 	  	console.log(data);
 	  });

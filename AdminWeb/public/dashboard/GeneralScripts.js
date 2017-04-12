@@ -15,6 +15,7 @@ socket.on('NotificationNewUser', function(data){
 })
 
 socket.on('EmergencyNotification', function(data){
+	// var commentary: string=data.comment;
 	console.log(data.comment);
 	$.notific8(data.comment);
 

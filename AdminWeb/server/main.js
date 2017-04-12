@@ -150,6 +150,17 @@ io.on('connection', function(socket){
 	  	io.emit('EmergencyNotification',msg); 
 	  	console.log(msg);
 	  });
+
+	  socket.on('RequestImporters',function(data){
+		  connection.query('SELECT * FROM importer',function(error, result){
+				if(error){
+					throw error;
+				}else{
+					var lstImporters=result;
+					socket.emit('ResponseImporters',lstImporters);
+			}
+			})
+	  })
 	//   socket.on('RequestJourney',function(data){
     //   		connection.query("select * from journey WHERE journeyId = "+data+";",function(error, result){
 	// 			if(error){

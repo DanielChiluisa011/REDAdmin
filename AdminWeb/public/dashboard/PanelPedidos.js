@@ -226,7 +226,7 @@ function showData1(i,TotalQuantity){
 								+'<label for="form_control_1">Número de orden</label>'
 							+'</div>'
 							+'<div class="form-group form-md-line-input has-success">'
-								+'<input id="txtOrderId" value="'+ lstJourney[k][j].importer.DISTRIBUTORNAME +'" type="text" class="form-control" id="form_control_1" disabled>'
+								+'<input id="txtOrderId" value="'+ lstJourney[k][j].importer.DistributorName +'" type="text" class="form-control" id="form_control_1" disabled>'
 								+'<label for="form_control_1">Distibuidor</label>'
 							+'</div>'
 							+'<div class="form-group form-md-line-input has-success">'

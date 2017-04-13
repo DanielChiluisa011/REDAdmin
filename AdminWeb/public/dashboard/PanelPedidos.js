@@ -146,6 +146,8 @@ $(document).ready(function(){
 							TotalQuantity+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+D+"</td></tr><tbody>"); 
 		}
    	})
+
+
    	//////
    	// InitialPosition();
 });

@@ -49,7 +49,7 @@ socket.on('FullNotification', function(data){
 
 socket.on('ResponseNotificationAlerts',function(data){
 		totalNotifications+=data.length;
-		console.log("numero de alertas : "+data.length);
+		console.log("numero de alertas : "+data.length+"  total:"+totalNotifications);
 		$('#NewNotifi').html(" "+totalNotifications);
 		$('#AlertNotifi').html(" "+data.length); 
 })

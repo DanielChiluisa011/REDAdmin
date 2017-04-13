@@ -42,11 +42,11 @@ io.on('connection', function(socket){
 		        	if(err){
 		         	console.log("Error "+ err.message);
 				}else{
-						connection.query("select max(PERSONID) from persontemp",function(err,maxID) {
+						connection.query("select max(PERSONID) max from persontemp",function(err,maxID) {
 					       	if(err){
 					        	console.log("Error "+ err.message);
 					        }else{
-								console.log(maxID[0]);
+								console.log(maxID[0].max);
 					        	// connection.query("INSERT INTO usertemp (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID) VALUES (?,?,?,?)",[data.email,data.pass,'cliente',maxID],function(err, rows, fields) {
 								// 	if(err){
 								// 		console.log("Error "+ err.message);

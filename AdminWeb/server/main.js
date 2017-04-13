@@ -115,8 +115,9 @@ io.on('connection', function(socket){
 				if(error){
 				    throw error;
 				}else{
+					console.log(result.length);
 				  	var lstDistributor=result;
-					io.emit('DistributorData',lstDistributor);
+					socket.emit('DistributorData',lstDistributor);
 					// console.log('Select Distributors executed');
 		       }
 			});

@@ -108,7 +108,7 @@ $(document).ready(function(data){
 
 		for(var i=0;i<lstAlerts.length;i++){
 			var dates = new Date(lstAlerts[i].ALERTTIME);
-			$('#AlertsTable').append("<tbody><tr><td>"+lstAlerts[i].ALERTID+"</td><td>"+lstAlerts[i].JOURNEYID+"</td><td>"+lstAlerts[i].ALERTTYPE+"</td><td>"+lstAlerts[i].ALERTDESCRIPTION+"</td><td>"+lstAlerts[i].TRUCKID+"</td><td>"+dates.toLocaleFormat('%Y %M %D, %h:%m:%s')+"</td></tr></tbody>");
+			$('#AlertsTable').append("<tbody><tr><td>"+lstAlerts[i].ALERTID+"</td><td>"+lstAlerts[i].JOURNEYID+"</td><td>"+lstAlerts[i].ALERTTYPE+"</td><td>"+lstAlerts[i].ALERTDESCRIPTION+"</td><td>"+lstAlerts[i].TRUCKID+"</td><td>"+dates.getDate()+" "+dates.getTime()+"</td></tr></tbody>");
 		}
 
 	})

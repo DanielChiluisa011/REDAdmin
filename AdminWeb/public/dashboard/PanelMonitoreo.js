@@ -108,8 +108,14 @@ $(document).ready(function(data){
 
 		for(var i=0;i<lstAlerts.length;i++){
 			var dates = new Date(lstAlerts[i].ALERTTIME);
-			$('#AlertsTable').append("<tbody><tr><td>"+lstAlerts[i].ALERTID+"</td><td>"+lstAlerts[i].JOURNEYID+"</td><td>"+lstAlerts[i].ALERTTYPE+"</td><td>"+lstAlerts[i].ALERTDESCRIPTION+"</td><td>"+lstAlerts[i].TRUCKID+"</td><td>"+dates.toString('MMMM d, yyyy')+"</td></tr></tbody>");
+			$('#AlertsTable').append("<tbody><tr><td>"+lstAlerts[i].ALERTID+"</td><td>"+lstAlerts[i].JOURNEYID+"</td><td>"+lstAlerts[i].ALERTTYPE+"</td><td>"+lstAlerts[i].ALERTDESCRIPTION+"</td><td>"+lstAlerts[i].TRUCKID+"</td><td>"+parseDate(dates)+"</td></tr></tbody>");
 		}
+
+		function parseDate(d) {
+    		var monthNames = [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembere", "Octubre", "Noviembre", "Diciembre" ],
+        	d2 = monthNames[d.getMonth()] +' '+ d.getDate() +', '+d.getFullYear() +' '+d.getHours() +':'+d.getMinutes();
+    		return d2;
+		}   
 
 	})
 

@@ -182,7 +182,7 @@ io.on('connection', function(socket){
 				}else{
 					
 					io.emit('FullNotification',data);
-					io.emit('RequestAlerts','');
+					
 			}
 	  	})
 	  	
@@ -197,7 +197,7 @@ io.on('connection', function(socket){
 					var lstAlerts=result;
 					// console.log(lstAlerts);
 					socket.emit('ResponseAlerts',lstAlerts);
-					io.emit('ResponseNotificationAlerts',lstAlerts);
+					// io.emit('ResponseNotificationAlerts',lstAlerts);
 			}
 			})
 	  });
@@ -256,7 +256,7 @@ io.on('connection', function(socket){
 	selectWaste();
 	SelectPersons();
 	SendNotification(socket); 
-	// SendNotificationAlert(socket);
+	SendNotificationAlert(socket);
 	SelectOrders();
 	SelectDrivers();
 	SelectTrucks();
@@ -434,17 +434,17 @@ function SendNotification(socket){
 	})
 }
 
-// function SendNotificationAlert(socket){
-// 	connection.query("select A.ALERTID, A.JOURNEYID, A.ALERTTYPE, A.ALERTDESCRIPTION, J.TRUCKID, A.ALERTTIME from alert A, journey J WHERE A.JOURNEYID=J.JOURNEYID;",function(error, result){
-// 					if(error){
-// 						throw error;
-// 					}else{
-// 						var lstAlerts=result;
-// 						console.log(lstAlerts);
-// 						socket.emit('ResponseNotificationAlerts',lstAlerts);
-// 					}
-// 	})
-// }
+function SendNotificationAlert(socket){
+	connection.query("select A.ALERTID, A.JOURNEYID, A.ALERTTYPE, A.ALERTDESCRIPTION, J.TRUCKID, A.ALERTTIME from alert A, journey J WHERE A.JOURNEYID=J.JOURNEYID;",function(error, result){
+					if(error){
+						throw error;
+					}else{
+						var lstAlerts=result;
+						console.log("alertas:"+lstAlerts);
+						io.emit('ResponseNotificationAlerts',lstAlerts);
+					}
+	})
+}
 
 function SelectOrders(){
 	connection.query("SELECT OrderId,OrderDate,OrderQuantity,DistributorId,WasteONU,OrderState,OrderType,DATE_FORMAT(OrderDeadLine ,'%Y-%m-%d') AS OrderDeadLine  FROM orders WHERE OrderState like 'Pendiente' ORDER BY OrderDeadLine ASC",function(error, result){

@@ -258,7 +258,7 @@ io.on('connection', function(socket){
 	selectWaste();
 	SelectPersons();
 	SendNotification(socket); 
-	// SendNotificationAlert(socket);
+	SendNotificationAlert(socket);
 	SelectOrders();
 	SelectDrivers();
 	SelectTrucks();

@@ -182,7 +182,7 @@ io.on('connection', function(socket){
 				}else{
 					
 					io.emit('FullNotification',data);
-					// console.log(data); 
+					socket.emit('RequestAlerts','')';'
 			}
 	  	})
 	  	

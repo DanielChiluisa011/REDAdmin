@@ -117,7 +117,7 @@ io.on('connection', function(socket){
 				}else{
 					console.log(result.length);
 					if(result.length==0){
-						socket.emit('DistributorData',null);
+						socket.emit('DistributorData',0);
 					}else{
 						var lstDistributor=result;
 						socket.emit('DistributorData',lstDistributor);

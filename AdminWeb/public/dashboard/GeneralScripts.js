@@ -7,7 +7,7 @@ $(document).ready(function(){
 socket.on('NotificationNewUser', function(data){
 	lstNewUsers=[];
 	lstNewUsers=data;
-	$('#NewUserNotifi').html(" "+data.length);
+	$('#NewNotifi').html(" "+data.length);
 	$('#NewUserNotifi2').html(" "+data.length);
 	if(lstNewUsers.length!=0){
 		$.notific8('Nueva solicitud de usuario recibida');
@@ -19,6 +19,7 @@ socket.on('EmergencyNotification', function(data){
 	if(data.alerttype=="E"){
 		msg="Emergencia"
 	}
+	$('#AlertNotifi').html(" "+data.length);
 
 	console.log(data.comment+" "+data.date+"\n"+"Camión: "+data.truckid+" Código de Viaje "+data.journeyid);
 	$.notific8(msg+": "+data.comment+" "+data.date+"<br>"+"Camión: "+data.truckid+" Código de Viaje "+data.journeyid);
@@ -30,7 +31,8 @@ socket.on('FullNotification', function(data){
 	if(data.alerttype=="CL"){
 		msg="Camion Lleno"
 	}
-
+	// $('#NewNotifi').html(" "+data.length);
+	$('#AlertNotifi').html(" "+data.length);
 	console.log(data.comment+" "+data.date+"\n"+"Camión: "+data.truckid+" Código de Viaje "+data.journeyid);
 	$.notific8(data.comment+" "+data.date+"<br>"+"Camión: "+data.truckid+" Código de Viaje "+data.journeyid);
 

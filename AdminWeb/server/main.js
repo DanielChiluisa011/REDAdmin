@@ -197,7 +197,7 @@ io.on('connection', function(socket){
 					var lstAlerts=result;
 					// console.log(lstAlerts);
 					socket.emit('ResponseAlerts',lstAlerts);
-					socket.emit('ResponseNotificationAlerts',lstAlerts);
+					io.emit('ResponseNotificationAlerts',lstAlerts);
 			}
 			})
 	  });

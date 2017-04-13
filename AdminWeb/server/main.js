@@ -443,7 +443,7 @@ function SendNotificationAlert(socket){
 					}else{
 						var lstAlerts=result;
 						console.log("alertas:"+lstAlerts.length);
-						socket.emit('ResponseNotificationAlerts',lstAlerts);
+						io.emit('ResponseNotificationAlerts',lstAlerts);
 					}
 	})
 }

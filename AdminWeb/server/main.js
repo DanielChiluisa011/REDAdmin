@@ -440,7 +440,7 @@ function SendNotificationAlert(socket){
 						throw error;
 					}else{
 						var lstAlerts=result;
-						console.log("alertas:"+lstAlerts);
+						console.log("alertas:"+lstAlerts.length);
 						io.emit('ResponseNotificationAlerts',lstAlerts);
 					}
 	})

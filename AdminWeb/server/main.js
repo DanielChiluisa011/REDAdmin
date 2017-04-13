@@ -182,6 +182,7 @@ io.on('connection', function(socket){
 				}else{
 					
 					io.emit('FullNotification',data);
+					SendNotificationAlert(socket);
 					
 			}
 	  	})
@@ -256,7 +257,7 @@ io.on('connection', function(socket){
 	selectWaste();
 	SelectPersons();
 	SendNotification(socket); 
-	SendNotificationAlert(socket);
+	// SendNotificationAlert(socket);
 	SelectOrders();
 	SelectDrivers();
 	SelectTrucks();

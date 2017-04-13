@@ -116,9 +116,13 @@ io.on('connection', function(socket){
 				    throw error;
 				}else{
 					console.log(result.length);
-				  	var lstDistributor=result;
-					socket.emit('DistributorData',lstDistributor);
-					// console.log('Select Distributors executed');
+					if(result.length==0){
+						socket.emit('DistributorData',null);
+					}else{
+						var lstDistributor=result;
+						socket.emit('DistributorData',lstDistributor);
+						// console.log('Select Distributors executed');
+					}
 		       }
 			});
       });

@@ -46,7 +46,7 @@ io.on('connection', function(socket){
 					       	if(err){
 					        	console.log("Error "+ err.message);
 					        }else{
-								console.log(maxID);
+								console.log(maxID[0]);
 					        	// connection.query("INSERT INTO usertemp (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID) VALUES (?,?,?,?)",[data.email,data.pass,'cliente',maxID],function(err, rows, fields) {
 								// 	if(err){
 								// 		console.log("Error "+ err.message);

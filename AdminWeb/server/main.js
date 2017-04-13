@@ -38,11 +38,11 @@ io.on('connection', function(socket){
       });
       socket.on('AppNewUserRequest',function(data){
 	  		console.log('AppNewUserRequest');
-	    		connection.query('INSERT INTO person_temp (PERSONCI,PERSONNAME,PERSONLASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE) VALUES (?,?,?,?,?,?)',[data.ci,data.name,data.lastName,data.phone,data.address,data.role],function(err, rows, fields) {
+	    		connection.query('INSERT INTO persontemp (PERSONCI,PERSONNAME,PERSONLASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE) VALUES (?,?,?,?,?,?)',[data.ci,data.name,data.lastName,data.phone,data.address,data.role],function(err, rows, fields) {
 		        	if(err){
 		         	console.log("Error "+ err.message);
 		         	}else{
-			         	connection.query("INSERT INTO user_temp (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID) VALUES (?,?,?,'select max(PERSONID) from person_temp')",[data.email,data.pass,'cliente'],function(err, rows, fields) {
+			         	connection.query("INSERT INTO usertemp (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID) VALUES (?,?,?,'select max(PERSONID) from persontemp')",[data.email,data.pass,'cliente'],function(err, rows, fields) {
 					       	if(err){
 					        	console.log("Error "+ err.message);
 					        }else{
@@ -387,12 +387,12 @@ function SendNotification(socket){
 	var lstTempUsers=[];
 	var lstTempPerson=[];
 
-	connection.query('SELECT * FROM user_temp',function(error, result){
+	connection.query('SELECT * FROM usertemp',function(error, result){
 		if(error){
 		    throw error;
 		}else{
 		  	lstTempUsers=result;
-		  	connection.query('SELECT * FROM person_temp',function(error, result){
+		  	connection.query('SELECT * FROM persontemp',function(error, result){
 				if(error){
 				    throw error;
 				}else{
@@ -538,25 +538,25 @@ function SaveNewUser(socket){
 	 			console.log("Insert new person execute");
 	 		}
 	 	});
-	 	connection.query('INSERT INTO users VALUES (?,?,?,?)',[data.user.UserEmail,data.user.UserPassword,data.user.UserProfile,data.user.PERSON_TEMP_PersonCi],function(err, rows, fields) {
+	 	connection.query('INSERT INTO users VALUES (?,?,?,?)',[data.user.UserEmail,data.user.UserPassword,data.user.UserProfile,data.user.persontemp_PersonCi],function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{
 	 			console.log("Insert new user execute");
 	 		}
 	 	});
-	 	connection.query('DELETE FROM user_temp WHERE UserEmail = ?',[data.user.UserEmail],function(err, rows, fields) {
+	 	connection.query('DELETE FROM usertemp WHERE UserEmail = ?',[data.user.UserEmail],function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{
-	 			console.log("Delete user_temp execute");
+	 			console.log("Delete usertemp execute");
 	 		}
 	 	});
-	 	connection.query('DELETE FROM person_temp WHERE PersonCi = ?',[data.person.PersonCi],function(err, rows, fields) {
+	 	connection.query('DELETE FROM persontemp WHERE PersonCi = ?',[data.person.PersonCi],function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{
-	 			console.log("Delete user_temp execute");
+	 			console.log("Delete usertemp execute");
 	 		}
 	 	});
 		SendNotification();

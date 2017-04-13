@@ -578,7 +578,7 @@ function SaveNewUser(socket){
 	 			console.log("Delete usertemp execute");
 	 		}
 	 	});
-		SendNotification();
+		SendNotification(socket);
 	});
 }
 

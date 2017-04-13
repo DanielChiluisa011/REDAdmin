@@ -41,14 +41,21 @@ io.on('connection', function(socket){
 	    		connection.query('INSERT INTO persontemp (PERSONCI,PERSONNAME,PERSONLASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE) VALUES (?,?,?,?,?,?)',[data.ci,data.name,data.lastName,data.phone,data.address,data.role],function(err, rows, fields) {
 		        	if(err){
 		         	console.log("Error "+ err.message);
-		         	}else{
-			         	connection.query("INSERT INTO usertemp (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID) VALUES (?,?,?,'select max(PERSONID) from persontemp')",[data.email,data.pass,'cliente'],function(err, rows, fields) {
+				}else{
+						connection.query("select max(PERSONID) from persontemp",function(err,maxID) {
 					       	if(err){
 					        	console.log("Error "+ err.message);
 					        }else{
-					        	SendNotification(socket); 
+					        	connection.query("INSERT INTO usertemp (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID) VALUES (?,?,?,?",[data.email,data.pass,'cliente',maxID],function(err, rows, fields) {
+									if(err){
+										console.log("Error "+ err.message);
+									}else{
+										SendNotification(socket); 
+									}
+								})
 					        }
 			            })
+			         	
 			        }
 	         })
     	});

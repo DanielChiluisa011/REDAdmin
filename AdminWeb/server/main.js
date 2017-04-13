@@ -248,6 +248,16 @@ io.on('connection', function(socket){
 	// 	       }
 	// 		});
     //   });
+
+	socket.on('RequestSaveDistributor',function(objDistributor){
+		connection.query("INSERT INTO distributor(PERSONID,DISTRIBUTORNAME,DISTRIBUTORADDRESS,DISTRIBUTORRUC,DISTRIBUTORPHONE,DISTRIBUTORENVIRONMENTALLICENSE,DISTRIBUTORCOORDINATES) VALUES (?,?,?,?,?,?,GeomFromText('POINT ("+objDistributor.CoorX+" "+objDistributor.CoorY+")'))",[objDistributor.person,objDistributor.name,objDistributor.address,objDistributor.ruc,objDistributor.phone,objDistributor.licence],function(err, rows, fields) {
+	 		if(err){
+	 			console.log("Error "+ err.message);
+	 		}else{
+	 			console.log("Distribuidor Ingresado");
+	 		}
+	 	})
+	});
       //Prueba socket en app movil*****************************
     SelectRecyclingCenters();
 	SelectImporters();

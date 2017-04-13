@@ -116,7 +116,7 @@ $(document).ready(function(data){
         	d2 = monthNames[d.getUTCMonth()] +' '+ d.getUTCDate() +', '+d.getUTCFullYear() +' || '+d.getUTCHours() +':'+d.getUTCMinutes()+':'+d.getUTCSeconds();
     		return d2;
 		}
-		$('#AlertNotifi').html(" "+lstNewNotification.length);   
+		$('#AlertNotifi').html(" "+lstAlerts.length);   
 
 	})
 

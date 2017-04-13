@@ -111,12 +111,16 @@ $(document).ready(function(data){
 			$('#AlertsTable').append("<tbody><tr><td>"+lstAlerts[i].ALERTID+"</td><td>"+lstAlerts[i].JOURNEYID+"</td><td>"+lstAlerts[i].ALERTTYPE+"</td><td>"+lstAlerts[i].ALERTDESCRIPTION+"</td><td>"+lstAlerts[i].TRUCKID+"</td><td>"+parseDate(dates)+"</td></tr></tbody>");
 		}
 
+		// console.log("numero de alertas : "+lstAlerts.length);
+		// $('#AlertNotifi').html(" "+lstAlerts.length); 
+
 		function parseDate(d) {
     		var monthNames = [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembere", "Octubre", "Noviembre", "Diciembre" ],
         	d2 = monthNames[d.getUTCMonth()] +' '+ d.getUTCDate() +', '+d.getUTCFullYear() +' || '+d.getUTCHours() +':'+d.getUTCMinutes()+':'+d.getUTCSeconds();
     		return d2;
 		}
-		$('#AlertNotifi').html(" "+lstAlerts.length);   
+
+		
 
 	})
 

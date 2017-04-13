@@ -42,3 +42,17 @@ socket.on('FullNotification', function(data){
 	$.notific8(data.comment+" "+data.date+"<br>"+"Camión: "+data.truckid+" Código de Viaje "+data.journeyid);
 
 })
+
+socket.emit('RequestAlerts','');
+
+	socket.on('ResponseAlerts',function(data){
+		lstAlerts=data;
+		
+		// console.log("numero de alertas : "+lstAlerts.length);
+		$('#AlertNotifi').html(" "+lstAlerts.length); 
+
+		
+
+		
+
+	})

@@ -169,6 +169,7 @@ io.on('connection', function(socket){
 					
 					io.emit('EmergencyNotification',data); 
 					// console.log(data); 
+					SendNotificationAlert(socket);
 			}
 	  	})
 	  	
@@ -442,7 +443,7 @@ function SendNotificationAlert(socket){
 					}else{
 						var lstAlerts=result;
 						console.log("alertas:"+lstAlerts.length);
-						io.emit('ResponseNotificationAlerts',lstAlerts);
+						socket.emit('ResponseNotificationAlerts',lstAlerts);
 					}
 	})
 }

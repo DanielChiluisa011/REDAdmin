@@ -16,8 +16,8 @@ socket.on('NotificationNewUser', function(data){
 
 socket.on('EmergencyNotification', function(data){
 	var msg;
-	lstNewNotification=[];
-	lstNewNotification=data;
+	// lstNewNotification=[];
+	// lstNewNotification=data;
 	if(data.alerttype=="E"){
 		msg="Emergencia"
 	}
@@ -42,5 +42,3 @@ socket.on('FullNotification', function(data){
 	$.notific8(data.comment+" "+data.date+"<br>"+"Camión: "+data.truckid+" Código de Viaje "+data.journeyid);
 
 })
-
-socket.on()

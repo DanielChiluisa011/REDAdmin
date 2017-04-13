@@ -1,5 +1,6 @@
 var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
 var lstNewUsers=[];
+var totalNotifications;
 $(document).ready(function(){
 	
 })
@@ -7,7 +8,8 @@ $(document).ready(function(){
 socket.on('NotificationNewUser', function(data){
 	lstNewUsers=[];
 	lstNewUsers=data;
-	$('#NewNotifi').html(" "+data.length);
+	totalNotifications+=data.length;
+	$('#NewNotifi').html(" "+totalNotifications);
 	$('#NewUserNotifi').html(" "+data.length);
 	if(lstNewUsers.length!=0){
 		$.notific8('Nueva solicitud de usuario recibida');
@@ -46,8 +48,9 @@ socket.on('FullNotification', function(data){
 })
 
 socket.on('ResponseNotificationAlerts',function(data){
-	
+		totalNotifications+=data.length;
 		console.log("numero de alertas : "+data.length);
+		$('#NewNotifi').html(" "+totalNotifications);
 		$('#AlertNotifi').html(" "+data.length); 
 })
 

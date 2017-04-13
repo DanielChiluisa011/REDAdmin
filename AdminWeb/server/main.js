@@ -195,6 +195,7 @@ io.on('connection', function(socket){
 					throw error;
 				}else{
 					var lstAlerts=result;
+					console.log(lstAlerts);
 					socket.emit('ResponseAlerts',lstAlerts);
 			}
 			})

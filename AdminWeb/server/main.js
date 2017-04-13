@@ -539,39 +539,46 @@ function SelectPersons(){
 function SaveNewUser(socket){
 	
 	socket.on('SaveNewUser',function(data){
-		console.log(data.person.PERSONCI+" "+data.person.PERSONNAME+" "+data.person.PERSONLASTNAME+" "+
+	console.log(data.person.PERSONCI+" "+data.person.PERSONNAME+" "+data.person.PERSONLASTNAME+" "+
 																	  data.person.PERSONPHONE+" "+data.person.PERSONADDRESS+" "+data.person.PERSONROLE)
 	console.log(data.user.USEREMAIL+" "+data.user.USERPASSWORD+" "+data.user.USERPROFILE+" "+data.user.PERSONID);
-	// 	connection.query('INSERT INTO person VALUES (?,?,?,?,?,?,?)',[data.person.PersonCi,data.person.PersonName,data.person.PersonLastName,
-	// 																  data.person.PersonPhone,data.person.PersonAddress,data.person.PersonRuc,data.person.PersonRole],function(err, rows, fields) {
-	//  		if(err){
-	//  			console.log("Error "+ err.message);
-	//  		}else{
-	//  			console.log("Insert new person execute");
-	//  		}
-	//  	});
-	//  	connection.query('INSERT INTO users VALUES (?,?,?,?)',[data.user.UserEmail,data.user.UserPassword,data.user.UserProfile,data.user.persontemp_PersonCi],function(err, rows, fields) {
-	//  		if(err){
-	//  			console.log("Error "+ err.message);
-	//  		}else{
-	//  			console.log("Insert new user execute");
-	//  		}
-	//  	});
-	//  	connection.query('DELETE FROM usertemp WHERE UserEmail = ?',[data.user.UserEmail],function(err, rows, fields) {
-	//  		if(err){
-	//  			console.log("Error "+ err.message);
-	//  		}else{
-	//  			console.log("Delete usertemp execute");
-	//  		}
-	//  	});
-	//  	connection.query('DELETE FROM persontemp WHERE PersonCi = ?',[data.person.PersonCi],function(err, rows, fields) {
-	//  		if(err){
-	//  			console.log("Error "+ err.message);
-	//  		}else{
-	//  			console.log("Delete usertemp execute");
-	//  		}
-	//  	});
-	// 	SendNotification();
+	connection.query('INSERT INTO person(PERSONCIRUC,PERSONNAME,PERSONLASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE) VALUES (?,?,?,?,?,?)',[data.person.PERSONCI,data.person.PERSONNAME,data.person.PERSONLASTNAME,
+																	data.person.PERSONPHONE,data.person.PERSONADDRESS,data.person.PERSONROLE],function(err, rows, fields) {
+		if(err){
+			console.log("Error "+ err.message);
+		}else{
+			console.log("Insert new person execute");
+		}
+	});
+	connection.query('SELECT max(PERSONID) maxID FROM person',function(err,maxID) {
+		if(err){
+			console.log("Error "+ err.message);
+		}else{
+			connection.query('INSERT INTO users VALUES (?,?,?,?)',[data.user.USEREMAIL,maxID[0].maxID,data.user.USERPASSWORD,data.user.USERPROFILE],function(err, rows, fields) {
+				if(err){
+					console.log("Error "+ err.message);
+				}else{
+					console.log("Insert new user execute");
+				}
+			});
+		}
+	});
+	
+	 	connection.query('DELETE FROM usertemp WHERE UserEmail = ?',[data.user.USEREMAIL],function(err, rows, fields) {
+	 		if(err){
+	 			console.log("Error "+ err.message);
+	 		}else{
+	 			console.log("Delete usertemp execute");
+	 		}
+	 	});
+	 	connection.query('DELETE FROM persontemp WHERE PERSONID = ?',[data.person.PERSONID],function(err, rows, fields) {
+	 		if(err){
+	 			console.log("Error "+ err.message);
+	 		}else{
+	 			console.log("Delete usertemp execute");
+	 		}
+	 	});
+		SendNotification();
 	});
 }
 

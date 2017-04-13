@@ -235,6 +235,18 @@ io.on('connection', function(socket){
 		       }
 			});	
       });
+
+      socket.on('RequestJourneyOrders',function(data){
+      	connection.query("SELECT ORDERID, DISTRIBUTORID, WASTEONU, DATE_FORMAT(ORDERDATE, '%Y-%m-%d') ORDERDATE,ORDERQUANTITY,ORDERSTATE,ORDERTYPE,ORDERDEADLINE,JOURNEYID FROM orders WHERE JOURNEYID="+data+";",function(error, result){
+				if(error){
+				    throw error;
+				}else{
+					socket.emit('ResponseJourneyOrders',result);
+		       }
+			});	
+
+   //    	
+      });
 	  
 	//   socket.on('RequestJourney',function(data){
     //   		connection.query("select * from journey WHERE journeyId = "+data+";",function(error, result){

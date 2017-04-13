@@ -241,6 +241,7 @@ io.on('connection', function(socket){
 				if(error){
 				    throw error;
 				}else{
+					console.log(data);
 					socket.emit('ResponseJourneyOrders',result);
 		       }
 			});	

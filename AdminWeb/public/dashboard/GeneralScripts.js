@@ -1,6 +1,6 @@
 var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
 var lstNewUsers=[];
-var totalNotifications;
+var totalNotifications=0;
 $(document).ready(function(){
 	
 })

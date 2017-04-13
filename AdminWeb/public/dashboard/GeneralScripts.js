@@ -8,7 +8,7 @@ socket.on('NotificationNewUser', function(data){
 	lstNewUsers=[];
 	lstNewUsers=data;
 	$('#NewNotifi').html(" "+data.length);
-	$('#NewUserNotifi2').html(" "+data.length);
+	$('#NewUserNotifi').html(" "+data.length);
 	if(lstNewUsers.length!=0){
 		$.notific8('Nueva solicitud de usuario recibida');
 	}

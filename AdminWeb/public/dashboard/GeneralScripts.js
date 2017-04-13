@@ -22,9 +22,7 @@ socket.on('EmergencyNotification', function(data){
 		msg="Emergencia"
 	}
 
-	console.log(lstNewNotification.length);
-
-	$('#AlertNotifi').html(" "+lstNewNotification.length);
+	
 
 	console.log(data.comment+" "+data.date+"\n"+"Camión: "+data.truckid+" Código de Viaje "+data.journeyid);
 	$.notific8(msg+": "+data.comment+" "+data.date+"<br>"+"Camión: "+data.truckid+" Código de Viaje "+data.journeyid);
@@ -33,15 +31,16 @@ socket.on('EmergencyNotification', function(data){
 
 socket.on('FullNotification', function(data){
 	var msg;
-	lstNewNotification=[];
-	lstNewNotification=data;
+	
 	if(data.alerttype=="CL"){
 		msg="Camion Lleno"
 	}
 	// $('#NewNotifi').html(" "+data.length);
-	console.log(lstNewNotification.length);
-	$('#AlertNotifi').html(" "+lstNewNotification.length);
+	// console.log(lstNewNotification.length);
+	// $('#AlertNotifi').html(" "+lstNewNotification.length);
 	console.log(data.comment+" "+data.date+"\n"+"Camión: "+data.truckid+" Código de Viaje "+data.journeyid);
 	$.notific8(data.comment+" "+data.date+"<br>"+"Camión: "+data.truckid+" Código de Viaje "+data.journeyid);
 
 })
+
+socket.on()

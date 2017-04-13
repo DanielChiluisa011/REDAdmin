@@ -115,7 +115,8 @@ $(document).ready(function(data){
     		var monthNames = [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembere", "Octubre", "Noviembre", "Diciembre" ],
         	d2 = monthNames[d.getUTCMonth()] +' '+ d.getUTCDate() +', '+d.getUTCFullYear() +' || '+d.getUTCHours() +':'+d.getUTCMinutes()+':'+d.getUTCSeconds();
     		return d2;
-		}   
+		}
+		$('#AlertNotifi').html(" "+lstNewNotification.length);   
 
 	})
 

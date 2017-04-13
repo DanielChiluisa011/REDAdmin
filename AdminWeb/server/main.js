@@ -430,6 +430,11 @@ function SendNotification(socket){
 	})
 }
 
+// function SendNotificationAlert(socket){
+// 	var lstAlert=[];
+// 	connection.query('SELECT * FROM ')
+// }
+
 function SelectOrders(){
 	connection.query("SELECT OrderId,OrderDate,OrderQuantity,DistributorId,WasteONU,OrderState,OrderType,DATE_FORMAT(OrderDeadLine ,'%Y-%m-%d') AS OrderDeadLine  FROM orders WHERE OrderState like 'Pendiente' ORDER BY OrderDeadLine ASC",function(error, result){
 		if(error){

@@ -47,13 +47,13 @@ io.on('connection', function(socket){
 					        	console.log("Error "+ err.message);
 					        }else{
 								console.log(maxID[0].max);
-					        	// connection.query("INSERT INTO usertemp (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID) VALUES (?,?,?,?)",[data.email,data.pass,'cliente',maxID],function(err, rows, fields) {
-								// 	if(err){
-								// 		console.log("Error "+ err.message);
-								// 	}else{
-								// 		SendNotification(socket); 
-								// 	}
-								// })
+					        	connection.query("INSERT INTO usertemp (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID) VALUES (?,?,?,?)",[data.email,data.pass,'cliente',maxID[0].max],function(err, rows, fields) {
+									if(err){
+										console.log("Error "+ err.message);
+									}else{
+										SendNotification(socket); 
+									}
+								})
 					        }
 			            })
 			         	

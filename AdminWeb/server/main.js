@@ -255,12 +255,15 @@ io.on('connection', function(socket){
 	selectWaste();
 	SelectPersons();
 	SendNotification(socket); 
+	SendNotificationAlert(socket);
 	SelectOrders();
 	SelectDrivers();
 	SelectTrucks();
 	SelectDistributor();
 	UpdateUser(socket);
 	SaveNewUser(socket);
+
+
 	socket.on('NewOrder',function(data){
 		connection.query('INSERT INTO orders VALUES (?,?,?,?,?,?,?,?,?)',[,data.date,data.quantity,data.importer.DistributorId,data.waste.WasteONU,"Pendiente","General",null,null],function(err, rows, fields) {
 	 		if(err){
@@ -430,10 +433,17 @@ function SendNotification(socket){
 	})
 }
 
-// function SendNotificationAlert(socket){
-// 	var lstAlert=[];
-// 	connection.query('SELECT * FROM ')
-// }
+function SendNotificationAlert(socket){
+	connection.query("select A.ALERTID, A.JOURNEYID, A.ALERTTYPE, A.ALERTDESCRIPTION, J.TRUCKID, A.ALERTTIME from alert A, journey J WHERE A.JOURNEYID=J.JOURNEYID;",function(error, result){
+					if(error){
+						throw error;
+					}else{
+						var lstAlerts=result;
+						console.log(lstAlerts);
+						socket.emit('ResponseNotificationAlerts',lstAlerts);
+					}
+	})
+}
 
 function SelectOrders(){
 	connection.query("SELECT OrderId,OrderDate,OrderQuantity,DistributorId,WasteONU,OrderState,OrderType,DATE_FORMAT(OrderDeadLine ,'%Y-%m-%d') AS OrderDeadLine  FROM orders WHERE OrderState like 'Pendiente' ORDER BY OrderDeadLine ASC",function(error, result){

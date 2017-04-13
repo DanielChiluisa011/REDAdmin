@@ -43,9 +43,9 @@ socket.on('FullNotification', function(data){
 
 })
 
-socket.emit('RequestAlerts','');
 
-	socket.on('ResponseAlerts',function(data){
+
+	socket.on('ResponseNotificationAlerts',function(data){
 		lstAlerts=data;
 		
 		// console.log("numero de alertas : "+lstAlerts.length);

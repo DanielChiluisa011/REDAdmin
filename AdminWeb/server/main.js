@@ -537,38 +537,41 @@ function SelectPersons(){
 }
 
 function SaveNewUser(socket){
-	socket.on('SaveNewUser',function(data){
-		connection.query('INSERT INTO person VALUES (?,?,?,?,?,?,?)',[data.person.PersonCi,data.person.PersonName,data.person.PersonLastName,
-																	  data.person.PersonPhone,data.person.PersonAddress,data.person.PersonRuc,data.person.PersonRole],function(err, rows, fields) {
-	 		if(err){
-	 			console.log("Error "+ err.message);
-	 		}else{
-	 			console.log("Insert new person execute");
-	 		}
-	 	});
-	 	connection.query('INSERT INTO users VALUES (?,?,?,?)',[data.user.UserEmail,data.user.UserPassword,data.user.UserProfile,data.user.persontemp_PersonCi],function(err, rows, fields) {
-	 		if(err){
-	 			console.log("Error "+ err.message);
-	 		}else{
-	 			console.log("Insert new user execute");
-	 		}
-	 	});
-	 	connection.query('DELETE FROM usertemp WHERE UserEmail = ?',[data.user.UserEmail],function(err, rows, fields) {
-	 		if(err){
-	 			console.log("Error "+ err.message);
-	 		}else{
-	 			console.log("Delete usertemp execute");
-	 		}
-	 	});
-	 	connection.query('DELETE FROM persontemp WHERE PersonCi = ?',[data.person.PersonCi],function(err, rows, fields) {
-	 		if(err){
-	 			console.log("Error "+ err.message);
-	 		}else{
-	 			console.log("Delete usertemp execute");
-	 		}
-	 	});
-		SendNotification();
-	});
+	console.log(data.person.PersonCi+" "+data.person.PersonName+" "+data.person.PersonLastName+" "+
+																	  data.person.PersonPhone+" "+data.person.PersonAddress+" "+data.person.PersonRuc+" "+data.person.PersonRole)
+	console.log(data.user.UserEmail+" "+data.user.UserPassword+" "+data.user.UserProfile+" "+data.user.persontemp_PersonCi);
+	// socket.on('SaveNewUser',function(data){
+	// 	connection.query('INSERT INTO person VALUES (?,?,?,?,?,?,?)',[data.person.PersonCi,data.person.PersonName,data.person.PersonLastName,
+	// 																  data.person.PersonPhone,data.person.PersonAddress,data.person.PersonRuc,data.person.PersonRole],function(err, rows, fields) {
+	//  		if(err){
+	//  			console.log("Error "+ err.message);
+	//  		}else{
+	//  			console.log("Insert new person execute");
+	//  		}
+	//  	});
+	//  	connection.query('INSERT INTO users VALUES (?,?,?,?)',[data.user.UserEmail,data.user.UserPassword,data.user.UserProfile,data.user.persontemp_PersonCi],function(err, rows, fields) {
+	//  		if(err){
+	//  			console.log("Error "+ err.message);
+	//  		}else{
+	//  			console.log("Insert new user execute");
+	//  		}
+	//  	});
+	//  	connection.query('DELETE FROM usertemp WHERE UserEmail = ?',[data.user.UserEmail],function(err, rows, fields) {
+	//  		if(err){
+	//  			console.log("Error "+ err.message);
+	//  		}else{
+	//  			console.log("Delete usertemp execute");
+	//  		}
+	//  	});
+	//  	connection.query('DELETE FROM persontemp WHERE PersonCi = ?',[data.person.PersonCi],function(err, rows, fields) {
+	//  		if(err){
+	//  			console.log("Error "+ err.message);
+	//  		}else{
+	//  			console.log("Delete usertemp execute");
+	//  		}
+	//  	});
+	// 	SendNotification();
+	// });
 }
 
 function UpdateUser(socket){

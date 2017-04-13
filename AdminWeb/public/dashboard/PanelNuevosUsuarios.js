@@ -26,7 +26,7 @@ function FillTable(){
 	socket.on('NotificationNewUser', function(data){
 		$("#NewUsersTable > tbody").html("");
 		for (var i = 0; i < data.length; i++) {
-				$('#NewUsersTable').append("<tbody><tr><td>"+data[i].person.PERSONCIRUC+"</td><td>"+data[i].person.PERSONNAME+' '+data[i].person.PERSONLASTNAME+"</td><td>"+data[i].person.PERSONADDRESS+"</td><td>"+data[i].person.PERSONPHONE+"</td><td>"+data[i].person.PERSONROLE+"</td><td>"+data[i].user.USEREMAIL+"</td><td>"+data[i].user.USERPROFILE+
+				$('#NewUsersTable').append("<tbody><tr><td>"+data[i].person.PERSONCI+"</td><td>"+data[i].person.PERSONNAME+' '+data[i].person.PERSONLASTNAME+"</td><td>"+data[i].person.PERSONADDRESS+"</td><td>"+data[i].person.PERSONPHONE+"</td><td>"+data[i].person.PERSONROLE+"</td><td>"+data[i].user.USEREMAIL+"</td><td>"+data[i].user.USERPROFILE+
        							"</td><td><button class='btn green' onclick='SaveNewUser("+i+")'><i class='fa fa-save'></i>  Guardar</button></td></tr></tbody>");
 			}
 		lstObjNewUsers=data;

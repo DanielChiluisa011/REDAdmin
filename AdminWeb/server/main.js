@@ -537,10 +537,11 @@ function SelectPersons(){
 }
 
 function SaveNewUser(socket){
-	console.log(data.person.PersonCi+" "+data.person.PersonName+" "+data.person.PersonLastName+" "+
+	
+	socket.on('SaveNewUser',function(data){
+		console.log(data.person.PersonCi+" "+data.person.PersonName+" "+data.person.PersonLastName+" "+
 																	  data.person.PersonPhone+" "+data.person.PersonAddress+" "+data.person.PersonRuc+" "+data.person.PersonRole)
 	console.log(data.user.UserEmail+" "+data.user.UserPassword+" "+data.user.UserProfile+" "+data.user.persontemp_PersonCi);
-	// socket.on('SaveNewUser',function(data){
 	// 	connection.query('INSERT INTO person VALUES (?,?,?,?,?,?,?)',[data.person.PersonCi,data.person.PersonName,data.person.PersonLastName,
 	// 																  data.person.PersonPhone,data.person.PersonAddress,data.person.PersonRuc,data.person.PersonRole],function(err, rows, fields) {
 	//  		if(err){
@@ -571,7 +572,7 @@ function SaveNewUser(socket){
 	//  		}
 	//  	});
 	// 	SendNotification();
-	// });
+	});
 }
 
 function UpdateUser(socket){

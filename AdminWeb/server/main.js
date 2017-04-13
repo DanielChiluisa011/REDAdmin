@@ -539,9 +539,9 @@ function SelectPersons(){
 function SaveNewUser(socket){
 	
 	socket.on('SaveNewUser',function(data){
-		console.log(data.person.PersonCi+" "+data.person.PersonName+" "+data.person.PersonLastName+" "+
-																	  data.person.PersonPhone+" "+data.person.PersonAddress+" "+data.person.PersonRuc+" "+data.person.PersonRole)
-	console.log(data.user.UserEmail+" "+data.user.UserPassword+" "+data.user.UserProfile+" "+data.user.persontemp_PersonCi);
+		console.log(data.person.PERSONCI+" "+data.person.PERSONNAME+" "+data.person.PERSONLASTNAME+" "+
+																	  data.person.PERSONPHONE+" "+data.person.PERSONADDRESS+" "+data.person.PERSONROLE)
+	console.log(data.user.USEREMAIL+" "+data.user.USERPASSWORD+" "+data.user.USERPROFILE+" "+data.user.PERSONID);
 	// 	connection.query('INSERT INTO person VALUES (?,?,?,?,?,?,?)',[data.person.PersonCi,data.person.PersonName,data.person.PersonLastName,
 	// 																  data.person.PersonPhone,data.person.PersonAddress,data.person.PersonRuc,data.person.PersonRole],function(err, rows, fields) {
 	//  		if(err){

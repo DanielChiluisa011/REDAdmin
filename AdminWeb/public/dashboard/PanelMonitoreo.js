@@ -113,7 +113,7 @@ $(document).ready(function(data){
 
 		function parseDate(d) {
     		var monthNames = [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembere", "Octubre", "Noviembre", "Diciembre" ],
-        	d2 = monthNames[d.getMonth()] +' '+ d.getDate() +', '+d.getFullYear() +' '+d.getHours() +':'+d.getMinutes();
+        	d2 = monthNames[d.getMonth()] +' '+ d.getDate() +', '+d.getFullYear() +' '+d.getHours() +':'+d.getMinutes()+':'+d.getSeconds();
     		return d2;
 		}   
 

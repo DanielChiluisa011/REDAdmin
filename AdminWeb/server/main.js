@@ -192,7 +192,7 @@ io.on('connection', function(socket){
 	  });
 
 	  socket.on('RequestAlerts',function(data){
-		  connection.query("select A.ALERTID, A.JOURNEYID, A.ALERTTYPE, A.ALERTDESCRIPTION, J.TRUCKID, A.ALERTTIME from alert A, journey J WHERE A.JOURNEYID=J.JOURNEYID;",function(error, result){
+		  connection.query("select A.ALERTID, A.JOURNEYID, A.ALERTTYPE, A.ALERTDESCRIPTION, J.TRUCKID, A.ALERTTIME from alert A, journey J WHERE A.JOURNEYID=J.JOURNEYID ORDER BY A.ALERTID;",function(error, result){
 				if(error){
 					throw error;
 				}else{

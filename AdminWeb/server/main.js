@@ -248,6 +248,17 @@ io.on('connection', function(socket){
 
    //    	
       });
+
+      socket.on('DeleteAlerts', function(data){
+      	connection.query("DELETE FROM alert where ALERTID="+data.ALERTID,function(error){
+      			if(error){
+				    throw error;
+				}else{
+					console.log("alerta eliminada: "+data.ALERTID);
+					
+		       }
+      	});
+      });
 	  
 	//   socket.on('RequestJourney',function(data){
     //   		connection.query("select * from journey WHERE journeyId = "+data+";",function(error, result){
@@ -582,6 +593,8 @@ function SelectPersons(){
 		}
 	});
 }
+
+
 
 function SaveNewUser(socket){
 	

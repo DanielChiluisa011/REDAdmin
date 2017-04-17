@@ -100,6 +100,7 @@ $(document).ready(function(data){
 		       							"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='' onclick='CurrentDate()'> <i class='fa fa-close'> </i> Suspender </a></td></tr><tbody>");  
 		}
     }) 	
+
 	socket.emit('RequestAlerts','');
 
 	socket.on('ResponseAlerts',function(data){
@@ -108,7 +109,7 @@ $(document).ready(function(data){
 
 		for(var i=0;i<lstAlerts.length;i++){
 			var dates = new Date(lstAlerts[i].ALERTTIME);
-			$('#AlertsTable').append("<tbody><tr><td>"+lstAlerts[i].ALERTID+"</td><td>"+lstAlerts[i].JOURNEYID+"</td><td>"+lstAlerts[i].ALERTTYPE+"</td><td>"+lstAlerts[i].ALERTDESCRIPTION+"</td><td>"+lstAlerts[i].TRUCKID+"</td><td>"+parseDate(dates)+"</td></tr></tbody>");
+			$('#AlertsTable').append("<tbody><tr><td>"+lstAlerts[i].ALERTID+"</td><td>"+lstAlerts[i].JOURNEYID+"</td><td>"+lstAlerts[i].ALERTTYPE+"</td><td>"+lstAlerts[i].ALERTDESCRIPTION+"</td><td>"+lstAlerts[i].TRUCKID+"</td><td>"+parseDate(dates)+"</td><td><button class='btn green' onclick='DeleteAlert("+i+")'><i class='fa fa-save'></i>  Leído</button></td></tr></tbody>");
 		}
 
 		// console.log("numero de alertas : "+lstAlerts.length);
@@ -351,6 +352,7 @@ function ShowJourney(i){
 		})
 	
 }
+
 function CurrentDate(){
 	var d = new Date();
 	var month = d.getMonth()+1;
@@ -359,4 +361,14 @@ function CurrentDate(){
     (month<10 ? '0' : '') + month + '-' +
     (day<10 ? '0' : '') + day;
     return output;
+}
+
+function DeleteAlert(i){
+	bootbox.confirm("¿Esta seguro de eliminar la alerta "+lstAlerts[i].ALERTID+" ?", function(result) {
+	   if(result){
+		   	socket.emit('DeleteAlerts', lstAlerts[i]);
+			$.notific8('Alerta eliminada');
+	   }
+	});
+	
 }

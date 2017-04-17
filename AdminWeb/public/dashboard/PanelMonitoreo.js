@@ -368,6 +368,7 @@ function DeleteAlert(i){
 	   if(result){
 		   	socket.emit('DeleteAlerts', lstAlerts[i]);
 			$.notific8('Alerta eliminada');
+			location.reload();
 	   }
 	});
 	

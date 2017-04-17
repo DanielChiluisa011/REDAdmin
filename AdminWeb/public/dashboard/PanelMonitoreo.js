@@ -109,7 +109,7 @@ $(document).ready(function(data){
 
 		for(var i=0;i<lstAlerts.length;i++){
 			var dates = new Date(lstAlerts[i].ALERTTIME);
-			$('#AlertsTable').append("<tbody><tr><td>"+lstAlerts[i].ALERTID+"</td><td>"+lstAlerts[i].JOURNEYID+"</td><td>"+lstAlerts[i].ALERTTYPE+"</td><td>"+lstAlerts[i].ALERTDESCRIPTION+"</td><td>"+lstAlerts[i].TRUCKID+"</td><td>"+parseDate(dates)+"</td><td><button class='btn green' onclick='DeleteAlert("+i+")'><i class='fa fa-close'></i>  Leído</button></td></tr></tbody>");
+			$('#AlertsTable').append("<tbody><tr><td>"+lstAlerts[i].ALERTID+"</td><td>"+lstAlerts[i].JOURNEYID+"</td><td>"+lstAlerts[i].ALERTTYPE+"</td><td>"+lstAlerts[i].ALERTDESCRIPTION+"</td><td>"+lstAlerts[i].TRUCKID+"</td><td>"+parseDate(dates)+"</td><td><button class='btn red btn-outline sbold' onclick='DeleteAlert("+i+")'><i class='fa fa-close'></i>  Leído</button></td></tr></tbody>");
 		}
 
 		// console.log("numero de alertas : "+lstAlerts.length);

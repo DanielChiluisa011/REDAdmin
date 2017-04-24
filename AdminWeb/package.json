@@ -4,7 +4,7 @@
   "description": "",
   "main": "login.js",
   "scripts": {
-    "start": "forever start server/main.js"
+    "start": "nodemon server/main.js"
   },
   "keywords": [],
   "author": "",

@@ -262,8 +262,8 @@ io.on('connection', function(socket){
       });
 	  
 	  socket.on('UpdateDistributor',function(data){
-		//   console.log(data);
-		  connection.query('UPDATE distributor SET DISTRIBUTORADDRESS = ?, DISTRIBUTORPHONE = ? WHERE PERSONID = ?',[data.address,data.phone,data.PersonId],function(err, rows, fields) {
+		  console.log(data);
+		  connection.query("UPDATE distributor SET DISTRIBUTORADDRESS = ?, DISTRIBUTORPHONE = ?, DISTRIBUTORCOORDINATES=GeomFromText('POINT ("+data.coordx+" "+data.coordy+")') WHERE PERSONID = ?",[data.address,data.phone,data.PersonId],function(err, rows, fields) {
 		 		if(err){
 					 socket.emit('msg',false)
 		 			console.log("Error "+ err.message);

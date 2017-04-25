@@ -263,7 +263,7 @@ io.on('connection', function(socket){
 	  
 	  socket.on('UpdateDistributor',function(data){
 		  console.log(data.address+" "+data.phone+" "+data.personid+" "+data.coordx+" "+data.coordy);
-		  connection.query("UPDATE distributor SET DISTRIBUTORADDRESS = ?, DISTRIBUTORPHONE = ?, DISTRIBUTORCOORDINATES=GeomFromText('POINT ("+data.coordx+" "+data.coordy+")') WHERE PERSONID = ?",[data.address,data.phone,data.personpd],function(err, rows, fields) {
+		  connection.query("UPDATE distributor SET DISTRIBUTORADDRESS = ?, DISTRIBUTORPHONE = ?, DISTRIBUTORCOORDINATES=GeomFromText('POINT ("+data.coordx+" "+data.coordy+")') WHERE PERSONID = ?",[data.address,data.phone,data.personid],function(err, rows, fields) {
 		 		if(err){
 					 socket.emit('msg',false)
 		 			console.log("Error "+ err.message);

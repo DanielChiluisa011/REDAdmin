@@ -261,6 +261,17 @@ io.on('connection', function(socket){
       	});
       });
 	  
+	  socket.on('UpdateDistributor',function(data){
+		  console.log(data);
+		//   connection.query('UPDATE distributor SET DISTRIBUTORADDRESS = ?, DISTRIBUTORPHONE = ? WHERE PERSONID = ?',[data.address,data.phone,data.PersonId],function(err, rows, fields) {
+		//  		if(err){
+		// 			 socket.emit('msg',false)
+		//  			console.log("Error "+ err.message);
+		//  		}else{
+		//  			socket.emit('msg',true);
+		//  		}
+		//  	})
+	  })
 	//   socket.on('RequestJourney',function(data){
     //   		connection.query("select * from journey WHERE journeyId = "+data+";",function(error, result){
 	// 			if(error){

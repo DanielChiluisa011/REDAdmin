@@ -161,7 +161,15 @@ io.on('connection', function(socket){
 	  
 
 	  
-
+	  socket.on('RegisterDelivery',function(data){
+	  	connection.query('INSERT INTO delivery (JOURNEYID, OBSERVATION, SIGNATURE, DELIVERYTIME) VALUES (?,?,?,?)',[data.journeyid, data.observation, data.signature, data.deliverytime],function(error, result){
+	  		if(error){
+					throw error;
+				}else{
+					console.log('Entrega registrada');
+			}
+	  	})
+	  });
 
 	  socket.on('AppEmergencyNotification',function(data){ 
 	  	connection.query('INSERT INTO alert (ALERTTYPE, ALERTDESCRIPTION, ALERTTIME, JOURNEYID) VALUES (?,?,?,?)', [data.alerttype,data.comment,data.date,data.journeyid],function(error){
@@ -249,6 +257,17 @@ io.on('connection', function(socket){
 			});	
 
    //    	
+      });
+
+      socket.on('ChangeOrderState', function(data){
+      	connection.query("SELECT ORDERID, DISTRIBUTORID, WASTEONU, DATE_FORMAT(ORDERDATE, '%Y-%m-%d') ORDERDATE,ORDERQUANTITY,ORDERSTATE,ORDERTYPE,ORDERDEADLINE,JOURNEYID FROM orders WHERE JOURNEYID="+data+";",function(error, result){
+				if(error){
+				    throw error;
+				}else{
+					console.log(data);
+					
+		       }
+			});	
       });
 
       socket.on('DeleteAlerts', function(data){

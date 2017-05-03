@@ -171,16 +171,7 @@ io.on('connection', function(socket){
 	  	})
 	  });
 
-	  socket.on('RegisterPickup',function(data){
-	  	connection.query('INSERT INTO pickup (ORDERID, OBSERVATION, SIGNATUREGENERATOR, SIGNATUREMANAGER, PICKUPTIME) VALUES (?,?,?,?,?)',[data.orderid, data.observation, data.signatureGenerator, data.signatureManager, data.pickuptime],function(error, result){
-	  		if(error){
-					throw error;
-				}else{
-					console.log('Recolección registrada');
-			}
-	  	})
-	  });
-
+	  
 	  socket.on('AppEmergencyNotification',function(data){ 
 	  	connection.query('INSERT INTO alert (ALERTTYPE, ALERTDESCRIPTION, ALERTTIME, JOURNEYID) VALUES (?,?,?,?)', [data.alerttype,data.comment,data.date,data.journeyid],function(error){
 	  		if(error){
@@ -723,9 +714,9 @@ function SelectMaxOrder(socket){
 			socket.emit('SelectMaxOrder',numOrder[0].numMax+1);
        }
 	})
-	}
-
 }
+
+
 
 
 

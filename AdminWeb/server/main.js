@@ -430,8 +430,8 @@ io.on('connection', function(socket){
 		}
 	});
 
-	socket.on('UpdateOrderState',function(orderid,state){
-		connection.query('UPDATE orders SET OrderState =  ? WHERE OrderId = ?', [state,orderid], function(err, rows, fields){
+	socket.on('UpdateOrderState',function(data){
+		connection.query('UPDATE orders SET OrderState =  ? WHERE OrderId = ?', [data.state,data.orderid], function(err, rows, fields){
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{

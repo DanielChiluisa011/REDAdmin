@@ -547,7 +547,7 @@ function SelectOrders(){
 }
 
 function SelectActiveOrders(){
-	connection.query("SELECT OrderId,OrderDate,OrderQuantity,DistributorId,WasteONU,OrderState,OrderType,DATE_FORMAT(OrderDeadLine ,'%Y-%m-%d') AS OrderDeadLine,JourneyId FROM orders WHERE OrderState like 'En Proceso' ORDER BY OrderDeadLine ASC",function(error, result){
+	connection.query("SELECT OrderId,OrderDate,OrderQuantity,DistributorId,WasteONU,OrderState,OrderType,DATE_FORMAT(OrderDeadLine ,'%Y-%m-%d') AS OrderDeadLine,JourneyId FROM orders WHERE OrderState like 'En Proceso' or like 'Çompletado' ORDER BY OrderDeadLine ASC",function(error, result){
 		if(error){
 		    throw error;
 		}else{

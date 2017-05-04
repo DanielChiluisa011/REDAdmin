@@ -435,9 +435,10 @@ io.on('connection', function(socket){
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{
-	 			// console.log("Update execute");
-	 			SelectOrders();
+	 			console.log("Update execute");
+	 			
 	 		}
+	 	}
 	});
 });
 

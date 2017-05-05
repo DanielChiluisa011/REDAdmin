@@ -377,7 +377,7 @@ io.on('connection', function(socket){
 		 	})
 		}else{
 			// console.log('sobrante = '+ ((data.importer.ImporterMontlyQuotah-data.quantity)*-1));
-			connection.query('UPDATE importer C SET C.ImporterMontlyQuotah = 0, C.ImporterQuotaAccomplished = C.ImporterQuotaAccomplished + ? WHERE C.ImporterId = ?',[data.quantity-((data.importer.ImporterMontlyQuotah-data.quantity)*-1),data.importer.ImporterId],function(err, rows, fields) {
+			connection.query('UPDATE importer C SET C.IMPORTERMONTLYQUOTAH = 0, C.IMPORTERQUOTAACCOMPLISHED = C.IMPORTERQUOTAACCOMPLISHED + ? WHERE C.IMPORTERID = ?',[data.quantity-((data.importer.ImporterMontlyQuotah-data.quantity)*-1),data.importer.ImporterId],function(err, rows, fields) {
 		 		if(err){
 		 			console.log("Error Updateimporter1"+ err.message);
 		 		}else{

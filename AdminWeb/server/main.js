@@ -133,6 +133,7 @@ io.on('connection', function(socket){
 				    throw error;
 				}else{
 				  	var JourneyRoute=result;
+				  	console.log(JourneyRoute);
 					io.emit('JourneyRouteData',JourneyRoute);
 					// console.log('Select Distributors executed');
 		       }
@@ -556,6 +557,7 @@ function SelectActiveOrders(){
 		    throw error;
 		}else{
 		  	var lstOrders=result;
+		  	console.log(lstOrders);
 			io.emit('SelectActiveOrders',lstOrders);
        }
 	})

@@ -628,8 +628,12 @@ $('#btnSaveJourney').click(function(){
 	   			importer: ImporterSelectd,
 	   			quantity: TQ
 	   		}
-	   		socket.emit('SaveJourney', journey);
-			socket.emit('AsignJourney',lstIdOrders)
+			   console.log('Numero de ordenes: '+lstIdOrders.length);
+			   for(var i=0;i<lstIdOrders.length;i++){
+				   console.log(lstIdOrders[i]);
+			   }
+	   		// socket.emit('SaveJourney', journey);
+			// socket.emit('AsignJourney',lstIdOrders)
 	   		location.reload();
 	   }
 	}); 

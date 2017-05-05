@@ -54,7 +54,6 @@ $(document).ready(function(){
 		lstRecyclingCenters=[];
        	lstRecyclingCenters=data;
        	for (var i = 0; i < lstRecyclingCenters.length; i++) {
-			   console.log('dsfghjkl')
 			mapa.addMarker({
 		    	lat: lstRecyclingCenters[i].CoordX,
 		    	lng: lstRecyclingCenters[i].CoordY,
@@ -617,7 +616,7 @@ $('#btnSaveJourney').click(function(){
 		   			JourneyRoute+=',';	
 		   		}
 		   	}
-			console.log("cr "+lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1]);
+			console.log("cr "+lstRecyclingCenters.length);
 	   		var journey = {
 	   			date: $('#txtNewJourneyDate').val(),
 	   			state: 'Pendiente',

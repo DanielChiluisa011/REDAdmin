@@ -210,7 +210,7 @@ function showData1(i,TotalQuantity){
 			Difference=lstImporters[i].IMPORTERMONTLYQUOTAH - TotalQuantity;
 			console.log(lstImporters[i].IMPORTERNAME+' Direncia: '+Difference);
 			ImporterSelectd=lstImporters[i];
-			alert(ImporterSelectd.IMPORTERID);
+			// alert(ImporterSelectd.IMPORTERID);
 			$('#txtImporterName').val(ImporterSelectd.IMPORTERNAME);
 			$('#txtImporterRUC').val(ImporterSelectd.IMPORTERRUC);
 			$('#txtImporterAddress').val(ImporterSelectd.IMPORTERADDRESS);
@@ -328,7 +328,7 @@ $('#cmbDrivers').change(function(){
 		$('#txtDriverPhone').val('');
 		$('#txtTruckId').val('');	
 	}else{
-		alert(lstDrivers[$("#cmbDrivers option:selected").index()-1].PERSONPHONE)
+		// alert(lstDrivers[$("#cmbDrivers option:selected").index()-1].PERSONPHONE)
 		$('#txtDriverPhone').val(lstDrivers[$("#cmbDrivers option:selected").index()-1].PERSONPHONE);	
 		for (var i = 0; i < lstTrucks.length; i++) {
 			if(lstTrucks[i].PERSONID==lstDrivers[$("#cmbDrivers option:selected").index()-1].PERSONID){

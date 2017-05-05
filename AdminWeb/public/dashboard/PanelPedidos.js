@@ -238,7 +238,7 @@ function showData1(i,TotalQuantity){
 							+'</div>');
 		console.log("lstJourney[k][j].order");
 		console.log(lstJourney[k][j].order);
-		lstIdOrders.push(lstJourney[k][j].order.ORDERID);
+		lstIdOrders.push(lstJourney[k][j].order.OrderId);
 	}
 	$('#txtNewJourneyDate').val(lstJourney[k][0].order.ORDERDEADLINE)
 	TQ=TotalQuantity;

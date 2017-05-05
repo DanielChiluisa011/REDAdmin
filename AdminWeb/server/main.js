@@ -356,7 +356,7 @@ io.on('connection', function(socket){
 
 	socket.on('SaveJourney',function(data){
 		var lstRoute=data.route.split(',');
-		connection.query('INSERT INTO journey (IMPORTERID,RECYCLINGCENTERID,TRUCKID,JOURNEYDATE,JOURNEYSTATE,JOURNEYROUTE)VALUES (?,?,?,?,?,?)',[data.importer.ImporterId,data.RecyclingCenter,data.truckId,data.date,data.state,data.route],function(err, rows, fields) {
+		connection.query('INSERT INTO journey (IMPORTERID,RECYCLINGCENTERID,TRUCKID,JOURNEYDATE,JOURNEYSTATE,JOURNEYROUTE)VALUES (?,?,?,?,?,?)',[data.importer.IMPORTERID,data.RecyclingCenter,data.truckId,data.date,data.state,data.route],function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{
@@ -409,7 +409,6 @@ io.on('connection', function(socket){
 	});
 
 	socket.on('AsignJourney', function(data){
-		// update orders set JourneyId = (select max(JourneyId) from Journey);
 		for (var i = 0; i < data.length; i++) {
 			connection.query('UPDATE orders SET JourneyId = (SELECT max(JourneyId) FROM journey) WHERE OrderId = ?;',[data[i]],function(err, rows, fields) {
 		 		if(err){

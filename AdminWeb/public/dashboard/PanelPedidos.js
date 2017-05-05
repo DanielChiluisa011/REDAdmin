@@ -210,6 +210,7 @@ function showData1(i,TotalQuantity){
 			Difference=lstImporters[i].IMPORTERMONTLYQUOTAH - TotalQuantity;
 			console.log(lstImporters[i].IMPORTERNAME+' Direncia: '+Difference);
 			ImporterSelectd=lstImporters[i];
+			alert(ImporterSelectd.IMPORTERID);
 			$('#txtImporterName').val(ImporterSelectd.IMPORTERNAME);
 			$('#txtImporterRUC').val(ImporterSelectd.IMPORTERRUC);
 			$('#txtImporterAddress').val(ImporterSelectd.IMPORTERADDRESS);

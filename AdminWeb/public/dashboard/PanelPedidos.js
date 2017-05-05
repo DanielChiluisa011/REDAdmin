@@ -54,6 +54,7 @@ $(document).ready(function(){
 		lstRecyclingCenters=[];
        	lstRecyclingCenters=data;
        	for (var i = 0; i < lstRecyclingCenters.length; i++) {
+			   console.log(stRecyclingCenters[i])
 			mapa.addMarker({
 		    	lat: lstRecyclingCenters[i].CoordX,
 		    	lng: lstRecyclingCenters[i].CoordY,

@@ -616,7 +616,7 @@ $('#btnSaveJourney').click(function(){
 		   			JourneyRoute+=',';	
 		   		}
 		   	}
-			   console.log(lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1]);
+			console.log("cr "+lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1]);
 	   		var journey = {
 	   			date: $('#txtNewJourneyDate').val(),
 	   			state: 'Pendiente',

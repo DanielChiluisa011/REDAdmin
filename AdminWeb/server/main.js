@@ -409,11 +409,11 @@ io.on('connection', function(socket){
 	});
 
 	socket.on('AsignJourney', function(data){
+		console.log('Se executo AsignJourney');
 		for (var i = 0; i < data.length; i++) {
 			connection.query('UPDATE orders SET JOURNEYID = (SELECT max(JOURNEYID) FROM journey) WHERE ORDERID = ?;',[data[i]],function(err, rows, fields) {
 		 		if(err){
 		 			console.log("Error "+ err.message);
-					 console.log("id de viaje "+data[i])
 		 		}else{
 		 			console.log("ok");
 		 		}

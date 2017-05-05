@@ -616,6 +616,7 @@ $('#btnSaveJourney').click(function(){
 		   			JourneyRoute+=',';	
 		   		}
 		   	}
+			   console.log(lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1]);
 	   		var journey = {
 	   			date: $('#txtNewJourneyDate').val(),
 	   			state: 'Pendiente',
@@ -625,10 +626,10 @@ $('#btnSaveJourney').click(function(){
 	   			importer: ImporterSelectd,
 	   			quantity: TQ
 	   		}
-	   		socket.emit('SaveJourney', journey);
+	   		// socket.emit('SaveJourney', journey);
 	   		location.reload();
 	   }
-	   socket.emit('AsignJourney',lstIdOrders)
+	//    socket.emit('AsignJourney',lstIdOrders)
 	}); 
 });	
 

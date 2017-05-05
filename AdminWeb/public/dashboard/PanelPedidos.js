@@ -618,12 +618,12 @@ $('#btnSaveJourney').click(function(){
 		   	}
 			console.log(lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1]);
 			console.log('cl');
-			console.log(lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1].RECYCLINGCENTERID)
+			console.log(lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1].RecyclingCenterId)
 	   		var journey = {
 	   			date: $('#txtNewJourneyDate').val(),
 	   			state: 'Pendiente',
 	   			truckId: $('#txtTruckId').val(),
-	   			RecyclingCenter: lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1].RECYCLINGCENTERID,
+	   			RecyclingCenter: lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1].RecyclingCenterId,
 	   			route: JourneyRoute,
 	   			importer: ImporterSelectd,
 	   			quantity: TQ

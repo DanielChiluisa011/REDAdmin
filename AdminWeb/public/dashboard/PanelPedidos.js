@@ -628,10 +628,10 @@ $('#btnSaveJourney').click(function(){
 	   			importer: ImporterSelectd,
 	   			quantity: TQ
 	   		}
-	   		// socket.emit('SaveJourney', journey);
-	   		// location.reload();
+	   		socket.emit('SaveJourney', journey);
+	   		location.reload();
 	   }
-	//    socket.emit('AsignJourney',lstIdOrders)
+	   socket.emit('AsignJourney',lstIdOrders)
 	}); 
 });	
 

@@ -634,7 +634,7 @@ $('#btnSaveJourney').click(function(){
 			   }
 	   		// socket.emit('SaveJourney', journey);
 			// socket.emit('AsignJourney',lstIdOrders)
-	   		location.reload();
+	   		// location.reload();
 	   }
 	}); 
 });	

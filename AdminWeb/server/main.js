@@ -379,15 +379,15 @@ io.on('connection', function(socket){
 			// console.log('sobrante = '+ ((data.importer.ImporterMontlyQuotah-data.quantity)*-1));
 			connection.query('UPDATE importer C SET C.IMPORTERMONTLYQUOTAH = 0, C.IMPORTERQUOTAACCOMPLISHED = C.IMPORTERQUOTAACCOMPLISHED + ? WHERE C.IMPORTERID = ?',[data.quantity-((data.importer.IMPORTERMONTLYQUOTAH-data.quantity)*-1),data.importer.IMPORTERID],function(err, rows, fields) {
 		 		if(err){
-		 			console.log("Error Updateimporter1"+ err.message);
+		 			console.log("Error Updateimporter1 "+ err.message);
 		 		}else{
-		 			connection.query('SELECT MIN(B.ImporterMontlyQuotah) AS NextQuota FROM importer B WHERE B.ImporterMontlyQuotah!=0;',function(error, result) {
+		 			connection.query('SELECT MIN(B.IMPORTERMONTLYQUOTAH) AS NextQuota FROM importer B WHERE B.IMPORTERMONTLYQUOTAH!=0;',function(error, result) {
 				 		if(err){
 				 			console.log("Error "+ err.message);
 				 		}else{
 				 			var aux=result;
 				 			// console.log('Siguiente: '+aux[0].NextQuota);
-				 			connection.query('UPDATE importer A SET ImporterMontlyQuotah = A.ImporterMontlyQuotah - ?, ImporterQuotaAccomplished = A.ImporterQuotaAccomplished + ? WHERE ImporterMontlyQuotah = ?;',[(data.importer.ImporterMontlyQuotah-data.quantity)*-1,(data.importer.ImporterMontlyQuotah-data.quantity)*-1,aux[0].NextQuota],function(err, rows, fields) {
+				 			connection.query('UPDATE importer A SET IMPORTERMONTLYQUOTAH = A.IMPORTERMONTLYQUOTAH - ?, IMPORTERQUOTAACCOMPLISHED = A.IMPORTERQUOTAACCOMPLISHED + ? WHERE IMPORTERMONTLYQUOTAH = ?;',[(data.importer.IMPORTERMONTLYQUOTAH-data.quantity)*-1,(data.importer.IMPORTERMONTLYQUOTAH-data.quantity)*-1,aux[0].NextQuota],function(err, rows, fields) {
 						 		if(err){
 						 			console.log("Error UpdateImporter2"+ err.message);
 						 		}else{

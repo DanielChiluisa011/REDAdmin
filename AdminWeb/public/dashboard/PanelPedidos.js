@@ -236,6 +236,8 @@ function showData1(i,TotalQuantity){
 								+'<input id="txtOrderQuantity" value="'+ lstJourney[k][j].order.OrderQuantity +'" type="text" class="form-control" id="form_control_1" disabled>'
 								+'<label for="form_control_1">Cantidad</label>'
 							+'</div>');
+		console.log("lstJourney[k][j].order");
+		console.log(lstJourney[k][j].order);
 		lstIdOrders.push(lstJourney[k][j].order.ORDERID);
 	}
 	$('#txtNewJourneyDate').val(lstJourney[k][0].order.ORDERDEADLINE)

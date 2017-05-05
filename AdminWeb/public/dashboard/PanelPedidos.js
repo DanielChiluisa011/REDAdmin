@@ -629,9 +629,9 @@ $('#btnSaveJourney').click(function(){
 	   			quantity: TQ
 	   		}
 	   		socket.emit('SaveJourney', journey);
+			socket.emit('AsignJourney',lstIdOrders)
 	   		location.reload();
 	   }
-	   socket.emit('AsignJourney',lstIdOrders)
 	}); 
 });	
 

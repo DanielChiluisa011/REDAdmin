@@ -411,7 +411,7 @@ io.on('connection', function(socket){
 	socket.on('AsignJourney', function(data){
 		// update orders set JourneyId = (select max(JourneyId) from Journey);
 		for (var i = 0; i < data.length; i++) {
-			connection.query('UPDATE orders SET JourneyId = (SELECT max(JourneyId) FROM Journey) WHERE OrderId = ?;',[data[i]],function(err, rows, fields) {
+			connection.query('UPDATE orders SET JourneyId = (SELECT max(JourneyId) FROM journey) WHERE OrderId = ?;',[data[i]],function(err, rows, fields) {
 		 		if(err){
 		 			console.log("Error "+ err.message);
 		 		}else{

@@ -620,7 +620,7 @@ $('#btnSaveJourney').click(function(){
 	   			date: $('#txtNewJourneyDate').val(),
 	   			state: 'Pendiente',
 	   			truckId: $('#txtTruckId').val(),
-	   			RecyclingCenter: lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1].RecyclingCenterId,
+	   			RecyclingCenter: lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1].RECYCLINGCENTERID,
 	   			route: JourneyRoute,
 	   			importer: ImporterSelectd,
 	   			quantity: TQ

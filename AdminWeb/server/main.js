@@ -410,7 +410,7 @@ io.on('connection', function(socket){
 
 	socket.on('AsignJourney', function(data){
 		for (var i = 0; i < data.length; i++) {
-			connection.query('UPDATE orders SET JourneyId = (SELECT max(JourneyId) FROM journey) WHERE OrderId = ?;',[data[i]],function(err, rows, fields) {
+			connection.query('UPDATE orders SET JOURNEYID = (SELECT max(JOURNEYID) FROM journey) WHERE ORDERID = ?;',[data[i]],function(err, rows, fields) {
 		 		if(err){
 		 			console.log("Error "+ err.message);
 		 		}else{
@@ -418,7 +418,7 @@ io.on('connection', function(socket){
 		 		}
 		 	})
 
-		 	connection.query('UPDATE orders SET OrderState =  "En Proceso" WHERE OrderId = ?', [data[i]],function(err, rows, fields){
+		 	connection.query('UPDATE orders SET ORDERSTATE =  "En Proceso" WHERE ORDERID = ?', [data[i]],function(err, rows, fields){
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{

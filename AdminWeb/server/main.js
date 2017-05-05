@@ -413,6 +413,7 @@ io.on('connection', function(socket){
 			connection.query('UPDATE orders SET JOURNEYID = (SELECT max(JOURNEYID) FROM journey) WHERE ORDERID = ?;',[data[i]],function(err, rows, fields) {
 		 		if(err){
 		 			console.log("Error "+ err.message);
+					 console.log("id de viaje "+data[i])
 		 		}else{
 		 			console.log("ok");
 		 		}

@@ -358,16 +358,16 @@ io.on('connection', function(socket){
 		var lstRoute=data.route.split(',');
 		connection.query('INSERT INTO journey (IMPORTERID,RECYCLINGCENTERID,TRUCKID,JOURNEYDATE,JOURNEYSTATE,JOURNEYROUTE)VALUES (?,?,?,?,?,?)',[data.importer.IMPORTERID,data.RecyclingCenter,data.truckId,data.date,data.state,data.route],function(err, rows, fields) {
 	 		if(err){
-	 			console.log("Error "+ err.message);
+	 			console.log("Error SaveJourney"+ err.message);
 	 		}else{
-	 			// console.log("Insert journey execute");
+	 			console.log("Insert Savejourney execute");
 	 		}
 	 	})
 
 		if(data.importer.ImporterMontlyQuotah-data.quantity>=0){
 			connection.query('UPDATE importer SET ImporterMontlyQuotah = ImporterMontlyQuotah - ?, ImporterQuotaAccomplished = ImporterQuotaAccomplished + ? WHERE ImporterId = ?',[data.quantity,data.quantity,data.importer.ImporterId],function(err, rows, fields) {
 		 		if(err){
-		 			console.log("Error "+ err.message);
+		 			console.log("Error SaveJourneyImporter"+ err.message);
 		 		}else{
 		 			console.log("Insert journey execute");
 		 		}
@@ -376,7 +376,7 @@ io.on('connection', function(socket){
 			// console.log('sobrante = '+ ((data.importer.ImporterMontlyQuotah-data.quantity)*-1));
 			connection.query('UPDATE importer C SET C.ImporterMontlyQuotah = 0, C.ImporterQuotaAccomplished = C.ImporterQuotaAccomplished + ? WHERE C.ImporterId = ?',[data.quantity-((data.importer.ImporterMontlyQuotah-data.quantity)*-1),data.importer.ImporterId],function(err, rows, fields) {
 		 		if(err){
-		 			console.log("Error "+ err.message);
+		 			console.log("Error Updateimporter1"+ err.message);
 		 		}else{
 		 			connection.query('SELECT MIN(B.ImporterMontlyQuotah) AS NextQuota FROM importer B WHERE B.ImporterMontlyQuotah!=0;',function(error, result) {
 				 		if(err){
@@ -386,7 +386,7 @@ io.on('connection', function(socket){
 				 			// console.log('Siguiente: '+aux[0].NextQuota);
 				 			connection.query('UPDATE importer A SET ImporterMontlyQuotah = A.ImporterMontlyQuotah - ?, ImporterQuotaAccomplished = A.ImporterQuotaAccomplished + ? WHERE ImporterMontlyQuotah = ?;',[(data.importer.ImporterMontlyQuotah-data.quantity)*-1,(data.importer.ImporterMontlyQuotah-data.quantity)*-1,aux[0].NextQuota],function(err, rows, fields) {
 						 		if(err){
-						 			console.log("Error "+ err.message);
+						 			console.log("Error UpdateImporter2"+ err.message);
 						 		}else{
 						 			
 						 		}

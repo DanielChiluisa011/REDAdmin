@@ -303,6 +303,10 @@ io.on('connection', function(socket){
 		 		}
 		 	})
 	  })
+
+	  socket.on('RequestActiveOrders',function(){
+	  	SelectActiveOrders();
+	  })
 	//   socket.on('RequestJourney',function(data){
     //   		connection.query("select * from journey WHERE journeyId = "+data+";",function(error, result){
 	// 			if(error){
@@ -330,7 +334,7 @@ io.on('connection', function(socket){
 	SelectImporters();
     SelectMaxOrder(socket)
 	SelectJourneys();
-	SelectActiveOrders()
+	SelectActiveOrders();
 	SelectUsers();
 	selectWaste();
 	SelectPersons();

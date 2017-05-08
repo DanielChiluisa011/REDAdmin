@@ -436,21 +436,21 @@ io.on('connection', function(socket){
 	});
 
 	socket.on('UpdateOrderState',function(data){
-		if(data.state=="Pendiente"){
+		if(data.state=="Completado"){
 			connection.query('UPDATE orders SET OrderState =  ? WHERE OrderId = ?', [data.state,data.orderid], function(err, rows, fields){
 		 		if(err){
 		 			console.log("Error "+ err.message);
 		 		}else{
-		 			console.log("Update execute");
+		 			console.log("Update execute Order Completado");
 		 			
 		 		}
 		 	})
-		}else if(data.state=="Completado"){
+		}else if(data.state=="Pendiente"){
 			connection.query('UPDATE orders SET OrderState =  ?, JOURNEYID = NULL WHERE OrderId = ?', [data.state,data.orderid], function(err, rows, fields){
 		 		if(err){
 		 			console.log("Error "+ err.message);
 		 		}else{
-		 			console.log("Update execute");
+		 			console.log("Update execute Order Pendiente");
 		 			
 		 		}
 		 	})

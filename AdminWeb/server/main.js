@@ -436,15 +436,29 @@ io.on('connection', function(socket){
 	});
 
 	socket.on('UpdateOrderState',function(data){
-		connection.query('UPDATE orders SET OrderState =  ? WHERE OrderId = ?', [data.state,data.orderid], function(err, rows, fields){
-	 		if(err){
-	 			console.log("Error "+ err.message);
-	 		}else{
-	 			console.log("Update execute");
-	 			
-	 		}
-	 	})
+		if(data.state=="Pendiente"){
+			connection.query('UPDATE orders SET OrderState =  ? WHERE OrderId = ?', [data.state,data.orderid], function(err, rows, fields){
+		 		if(err){
+		 			console.log("Error "+ err.message);
+		 		}else{
+		 			console.log("Update execute");
+		 			
+		 		}
+		 	})
+		}else if(data.state=="Completado"){
+			connection.query('UPDATE orders SET OrderState =  ?, JOURNEYID = NULL WHERE OrderId = ?', [data.state,data.orderid], function(err, rows, fields){
+		 		if(err){
+		 			console.log("Error "+ err.message);
+		 		}else{
+		 			console.log("Update execute");
+		 			
+		 		}
+		 	})
+		}
+		
 	});
+
+	
 });
 
 function SelectUsers(){

@@ -572,7 +572,7 @@ function SelectActiveOrders(){
 		    throw error;
 		}else{
 		  	var lstOrders=result;
-		  	console.log(lstOrders);
+		  	console.log("SelectActiveOrders");
 			io.emit('SelectActiveOrders',lstOrders);
        }
 	})

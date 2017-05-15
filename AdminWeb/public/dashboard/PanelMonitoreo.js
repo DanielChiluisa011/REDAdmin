@@ -145,7 +145,7 @@ $(document).ready(function(data){
 						console.log(lstUsers[g].person.PERSONID+"  "+lstTrucks[i].PERSONID)
 						if(lstUsers[g].person.PERSONID==lstTrucks[i].PERSONID){
 							console.log("encontro");
-							driver=lstUsers[i];
+							driver=lstUsers[g].person;
 
 							console.log(driver);
 						}

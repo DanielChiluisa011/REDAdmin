@@ -88,7 +88,7 @@ $(document).ready(function(data){
 			    	if(lstJourneys[j].IMPORTERID==lstImporters[i].ImporterId){
 						console.log('Importador seleccionado: '+lstImporters[i].IMPORTERNAME)
 			    		importerName=lstImporters[i].IMPORTERNAME;
-			    		break;
+			    		// break;
 			    	}
 			    }
 			    for (var k = 0; k < lstRecyclingCenters.length; k++) {

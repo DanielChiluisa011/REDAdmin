@@ -635,7 +635,7 @@ $('#btnSaveJourney').click(function(){
 				   console.log(lstIdOrders[i]);
 			   }
 	   		socket.emit('SaveJourney', journey);
-			socket.emit('AsignJourney',lstIdOrders)
+			socket.emit('AsignJourney',lstIdOrders);
 	   		location.reload();
 	   }
 	}); 

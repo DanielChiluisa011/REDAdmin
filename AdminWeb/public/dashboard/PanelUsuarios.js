@@ -53,16 +53,16 @@ function ShowPassword(){
 }
 
 function ShowUserInformation(i){
-	$('#txtPersonName').val(lstUsers[i].person.PersonName);
-	$('#txtPersonLastName').val(lstUsers[i].person.PersonLastName);
-	$('#txtPersonId').val(lstUsers[i].person.PersonCi);
-	$('#txtPersonPhone').val(lstUsers[i].person.PersonPhone);
-	$('#txtPersonAddress').val(lstUsers[i].person.PersonAddress);
-	$('#txtPersonRuc').val(lstUsers[i].person.PersonRuc);
-	$('#txtPersonRole').val(lstUsers[i].person.PersonRole);
-	$('#txtUserEmail').val(lstUsers[i].user.UserEmail);
-	$('#txtUserPassword').val(lstUsers[i].user.UserPassword);
-	$('#txtUserProfile').val(lstUsers[i].user.UserProfile);
+	$('#txtPersonName').val(lstUsers[i].person.PERSONNAME);
+	$('#txtPersonLastName').val(lstUsers[i].person.PERSONLASTNAME);
+	$('#txtPersonId').val(lstUsers[i].person.PERSONCIRUC);
+	$('#txtPersonPhone').val(lstUsers[i].person.PERSONPHONE);
+	$('#txtPersonAddress').val(lstUsers[i].person.PERSONADDRESS);
+	$('#txtPersonRuc').val(lstUsers[i].person.PERSONCIRUC);
+	$('#txtPersonRole').val(lstUsers[i].person.PERSONROLE);
+	$('#txtUserEmail').val(lstUsers[i].user.USEREMAIL);
+	$('#txtUserPassword').val(lstUsers[i].user.USERPASSWORD);
+	$('#txtUserProfile').val(lstUsers[i].user.USERPROFILE);
 }
 
 $('#btnUpdateUserInfo').click(function(){

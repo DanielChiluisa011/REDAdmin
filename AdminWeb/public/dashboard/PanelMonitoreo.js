@@ -24,6 +24,9 @@ $(document).ready(function(data){
 	socket.on('SelectImporters', function(data){
 		lstImporters=[];
 	   	lstImporters=data;
+		   for(var i=0;i<lstImporters.length;i++){
+			   console.log(lstImporters[i])
+		   }
 	})
 	socket.on('selectWaste', function(data){
 		lstWaste=[];

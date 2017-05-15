@@ -142,7 +142,7 @@ $(document).ready(function(data){
 					for(var g=0;g<lstUsers.length;g++){
 						console.log("g "+g);
 						console.log(lstUsers[g]);
-						console.log(lstUsers[g].PersonId+"  "+lstTrucks[i].PERSONID)
+						console.log(lstUsers[g].person.PERSONID+"  "+lstTrucks[i].PERSONID)
 						if(lstUsers[g].PERSONID==lstTrucks[i].PERSONID){
 							driver=lstUsers[i];
 						}

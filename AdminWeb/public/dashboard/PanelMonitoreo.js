@@ -80,9 +80,9 @@ $(document).ready(function(data){
        	for (var j = 0; j <lstJourneys.length; j++) {
        			// console.log('Importadores ' +lstImporters.length)
        			for (var i = 0; i < lstImporters.length; i++) {
-       				console.log(+i+' Journey '+lstJourneys[j].ImporterId+' Importer '+lstImporters[i].IMPORTERID);
+       				console.log(' lstJourneys[j].ImporterId: '+lstJourneys[j].ImporterId+' lstImporters[i].IMPORTERID: '+lstImporters[i].IMPORTERID);
 			    	if(lstImporters[i].ImporterId==lstJourneys[j].IMPORTERID){
-						console.log(lstImporters[i].IMPORTERNAME)
+						console.log('Importador seleccionado: '+lstImporters[i].IMPORTERNAME)
 			    		importerName=lstImporters[i].IMPORTERNAME;
 			    		break;
 			    	}

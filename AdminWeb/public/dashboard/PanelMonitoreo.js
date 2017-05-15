@@ -82,12 +82,12 @@ $(document).ready(function(data){
     //    	}
        	for (var j = 0; j <lstJourneys.length; j++) {
        			// console.log('Importadores ' +lstImporters.length)
-       			for (var i = 0; i < lstImporters.length; i++) {
-					   console.log(lstImporters[i]);
-       				console.log(' lstJourneys[j].ImporterId: '+lstJourneys[j].ImporterId+' lstImporters[i].IMPORTERID: '+lstImporters[i].IMPORTERID);
-			    	if(lstJourneys[j].IMPORTERID==lstImporters[i].ImporterId){
-						console.log('Importador seleccionado: '+lstImporters[i].IMPORTERNAME)
-			    		importerName=lstImporters[i].IMPORTERNAME;
+       			for (var p = 0;  p< lstImporters.length; p++) {
+					   console.log(lstImporters[p]);
+       				console.log(' lstJourneys[j].ImporterId: '+lstJourneys[j].ImporterId+' lstImporters[i].IMPORTERID: '+lstImporters[p].IMPORTERID);
+			    	if(lstJourneys[j].IMPORTERID==lstImporters[p].ImporterId){
+						console.log('Importador seleccionado: '+lstImporters[p].IMPORTERNAME)
+			    		importerName=lstImporters[p].IMPORTERNAME;
 			    		break;
 			    	}
 			    }

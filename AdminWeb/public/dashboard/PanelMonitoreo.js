@@ -122,10 +122,10 @@ $(document).ready(function(data){
 			}
 			// console.log('Importadores ' +lstImporters.length)
 			for (var i = 0; i < lstImporters.length; i++) {
-				console.log("i= "+i+" "+lstImporters[i]);
-				console.log(' lstJourneys[j].ImporterId: '+lstJourneys[j].ImporterId+' lstImporters[i].IMPORTERID: '+lstImporters[i].IMPORTERID);
+				// console.log("i= "+i+" "+lstImporters[i]);
+				// console.log(' lstJourneys[j].ImporterId: '+lstJourneys[j].ImporterId+' lstImporters[i].IMPORTERID: '+lstImporters[i].IMPORTERID);
 				if(lstJourneys[j].ImporterId==lstImporters[i].IMPORTERID){
-					console.log('Importador seleccionado: '+lstImporters[i].IMPORTERNAME)
+					// console.log('Importador seleccionado: '+lstImporters[i].IMPORTERNAME)
 					importerName=lstImporters[i].IMPORTERNAME;
 					// break;
 				}

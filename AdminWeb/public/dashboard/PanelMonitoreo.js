@@ -111,7 +111,7 @@ $(document).ready(function(data){
 				if(lstTrucks[i].TRUCKID==lstJourneys[j].truckId){
 					for(var g=0;g<UsersAux.length;g++){
 						if(UsersAux[i].PERSONID==lstTrucks[i].PERSONID){
-							driver=UsersAux[i]
+							var driver=UsersAux[i]
 						}
 					}
 				}

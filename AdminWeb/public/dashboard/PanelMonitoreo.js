@@ -119,7 +119,7 @@ $(document).ready(function(data){
 					for(var g=0;g<lstUsers.length;g++){
 						console.log("g "+g);
 						console.log(g);
-						console.log(UsersAux[i].PERSONID+"  "+lstTrucks[i].PERSONID)
+						console.log(lstUsers[g].PERSONID+"  "+lstTrucks[i].PERSONID)
 						if(lstUsers[g].PERSONID==lstTrucks[i].PERSONID){
 							driver=lstUsers[i];
 						}

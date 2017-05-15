@@ -48,7 +48,7 @@ $(document).ready(function(data){
 	socket.on('SelectTrucks',function(data){
 		lstTrucks=[]
 		lstTrucks=data;
-		console.log("camiones")
+		console.log("camiones "+lstTrucks.length)
 	});
 	socket.on('SelectImporters', function(data){
 		lstImporters=[];
@@ -76,6 +76,7 @@ $(document).ready(function(data){
 	})
 
 	socket.on('SelectActiveOrders', function(data){
+		console.log("SelectActiveOrders");
        	var importerName;
        	var RCName;
 		var driver;

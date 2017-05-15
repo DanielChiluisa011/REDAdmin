@@ -10,6 +10,7 @@ var lstUserMarkers=[];
 var lstOrders=[];
 var lstAlerts=[];
 var lstTrucks=[];
+var lstUsers=[];
 var mapa=new GMaps({
     div: '#gmap_basic',
     lat: -0.191611,
@@ -47,7 +48,7 @@ $(document).ready(function(data){
 	socket.on('SelectTrucks',function(data){
 		lstTrucks=[]
 		lstTrucks=data;
-		console.log("camiones llenos")
+		console.log("camiones")
 	});
 	socket.on('SelectImporters', function(data){
 		lstImporters=[];

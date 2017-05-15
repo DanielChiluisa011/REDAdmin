@@ -83,6 +83,7 @@ $(document).ready(function(data){
        	for (var j = 0; j <lstJourneys.length; j++) {
        			// console.log('Importadores ' +lstImporters.length)
        			for (var i = 0; i < lstImporters.length; i++) {
+					   console.log(lstImporters[i]);
        				console.log(' lstJourneys[j].ImporterId: '+lstJourneys[j].ImporterId+' lstImporters[i].IMPORTERID: '+lstImporters[i].IMPORTERID);
 			    	if(lstJourneys[j].IMPORTERID==lstImporters[i].ImporterId){
 						console.log('Importador seleccionado: '+lstImporters[i].IMPORTERNAME)

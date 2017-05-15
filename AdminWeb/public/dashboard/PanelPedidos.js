@@ -356,7 +356,7 @@ function LocateDistributors(j){
 			    	lat: lstDistributors[i].CoordX,
 			    	lng: lstDistributors[i].CoordY,
 			    	title: 'Centro de Distribución',
-			    	icon: '../iconos/llanta.png',
+			    	icon: '../iconos/dPendiente.png',
 			    	infoWindow: {
 		                content: '<div id="content"><strong>'+lstDistributors[i].DistributorName+'</strong><br>'
 		                			+'<label>'+lstDistributors[i].DistributorAddress+'</label><br>'

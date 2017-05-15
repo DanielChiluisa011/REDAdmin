@@ -81,6 +81,29 @@ $(document).ready(function(data){
        	var waste;
        	lstOrders=[];
        	lstOrders=data;
+		
+		socket.on('Select Users', function(data){
+			UsersAux=[];
+			UsersAux=data;
+			socket.on('SelectPersons', function(data1){
+				lstUsers.length=0;
+				var PersonAux=[];
+				PersonAux=data1;
+				for (var j = 0; j < PersonAux.length; j++) {
+					for (var i = 0; i < UsersAux.length; i++) {
+						// console.log(UsersAux[i].PERSONID+"    "+PersonAux[j].PERSONID)
+						if(UsersAux[i].PERSONID==PersonAux[j].PERSONID){
+							var objUser={
+								user: UsersAux[i],
+								person: PersonAux[j]
+							}
+							lstUsers.push(objUser);
+						}	
+					}
+					
+				}
+			})
+		})
      	$("#ActiveOrders > tbody").html("");
     //    	for (var i = 0; i <lstOrders.length; i++) {
     //    		if(lstOrders[i].JourneyDate==CurrentDate()){

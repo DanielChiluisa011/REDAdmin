@@ -312,7 +312,7 @@ $('#cmbRecyclingCenters').change(function(){
 			   	lat: Route[i].CoordX,
 			   	lng: Route[i].CoordY,
 			   	title: 'Centro de Distribución',
-			   	icon: '../iconos/llanta.png',
+			   	icon: '../iconos/dPendiente.png',
 			   	infoWindow: {
 			        content: '<div id="content"><strong>'+Route[i].DistributorName+'</strong><br>'
 			       			+'<label>'+Route[i].DistributorAddress+'</label><br>'

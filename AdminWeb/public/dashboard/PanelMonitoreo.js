@@ -244,7 +244,7 @@ function ShowJourney(i){
 		});
 	}else{
 		var waypnts=[];
-		for (var i = 1; i < RouteSelected.length; i++) {
+		for (var i = 0; i < RouteSelected.length; i++) {
 			waypnts.push({
 				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
 				stopover: false 

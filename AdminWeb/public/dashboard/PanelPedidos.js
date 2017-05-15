@@ -200,7 +200,7 @@ function showData1(i,TotalQuantity){
 	
 		RouteSelected.push(lstJourney[i][j].importer);
 	}
-	SortRoute(userPosition,RouteSelected);
+	// SortRoute(userPosition,RouteSelected); 
 	LocateDistributors(0);
 	ShowRoute();
 	var Difference=lstImporters[0].IMPORTERMONTLYQUOTAH - TotalQuantity;
@@ -557,7 +557,7 @@ function CreateJourney(){
 }
 function CreateRoute()
 {
-	SortRoute(userPosition,Route);
+	// SortRoute(userPosition,Route);
 	var i=0;
 	RouteSelected=[];
 	var numAux=OrderSelected.order.OrderQuantity;

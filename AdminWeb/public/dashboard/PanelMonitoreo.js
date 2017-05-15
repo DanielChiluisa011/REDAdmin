@@ -222,7 +222,7 @@ function ShowJourney(i){
 			});
 		}
 	}
-	if(RouteSelected.length==1){
+	if(RouteSelected.length == 1){
 		mapa.travelRoute({
 		    origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
 		    destination: [finishPosition.CoordX,finishPosition.CoordY],
@@ -335,6 +335,25 @@ function ShowJourney(i){
 				}
 				lstUserMarkers.push(Aux);
 			}
+			mapa.travelRoute({
+				origin: [data.position.lat,data.position.lng],
+				destination: [finishPosition.CoordX,finishPosition.CoordY],
+				travelMode: 'driving',
+				waypoints: waypnts,
+				optimizeWaypoints: true,
+				provideRouteAlternatives: true,
+				step: function (e) {
+					// $('#gmap_routes_instructions').append('<li>' + e.instructions + '</li>');
+					// $('#gmap_routes_instructions li:eq(' + e.step_number + ')').fadeIn(500, function () {
+						mapa.drawPolyline({
+							path: e.path,
+							strokeColor: '#131540',
+							strokeOpacity: 0.6,
+							strokeWeight: 6
+						});
+					// });
+				}
+			});
 	}
 
 			// console.log(data.user.user.UserEmail);

@@ -120,7 +120,7 @@ $(document).ready(function(data){
 						console.log("g "+g);
 						console.log(g);
 						console.log(UsersAux[i].PERSONID+"  "+lstTrucks[i].PERSONID)
-						if(lstUsers[i].PERSONID==lstTrucks[i].PERSONID){
+						if(lstUsers[g].PERSONID==lstTrucks[i].PERSONID){
 							driver=lstUsers[i];
 						}
 					}

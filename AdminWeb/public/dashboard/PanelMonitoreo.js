@@ -75,6 +75,7 @@ $(document).ready(function(data){
 	socket.on('SelectActiveOrders', function(data){
        	var importerName;
        	var RCName;
+		var driver;
        	var waste;
        	lstOrders=[];
        	lstOrders=data;
@@ -111,7 +112,7 @@ $(document).ready(function(data){
 				if(lstTrucks[i].TRUCKID==lstJourneys[j].truckId){
 					for(var g=0;g<UsersAux.length;g++){
 						if(UsersAux[i].PERSONID==lstTrucks[i].PERSONID){
-							var driver=UsersAux[i]
+							driver=UsersAux[i]
 						}
 					}
 				}

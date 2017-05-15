@@ -35,8 +35,6 @@ $(document).ready(function(data){
 							user: UsersAux[i],
 							person: PersonAux[j]
 						}
-						console.log(objUser.user)
-						console.log(objUser.person)
 						lstUsers.push(objUser);
 					}	
 				}

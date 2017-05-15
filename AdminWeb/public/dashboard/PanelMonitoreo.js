@@ -112,9 +112,11 @@ $(document).ready(function(data){
        	for (var j = 0; j <lstJourneys.length; j++) {
 			
 			for(var i=0;i<lstTrucks.length;i++){
+				console.log(i);
 				console.log(lstTrucks[i].TRUCKID+"  "+lstJourneys[j].truckId)
 				if(lstTrucks[i].TRUCKID==lstJourneys[j].truckId){
 					for(var g=0;g<lstUsers.length;g++){
+						console.log(g);
 						console.log(UsersAux[i].PERSONID+"  "+lstTrucks[i].PERSONID)
 						if(lstUsers[i].PERSONID==lstTrucks[i].PERSONID){
 							driver=lstUsers[i];

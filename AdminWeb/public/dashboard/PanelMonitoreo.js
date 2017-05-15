@@ -108,9 +108,12 @@ $(document).ready(function(data){
     //    		}
     //    	}
        	for (var j = 0; j <lstJourneys.length; j++) {
+			
 			for(var i=0;i<lstTrucks.length;i++){
+				console.log(lstTrucks[i].TRUCKID+"  "+lstJourneys[j].truckId)
 				if(lstTrucks[i].TRUCKID==lstJourneys[j].truckId){
 					for(var g=0;g<UsersAux.length;g++){
+						console.log(UsersAux[i].PERSONID+"  "+lstTrucks[i].PERSONID)
 						if(UsersAux[i].PERSONID==lstTrucks[i].PERSONID){
 							driver=UsersAux[i]
 						}

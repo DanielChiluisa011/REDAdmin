@@ -54,7 +54,7 @@ $(document).ready(function(data){
 		lstImporters=[];
 	   	lstImporters=data;
 		   for(var i=0;i<lstImporters.length;i++){
-			   console.log(lstImporters[i])
+			//    console.log(lstImporters[i])
 		   }
 	})
 	socket.on('selectWaste', function(data){

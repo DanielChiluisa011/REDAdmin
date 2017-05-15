@@ -45,7 +45,9 @@ $(document).ready(function(data){
 	})
 
 	socket.on('SelectTrucks',function(data){
+		lstTrucks=[]
 		lstTrucks=data;
+		console.log("camiones llenos")
 	});
 	socket.on('SelectImporters', function(data){
 		lstImporters=[];
@@ -115,7 +117,7 @@ $(document).ready(function(data){
 					for(var g=0;g<UsersAux.length;g++){
 						console.log(UsersAux[i].PERSONID+"  "+lstTrucks[i].PERSONID)
 						if(UsersAux[i].PERSONID==lstTrucks[i].PERSONID){
-							driver=UsersAux[i]
+							driver=UsersAux[i];
 						}
 					}
 				}

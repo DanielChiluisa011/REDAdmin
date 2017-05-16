@@ -40,11 +40,11 @@ $(document).ready(function(data){
 		lstDistributors=[];
        	lstDistributors=data;
    	})
-	socket.on('SelectTrucks',function(data){
-	lstTrucks=[]
-	lstTrucks=data;
-	console.log("camiones "+lstTrucks.length)
-	});
+	// socket.on('SelectTrucks',function(data){
+	// lstTrucks=[]
+	// lstTrucks=data;
+	// console.log("camiones "+lstTrucks.length)
+	// });
 	socket.on('SelectJourneys', function(data){
 		console.log('SelectJourneys');
 		lstJourneys=[];
@@ -60,7 +60,7 @@ $(document).ready(function(data){
        	lstOrders=[];
        	lstOrders=data;
 		socket.emit("RequestTrucks","");
-		socket.on('SelectTrucks',function(data){
+		socket.on("SelectTrucks",function(data){
 			lstTrucks=[];
 			lstTrucks=data;
 			console.log("camiones "+lstTrucks.length);

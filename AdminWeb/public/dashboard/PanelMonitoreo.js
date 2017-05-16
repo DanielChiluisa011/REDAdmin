@@ -117,7 +117,7 @@ $(document).ready(function(data){
 								if(lstUsers[g].person.PERSONID==lstTrucks[i].PERSONID){
 									console.log("encontro");
 									driver=lstUsers[g].person;
-									console.log(driver);
+									console.log(driver.PERSONNAME+" "+DRIVER.PERSONLASTNAME);
 								}
 							}
 						}

@@ -348,6 +348,7 @@ io.on('connection', function(socket){
 	SaveNewUser(socket);
 
 	socket.on("RequestTrucks",function(msg){
+		console.log("RequestTrucks");
 		connection.query('SELECT * FROM trucks',function(error, result){
 			if(error){
 				throw error;

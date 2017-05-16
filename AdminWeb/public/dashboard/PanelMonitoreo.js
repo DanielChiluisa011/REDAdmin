@@ -48,7 +48,7 @@ $(document).ready(function(data){
 	})
 
 	socket.on('SelectActiveOrders', function(data){
-		socket.removeAllListeners();
+		// socket.removeAllListeners();
 		console.log("SelectActiveOrders");
        	var importerName;
        	var RCName;

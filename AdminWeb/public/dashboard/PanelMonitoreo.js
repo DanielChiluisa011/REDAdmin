@@ -60,7 +60,7 @@ $(document).ready(function(data){
        	lstOrders=[];
        	lstOrders=data;
 		socket.emit("RequestTrucks","");
-		socket.on('Selecttrucks',function(data){
+		socket.on('SelectTrucks',function(data){
 			lstTrucks=[];
 			lstTrucks=data;
 			console.log("camiones "+lstTrucks.length);

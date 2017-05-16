@@ -354,7 +354,8 @@ io.on('connection', function(socket){
 				throw error;
 			}else{
 					var lstTrucks=result;
-					socket.emit('Selecttrucks',lstTrucks);
+					console.log("Emit SelectTrucks ")
+					socket.emit('SelectTrucks',lstTrucks);
 			}
 		})
 	});

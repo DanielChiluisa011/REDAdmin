@@ -71,10 +71,7 @@ $(document).ready(function(data){
 			}
 			socket.emit("RequestDriver",lstJourneys[j].truckId);
 			driver=socket.on("ResponseDriver",function(data){
-				driver=data;
-				
 				return data;
-				
 			});
 			console.log("sdfghjk");
 			console.log(driver);

@@ -415,6 +415,28 @@ io.on('connection', function(socket){
 		 		}
 		 	})
 		}
+		////////////////////////////////////
+		console.log('Se executo AsignJourney '+data.orders.length);
+		for (var i = 0; i < data.orders.length; i++) {
+			console.log('DATA[i] = '+data[i]);
+			connection.query('UPDATE orders SET JOURNEYID = (SELECT max(JOURNEYID) FROM journey), ORDERSTATE =  "En Proceso" WHERE ORDERID = ?;',[data.orders[i]],function(err, rows, fields) {
+		 		if(err){
+		 			console.log("Error "+ err.message);
+		 		}else{
+		 			console.log("ok");
+					SelectOrders();
+		 		}
+		 	})
+
+		//  	connection.query('UPDATE orders SET ORDERSTATE =  "En Proceso" WHERE ORDERID = ?', [data[i]],function(err, rows, fields){
+	 	// 	if(err){
+	 	// 		console.log("Error "+ err.message);
+	 	// 	}else{
+	 	// 		// console.log("Update execute");
+	 	// 		SelectOrders();
+	 	// 	}
+	 	// })
+		}
 	});
 	socket.on('UpdateQuota',function(data){
 		connection.query('UPDATE importer SET ImporterQuota = ?, ImporterMontlyQuotah = ? where ImporterId = ?;',[data.quantity,data.monthQuantity,data.importer.ImporterId],function(err, rows, fields) {

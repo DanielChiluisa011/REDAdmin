@@ -628,14 +628,15 @@ $('#btnSaveJourney').click(function(){
 	   			RecyclingCenter: lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1].RecyclingCenterId,
 	   			route: JourneyRoute,
 	   			importer: ImporterSelectd,
-	   			quantity: TQ
+	   			quantity: TQ,
+				orders: lstIdOrders
 	   		}
 			   console.log('Numero de ordenes: '+lstIdOrders.length);
 			   for(var i=0;i<lstIdOrders.length;i++){
 				   console.log(lstIdOrders[i]);
 			   }
 	   		socket.emit('SaveJourney', journey);
-			socket.emit('AsignJourney',lstIdOrders);
+			// socket.emit('AsignJourney',lstIdOrders);
 	   		location.reload();
 	   }
 	}); 

@@ -59,6 +59,7 @@ $(document).ready(function(data){
        	var waste;
        	lstOrders=[];
        	lstOrders=data;
+		socket.emit("RequestTrucks","");
 		socket.on('SelectTrucks',function(data){
 			lstTrucks=[]
 			lstTrucks=data;

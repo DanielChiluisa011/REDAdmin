@@ -65,71 +65,55 @@ $(document).ready(function(data){
 			lstTrucks=data;
 			console.log("camiones "+lstTrucks.length);
 		});
-		// socket.on('Select Users', function(data){
-		// 	UsersAux=[];
-		// 	UsersAux=data;
-			socket.on('SelectPersons', function(data1){
-				console.log("SelectPersons");
-				lstUsers.length=0;
-				var PersonAux=[];
-				lstUsers=data1;
-				// for (var j = 0; j < PersonAux.length; j++) {
-				// 	for (var i = 0; i < UsersAux.length; i++) {
-				// 		// console.log(UsersAux[i].PERSONID+"    "+PersonAux[j].PERSONID)
-				// 		if(UsersAux[i].PERSONID==PersonAux[j].PERSONID){
-				// 			var objUser={
-				// 				user: UsersAux[i],
-				// 				person: PersonAux[j]
-				// 			}
-				// 			lstUsers.push(objUser);
-				// 		}	
-				// 	}
-					
-				// }
-				$("#ActiveOrders > tbody").html("");
-				console.log('lstJourneys.length '+lstJourneys.length);
-				for (var j = 0; j <lstJourneys.length; j++) {
-					for(var i=0;i<lstTrucks.length;i++){
-						console.log("i "+i);
-						console.log(lstTrucks[i].TRUCKID+"  "+lstJourneys[j].truckId)
-						if(lstTrucks[i].TRUCKID==lstJourneys[j].truckId){
-							console.log("lstUsers.length " +lstUsers.length);
-							for(var g=0;g<lstUsers.length;g++){
-								console.log("g "+g);
-								// console.log(lstUsers[g]);
-								// console.log(lstUsers[g].person.PERSONID+"  "+lstTrucks[i].PERSONID)
-								if(lstUsers[g].PERSONID==lstTrucks[i].PERSONID){
-									console.log("encontro");
-									driverS=g;
-									// console.log(driver.PERSONNAME+" "+DRIVER.PERSONLASTNAME);
-								}
+		socket.on('SelectPersons', function(data1){
+			console.log("SelectPersons");
+			lstUsers.length=0;
+			var PersonAux=[];
+			lstUsers=data1;
+			$("#ActiveOrders > tbody").html("");
+			console.log('lstJourneys.length '+lstJourneys.length);
+			console.log('lstTrucks.length '+lstTrucks.length);
+			for (var j = 0; j <lstJourneys.length; j++) {
+				for(var i=0;i<lstTrucks.length;i++){
+					console.log("i "+i);
+					console.log(lstTrucks[i].TRUCKID+"  "+lstJourneys[j].truckId)
+					if(lstTrucks[i].TRUCKID==lstJourneys[j].truckId){
+						console.log("lstUsers.length " +lstUsers.length);
+						for(var g=0;g<lstUsers.length;g++){
+							console.log("g "+g);
+							// console.log(lstUsers[g]);
+							// console.log(lstUsers[g].person.PERSONID+"  "+lstTrucks[i].PERSONID)
+							if(lstUsers[g].PERSONID==lstTrucks[i].PERSONID){
+								console.log("encontro");
+								driverS=g;
+								// console.log(driver.PERSONNAME+" "+DRIVER.PERSONLASTNAME);
 							}
 						}
 					}
-					// console.log('Importadores ' +lstImporters.length)
-					for (var i = 0; i < lstImporters.length; i++) {
-						// console.log("i= "+i+" "+lstImporters[i]);
-						// console.log(' lstJourneys[j].ImporterId: '+lstJourneys[j].ImporterId+' lstImporters[i].IMPORTERID: '+lstImporters[i].IMPORTERID);
-						if(lstJourneys[j].ImporterId==lstImporters[i].IMPORTERID){
-							// console.log('Importador seleccionado: '+lstImporters[i].IMPORTERNAME)
-							importerName=lstImporters[i].IMPORTERNAME;
-							// break;
-						}
-					}
-					for (var k = 0; k < lstRecyclingCenters.length; k++) {
-						// console.log("id centro de reciclaje "+lstRecyclingCenters[i].RecyclingCenterId+" "+lstJourneys[j].recyclingcenterid);
-						if(lstRecyclingCenters[k].RecyclingCenterId==lstJourneys[j].recyclingcenterid){
-							// console.log(lstRecyclingCenters[i].RECYCLINGCENTERID+" "+lstJourneys[j].RECYCLINGCENTERID);
-							RCName=lstRecyclingCenters[k].RecyclingCenterName;
-							break;
-						}
-					}
-					$('#ActiveOrders').append("<tbody><tr><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='ShowJourney("+j+")'>"+
-											lstJourneys[j].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].truckId+"</td><td onclick='ShowJourney("+j+")'>"+ lstUsers[driverS].PERSONNAME+" "+lstUsers[driverS].PERSONLASTNAME +"</td><td onclick='ShowJourney("+j+")'>"+RCName+
-											"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='' onclick='CurrentDate()'> <i class='fa fa-close'> </i> Suspender </a></td></tr><tbody>");  
 				}
-			})
-		// })
+				// console.log('Importadores ' +lstImporters.length)
+				for (var i = 0; i < lstImporters.length; i++) {
+					// console.log("i= "+i+" "+lstImporters[i]);
+					// console.log(' lstJourneys[j].ImporterId: '+lstJourneys[j].ImporterId+' lstImporters[i].IMPORTERID: '+lstImporters[i].IMPORTERID);
+					if(lstJourneys[j].ImporterId==lstImporters[i].IMPORTERID){
+						// console.log('Importador seleccionado: '+lstImporters[i].IMPORTERNAME)
+						importerName=lstImporters[i].IMPORTERNAME;
+						// break;
+					}
+				}
+				for (var k = 0; k < lstRecyclingCenters.length; k++) {
+					// console.log("id centro de reciclaje "+lstRecyclingCenters[i].RecyclingCenterId+" "+lstJourneys[j].recyclingcenterid);
+					if(lstRecyclingCenters[k].RecyclingCenterId==lstJourneys[j].recyclingcenterid){
+						// console.log(lstRecyclingCenters[i].RECYCLINGCENTERID+" "+lstJourneys[j].RECYCLINGCENTERID);
+						RCName=lstRecyclingCenters[k].RecyclingCenterName;
+						break;
+					}
+				}
+				$('#ActiveOrders').append("<tbody><tr><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='ShowJourney("+j+")'>"+
+										lstJourneys[j].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].truckId+"</td><td onclick='ShowJourney("+j+")'>"+ lstUsers[driverS].PERSONNAME+" "+lstUsers[driverS].PERSONLASTNAME +"</td><td onclick='ShowJourney("+j+")'>"+RCName+
+										"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='' onclick='CurrentDate()'> <i class='fa fa-close'> </i> Suspender </a></td></tr><tbody>");  
+			}
+		})
     }) 	
 
 	socket.emit('RequestAlerts','');

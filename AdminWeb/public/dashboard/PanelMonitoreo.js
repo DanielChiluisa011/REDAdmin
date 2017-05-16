@@ -11,7 +11,7 @@ var lstOrders=[];
 var lstAlerts=[];
 var lstTrucks=[];
 var lstUsers=[];
-var driver=any;
+var driver;
 var mapa=new GMaps({
     div: '#gmap_basic',
     lat: -0.191611,

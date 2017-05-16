@@ -381,7 +381,7 @@ io.on('connection', function(socket){
 	 			console.log("Insert Savejourney execute");
 	 		}
 	 	})
-
+		 
 		if(data.importer.ImporterMontlyQuotah-data.quantity>=0){
 			connection.query('UPDATE importer SET IMPORTERMONTLYQUOTAH = IMPORTERMONTLYQUOTAH - ?, IMPORTERQUOTAACCOMPLISHED = IMPORTERQUOTAACCOMPLISHED + ? WHERE IMPORTERID = ?',[data.quantity,data.quantity,data.importer.IMPORTERID],function(err, rows, fields) {
 		 		if(err){

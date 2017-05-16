@@ -348,7 +348,14 @@ io.on('connection', function(socket){
 	SaveNewUser(socket);
 
 	socket.on("RequestTrucks",function(msg){
-		SelectTrucks();
+		connection.query('SELECT * FROM trucks',function(error, result){
+		if(error){
+				throw error;
+			}else{
+				var lstTrucks=result;
+				io.emit('SelectTrucks',lstTrucks);
+		}
+		})
 	});
 	socket.on('NewOrder',function(data){
 		connection.query('INSERT INTO orders VALUES (?,?,?,?,?,?,?,?,?)',[,data.date,data.quantity,data.importer.DistributorId,data.waste.WasteONU,"Pendiente","General",null,null],function(err, rows, fields) {

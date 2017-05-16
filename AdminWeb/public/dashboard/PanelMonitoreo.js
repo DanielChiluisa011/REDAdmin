@@ -72,6 +72,7 @@ $(document).ready(function(data){
 			socket.emit("RequestDriver",lstJourneys[j].truckId);
 			socket.on("ResponseDriver",function(data){
 				driver=data;
+				console.log(i);
 				console.log(driver);
 			});
 			$('#ActiveOrders').append("<tbody><tr><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='ShowJourney("+j+")'>"+

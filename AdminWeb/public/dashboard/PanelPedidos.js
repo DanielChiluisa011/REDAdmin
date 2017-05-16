@@ -206,7 +206,7 @@ function showData1(i,TotalQuantity){
 	var Difference=lstImporters[0].IMPORTERMONTLYQUOTAH - TotalQuantity;
 	for (var i = 1; i < lstImporters.length; i++) {
 		console.log(lstImporters[i].IMPORTERNAME+' Direncia: '+Difference);
-		if(lstImporters[i].IMPORTERMONTLYQUOTAH - TotalQuantity<Difference && lstImporters[i].IMPORTERMONTLYQUOTAH!=0){
+		// if(lstImporters[i].IMPORTERMONTLYQUOTAH - TotalQuantity<Difference && lstImporters[i].IMPORTERMONTLYQUOTAH!=0){
 			Difference=lstImporters[i].IMPORTERMONTLYQUOTAH - TotalQuantity;
 			console.log(lstImporters[i].IMPORTERNAME+' Direncia: '+Difference);
 			ImporterSelectd=lstImporters[i];
@@ -215,7 +215,7 @@ function showData1(i,TotalQuantity){
 			$('#txtImporterRUC').val(ImporterSelectd.IMPORTERRUC);
 			$('#txtImporterAddress').val(ImporterSelectd.IMPORTERADDRESS);
 			$('#txtImporterPhone').val(ImporterSelectd.IMPORTERPHONE);
-		}
+		// }
 	}
 
 	$('#Orders').empty();

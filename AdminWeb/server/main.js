@@ -349,12 +349,12 @@ io.on('connection', function(socket){
 
 	socket.on("RequestTrucks",function(msg){
 		connection.query('SELECT * FROM trucks',function(error, result){
-		if(error){
+			if(error){
 				throw error;
 			}else{
-				var lstTrucks=result;
-				io.emit('SelectTrucks',lstTrucks);
-		}
+					var lstTrucks=result;
+					io.emit('SelectTrucks',lstTrucks);
+			}
 		})
 	});
 	socket.on('NewOrder',function(data){

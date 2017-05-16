@@ -76,7 +76,7 @@ $(document).ready(function(data){
 				console.log(lstJourneys.length);
 				console.log("J: "+j);
 				$('#ActiveOrders').append("<tbody><tr><td onclick='ShowJourney("+data.indx+")'>"+lstJourneys[data.indx].JourneyId+"</td><td onclick='ShowJourney("+data.indx+")'>"+
-									lstJourneys[data.indx].JourneyDate+"</td><td onclick='ShowJourney("+data.indx+")'>"+lstJourneys[data.indx].truckId+"</td><td onclick='ShowJourney("+data.indx+")'>"+ driver.PERSONNAME +"</td><td onclick='ShowJourney("+data.indx+")'>"+RCName+
+									lstJourneys[data.indx].JourneyDate+"</td><td onclick='ShowJourney("+data.indx+")'>"+lstJourneys[data.indx].truckId+"</td><td onclick='ShowJourney("+data.indx+")'>"+ data.driver.PERSONNAME +" "+data.driver.PERSONLASTNAME+"</td><td onclick='ShowJourney("+data.indx+")'>"+RCName+
 									"</td><td onclick='ShowJourney("+data.indx+")'>"+importerName+"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='' onclick='CurrentDate()'> <i class='fa fa-close'> </i> Suspender </a></td></tr><tbody>");  
 			});
 			console.log("sdfghjk");
@@ -226,7 +226,7 @@ function ShowJourney(i){
 		});
 	}else{
 		var waypnts=[];
-		for (var i = 0; i < RouteSelected.length; i++) {
+		for (var i = 1; i < RouteSelected.length; i++) {
 			waypnts.push({
 				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
 				stopover: false 

@@ -348,13 +348,13 @@ io.on('connection', function(socket){
 	SaveNewUser(socket);
 
 	socket.on("RequestDriver",function(obj){
-		console.log("RequestTrucks: "+obj.id+" indx"+obj.indx);
-		connection.query("SELECT PERSONID, PERSONNAME,PERSONLASTNAME,PERSONPHONE FROM person WHERE PERSONID =  (SELECT PERSONID FROM trucks WHERE TRUCKID='"+obj.id+"');",function(error, result){
+		// console.log("RequestTrucks: "+obj.id+" indx"+obj.indx);
+		connection.query("SELECT P.PERSONID, P.PERSONNAME,P.PERSONLASTNAME,P.PERSONPHONE,T.TRUCKID  FROM person P, trucks T WHERE P.PERSONID=T.PERSONID",function(error, result){
 			if(error){
 				throw error;
 			}else{
-					console.log(result[0])
-					socket.emit("ResponseDriver",{driver: result[0],indx:obj.indx});
+					console.log(result)
+					socket.emit("ResponseDriver",result);
 			}
 		})
 	});

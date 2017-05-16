@@ -20,7 +20,7 @@ var mapa=new GMaps({
 var UsersAux=[];
 var userMarker;
 $(document).ready(function(data){
-	socket.removeAllListeners();
+	// socket.removeAllListeners();
 	socket.on('SelectImporters', function(data){
 		lstImporters=[];
 	   	lstImporters=data;
@@ -69,20 +69,20 @@ $(document).ready(function(data){
 					break;
 				}
 			}
-			socket.emit("RequestDriver",{id: lstJourneys[j].truckId,indx: j});
-			socket.on("ResponseDriver",function(data){
-				driver=data;
-				console.log(lstJourneys.length);
-				console.log("J: "+j);
-				$('#ActiveOrders').append("<tbody><tr><td onclick='ShowJourney("+data.indx+")'>"+lstJourneys[data.indx].JourneyId+"</td><td onclick='ShowJourney("+data.indx+")'>"+
-									lstJourneys[data.indx].JourneyDate+"</td><td onclick='ShowJourney("+data.indx+")'>"+lstJourneys[data.indx].truckId+"</td><td onclick='ShowJourney("+data.indx+")'>"+ data.driver.PERSONNAME +" "+data.driver.PERSONLASTNAME+"</td><td onclick='ShowJourney("+data.indx+")'>"+RCName+
-									"</td><td onclick='ShowJourney("+data.indx+")'>"+importerName+"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='' onclick='CurrentDate()'> <i class='fa fa-close'> </i> Suspender </a></td></tr><tbody>");  
-			});
-			console.log("sdfghjk");
-			console.log(driver);
-			// $('#ActiveOrders').append("<tbody><tr><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='ShowJourney("+j+")'>"+
-			// 						lstJourneys[j].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].truckId+"</td><td onclick='ShowJourney("+j+")'>"+ +"</td><td onclick='ShowJourney("+j+")'>"+RCName+
-			// 						"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='' onclick='CurrentDate()'> <i class='fa fa-close'> </i> Suspender </a></td></tr><tbody>");  
+			// socket.emit("RequestDriver",{id: lstJourneys[j].truckId,indx: j});
+			// socket.on("ResponseDriver",function(data){
+			// 	driver=data;
+			// 	console.log(lstJourneys.length);
+			// 	console.log("J: "+j);
+			// 	$('#ActiveOrders').append("<tbody><tr><td onclick='ShowJourney("+data.indx+")'>"+lstJourneys[data.indx].JourneyId+"</td><td onclick='ShowJourney("+data.indx+")'>"+
+			// 						lstJourneys[data.indx].JourneyDate+"</td><td onclick='ShowJourney("+data.indx+")'>"+lstJourneys[data.indx].truckId+"</td><td onclick='ShowJourney("+data.indx+")'>"+ data.driver.PERSONNAME +" "+data.driver.PERSONLASTNAME+"</td><td onclick='ShowJourney("+data.indx+")'>"+RCName+
+			// 						"</td><td onclick='ShowJourney("+data.indx+")'>"+importerName+"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='' onclick='CurrentDate()'> <i class='fa fa-close'> </i> Suspender </a></td></tr><tbody>");  
+			// });
+			// console.log("sdfghjk");
+			// console.log(driver);
+			$('#ActiveOrders').append("<tbody><tr><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='ShowJourney("+j+")'>"+
+									lstJourneys[j].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].truckId+"</td><td onclick='ShowJourney("+j+")'>"+ +"</td><td onclick='ShowJourney("+j+")'>"+RCName+
+									"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='' onclick='CurrentDate()'> <i class='fa fa-close'> </i> Suspender </a></td></tr><tbody>");  
 		}
     }) 	
 

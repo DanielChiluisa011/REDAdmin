@@ -61,9 +61,9 @@ $(document).ready(function(data){
        	lstOrders=data;
 		socket.emit("RequestTrucks","");
 		socket.on('Selecttrucks',function(data){
-			lstTrucks=[]
+			lstTrucks=[];
 			lstTrucks=data;
-			console.log("camiones "+lstTrucks.length)
+			console.log("camiones "+lstTrucks.length);
 		});
 		// socket.on('Select Users', function(data){
 		// 	UsersAux=[];

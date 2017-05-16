@@ -19,7 +19,7 @@ var mapa=new GMaps({
 var UsersAux=[];
 var userMarker;
 $(document).ready(function(data){
-	
+	socket.removeAllListeners();
 	socket.on('SelectImporters', function(data){
 		lstImporters=[];
 	   	lstImporters=data;

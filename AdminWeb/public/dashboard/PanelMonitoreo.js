@@ -81,6 +81,7 @@ $(document).ready(function(data){
 					
 				// }
 				$("#ActiveOrders > tbody").html("");
+				console.log('lstJourneys.length '+lstJourneys.length);
 				for (var j = 0; j <lstJourneys.length; j++) {
 					for(var i=0;i<lstTrucks.length;i++){
 						console.log("i "+i);

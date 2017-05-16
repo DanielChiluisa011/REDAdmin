@@ -347,14 +347,14 @@ io.on('connection', function(socket){
 	UpdateUser(socket);
 	SaveNewUser(socket);
 
-	socket.on("RequestTrucks",function(msg){
-		console.log("RequestTrucks");
-		connection.query('SELECT * FROM trucks',function(error, result){
+	socket.on("RequestTrucks",function(truckId){
+		console.log("RequestTrucks: "+truckId);
+		connection.query("SELECT PERSONID, PERSONNAME,PERSONLASTNAME,PERSONPHONE FROM person WHERE PERSONID =  (SELECT PERSONID FROM trucks WHERE TRUCKID="+truckId+");",function(error, result){
 			if(error){
 				throw error;
 			}else{
-					console.log("Emit SelectTrucks")
-					socket.emit("selecttrucks",result);
+					console.log(result)
+					socket.emit("ResponseDriver",result);
 			}
 		})
 	});

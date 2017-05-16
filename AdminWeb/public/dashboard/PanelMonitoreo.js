@@ -82,26 +82,26 @@ $(document).ready(function(data){
        	lstOrders=[];
        	lstOrders=data;
 		
-		socket.on('Select Users', function(data){
-			UsersAux=[];
-			UsersAux=data;
+		// socket.on('Select Users', function(data){
+		// 	UsersAux=[];
+		// 	UsersAux=data;
 			socket.on('SelectPersons', function(data1){
 				lstUsers.length=0;
 				var PersonAux=[];
-				PersonAux=data1;
-				for (var j = 0; j < PersonAux.length; j++) {
-					for (var i = 0; i < UsersAux.length; i++) {
-						// console.log(UsersAux[i].PERSONID+"    "+PersonAux[j].PERSONID)
-						if(UsersAux[i].PERSONID==PersonAux[j].PERSONID){
-							var objUser={
-								user: UsersAux[i],
-								person: PersonAux[j]
-							}
-							lstUsers.push(objUser);
-						}	
-					}
+				lstUsers=data1;
+				// for (var j = 0; j < PersonAux.length; j++) {
+				// 	for (var i = 0; i < UsersAux.length; i++) {
+				// 		// console.log(UsersAux[i].PERSONID+"    "+PersonAux[j].PERSONID)
+				// 		if(UsersAux[i].PERSONID==PersonAux[j].PERSONID){
+				// 			var objUser={
+				// 				user: UsersAux[i],
+				// 				person: PersonAux[j]
+				// 			}
+				// 			lstUsers.push(objUser);
+				// 		}	
+				// 	}
 					
-				}
+				// }
 				$("#ActiveOrders > tbody").html("");
 				for (var j = 0; j <lstJourneys.length; j++) {
 					
@@ -116,7 +116,7 @@ $(document).ready(function(data){
 								console.log(lstUsers[g].person.PERSONID+"  "+lstTrucks[i].PERSONID)
 								if(lstUsers[g].person.PERSONID==lstTrucks[i].PERSONID){
 									console.log("encontro");
-									driver=lstUsers[g].person;
+									driver=lstUsers[g];
 									console.log(driver.PERSONNAME+" "+DRIVER.PERSONLASTNAME);
 								}
 							}
@@ -145,7 +145,7 @@ $(document).ready(function(data){
 											"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='' onclick='CurrentDate()'> <i class='fa fa-close'> </i> Suspender </a></td></tr><tbody>");  
 				}
 			})
-		})
+		// })
     }) 	
 
 	socket.emit('RequestAlerts','');

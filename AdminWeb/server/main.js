@@ -347,7 +347,9 @@ io.on('connection', function(socket){
 	UpdateUser(socket);
 	SaveNewUser(socket);
 
-
+	socket.on("RequestTrucks",function(msg){
+		SelectTrucks();
+	});
 	socket.on('NewOrder',function(data){
 		connection.query('INSERT INTO orders VALUES (?,?,?,?,?,?,?,?,?)',[,data.date,data.quantity,data.importer.DistributorId,data.waste.WasteONU,"Pendiente","General",null,null],function(err, rows, fields) {
 	 		if(err){

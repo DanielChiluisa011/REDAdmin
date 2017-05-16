@@ -48,7 +48,7 @@ $(document).ready(function(data){
 	})
 
 	socket.on('SelectActiveOrders', function(data){
-		// socket.removeAllListeners();
+		socket.removeAllListeners();
 		console.log("SelectActiveOrders");
        	var importerName;
        	var RCName;
@@ -60,7 +60,7 @@ $(document).ready(function(data){
 			for (var i = 0; i < lstImporters.length; i++) {
 				if(lstJourneys[j].ImporterId==lstImporters[i].IMPORTERID){
 					importerName=lstImporters[i].IMPORTERNAME;
-					// break;
+					break;
 				}
 			}
 			for (var k = 0; k < lstRecyclingCenters.length; k++) {

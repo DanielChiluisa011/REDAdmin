@@ -11,6 +11,7 @@ var lstOrders=[];
 var lstAlerts=[];
 var lstTrucks=[];
 var lstUsers=[];
+var driver=any;
 var mapa=new GMaps({
     div: '#gmap_basic',
     lat: -0.191611,
@@ -51,7 +52,6 @@ $(document).ready(function(data){
 		console.log("SelectActiveOrders");
        	var importerName;
        	var RCName;
-		var driver;
        	var waste;
        	lstOrders=[];
        	lstOrders=data;
@@ -75,7 +75,7 @@ $(document).ready(function(data){
 				console.log(driver);
 			});
 			console.log("sdfghjk");
-			
+			console.log(driver);
 			$('#ActiveOrders').append("<tbody><tr><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='ShowJourney("+j+")'>"+
 									lstJourneys[j].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].truckId+"</td><td onclick='ShowJourney("+j+")'>"+ +"</td><td onclick='ShowJourney("+j+")'>"+RCName+
 									"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='' onclick='CurrentDate()'> <i class='fa fa-close'> </i> Suspender </a></td></tr><tbody>");  

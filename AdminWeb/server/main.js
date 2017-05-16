@@ -349,7 +349,7 @@ io.on('connection', function(socket){
 
 	socket.on("RequestDriver",function(truckId){
 		console.log("RequestTrucks: "+truckId);
-		connection.query("SELECT PERSONID, PERSONNAME,PERSONLASTNAME,PERSONPHONE FROM person WHERE PERSONID =  (SELECT PERSONID FROM trucks WHERE TRUCKID="+truckId+");",function(error, result){
+		connection.query("SELECT PERSONID, PERSONNAME,PERSONLASTNAME,PERSONPHONE FROM person WHERE PERSONID =  (SELECT PERSONID FROM trucks WHERE TRUCKID='"+truckId+"');",function(error, result){
 			if(error){
 				throw error;
 			}else{

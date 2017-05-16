@@ -74,6 +74,7 @@ $(document).ready(function(data){
 			socket.on("ResponseDriver",function(data){
 				driver=data;
 				console.log(lstJourneys.length);
+				console.log("J: "+j)
 				$('#ActiveOrders').append("<tbody><tr><td onclick='ShowJourney("+j+")'>"+lstJourneys[0].JourneyId+"</td><td onclick='ShowJourney("+j+")'>"+
 									lstJourneys[0].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+lstJourneys[0].truckId+"</td><td onclick='ShowJourney("+j+")'>"+ driver.PERSONNAME +"</td><td onclick='ShowJourney("+j+")'>"+RCName+
 									"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='' onclick='CurrentDate()'> <i class='fa fa-close'> </i> Suspender </a></td></tr><tbody>");  

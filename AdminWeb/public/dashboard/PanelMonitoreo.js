@@ -51,7 +51,7 @@ $(document).ready(function(data){
 		console.log("SelectActiveOrders");
        	var importerName;
        	var RCName;
-		var driver;
+		driver;
        	var waste;
        	lstOrders=[];
        	lstOrders=data;
@@ -70,8 +70,8 @@ $(document).ready(function(data){
 				}
 			}
 			socket.emit("RequestDriver",lstJourneys[j].truckId);
-			driver=socket.on("ResponseDriver",function(data){
-				return data;
+			socket.on("ResponseDriver",function(data){
+				driver=data;
 			});
 			console.log("sdfghjk");
 			console.log(driver);

@@ -51,7 +51,7 @@ $(document).ready(function(data){
 		console.log("SelectActiveOrders");
        	var importerName;
        	var RCName;
-		driver;
+		var driver;
        	var waste;
        	lstOrders=[];
        	lstOrders=data;

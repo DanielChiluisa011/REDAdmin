@@ -59,7 +59,11 @@ $(document).ready(function(data){
        	var waste;
        	lstOrders=[];
        	lstOrders=data;
-		
+		socket.on('SelectTrucks',function(data){
+			lstTrucks=[]
+			lstTrucks=data;
+			console.log("camiones "+lstTrucks.length)
+		});
 		// socket.on('Select Users', function(data){
 		// 	UsersAux=[];
 		// 	UsersAux=data;

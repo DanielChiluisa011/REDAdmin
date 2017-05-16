@@ -19,30 +19,6 @@ var mapa=new GMaps({
 var UsersAux=[];
 var userMarker;
 $(document).ready(function(data){
-
-	socket.on('Select Users', function(data){
-		UsersAux=[];
-		UsersAux=data;
-		socket.on('SelectPersons', function(data1){
-			lstUsers.length=0;
-			var PersonAux=[];
-			PersonAux=data1;
-			for (var j = 0; j < PersonAux.length; j++) {
-				for (var i = 0; i < UsersAux.length; i++) {
-					// console.log(UsersAux[i].PERSONID+"    "+PersonAux[j].PERSONID)
-					if(UsersAux[i].PERSONID==PersonAux[j].PERSONID){
-						var objUser={
-							user: UsersAux[i],
-							person: PersonAux[j]
-						}
-						lstUsers.push(objUser);
-					}	
-				}
-				
-			}
-		})
-	})
-
 	socket.on('SelectTrucks',function(data){
 		lstTrucks=[]
 		lstTrucks=data;
@@ -69,6 +45,7 @@ $(document).ready(function(data){
        	lstDistributors=data;
    	})
 	socket.on('SelectJourneys', function(data){
+		console.log('SelectJourneys');
 		lstJourneys=[];
 		lstJourneys=data;
 	})
@@ -105,7 +82,6 @@ $(document).ready(function(data){
 				// }
 				$("#ActiveOrders > tbody").html("");
 				for (var j = 0; j <lstJourneys.length; j++) {
-					
 					for(var i=0;i<lstTrucks.length;i++){
 						console.log("i "+i);
 						console.log(lstTrucks[i].TRUCKID+"  "+lstJourneys[j].truckId)

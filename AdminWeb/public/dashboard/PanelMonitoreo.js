@@ -56,7 +56,7 @@ $(document).ready(function(data){
        	lstOrders=[];
        	lstOrders=data;
 		for (var j = 0; j <lstJourneys.length; j++) {
-			// socket.removeAllListeners();
+			socket.removeAllListeners();
 			for (var i = 0; i < lstImporters.length; i++) {
 				if(lstJourneys[j].ImporterId==lstImporters[i].IMPORTERID){
 					importerName=lstImporters[i].IMPORTERNAME;

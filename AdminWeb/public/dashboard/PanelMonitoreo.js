@@ -72,15 +72,12 @@ $(document).ready(function(data){
 			socket.emit("RequestDriver",lstJourneys[j].truckId);
 			socket.on("ResponseDriver",function(data){
 				driver=data;
-				console.log(i);
+				console.log("J "+j);
 				console.log(driver);
-				$('#ActiveOrders').append("<tbody><tr><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='ShowJourney("+j+")'>"+
+			});
+			$('#ActiveOrders').append("<tbody><tr><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='ShowJourney("+j+")'>"+
 									lstJourneys[j].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].truckId+"</td><td onclick='ShowJourney("+j+")'>"+ driver.PERSONNAME +" "+driver.PERSONLASTNAME+"</td><td onclick='ShowJourney("+j+")'>"+RCName+
 									"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='' onclick='CurrentDate()'> <i class='fa fa-close'> </i> Suspender </a></td></tr><tbody>");  
-			});
-			// $('#ActiveOrders').append("<tbody><tr><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='ShowJourney("+j+")'>"+
-			// 						lstJourneys[j].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].truckId+"</td><td onclick='ShowJourney("+j+")'>"+ driver.PERSONNAME +" "+driver.PERSONLASTNAME+"</td><td onclick='ShowJourney("+j+")'>"+RCName+
-			// 						"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='' onclick='CurrentDate()'> <i class='fa fa-close'> </i> Suspender </a></td></tr><tbody>");  
 		}
     }) 	
 

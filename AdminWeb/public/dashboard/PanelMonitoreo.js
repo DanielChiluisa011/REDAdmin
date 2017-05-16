@@ -19,11 +19,7 @@ var mapa=new GMaps({
 var UsersAux=[];
 var userMarker;
 $(document).ready(function(data){
-	socket.on('SelectTrucks',function(data){
-		lstTrucks=[]
-		lstTrucks=data;
-		console.log("camiones "+lstTrucks.length)
-	});
+	
 	socket.on('SelectImporters', function(data){
 		lstImporters=[];
 	   	lstImporters=data;
@@ -44,6 +40,11 @@ $(document).ready(function(data){
 		lstDistributors=[];
        	lstDistributors=data;
    	})
+	socket.on('SelectTrucks',function(data){
+	lstTrucks=[]
+	lstTrucks=data;
+	console.log("camiones "+lstTrucks.length)
+	});
 	socket.on('SelectJourneys', function(data){
 		console.log('SelectJourneys');
 		lstJourneys=[];

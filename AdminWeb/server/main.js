@@ -348,8 +348,8 @@ io.on('connection', function(socket){
 	SaveNewUser(socket);
 
 	socket.on("RequestDriver",function(obj){
-		console.log("RequestTrucks: "+truckId+" indx"+obj.indx);
-		connection.query("SELECT PERSONID, PERSONNAME,PERSONLASTNAME,PERSONPHONE FROM person WHERE PERSONID =  (SELECT PERSONID FROM trucks WHERE TRUCKID='"+obj.truckId+"');",function(error, result){
+		console.log("RequestTrucks: "+id+" indx"+obj.indx);
+		connection.query("SELECT PERSONID, PERSONNAME,PERSONLASTNAME,PERSONPHONE FROM person WHERE PERSONID =  (SELECT PERSONID FROM trucks WHERE TRUCKID='"+obj.id+"');",function(error, result){
 			if(error){
 				throw error;
 			}else{

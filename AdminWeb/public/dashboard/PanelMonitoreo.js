@@ -76,6 +76,8 @@ $(document).ready(function(data){
 				return data;
 				
 			});
+			console.log("sdfghjk");
+			console.log(driver);
 			$('#ActiveOrders').append("<tbody><tr><td onclick='ShowJourney("+j+")'>"+this.lstJourneys[j].JourneyId+"</td><td onclick='ShowJourney("+j+")'>"+
 									this.lstJourneys[j].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+this.lstJourneys[j].truckId+"</td><td onclick='ShowJourney("+j+")'>"+ +"</td><td onclick='ShowJourney("+j+")'>"+RCName+
 									"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='' onclick='CurrentDate()'> <i class='fa fa-close'> </i> Suspender </a></td></tr><tbody>");  

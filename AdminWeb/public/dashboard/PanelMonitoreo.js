@@ -86,6 +86,7 @@ $(document).ready(function(data){
 		// 	UsersAux=[];
 		// 	UsersAux=data;
 			socket.on('SelectPersons', function(data1){
+				console.log("SelectPersons");
 				lstUsers.length=0;
 				var PersonAux=[];
 				lstUsers=data1;

@@ -245,7 +245,8 @@ function showData1(i,TotalQuantity){
 		lstIdOrders.push(lstJourney[k][j].order.OrderId);
 	}
 	$('#txtNewJourneyDate').val(lstJourney[k][0].order.ORDERDEADLINE)
-	TQ=TotalQuantity;
+	$('#txtNewJourneyDate').val(CurrentDate());
+;	TQ=TotalQuantity;
 }
 
 function RemoveRow () {

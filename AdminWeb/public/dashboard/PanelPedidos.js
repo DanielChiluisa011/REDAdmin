@@ -103,10 +103,10 @@ $(document).ready(function(){
        	lstOrders=[];
        	lstOrders=data;
 		socket.emit("RequestMaxOrder","");
-       	socket.on('ResponseMaxOrder',function(data){
-			   alert(data);
+       	socket.on("ResponseMaxOrder",function(data){
+			alert(data);
        		$('#txtNewOrderNumber').val(data);	
-       	})
+       	});
 		
        	lstObjOrders=[];
        	$("#orderTable > tbody").html("");

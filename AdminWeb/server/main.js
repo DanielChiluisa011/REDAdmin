@@ -330,6 +330,16 @@ io.on('connection', function(socket){
 	 	})
 	});
       //Prueba socket en app movil*****************************
+	socket.on("RequestMaxOrder",function(data){
+		connection.query('SELECT max(OrderId) numMax FROM orders',function(error, result){
+			if(error){
+				throw error;
+			}else{
+				var numOrder=result;
+				socket.emit('ResponseMaxOrder',numOrder[0].numMax+1);
+			}
+		})
+	})
     SelectRecyclingCenters();
 	SelectImporters();
     SelectMaxOrder(socket)

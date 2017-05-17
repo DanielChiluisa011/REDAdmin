@@ -102,9 +102,11 @@ $(document).ready(function(){
        	var waste;
        	lstOrders=[];
        	lstOrders=data;
-       	socket.on('SelectMaxOrder',function(data){
+		socket.emit("RequestMaxOrder","");
+       	socket.on('ResponseMaxOrder',function(data){
        		$('#txtNewOrderNumber').val(data);	
        	})
+		
        	lstObjOrders=[];
        	$("#orderTable > tbody").html("");
        	for (var i = 0; i <lstOrders.length; i++) {
@@ -135,6 +137,7 @@ $(document).ready(function(){
        	if(lstOrders.length!=0){
        		CreateJourney();	
        	}
+		   console.log()
 		for (var i = 0; i < lstJourney.length; i++) {
 			var TotalQuantity=0;
 			var D='';

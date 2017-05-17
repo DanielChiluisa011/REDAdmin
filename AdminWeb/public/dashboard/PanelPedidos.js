@@ -25,6 +25,7 @@ var ImporterSelectd;
 var lstIdOrders=[];
 var TQ;
 $(document).ready(function(){
+	$('#txtNewJourneyDate').val(CurrentDate());
 	//socket managment
 	// $('#txtNewOrderDate').val(CurrentDate());
 	// $('#txtUpdateOrderDate').val(CurrentDate());

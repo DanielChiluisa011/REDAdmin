@@ -134,7 +134,7 @@ var MapsGoogle = function () {
     };
 }();
 function ShowJourney(i){
-
+	
 	var ObjJourney;
 	jQuery(document).ready(function() {
 	    MapsGoogle.init();

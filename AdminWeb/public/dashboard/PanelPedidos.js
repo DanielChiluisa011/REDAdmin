@@ -104,6 +104,7 @@ $(document).ready(function(){
        	lstOrders=data;
 		socket.emit("RequestMaxOrder","");
        	socket.on('ResponseMaxOrder',function(data){
+			   alert(data);
        		$('#txtNewOrderNumber').val(data);	
        	})
 		

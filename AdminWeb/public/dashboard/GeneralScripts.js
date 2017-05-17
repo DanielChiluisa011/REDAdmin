@@ -65,4 +65,7 @@ function sumNotifications(){
 	$('#NewNotifi').html(" "+totalNotifications);
 }
 
+socket.on('NearNotificationToAdmin',function(data){
+    $.notific8("El conductor está por llegar al distribuidor"+data);
+})
 

@@ -329,6 +329,10 @@ io.on('connection', function(socket){
 	 		}
 	 	})
 	});
+	socket.on('NearNotification',function(data){
+          io.emit('NearNotificationToAdmin',data);
+          SendNotificationAlert(socket);
+      });
       //Prueba socket en app movil*****************************
 	socket.on("RequestMaxOrder",function(data){
 		connection.query('SELECT max(OrderId) numMax FROM orders',function(error, result){

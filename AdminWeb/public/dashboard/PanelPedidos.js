@@ -280,7 +280,7 @@ function ShowData(i){
 	$('#txtRecyclingCenterAddress').val(lstRecyclingCenters[$("#cmbRecyclingCenters option:selected").index()-1].RecyclingCenterAddress);
 	$('#txtRecyclingCenterPhone').val(lstRecyclingCenters[$("#cmbRecyclingCenters option:selected").index()-1].RecyclingCenterPhone);
 	LocateDistributors(i);
-	$("#cmbRecyclingCenters").removeAttr("disabled");
+	//$("#cmbRecyclingCenters").removeAttr("disabled");
 	finishPosition={
 		CoordX: lstRecyclingCenters[$("#cmbRecyclingCenters option:selected").index()-1].CoordX,
 		CoordY: lstRecyclingCenters[$("#cmbRecyclingCenters option:selected").index()-1].CoordY

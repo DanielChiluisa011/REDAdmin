@@ -46,7 +46,10 @@ $(document).ready(function(data){
 		lstJourneys=[];
 		lstJourneys=data;
 	})
-
+	socket.on("SelectTrucks",function(data){
+		lstTrucks=[];
+		lstTrucks=data;
+	})
 	socket.on('SelectActiveOrders', function(data){
 		// socket.removeAllListeners();
 		console.log("SelectActiveOrders");

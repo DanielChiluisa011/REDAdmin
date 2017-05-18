@@ -315,14 +315,14 @@ io.on('connection', function(socket){
 									console.log(objUser.person);
 									console.log(objUser.user);
 									
-								}
-							}
-						}
+								
+							
+						
 						io.emit('SelectUserData',objUser);
 			       }
 				})
 	       }
-		
+		})
       });
 	  
 	  socket.on('UpdateDistributor',function(data){

@@ -85,9 +85,9 @@ $(document).ready(function(data){
 			// });
 			// console.log("sdfghjk");
 			// console.log(driver);
-			$('#ActiveOrders').append("<tbody><tr><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='ShowJourney("+j+")'>"+
-									lstJourneys[j].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].truckId+"</td><td onclick='ShowJourney("+j+")'>"+RCName+
-									"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td></tr><tbody>");  
+			$('#ActiveOrders').append("<tbody><tr><td onclick='ShowRouteTest("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='ShowRouteTest("+j+")'>"+
+									lstJourneys[j].JourneyDate+"</td><td onclick='ShowRouteTest("+j+")'>"+lstJourneys[j].truckId+"</td><td onclick='ShowRouteTest("+j+")'>"+RCName+
+									"</td><td onclick='ShowRouteTest("+j+")'>"+importerName+"</td></tr><tbody>");  
 		}
 		socket.removeListener("SelectActiveOrders");
 			
@@ -141,8 +141,22 @@ var MapsGoogle = function () {
 
     };
 }();
+
+function ShowRouteTest(i){
+	var ObjJourney = lstJourneys[i];
+	var AuxlstOrders=[];
+ 	var RouteSelected=[];
+ 	for (var j = 0; j < lstOrders.length; j++) {
+ 		if(lstOrders[j].JourneyId==lstJourneys[i].JourneyId){
+ 			AuxlstOrders.push(lstOrders[j])
+ 		}	
+ 	}
+	for(var k=0;k<AuxlstOrders.length;k++){
+		console.log(AuxlstOrders[k].DISTRIBUTORID+" "+AuxlstOrders[k].JOURNEYID);
+	}
+}
 function ShowJourney(i){
-	socket.removeAllListeners();
+	// socket.removeAllListeners();
 	var ObjJourney;
 	jQuery(document).ready(function() {
 	    MapsGoogle.init();

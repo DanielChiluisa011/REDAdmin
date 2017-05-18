@@ -348,7 +348,7 @@ io.on('connection', function(socket){
 	SelectImporters();
     SelectMaxOrder(socket)
 	SelectJourneys();
-	SelectActiveOrders();
+	SelectActiveOrders(socket);
 	SelectUsers();
 	selectWaste();
 	SelectPersons();
@@ -616,14 +616,14 @@ function SelectOrders(){
 	})
 }
 
-function SelectActiveOrders(){
+function SelectActiveOrders(socket){
 	connection.query("SELECT OrderId,OrderDate,OrderQuantity,DistributorId,WasteONU,OrderState,OrderType,DATE_FORMAT(OrderDeadLine ,'%Y-%m-%d') AS OrderDeadLine,JourneyId FROM orders WHERE OrderState like 'En Proceso' or OrderState like 'Completado' ORDER BY OrderDeadLine ASC",function(error, result){
 		if(error){
 		    throw error;
 		}else{
 		  	var lstOrders=result;
 		  	console.log("SelectActiveOrders");
-			io.emit('SelectActiveOrders',lstOrders);
+			socket.emit('SelectActiveOrders',lstOrders);
        }
 	})
 }

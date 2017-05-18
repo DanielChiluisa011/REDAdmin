@@ -28,6 +28,7 @@ $(document).ready(function(data){
 			//    console.log(lstImporters[i])
 		   }
 	})
+	
 	socket.on('selectWaste', function(data){
 		lstWaste=[];
        	lstWaste=data;
@@ -51,7 +52,7 @@ $(document).ready(function(data){
 		lstTrucks=data;
 	})
 	socket.on('SelectActiveOrders', function(data){
-		// socket.removeAllListeners();
+		// sock 	et.removeAllListeners();
 		console.log("SelectActiveOrders");
        	var importerName;
        	var RCName;
@@ -87,7 +88,8 @@ $(document).ready(function(data){
 									lstJourneys[j].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].truckId+"</td><td onclick='ShowJourney("+j+")'>"+RCName+
 									"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td></tr><tbody>");  
 		}
-    }) 	
+    }) 
+	socket.removeListener("SelectActiveOrders");	
 
 	socket.emit('RequestAlerts','');
 
@@ -272,7 +274,7 @@ function ShowJourney(i){
 					icon: '../iconos/truck.png',
 					animation: google.maps.Animation.BOUNCE,
 					infoWindow: {
-						content: '<strong>VIAJE</strong><br><strong>'+data.user.person.PersonName+' '+data.user.person.PersonLastName+'<strong/>'
+						content: '<strong>VIAJE</strong><br><strong>'+data.user.person.PERSONNAME+' '+data.user.person.PERSONLASTNAME+'<strong/>'
 					}
 				});
 				var Aux={

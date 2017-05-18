@@ -147,6 +147,7 @@ function ShowRouteTest(i){
 	var AuxlstOrders=[];
  	var RouteSelected=[];
  	for (var j = 0; j < lstOrders.length; j++) {
+		  console.log(lstOrders[j].JourneyId+"  "+lstJourneys[i].JourneyId)
  		if(lstOrders[j].JourneyId==lstJourneys[i].JourneyId){
  			AuxlstOrders.push(lstOrders[j])
  		}	

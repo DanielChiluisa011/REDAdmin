@@ -340,6 +340,24 @@ io.on('connection', function(socket){
 	  socket.on('RequestActiveOrders',function(){
 	  	SelectActiveOrders();
 	  })
+
+	  socket.on('AppUserUpdate',function(data){
+		connection.query('UPDATE person SET PERSONNAME ="'+data.name+'", PERSONLASTNAME="'+data.lastName+'", PERSONPHONE="'+data.phone+'", PERSONADDRESS="'+data.address+'", PERSONCIRUC="'+data.ruc+'" WHERE PERSONID = "'+data.personid+'"',function(err, rows, fields) {
+	 		if(err){
+	 			console.log("Error "+ err.message);
+	 		}else{
+	 			console.log("Person update excecuted");
+	 		}
+	 	});
+
+	 	connection.query('UPDATE users SET USERPASSWORD = "'+data.password+'", USEREMAIL = "'+data.email+'" WHERE PERSONID="'+data.personid+'"',function(err, rows, fields) {
+	 		if(err){
+	 			console.log("Error "+ err.message);
+	 		}else{
+	 			console.log("User update excecuted");
+	 		}
+	 	});
+	});
 	//   socket.on('RequestJourney',function(data){
     //   		connection.query("select * from journey WHERE journeyId = "+data+";",function(error, result){
 	// 			if(error){

@@ -146,14 +146,26 @@ function ShowRouteTest(i){
 	var ObjJourney = lstJourneys[i];
 	var AuxlstOrders=[];
  	var RouteSelected=[];
+	console.log("Viaje seleccionado");
  	for (var j = 0; j < lstOrders.length; j++) {
 		  console.log(lstOrders[j].JourneyId+"  "+lstJourneys[i].JourneyId)
  		if(lstOrders[j].JourneyId==lstJourneys[i].JourneyId){
  			AuxlstOrders.push(lstOrders[j])
  		}	
  	}
+	 console.log("ordenes dentro del viaje")
 	for(var k=0;k<AuxlstOrders.length;k++){
 		console.log(AuxlstOrders[k].DISTRIBUTORID+" "+AuxlstOrders[k].JOURNEYID);
+	}
+
+	for(var j=0;j<AuxlstOrders.length;j++){
+		for(var k=0;k<lstDistributors.length;k++){
+			if(AuxlstOrders[j].DISTRIBUTORID==lstDistributors[k].DISTRIBUTORID){
+				RouteSelected.push(lstDistributors[k]);
+				console.log("Distribuidor dentro de la ruta")
+				console.log(lstDistributors[k]);
+			}
+		}
 	}
 }
 function ShowJourney(i){

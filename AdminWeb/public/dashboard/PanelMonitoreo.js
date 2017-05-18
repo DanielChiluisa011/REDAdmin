@@ -146,11 +146,13 @@ function ShowRouteTest(i){
 	var ObjJourney = lstJourneys[i];
 	var AuxlstOrders=[];
  	var RouteSelected=[];
-	console.log("Viaje seleccionado");
+	console.log("Viaje seleccionado "+lstJourneys[i].JOURNEYID);
  	for (var j = 0; j < lstOrders.length; j++) {
 		  console.log("lstOrders[j].JourneyId: "+lstOrders[j].JourneyId+" lstJourneys[i].JourneyId: "+lstJourneys[i].JourneyId)
  		if(lstOrders[j].JourneyId==lstJourneys[i].JourneyId){
  			AuxlstOrders.push(lstOrders[j])
+			 console.log("Orden seleccionada");
+			 console.log(lstOrders[j]);
  		}	
  	}
 	 console.log("ordenes dentro del viaje")

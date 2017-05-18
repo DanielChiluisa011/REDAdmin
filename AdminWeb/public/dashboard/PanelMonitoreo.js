@@ -146,7 +146,7 @@ function ShowRouteTest(i){
 	var ObjJourney = lstJourneys[i];
 	var AuxlstOrders=[];
  	var RouteSelected=[];
-	console.log("Viaje seleccionado "+lstJourneys[i].JOURNEYID);
+	console.log("Viaje seleccionado "+lstJourneys[i].JourneyId);
  	for (var j = 0; j < lstOrders.length; j++) {
 		  console.log("lstOrders[j].JourneyId: "+lstOrders[j].JourneyId+" lstJourneys[i].JourneyId: "+lstJourneys[i].JourneyId)
  		if(lstOrders[j].JourneyId==lstJourneys[i].JourneyId){
@@ -157,12 +157,12 @@ function ShowRouteTest(i){
  	}
 	 console.log("ordenes dentro del viaje")
 	for(var k=0;k<AuxlstOrders.length;k++){
-		console.log("AuxlstOrders[k].DISTRIBUTORID: "+AuxlstOrders[k].DISTRIBUTORID+" AuxlstOrders[k].JOURNEYID"+AuxlstOrders[k].JOURNEYID);
+		console.log("AuxlstOrders[k].DISTRIBUTORID: "+AuxlstOrders[k].DistributorId+" AuxlstOrders[k].JOURNEYID"+AuxlstOrders[k].JourneyId);
 	}
 	console.log("Distribuidor dentro de la ruta")
 	for(var j=0;j<AuxlstOrders.length;j++){
 		for(var k=0;k<lstDistributors.length;k++){
-			if(AuxlstOrders[j].DISTRIBUTORID==lstDistributors[k].DISTRIBUTORID){
+			if(AuxlstOrders[j].DistributorId==lstDistributors[k].DistributorId){
 				RouteSelected.push(lstDistributors[k]);
 				
 				console.log(lstDistributors[k]);

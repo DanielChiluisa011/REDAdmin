@@ -143,6 +143,9 @@ var MapsGoogle = function () {
 }();
 
 function ShowRouteTest(i){
+	jQuery(document).ready(function() {
+	    MapsGoogle.init();
+	});
 	var ObjJourney = lstJourneys[i];
 	var AuxlstOrders=[];
  	var RouteSelected=[];
@@ -188,6 +191,71 @@ function ShowRouteTest(i){
 				    }
 				});
 
+	}
+	for (var i = 0; i < lstRecyclingCenters.length; i++) {
+		if(lstRecyclingCenters[i].RecyclingCenterId==ObjJourney.recyclingcenterid){
+			var finishPosition=lstRecyclingCenters[i];
+			mapa.addMarker({
+			   	lat: lstRecyclingCenters[i].CoordX,
+			   	lng: lstRecyclingCenters[i].CoordY,
+			   	title: 'Centro de Distribución',
+			   	icon: '../iconos/recycle.png',
+			   	infoWindow: {
+	                content: '<div id="content"><strong>'+lstRecyclingCenters[i].RecyclingCenterName+'</strong><br>'
+	                			+'<label>'+lstRecyclingCenters[i].RecyclingCenterAddress+'</label><br>'
+	                		+'</div>'
+	            }
+			});
+		}
+	}
+
+	if(RouteSelected.length == 1){
+		mapa.travelRoute({
+		    origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
+		    destination: [finishPosition.CoordX,finishPosition.CoordY],
+		    travelMode: 'driving',
+		    waypoints: waypnts,
+		  	optimizeWaypoints: true,
+		  	provideRouteAlternatives: true,
+		    step: function (e) {
+		        // $('#gmap_routes_instructions').append('<li>' + e.instructions + '</li>');
+		        // $('#gmap_routes_instructions li:eq(' + e.step_number + ')').fadeIn(500, function () {
+		            mapa.drawPolyline({
+		                path: e.path,
+		                strokeColor: '#131540',
+		                strokeOpacity: 0.6,
+		                strokeWeight: 6
+		            });
+		        // });
+		    }
+		});
+	}else{
+		var waypnts=[];
+		for (var i = 1; i < RouteSelected.length; i++) {
+			waypnts.push({
+				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
+				stopover: false 
+			});
+		}
+		mapa.travelRoute({
+	        origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
+	        destination: [finishPosition.CoordX,finishPosition.CoordY],
+	        travelMode: 'driving',
+	        waypoints: waypnts,
+	      	optimizeWaypoints: true,
+	      	provideRouteAlternatives: true,
+	        step: function (e) {
+	            // $('#gmap_routes_instructions').append('<li>' + e.instructions + '</li>');
+	            //$('#gmap_routes_instructions li:eq(' + e.step_number + ')').fadeIn(500, function () {
+	                mapa.drawPolyline({
+	                    path: e.path,
+	                    strokeColor: '#131540',
+	                    strokeOpacity: 0.6,
+	                    strokeWeight: 6
+	                });
+	            // });
+	        }
+	    });
 	}
 }
 function ShowJourney(i){

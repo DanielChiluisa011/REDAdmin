@@ -309,8 +309,8 @@ io.on('connection', function(socket){
 					  	lstTempPerson=result;
 						
 									var objUser = {
-										person: lstTempPerson[j],
-										user: lstTempUsers[i]
+										person: lstTempPerson[0],
+										user: lstTempUsers[0]
 									}
 									console.log(objUser.person);
 									console.log(objUser.user);

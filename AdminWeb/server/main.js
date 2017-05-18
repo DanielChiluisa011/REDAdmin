@@ -322,7 +322,7 @@ io.on('connection', function(socket){
 			       }
 				})
 	       }
-		})
+		
       });
 	  
 	  socket.on('UpdateDistributor',function(data){

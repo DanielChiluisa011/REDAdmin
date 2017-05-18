@@ -88,8 +88,9 @@ $(document).ready(function(data){
 									lstJourneys[j].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].truckId+"</td><td onclick='ShowJourney("+j+")'>"+RCName+
 									"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td></tr><tbody>");  
 		}
+		socket.removeListener("SelectActiveOrders");	
     }) 
-	socket.removeListener("SelectActiveOrders");	
+	
 
 	socket.emit('RequestAlerts','');
 

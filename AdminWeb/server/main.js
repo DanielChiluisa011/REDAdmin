@@ -291,6 +291,39 @@ io.on('connection', function(socket){
 		       }
       	});
       });
+
+      socket.on('RequestUserData',function(data){
+      	var lstNotificationUsers=[];
+		var lstTempUsers=[];
+		var lstTempPerson=[];
+
+		connection.query('SELECT * FROM users WHERE PERSONID=?',[data.personid],function(error, result){
+			if(error){
+			    throw error;
+			}else{
+			  	lstTempUsers=result;
+			  	connection.query('SELECT * FROM person WHERE PERSONID=?',[data.personid],function(error, result){
+					if(error){
+					    throw error;
+					}else{
+					  	lstTempPerson=result;
+						
+									var objUser = {
+										person: lstTempPerson[j],
+										user: lstTempUsers[i]
+									}
+									console.log(objUser.person);
+									console.log(objUser.user);
+									
+								}
+							}
+						}
+						io.emit('SelectUserData',objUser);
+			       }
+				})
+	       }
+		})
+      });
 	  
 	  socket.on('UpdateDistributor',function(data){
 		  console.log(data.address+" "+data.phone+" "+data.personid+" "+data.coordx+" "+data.coordy);

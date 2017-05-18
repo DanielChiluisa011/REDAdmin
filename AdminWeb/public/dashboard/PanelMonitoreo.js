@@ -164,10 +164,30 @@ function ShowRouteTest(i){
 		for(var k=0;k<lstDistributors.length;k++){
 			if(AuxlstOrders[j].DistributorId==lstDistributors[k].DistributorId){
 				RouteSelected.push(lstDistributors[k]);
-				
 				console.log(lstDistributors[k]);
 			}
 		}
+	}
+
+	for(var k=0;k<RouteSelected.length;k++){
+		for (var j = 0; j < AuxlstOrders.length; j++) {
+ 					// console.log(Orders[k])
+ 					if(RouteSelected[k].DistributorId==AuxlstOrders[j].DistributorId){
+ 						var aux=AuxlstOrders[k].OrderQuantity
+ 					}
+ 				}
+		mapa.addMarker({
+				   	lat: RouteSelected[k].CoordX,
+				   	lng: RouteSelected[k].CoordY,
+				   	title: 'Centro de Distribución',
+				   	icon: '../iconos/dPendiente.png',
+				   	infoWindow: {
+				        content: '<div id="content"><strong>'+RouteSelected[k].DistributorName+'</strong><br>'
+				       			+'<label>'+RouteSelected[k].DistributorAddress+'</label><br>'
+				       			+'<label>Stock Disponible: '+aux+' llantas <br></div>'
+				    }
+				});
+
 	}
 }
 function ShowJourney(i){

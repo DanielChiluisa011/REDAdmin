@@ -801,7 +801,7 @@ function SaveNewUser(socket){
 
 function UpdateUser(socket){
 	socket.on('UserUpdate',function(data){
-		connection.query('UPDATE person SET PersonName ="'+data.name+'", PersonLastName="'+data.lastName+'", PersonPhone="'+data.phone+'", PersonAddress="'+data.address+'", PersonRuc="'+data.ruc+'", PersonRole="'+data.role+'" WHERE PersonCi = "'+data.ci+'"',function(err, rows, fields) {
+		connection.query('UPDATE person SET PERSONNAME ="'+data.name+'", PERSONLASTNAME="'+data.lastName+'", PERSONPHONE="'+data.phone+'", PERSONADDRESS="'+data.address+'", PERSONCIRUC="'+data.ruc+'", PERSONROLE="'+data.role+'" WHERE PERSONID = "'+data.ci+'"',function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{
@@ -809,7 +809,7 @@ function UpdateUser(socket){
 	 		}
 	 	});
 
-	 	connection.query('UPDATE users SET UserPassword = "'+data.password+'" WHERE UserEmail = "'+data.email+'"',function(err, rows, fields) {
+	 	connection.query('UPDATE users SET USERPASSWORD = "'+data.password+'" WHERE USEREMAIL = "'+data.email+'"',function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{

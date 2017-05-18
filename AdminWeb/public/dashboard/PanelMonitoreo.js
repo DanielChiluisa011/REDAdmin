@@ -46,6 +46,7 @@ $(document).ready(function(data){
 		console.log('SelectJourneys');
 		lstJourneys=[];
 		lstJourneys=data;
+		socket.removeListener("SelectJourneys");
 	})
 	socket.on("SelectTrucks",function(data){
 		lstTrucks=[];
@@ -88,7 +89,7 @@ $(document).ready(function(data){
 									lstJourneys[j].JourneyDate+"</td><td onclick='ShowJourney("+j+")'>"+lstJourneys[j].truckId+"</td><td onclick='ShowJourney("+j+")'>"+RCName+
 									"</td><td onclick='ShowJourney("+j+")'>"+importerName+"</td></tr><tbody>");  
 		}
-		socket.removeListener("SelectActiveOrders");	
+			
     }) 
 	
 

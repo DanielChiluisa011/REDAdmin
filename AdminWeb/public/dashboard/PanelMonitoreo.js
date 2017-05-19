@@ -328,7 +328,7 @@ function ShowRouteTest(i){
 				origin: [data.position.lat,data.position.lng],
 				destination: [finishPosition.CoordX,finishPosition.CoordY],
 				travelMode: 'driving',
-				waypoints: waypnts,
+				waypoints: RouteInGo,
 				optimizeWaypoints: true,
 				provideRouteAlternatives: true,
 				step: function (e) {

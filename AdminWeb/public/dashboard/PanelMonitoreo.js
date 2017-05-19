@@ -234,7 +234,7 @@ function ShowRouteTest(i){
 				stopover: false 
 			});
 		}
-		for (var i = RouteSelected.length; i>=0 ; i++) {
+		for (var i = 0; i<RouteSelected.length ; i++) {
 			RouteInGo.push({
 				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
 				stopover: true 

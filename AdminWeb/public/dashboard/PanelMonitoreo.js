@@ -218,15 +218,12 @@ function ShowRouteTest(i){
 		  	optimizeWaypoints: true,
 		  	provideRouteAlternatives: true,
 		    step: function (e) {
-		        // $('#gmap_routes_instructions').append('<li>' + e.instructions + '</li>');
-		        // $('#gmap_routes_instructions li:eq(' + e.step_number + ')').fadeIn(500, function () {
 		            mapa.drawPolyline({
 		                path: e.path,
 		                strokeColor: '#131540',
 		                strokeOpacity: 0.6,
 		                strokeWeight: 6
 		            });
-		        // });
 		    }
 		});
 	}else{
@@ -245,15 +242,12 @@ function ShowRouteTest(i){
 	      	optimizeWaypoints: true,
 	      	provideRouteAlternatives: true,
 	        step: function (e) {
-	            // $('#gmap_routes_instructions').append('<li>' + e.instructions + '</li>');
-	            //$('#gmap_routes_instructions li:eq(' + e.step_number + ')').fadeIn(500, function () {
-	                mapa.drawPolyline({
-	                    path: e.path,
-	                    strokeColor: '#131540',
-	                    strokeOpacity: 0.6,
-	                    strokeWeight: 6
-	                });
-	            // });
+				mapa.drawPolyline({
+					path: e.path,
+					strokeColor: '#131540',
+					strokeOpacity: 0.6,
+					strokeWeight: 6
+				});
 	        }
 	    });
 	}
@@ -466,6 +460,7 @@ function ShowJourney(i){
 	socket.on('TruckLocation',function(data){
 		var AuxTruck;
 		for(var i=0;i<lstTrucks.length;i++){
+			console.log("ObjJourney.TRUCK_truck_id: "+ObjJourney.TRUCK_truck_id+" lstTrucks[i].TruckId: "+lstTrucks[i].TruckId)
 			if(ObjJourney.TRUCK_truck_id==lstTrucks[i].TruckId){
 				AuxTruck=lstTrucks[i];
 			}

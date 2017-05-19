@@ -90,7 +90,6 @@ $(document).ready(function(data){
 									"</td><td onclick='ShowRouteTest("+j+")'>"+importerName+"</td></tr><tbody>");  
 		}
 		socket.removeListener("SelectActiveOrders");
-			
     }) 
 	
 
@@ -253,6 +252,7 @@ function ShowRouteTest(i){
 	}
 
 	socket.on('TruckLocation',function(data){
+		mapa.removePolylines();
 		var AuxTruck;
 		for(var i=0;i<lstTrucks.length;i++){
 			if(ObjJourney.TRUCK_truck_id==lstTrucks[i].TruckId){

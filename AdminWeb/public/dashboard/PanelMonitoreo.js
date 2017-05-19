@@ -237,7 +237,7 @@ function ShowRouteTest(i){
 		for (var i = 0; i<RouteSelected.length ; i++) {
 			RouteInGo.push({
 				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
-				stopover: true 
+				stopover: false 
 			});
 		}
 		mapa.travelRoute({
@@ -332,15 +332,12 @@ function ShowRouteTest(i){
 				optimizeWaypoints: true,
 				provideRouteAlternatives: true,
 				step: function (e) {
-					// $('#gmap_routes_instructions').append('<li>' + e.instructions + '</li>');
-					// $('#gmap_routes_instructions li:eq(' + e.step_number + ')').fadeIn(500, function () {
-						mapa.drawPolyline({
-							path: e.path,
-							strokeColor: '#131540',
-							strokeOpacity: 0.6,
-							strokeWeight: 6
-						});
-					// });
+					mapa.drawPolyline({
+						path: e.path,
+						strokeColor: '#131540',
+						strokeOpacity: 0.6,
+						strokeWeight: 6
+					});
 				}
 			});
 	}

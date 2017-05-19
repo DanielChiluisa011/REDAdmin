@@ -1402,7 +1402,7 @@ GMaps.prototype.travelRoute = function(options) {
       destination: options.destination,
       travelMode: options.travelMode,
       waypoints : options.waypoints,
-      optimizeWaypoints: true,
+      // optimizeWaypoints: true,
       unitSystem: options.unitSystem,
       error: options.error,
       callback: function(e) {

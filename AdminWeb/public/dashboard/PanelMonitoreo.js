@@ -148,6 +148,7 @@ function ShowRouteTest(i){
 	var ObjJourney = lstJourneys[i];
 	var AuxlstOrders=[];
  	var RouteSelected=[];
+	 var RouteInGo=[];
 	console.log("Viaje seleccionado "+lstJourneys[i].JourneyId);
  	for (var j = 0; j < lstOrders.length; j++) {
 		  console.log("lstOrders[j].JourneyId: "+lstOrders[j].JourneyId+" lstJourneys[i].JourneyId: "+lstJourneys[i].JourneyId)

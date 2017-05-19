@@ -233,6 +233,12 @@ function ShowRouteTest(i){
 				stopover: false 
 			});
 		}
+		for (var i = 0; i < RouteSelected.length; i++) {
+			RouteInGo.push({
+				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
+				stopover: false 
+			});
+		}
 		mapa.travelRoute({
 	        origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
 	        destination: [finishPosition.CoordX,finishPosition.CoordY],
@@ -457,7 +463,9 @@ function ShowJourney(i){
 	        }
 	    });
 	}
+	var flagFirstDrawing=true;
 	socket.on('TruckLocation',function(data){
+		
 		var AuxTruck;
 		for(var i=0;i<lstTrucks.length;i++){
 			console.log("ObjJourney.TRUCK_truck_id: "+ObjJourney.TRUCK_truck_id+" lstTrucks[i].TruckId: "+lstTrucks[i].TruckId)

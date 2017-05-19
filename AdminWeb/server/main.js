@@ -106,7 +106,7 @@ io.on('connection', function(socket){
 		})
       });
       socket.on('AppTruckLocation',function(data){
-      	console.log(data);
+      		console.log(data);
       		io.emit('TruckLocation',data);
       });
 
@@ -133,14 +133,14 @@ io.on('connection', function(socket){
 				    throw error;
 				}else{
 				  	var JourneyRoute=result;
-				  	console.log(JourneyRoute);
+				  	// console.log(JourneyRoute);
 					io.emit('JourneyRouteData',JourneyRoute);
 					// console.log('Select Distributors executed');
 		       }
 			});
       });
       socket.on('RequestDistOrders',function(data){
-		  console.log('DIstributor id'+data);
+		//   console.log('DIstributor id'+data);
       		// connection.query("select O.OrderId,DATE_FORMAT(O.OrderDate ,'%Y-%m-%d') AS OrderDate,O.OrderState,O.WasteONU,O.OrderQuantity,J.JourneyId,DATE_FORMAT(J.JourneyDate ,'%Y-%m-%d') AS JourneyDate,J.JourneyState,J.TruckId, P.PersonName,P.PersonLastName,P.PersonPhone from person P, trucks T, orders O, journey J Where O.JourneyId=J.JourneyId AND O.DistributorId="+data+" AND J.TruckId=T.TruckId AND T.PersonId=P.PersonID;",function(error, result){
 				connection.query("select O.OrderId,DAY(O.OrderDate) Oday,MONTH(O.ORDERDATE) Omonth,YEAR(O.OrderDate) Oyear,O.OrderState,O.WasteONU,O.OrderQuantity,J.JourneyId,DAY(J.JourneyDate) Jday, MONTH(J.JourneyDate) Jmonth,YEAR(J.JourneyDate) Jyear,J.JourneyState,J.TruckId, P.PersonName,P.PersonLastName,P.PersonPhone from person P, trucks T, orders O, journey J Where O.JourneyId=J.JourneyId AND O.DistributorId="+data+" AND J.TruckId=T.TruckId AND T.PersonId=P.PersonID;",function(error, result){
 				if(error){
@@ -326,7 +326,7 @@ io.on('connection', function(socket){
       });
 	  
 	  socket.on('UpdateDistributor',function(data){
-		  console.log(data.address+" "+data.phone+" "+data.personid+" "+data.coordx+" "+data.coordy);
+		//   console.log(data.address+" "+data.phone+" "+data.personid+" "+data.coordx+" "+data.coordy);
 		  connection.query("UPDATE distributor SET DISTRIBUTORADDRESS = ?, DISTRIBUTORPHONE = ?, DISTRIBUTORCOORDINATES=GeomFromText('POINT ("+data.coordx+" "+data.coordy+")') WHERE PERSONID = ?",[data.address,data.phone,data.personid],function(err, rows, fields) {
 		 		if(err){
 					 socket.emit('msg',false)

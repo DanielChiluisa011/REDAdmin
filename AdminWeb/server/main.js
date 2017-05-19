@@ -381,7 +381,7 @@ io.on('connection', function(socket){
 	 	})
 	});
 	socket.on('NearNotification',function(data){
-          console.log(data);
+          console.log("nearNotification"+data);
           io.emit('NearNotificationToAdmin',data);
 
           SendNotificationAlert(socket);

@@ -381,7 +381,9 @@ io.on('connection', function(socket){
 	 	})
 	});
 	socket.on('NearNotification',function(data){
+          console.log(data);
           io.emit('NearNotificationToAdmin',data);
+
           SendNotificationAlert(socket);
       });
       //Prueba socket en app movil*****************************

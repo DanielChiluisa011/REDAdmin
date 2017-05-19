@@ -257,6 +257,93 @@ function ShowRouteTest(i){
 	        }
 	    });
 	}
+
+	socket.on('TruckLocation',function(data){
+		var AuxTruck;
+		for(var i=0;i<lstTrucks.length;i++){
+			if(ObjJourney.TRUCK_truck_id==lstTrucks[i].TruckId){
+				AuxTruck=lstTrucks[i];
+			}
+		}
+		console.log("."+data.user.person.PersonCi+'.'+AuxTruck.TruckDriver+".");
+		if(data.user.person.PersonCi == AuxTruck.TruckDriver){
+			var UserExist=false;
+			if(lstUserMarkers.length==0){
+				userMarker = mapa.addMarker({
+					lat: data.position.lat,
+					lng: data.position.lng,
+					title: 'Ubicación actual del camión',
+					icon: '../iconos/truck.png',
+					animation: google.maps.Animation.BOUNCE,
+					infoWindow: {
+						content: '<strong>VIAJE</strong><br><strong>'+data.user.person.PERSONNAME+' '+data.user.person.PERSONLASTNAME+'<strong/>'
+					}
+				});
+				var Aux={
+					data: data,
+					marker:userMarker
+				}
+				lstUserMarkers.push(Aux);
+			}
+			for (var i = 0; i < lstUserMarkers.length; i++) {
+				if(lstUserMarkers[i].data.user.user.UserEmail==data.user.user.UserEmail){
+					if(lstUserMarkers[i].marker!=null){
+						mapa.removeMarker(lstUserMarkers[i].marker);
+						lstUserMarkers[i].marker=null;
+					}
+					lstUserMarkers[i].marker = mapa.addMarker({
+						lat: data.position.lat,
+						lng: data.position.lng,
+						title: 'Ubicación actual del camión',
+						icon: '../iconos/truck.png',
+						animation: google.maps.Animation.BOUNCE,
+						infoWindow: {
+							content: '<strong>VIAJE</strong><br><strong>'+lstUserMarkers[i].data.user.person.PersonName+' '+lstUserMarkers[i].data.user.person.PersonLastName+'<strong/>'
+						}
+					});
+					UserExist=true;
+				}else{
+					UserExist=false;
+				}
+			}
+			if(!UserExist){
+				userMarker = mapa.addMarker({
+					lat: data.position.lat,
+					lng: data.position.lng,
+					title: 'Ubicación actual del camión',
+					icon: '../iconos/truck.png',
+					animation: google.maps.Animation.BOUNCE,
+					infoWindow: {
+						content: '<strong>VIAJE</strong><br><strong>'+data.user.person.PersonName+' '+data.user.person.PersonLastName+'<strong/>'
+					}
+				});
+				var Aux={
+					data: data,
+					marker:userMarker
+				}
+				lstUserMarkers.push(Aux);
+			}
+			mapa.travelRoute({
+				origin: [data.position.lat,data.position.lng],
+				destination: [finishPosition.CoordX,finishPosition.CoordY],
+				travelMode: 'driving',
+				waypoints: waypnts,
+				optimizeWaypoints: true,
+				provideRouteAlternatives: true,
+				step: function (e) {
+					// $('#gmap_routes_instructions').append('<li>' + e.instructions + '</li>');
+					// $('#gmap_routes_instructions li:eq(' + e.step_number + ')').fadeIn(500, function () {
+						mapa.drawPolyline({
+							path: e.path,
+							strokeColor: '#131540',
+							strokeOpacity: 0.6,
+							strokeWeight: 6
+						});
+					// });
+				}
+			});
+	}
+	});
 }
 function ShowJourney(i){
 	// socket.removeAllListeners();

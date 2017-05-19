@@ -234,10 +234,10 @@ function ShowRouteTest(i){
 				stopover: false 
 			});
 		}
-		for (var i = 0; i < RouteSelected.length; i++) {
+		for (var i = RouteSelected.length; i>=0 ; i++) {
 			RouteInGo.push({
 				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
-				stopover: false 
+				stopover: true 
 			});
 		}
 		mapa.travelRoute({

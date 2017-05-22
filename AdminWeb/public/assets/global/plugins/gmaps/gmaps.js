@@ -1283,7 +1283,7 @@ GMaps.prototype.getRoutes = function(options) {
   var base_options = {
         avoidHighways: false,
         avoidTolls: false,
-        optimizeWaypoints: false,
+        optimizeWaypoints: true,
         waypoints: []
       },
       request_options =  extend_object(base_options, options);
@@ -1376,6 +1376,7 @@ GMaps.prototype.drawRoute = function(options) {
     destination: options.destination,
     travelMode: options.travelMode,
     waypoints: options.waypoints,
+    optimizeWaypoints: true,
     unitSystem: options.unitSystem,
     error: options.error,
     callback: function(e) {

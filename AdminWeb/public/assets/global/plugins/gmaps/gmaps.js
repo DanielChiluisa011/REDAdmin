@@ -1451,6 +1451,7 @@ GMaps.prototype.drawSteppedRoute = function(options) {
       destination: options.destination,
       travelMode: options.travelMode,
       waypoints : options.waypoints,
+      optimizeWaypoints: true,
       error: options.error,
       callback: function(e) {
         //start callback
@@ -1504,6 +1505,7 @@ GMaps.Route = function(options) {
   this.origin = options.origin;
   this.destination = options.destination;
   this.waypoints = options.waypoints;
+  this.optimizeWaypoints = true;
 
   this.map = options.map;
   this.route = options.route;
@@ -1527,6 +1529,7 @@ GMaps.Route.prototype.getRoute = function(options) {
     destination : this.destination,
     travelMode : options.travelMode,
     waypoints : this.waypoints || [],
+    optimizeWaypoints : true,
     error: options.error,
     callback : function() {
       self.route = e[0];

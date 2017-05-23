@@ -229,36 +229,21 @@ function ShowRouteTest(i){
 	}else{
 		var waypnts=[];
 		for (var i = 1; i < RouteSelected.length; i++) {
-			if(i==RouteSelected.length-1){
-				waypnts.push({
-					location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
-					stopover: false 
-				});
-			}else{
-				waypnts.push({
-					location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
-					stopover: true 
-				});
-			}
-			
+			waypnts.push({
+				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
+				stopover: false 
+			});
 		}
 		for (var i = 0; i<RouteSelected.length ; i++) {
-			if(i==RouteSelected.length-1){
-				RouteInGo.push({
-					location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
-					stopover: false 
-				});
-			}else{
-				RouteInGo.push({
-					location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
-					stopover: true 
-				});
-			}
+			RouteInGo.push({
+				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
+				stopover: false 
+			});
 		}
 		mapa.travelRoute({
 	        origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
 	        destination: [finishPosition.CoordX,finishPosition.CoordY],
-	        travelMode: 'driving',
+	        travelMode: 'DRIVING',
 	        waypoints: waypnts,
 	      	optimizeWaypoints: true,
 	      	provideRouteAlternatives: true,
@@ -342,7 +327,7 @@ function ShowRouteTest(i){
 			mapa.travelRoute({
 				origin: [data.position.lat,data.position.lng],
 				destination: [finishPosition.CoordX,finishPosition.CoordY],
-				travelMode: 'driving',
+				travelMode: 'DRIVING',
 				waypoints: RouteInGo,
 				optimizeWaypoints: true,
 				provideRouteAlternatives: true,

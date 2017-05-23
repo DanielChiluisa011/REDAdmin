@@ -17,6 +17,8 @@ var mapa=new GMaps({
     lat: -0.191611,
     lng:  -78.483574
 });
+var directionsService = new google.maps.DirectionsService;
+var directionsDisplay = new google.maps.DirectionsRenderer;
 var UsersAux=[];
 var userMarker;
 $(document).ready(function(data){
@@ -142,39 +144,32 @@ var MapsGoogle = function () {
 }();
 
 function ShowRouteTest(i){
+	var directionDisplay;
 	jQuery(document).ready(function() {
 	    MapsGoogle.init();
+		directionsDisplay.setMap(map);
 	});
 	var ObjJourney = lstJourneys[i];
 	var AuxlstOrders=[];
  	var RouteSelected=[];
 	 var RouteInGo=[];
-	console.log("Viaje seleccionado "+lstJourneys[i].JourneyId);
  	for (var j = 0; j < lstOrders.length; j++) {
-		  console.log("lstOrders[j].JourneyId: "+lstOrders[j].JourneyId+" lstJourneys[i].JourneyId: "+lstJourneys[i].JourneyId)
  		if(lstOrders[j].JourneyId==lstJourneys[i].JourneyId){
  			AuxlstOrders.push(lstOrders[j])
-			 console.log("Orden seleccionada");
-			 console.log(lstOrders[j]);
  		}	
  	}
-	 console.log("ordenes dentro del viaje")
 	for(var k=0;k<AuxlstOrders.length;k++){
-		console.log("AuxlstOrders[k].DISTRIBUTORID: "+AuxlstOrders[k].DistributorId+" AuxlstOrders[k].JOURNEYID"+AuxlstOrders[k].JourneyId);
 	}
-	console.log("Distribuidor dentro de la ruta")
 	for(var j=0;j<AuxlstOrders.length;j++){
 		for(var k=0;k<lstDistributors.length;k++){
 			if(AuxlstOrders[j].DistributorId==lstDistributors[k].DistributorId){
 				RouteSelected.push(lstDistributors[k]);
-				console.log(lstDistributors[k]);
 			}
 		}
 	}
 
 	for(var k=0;k<RouteSelected.length;k++){
 		for (var j = 0; j < AuxlstOrders.length; j++) {
- 					// console.log(Orders[k])
  					if(RouteSelected[k].DistributorId==AuxlstOrders[j].DistributorId){
  						var aux=AuxlstOrders[k].OrderQuantity
  					}
@@ -255,7 +250,7 @@ function ShowRouteTest(i){
 	        }
 	    });
 	}
-
+	
 	socket.on('TruckLocation',function(data){
 		mapa.removePolylines();
 		var AuxTruck;
@@ -264,7 +259,7 @@ function ShowRouteTest(i){
 				AuxTruck=lstTrucks[i];
 			}
 		}
-		console.log("."+data.user.person.PersonCi+'.'+AuxTruck.TruckDriver+".");
+		// console.log("."+data.user.person.PersonCi+'.'+AuxTruck.TruckDriver+".");
 		if(data.user.person.PersonCi == AuxTruck.TruckDriver){
 			var UserExist=false;
 			if(lstUserMarkers.length==0){
@@ -322,6 +317,77 @@ function ShowRouteTest(i){
 				}
 				lstUserMarkers.push(Aux);
 			}
+			////////////////////////////////////////////////////////////////////////////////////////////// PRUEBA
+			// var directionDisplay;
+			// var directionsService = new google.maps.DirectionsService();
+			// var request = {
+			// 	origin: [data.position.lat,data.position.lng], 
+			// 	destination: [finishPosition.CoordX,finishPosition.CoordY],
+			// 	waypoints: RouteInGo,
+			// 	travelMode: 'DRIVING',
+			// 	optimizeWaypoints: true,
+			// 	travelMode: google.maps.DirectionsTravelMode.DRIVING
+			// };
+			// directionsService.route(request, function(response, status) {
+			// if (status == google.maps.DirectionsStatus.OK) {
+			// 	directionsDisplay.setDirections(response);
+			// 	}else{
+			// 	}
+			// });			
+			// var  mapRendererOptions = {};
+			// var markerOptions ={};
+			// markerOptions.visible=false;
+			// var polylineOptions={};
+			// polylineOptions.strokeColor="#438391";
+			// polylineOptions.strokeOpacity=.6;
+			// polylineOptions.strokeWeight=4;
+			// mapRendererOptions.markerOptions=markerOptions;
+			// mapRendererOptions.polylineOptions=polylineOptions;
+			// directionsDisplay.setOptions(new google.maps.DirectionsRenderer(mapRendererOptions));
+
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////fin prueba////////
+			
+
+			////////////////////////////////////////////////////////////////////////////////////////////// PRUEBA
+			//calculateAndDisplayRoute
+			var waypts = [];
+			for (var i = 0; i<RouteSelected.length ; i++) {
+				RouteInGo.push({
+					location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
+					stopover: true
+				});
+			}
+
+			directionsService.route({
+				origin: [data.position.lat,data.position.lng],
+				destination: [finishPosition.CoordX,finishPosition.CoordY],
+				waypoints: RouteInGo,
+				optimizeWaypoints: true,
+				travelMode: 'DRIVING'
+			}, function(response, status) {
+			if (status === 'OK') {
+				directionsDisplay.setDirections(response);
+				var route = response.routes[0];
+				var summaryPanel = document.getElementById('directions-panel');
+				summaryPanel.innerHTML = '';
+				// For each route, display summary information.
+				for (var i = 0; i < route.legs.length; i++) {
+				var routeSegment = i + 1;
+				summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
+					'</b><br>';
+				summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+				summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+				summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+				}
+			} else {
+				window.alert('Directions request failed due to ' + status);
+			}
+			});
+			//calculateAndDisplayRoute
+
+
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////fin prueba////////
+			
 			mapa.travelRoute({
 				origin: [data.position.lat,data.position.lng],
 				destination: [finishPosition.CoordX,finishPosition.CoordY],

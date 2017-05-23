@@ -330,6 +330,7 @@ function ShowRouteTest(i){
 				optimizeWaypoints: true,
 				provideRouteAlternatives: true,
 				step: function (e) {
+					console.log(e.instructions);
 					mapa.drawPolyline({
 						path: e.path,
 						strokeColor: '#131540',

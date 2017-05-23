@@ -243,10 +243,17 @@ function ShowRouteTest(i){
 			
 		}
 		for (var i = 0; i<RouteSelected.length ; i++) {
-			RouteInGo.push({
-				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
-				stopover: true 
-			});
+			if(i==RouteSelected.length-1){
+				RouteInGo.push({
+					location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
+					stopover: false 
+				});
+			}else{
+				RouteInGo.push({
+					location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
+					stopover: true 
+				});
+			}
 		}
 		mapa.travelRoute({
 	        origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],

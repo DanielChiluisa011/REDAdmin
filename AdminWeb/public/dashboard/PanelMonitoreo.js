@@ -230,14 +230,13 @@ function ShowRouteTest(i){
 		var waypnts=[];
 		for (var i = 1; i < RouteSelected.length; i++) {
 			waypnts.push({
-				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
-				stopover: false 
+				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY)
 			});
 		}
 		for (var i = 0; i<RouteSelected.length ; i++) {
 			RouteInGo.push({
 				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
-				stopover: false 
+				stopover: false
 			});
 		}
 		mapa.travelRoute({

@@ -1283,7 +1283,7 @@ GMaps.prototype.getRoutes = function(options) {
   var base_options = {
         avoidHighways: false,
         avoidTolls: false,
-        optimizeWaypoints: false,
+        optimizeWaypoints: true,
         waypoints: []
       },
       request_options =  extend_object(base_options, options);
@@ -1376,7 +1376,7 @@ GMaps.prototype.drawRoute = function(options) {
     destination: options.destination,
     travelMode: options.travelMode,
     waypoints: options.waypoints,
-    optimizeWaypoints: false,
+    optimizeWaypoints: true,
     unitSystem: options.unitSystem,
     error: options.error,
     callback: function(e) {
@@ -1451,7 +1451,7 @@ GMaps.prototype.drawSteppedRoute = function(options) {
       destination: options.destination,
       travelMode: options.travelMode,
       waypoints : options.waypoints,
-      optimizeWaypoints: false,
+      optimizeWaypoints: true,
       error: options.error,
       callback: function(e) {
         //start callback
@@ -1505,7 +1505,7 @@ GMaps.Route = function(options) {
   this.origin = options.origin;
   this.destination = options.destination;
   this.waypoints = options.waypoints;
-  this.optimizeWaypoints = false;
+  this.optimizeWaypoints = true;
 
   this.map = options.map;
   this.route = options.route;

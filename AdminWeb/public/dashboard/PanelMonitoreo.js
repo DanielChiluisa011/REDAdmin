@@ -130,24 +130,19 @@ var MapsGoogle = function () {
             lng:  -78.483574
         });
          mapa.setZoom(10);
-         
-         
     }
     return {
         //main function to initiate map samples
         init: function () {
             mapBasic();
-
         }
 
     };
 }();
 
 function ShowRouteTest(i){
-	var directionDisplay;
 	jQuery(document).ready(function() {
 	    MapsGoogle.init();
-		directionsDisplay.setMap(mapa);
 	});
 	var ObjJourney = lstJourneys[i];
 	var AuxlstOrders=[];

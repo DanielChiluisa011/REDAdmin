@@ -351,9 +351,7 @@ function ShowRouteTest(i){
 					location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
 					stopover: true
 				});
-			}
-			console.log( typeof(data.position.lat) );
-			
+			}			
 			directionsService.route({
 				origin: new google.maps.LatLng(data.position.lat,data.position.lng),
 				destination: new google.maps.LatLng(finishPosition.CoordX,finishPosition.CoordY),

@@ -245,7 +245,9 @@ var GMaps = (function(global) {
     }
 
     this.map = new google.maps.Map(this.el, map_options);
-
+    function getMap(){
+      return this.map
+    }
     if (markerClustererFunction) {
       this.markerClusterer = markerClustererFunction.apply(this, [this.map]);
     }
@@ -664,7 +666,9 @@ GMaps.prototype.createMarker = function(options) {
 
   return marker;
 };
-
+GMaps.prototype.returnMap() = function(){
+  return this.map;
+}
 GMaps.prototype.addMarker = function(options) {
   var marker;
   if(options.hasOwnProperty('gm_accessors_')) {

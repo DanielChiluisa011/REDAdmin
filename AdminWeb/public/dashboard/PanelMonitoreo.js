@@ -17,8 +17,8 @@ var mapa=new GMaps({
     lat: -0.191611,
     lng:  -78.483574
 });
-var directionsService = new google.maps.DirectionsService;
-var directionsDisplay = new google.maps.DirectionsRenderer;
+var directionsService;
+var directionsDisplay;
 var UsersAux=[];
 var userMarker;
 $(document).ready(function(data){
@@ -130,6 +130,9 @@ var MapsGoogle = function () {
             lng:  -78.483574
         });
          mapa.setZoom(10);
+		 directionsService = new google.maps.DirectionsService;
+         directionsDisplay = new google.maps.DirectionsRenderer;
+		 directionsDisplay.setMap(mapa);
     }
     return {
         //main function to initiate map samples

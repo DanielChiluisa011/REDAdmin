@@ -352,10 +352,11 @@ function ShowRouteTest(i){
 					stopover: true
 				});
 			}
-
+			console.log( typeof(data.position.lat) );
+			
 			directionsService.route({
-				origin: [data.position.lat,data.position.lng],
-				destination: [finishPosition.CoordX,finishPosition.CoordY],
+				origin: new google.maps.LatLng(data.position.lat,data.position.lng),
+				destination: new google.maps.LatLng(finishPosition.CoordX,finishPosition.CoordY),
 				waypoints: RouteInGo,
 				optimizeWaypoints: true,
 				travelMode: 'DRIVING'

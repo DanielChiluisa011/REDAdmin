@@ -17,8 +17,8 @@ var mapa=new GMaps({
     lat: -0.191611,
     lng:  -78.483574
 });
-var directionsService = new google.maps.DirectionsService;
-var directionsDisplay = new google.maps.DirectionsRenderer;
+var directionsService = new google.maps.DirectionsService();
+var directionsDisplay = new google.maps.DirectionsRenderer();
 var UsersAux=[];
 var userMarker;
 $(document).ready(function(data){

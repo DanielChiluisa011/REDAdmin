@@ -122,6 +122,7 @@ $(document).ready(function(data){
 })
 
 var MapsGoogle = function () {
+	var prueba = new google.maps.Map();
 
     var mapBasic = function () {
         mapa=new GMaps({
@@ -132,21 +133,20 @@ var MapsGoogle = function () {
          mapa.setZoom(10);
 		 directionsService = new google.maps.DirectionsService;
          directionsDisplay = new google.maps.DirectionsRenderer();
-		 directionsDisplay.setMap(mapa.returnMap());
+		 directionsDisplay.setMap(prueba);
     }
     return {
         //main function to initiate map samples
         init: function () {
             mapBasic();
         }
-
     };
 }();
 
 function ShowRouteTest(i){
 	jQuery(document).ready(function() {
 	    MapsGoogle.init();
-		directionsDisplay.setMap(mapa);
+		// directionsDisplay.setMap(mapa);
 	});
 	var ObjJourney = lstJourneys[i];
 	var AuxlstOrders=[];

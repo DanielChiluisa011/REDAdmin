@@ -235,8 +235,7 @@ function ShowRouteTest(i){
 		}
 		for (var i = 0; i<RouteSelected.length ; i++) {
 			RouteInGo.push({
-				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
-				stopover: false
+				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY)
 			});
 		}
 		mapa.travelRoute({

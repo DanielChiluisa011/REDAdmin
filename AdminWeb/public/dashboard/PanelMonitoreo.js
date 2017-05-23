@@ -382,23 +382,23 @@ function ShowRouteTest(i){
 
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////fin prueba////////
 			
-			mapa.travelRoute({
-				origin: [data.position.lat,data.position.lng],
-				destination: [finishPosition.CoordX,finishPosition.CoordY],
-				travelMode: 'DRIVING',
-				waypoints: RouteInGo,
-				optimizeWaypoints: true,
-				provideRouteAlternatives: true,
-				step: function (e) {
-					console.log(e.instructions);
-					mapa.drawPolyline({
-						path: e.path,
-						strokeColor: '#131540',
-						strokeOpacity: 0.6,
-						strokeWeight: 6
-					});
-				}
-			});
+			// mapa.travelRoute({
+			// 	origin: [data.position.lat,data.position.lng],
+			// 	destination: [finishPosition.CoordX,finishPosition.CoordY],
+			// 	travelMode: 'DRIVING',
+			// 	waypoints: RouteInGo,
+			// 	optimizeWaypoints: true,
+			// 	provideRouteAlternatives: true,
+			// 	step: function (e) {
+			// 		console.log(e.instructions);
+			// 		mapa.drawPolyline({
+			// 			path: e.path,
+			// 			strokeColor: '#131540',
+			// 			strokeOpacity: 0.6,
+			// 			strokeWeight: 6
+			// 		});
+			// 	}
+			// });
 	}
 	});
 }

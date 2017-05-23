@@ -147,7 +147,7 @@ function ShowRouteTest(i){
 	var directionDisplay;
 	jQuery(document).ready(function() {
 	    MapsGoogle.init();
-		directionsDisplay.setMap(map);
+		directionsDisplay.setMap(mapa);
 	});
 	var ObjJourney = lstJourneys[i];
 	var AuxlstOrders=[];

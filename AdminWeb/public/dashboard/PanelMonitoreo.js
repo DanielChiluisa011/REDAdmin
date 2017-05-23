@@ -231,13 +231,13 @@ function ShowRouteTest(i){
 		for (var i = 1; i < RouteSelected.length; i++) {
 			waypnts.push({
 				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
-				stopover: false 
+				stopover: true 
 			});
 		}
 		for (var i = 0; i<RouteSelected.length ; i++) {
 			RouteInGo.push({
 				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
-				stopover: false 
+				stopover: true 
 			});
 		}
 		mapa.travelRoute({
@@ -438,7 +438,7 @@ function ShowJourney(i){
 		for (var i = 1; i < RouteSelected.length; i++) {
 			waypnts.push({
 				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
-				stopover: false 
+				stopover: true 
 			});
 		}
 		mapa.travelRoute({

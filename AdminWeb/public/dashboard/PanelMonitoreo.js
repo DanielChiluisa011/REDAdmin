@@ -143,6 +143,7 @@ var MapsGoogle = function () {
 function ShowRouteTest(i){
 	jQuery(document).ready(function() {
 	    MapsGoogle.init();
+		directionsDisplay.setMap(mapa);
 	});
 	var ObjJourney = lstJourneys[i];
 	var AuxlstOrders=[];

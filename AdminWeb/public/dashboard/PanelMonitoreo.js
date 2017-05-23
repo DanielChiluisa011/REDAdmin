@@ -131,8 +131,8 @@ var MapsGoogle = function () {
         });
          mapa.setZoom(10);
 		 directionsService = new google.maps.DirectionsService;
-         directionsDisplay = new google.maps.DirectionsRenderer;
-		 directionsDisplay.setMap(mapa);
+         directionsDisplay = new google.maps.DirectionsRenderer({map: mapa});
+		//  directionsDisplay.setMap(mapa);
     }
     return {
         //main function to initiate map samples

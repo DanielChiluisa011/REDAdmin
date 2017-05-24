@@ -376,7 +376,7 @@ function ShowRouteTest(i){
 	});
 }
 function SortRoute(reference,rt){
-	console.log(reference.lat);
+	console.log(rt[j].CoordX);
 	var x1= new google.maps.LatLng(reference.lat,reference.lng);
 	var RouteInGoAux = [];
 	for (i=0; i<rt.length; i++){

@@ -388,7 +388,7 @@ function SortRoute(reference,rt){
 		}
 	}
 	rt.length=0;
-	return RouteInGoAux;
+	rt = RouteInGoAux;
 }
 function ShowJourney(i){
 	// socket.removeAllListeners();

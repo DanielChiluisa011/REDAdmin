@@ -353,7 +353,7 @@ function ShowRouteTest(i){
 					stopover:false
 				});
 			}
-			SortRoute(data.position,RouteInGo);
+			RouteInGo=SortRoute(data.position,RouteInGo);
 			console.log("Elementos en ROuteInGo "+RouteInGo.length);
 			mapa.travelRoute({
 				origin: [data.position.lat,data.position.lng],
@@ -376,17 +376,19 @@ function ShowRouteTest(i){
 }
 function SortRoute(reference,rt){
 	var x1= new google.maps.LatLng(reference.lat,reference.lng);
-	var RouteInGoAux = rt
+	var RouteInGoAux = [];
 	for (i=0; i<rt.length; i++){
 		for (j=0 ; j<rt.length - 1; j++){
 		if (google.maps.geometry.spherical.computeDistanceBetween(x1,new google.maps.LatLng(rt[j].CoordX,rt[j].CoordY)) 
 				> google.maps.geometry.spherical.computeDistanceBetween(x1,new google.maps.LatLng(rt[j+1].CoordX,rt[j+1].CoordY))){
 				var temp = rt[j];
 				rt[j] = rt[j+1];
-				rt[j+1] = temp;
+				RouteInGoAux.push(temp);
 			}
 		}
 	}
+	rt.length=0;
+	return RouteInGoAux;
 }
 function ShowJourney(i){
 	// socket.removeAllListeners();

@@ -380,6 +380,10 @@ function SortRoute(reference,rt){
 	var RouteInGoAux = [];
 	for (i=0; i<rt.length; i++){
 		for (j=0 ; j<rt.length - 1; j++){
+			console.log("X1");
+			console.log(x1);
+			console.log("new google.maps.LatLng(rt[j].CoordX,rt[j].CoordY) ");
+			console.log(new google.maps.LatLng(rt[j].CoordX,rt[j].CoordY))
 			console.log("Distancia 1 "+google.maps.geometry.spherical.computeDistanceBetween(x1,new google.maps.LatLng(rt[j].CoordX,rt[j].CoordY)))
 			console.log("Distancia 2 "+google.maps.geometry.spherical.computeDistanceBetween(x1,new google.maps.LatLng(rt[j+1].CoordX,rt[j+1].CoordY)))
 		if (google.maps.geometry.spherical.computeDistanceBetween(x1,new google.maps.LatLng(rt[j].CoordX,rt[j].CoordY)) 

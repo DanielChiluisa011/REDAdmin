@@ -354,6 +354,7 @@ function ShowRouteTest(i){
 				});
 			}
 			SortRoute(data.position,RouteInGo);
+			console.log("Elementos en ROuteInGo "+RouteInGo.length);
 			mapa.travelRoute({
 				origin: [data.position.lat,data.position.lng],
 				destination: [finishPosition.CoordX,finishPosition.CoordY],

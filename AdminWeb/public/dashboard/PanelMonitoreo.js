@@ -115,14 +115,13 @@ $(document).ready(function(data){
     		return d2;
 		}
 
-		
+
 
 	})
 
 })
 
 var MapsGoogle = function () {
-	var prueba = new google.maps.Map();
 
     var mapBasic = function () {
         mapa=new GMaps({
@@ -131,9 +130,7 @@ var MapsGoogle = function () {
             lng:  -78.483574
         });
          mapa.setZoom(10);
-		 directionsService = new google.maps.DirectionsService;
-         directionsDisplay = new google.maps.DirectionsRenderer();
-		 directionsDisplay.setMap(prueba);
+		 
     }
     return {
         //main function to initiate map samples
@@ -227,11 +224,6 @@ function ShowRouteTest(i){
 				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY)
 			});
 		}
-		for (var i = 0; i<RouteSelected.length ; i++) {
-			RouteInGo.push({
-				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY)
-			});
-		}
 		mapa.travelRoute({
 	        origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
 	        destination: [finishPosition.CoordX,finishPosition.CoordY],
@@ -316,95 +308,83 @@ function ShowRouteTest(i){
 				}
 				lstUserMarkers.push(Aux);
 			}
-			////////////////////////////////////////////////////////////////////////////////////////////// PRUEBA
-			// var directionDisplay;
-			// var directionsService = new google.maps.DirectionsService();
-			// var request = {
-			// 	origin: [data.position.lat,data.position.lng], 
-			// 	destination: [finishPosition.CoordX,finishPosition.CoordY],
+			// ////////////////////////////////////////////////////////////////////////////////////////////// PRUEBA
+			// //calculateAndDisplayRoute
+			// var waypts = [];
+			// for (var i = 0; i<RouteSelected.length ; i++) {
+			// 	RouteInGo.push({
+			// 		location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
+			// 		stopover: true
+			// 	});
+			// }			
+			// directionsService.route({
+			// 	origin: new google.maps.LatLng(data.position.lat,data.position.lng),
+			// 	destination: new google.maps.LatLng(finishPosition.CoordX,finishPosition.CoordY),
 			// 	waypoints: RouteInGo,
-			// 	travelMode: 'DRIVING',
 			// 	optimizeWaypoints: true,
-			// 	travelMode: google.maps.DirectionsTravelMode.DRIVING
-			// };
-			// directionsService.route(request, function(response, status) {
-			// if (status == google.maps.DirectionsStatus.OK) {
+			// 	travelMode: 'DRIVING'
+			// }, function(response, status) {
+			// if (status === 'OK') {
 			// 	directionsDisplay.setDirections(response);
-			// 	}else{
+			// 	var route = response.routes[0];
+			// 	var summaryPanel = document.getElementById('directions-panel');
+			// 	summaryPanel.innerHTML = '';
+			// 	// For each route, display summary information.
+			// 	for (var i = 0; i < route.legs.length; i++) {
+			// 	var routeSegment = i + 1;
+			// 	summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
+			// 		'</b><br>';
+			// 	summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+			// 	summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+			// 	summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
 			// 	}
-			// });			
-			// var  mapRendererOptions = {};
-			// var markerOptions ={};
-			// markerOptions.visible=false;
-			// var polylineOptions={};
-			// polylineOptions.strokeColor="#438391";
-			// polylineOptions.strokeOpacity=.6;
-			// polylineOptions.strokeWeight=4;
-			// mapRendererOptions.markerOptions=markerOptions;
-			// mapRendererOptions.polylineOptions=polylineOptions;
-			// directionsDisplay.setOptions(new google.maps.DirectionsRenderer(mapRendererOptions));
+			// } else {
+			// 	window.alert('Directions request failed due to ' + status);
+			// }
+			// });
+			// //calculateAndDisplayRoute
 
-			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////fin prueba////////
-			
 
-			////////////////////////////////////////////////////////////////////////////////////////////// PRUEBA
-			//calculateAndDisplayRoute
-			var waypts = [];
+			// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////fin prueba////////
 			for (var i = 0; i<RouteSelected.length ; i++) {
 				RouteInGo.push({
 					location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
-					stopover: true
+					stopover:false
 				});
-			}			
-			directionsService.route({
-				origin: new google.maps.LatLng(data.position.lat,data.position.lng),
-				destination: new google.maps.LatLng(finishPosition.CoordX,finishPosition.CoordY),
+			}
+			SortRoute(data.position,RouteInGo);
+			mapa.travelRoute({
+				origin: [data.position.lat,data.position.lng],
+				destination: [finishPosition.CoordX,finishPosition.CoordY],
+				travelMode: 'DRIVING',
 				waypoints: RouteInGo,
 				optimizeWaypoints: true,
-				travelMode: 'DRIVING'
-			}, function(response, status) {
-			if (status === 'OK') {
-				directionsDisplay.setDirections(response);
-				var route = response.routes[0];
-				var summaryPanel = document.getElementById('directions-panel');
-				summaryPanel.innerHTML = '';
-				// For each route, display summary information.
-				for (var i = 0; i < route.legs.length; i++) {
-				var routeSegment = i + 1;
-				summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
-					'</b><br>';
-				summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
-				summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
-				summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+				provideRouteAlternatives: true,
+				step: function (e) {
+					console.log(e.instructions);
+					mapa.drawPolyline({
+						path: e.path,
+						strokeColor: '#131540',
+						strokeOpacity: 0.6,
+						strokeWeight: 6
+					});
 				}
-			} else {
-				window.alert('Directions request failed due to ' + status);
-			}
 			});
-			//calculateAndDisplayRoute
-
-
-			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////fin prueba////////
-			
-			// mapa.travelRoute({
-			// 	origin: [data.position.lat,data.position.lng],
-			// 	destination: [finishPosition.CoordX,finishPosition.CoordY],
-			// 	travelMode: 'DRIVING',
-			// 	waypoints: RouteInGo,
-			// 	optimizeWaypoints: true,
-			// 	provideRouteAlternatives: true,
-			// 	step: function (e) {
-			// 		console.log(e.instructions);
-			// 		mapa.drawPolyline({
-			// 			path: e.path,
-			// 			strokeColor: '#131540',
-			// 			strokeOpacity: 0.6,
-			// 			strokeWeight: 6
-			// 		});
-			// 	}
-			// });
 	}
 	});
+}
+function SortRoute(reference,rt){
+	var x1= new google.maps.LatLng(reference.lat,reference.lng);
+	for (i=0; i<rt.length; i++){
+		for (j=0 ; j<rt.length - 1; j++){
+		if (google.maps.geometry.spherical.computeDistanceBetween(x1,new google.maps.LatLng(rt[j].CoordX,rt[j].CoordY)) 
+				> google.maps.geometry.spherical.computeDistanceBetween(x1,new google.maps.LatLng(rt[j+1].CoordX,rt[j+1].CoordY))){
+				var temp = rt[j];
+				rt[j] = rt[j+1];
+				rt[j+1] = temp;
+			}
+		}
+	}
 }
 function ShowJourney(i){
 	// socket.removeAllListeners();

@@ -363,7 +363,6 @@ function ShowRouteTest(i){
 				optimizeWaypoints: true,
 				provideRouteAlternatives: true,
 				step: function (e) {
-					console.log(e.instructions);
 					mapa.drawPolyline({
 						path: e.path,
 						strokeColor: '#131540',
@@ -377,6 +376,7 @@ function ShowRouteTest(i){
 }
 function SortRoute(reference,rt){
 	var x1= new google.maps.LatLng(reference.lat,reference.lng);
+	var RouteInGoAux = rt
 	for (i=0; i<rt.length; i++){
 		for (j=0 ; j<rt.length - 1; j++){
 		if (google.maps.geometry.spherical.computeDistanceBetween(x1,new google.maps.LatLng(rt[j].CoordX,rt[j].CoordY)) 

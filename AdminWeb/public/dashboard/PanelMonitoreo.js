@@ -380,7 +380,7 @@ function SortRoute(reference,rt){
 	var x1= new google.maps.LatLng(reference.lat,reference.lng);
 	var RouteInGoAux = [];
 	for (i=0; i<rt.length; i++){
-		for (j=0 ; j<=rt.length - 1; j++){
+		for (j=0 ; j<rt.length - 1; j++){
 			console.log(rt[j].CoordX);
 			console.log("X1");
 			console.log(x1);

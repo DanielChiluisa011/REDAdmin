@@ -383,12 +383,11 @@ function SortRoute(reference,rt){
 				> google.maps.geometry.spherical.computeDistanceBetween(x1,new google.maps.LatLng(rt[j+1].CoordX,rt[j+1].CoordY))){
 				var temp = rt[j];
 				rt[j] = rt[j+1];
-				RouteInGoAux.push(temp);
+				rt[j+1] = temp;
+				console.log("rt length "+rt.length);
 			}
 		}
 	}
-	rt.length=0;
-	rt = RouteInGoAux;
 }
 function ShowJourney(i){
 	// socket.removeAllListeners();

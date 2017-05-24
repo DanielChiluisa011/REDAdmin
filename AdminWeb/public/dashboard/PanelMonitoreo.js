@@ -348,6 +348,7 @@ function ShowRouteTest(i){
 
 			// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////fin prueba////////
 			for (var i = 0; i<RouteSelected.length ; i++) {
+				RouteInGo.length=0;
 				RouteInGo.push({
 					location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
 					stopover:false

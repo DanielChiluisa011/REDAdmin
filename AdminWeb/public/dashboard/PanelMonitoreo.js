@@ -388,7 +388,7 @@ function SortRoute(reference,rt){
 			console.log("Distancia 1 "+google.maps.geometry.spherical.computeDistanceBetween(x1,rt[j].location))
 			console.log("Distancia 2 "+google.maps.geometry.spherical.computeDistanceBetween(x1,rt[j+1].location))
 		if (google.maps.geometry.spherical.computeDistanceBetween(x1,rt[j].location) 
-				> google.maps.geometry.spherical.computeDistanceBetween(x1,rt[j].location)){
+				> google.maps.geometry.spherical.computeDistanceBetween(x1,rt[j+1].location)){
 				var temp = rt[j];
 				rt[j] = rt[j+1];
 				rt[j+1] = temp;

@@ -386,10 +386,10 @@ function SortRoute(reference,rt){
 			console.log(x1);
 			console.log("new google.maps.LatLng(rt[j].CoordX,rt[j].CoordY) ");
 			console.log(new google.maps.LatLng(rt[j].CoordX,rt[j].CoordY))
-			console.log("Distancia 1 "+google.maps.geometry.spherical.computeDistanceBetween(x1,new google.maps.LatLng(rt[j].CoordX,rt[j].CoordY)))
-			console.log("Distancia 2 "+google.maps.geometry.spherical.computeDistanceBetween(x1,new google.maps.LatLng(rt[j+1].CoordX,rt[j+1].CoordY)))
-		if (google.maps.geometry.spherical.computeDistanceBetween(x1,new google.maps.LatLng(rt[j].CoordX,rt[j].CoordY)) 
-				> google.maps.geometry.spherical.computeDistanceBetween(x1,new google.maps.LatLng(rt[j+1].CoordX,rt[j+1].CoordY))){
+			console.log("Distancia 1 "+google.maps.geometry.spherical.computeDistanceBetween(x1,rt[j].location))
+			console.log("Distancia 2 "+google.maps.geometry.spherical.computeDistanceBetween(x1,rt[j+1].location))
+		if (google.maps.geometry.spherical.computeDistanceBetween(x1,rt[j].location) 
+				> google.maps.geometry.spherical.computeDistanceBetween(x1,rt[j].location)){
 				var temp = rt[j];
 				rt[j] = rt[j+1];
 				rt[j+1] = temp;

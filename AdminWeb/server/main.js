@@ -335,7 +335,18 @@ io.on('connection', function(socket){
 		 			socket.emit('msg',true);
 		 		}
 		 	})
-	  })
+	  });
+
+	  socket.on('UpdateOrderQuantity',function(data){
+	        connection.query('UPDATE orders SET OrderQuantity = ? WHERE OrderId= ?',[data.orderid,data.quantity],function(err,rows,fields){
+	            if(err){
+	                     console.log("Error "+ err.message);
+	                 }else{
+	                     console.log("Update execute Order Quantity");
+	                     
+	             }
+	        })
+      });
 
 	  socket.on('RequestActiveOrders',function(){
 	  	SelectActiveOrders();
@@ -385,7 +396,7 @@ io.on('connection', function(socket){
           io.emit('NearNotificationToAdmin',data);
 
           SendNotificationAlert(socket);
-      });
+    });
       //Prueba socket en app movil*****************************
 	socket.on("RequestMaxOrder",function(data){
 		connection.query('SELECT max(OrderId) numMax FROM orders',function(error, result){

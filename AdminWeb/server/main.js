@@ -338,7 +338,7 @@ io.on('connection', function(socket){
 	  });
 
 	  socket.on('UpdateOrderQuantity',function(data){
-	        connection.query('UPDATE orders SET OrderQuantity = ? WHERE OrderId= ?',[data.orderid,data.quantity],function(err,rows,fields){
+	        connection.query('UPDATE orders SET OrderQuantity = ? WHERE OrderId= ?',[data.quantity,data.orderid],function(err,rows,fields){
 	            if(err){
 	                     console.log("Error "+ err.message);
 	                 }else{

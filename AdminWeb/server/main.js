@@ -582,6 +582,7 @@ io.on('connection', function(socket){
 						importer.quota,
 						importer.licence],function(err, rows, fields) {
 				if(err){
+					console.log("Error "+ err.message);
 					socket.emit("ResponseImporter",false);
 				}else{
 					connection.query('INSERT INTO person (PERSONCIRUC,PERSONNAME,PERSONLASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE) VALUES (?,?,?,?,?,?)',
@@ -592,6 +593,7 @@ io.on('connection', function(socket){
 						importer.personAddress,
 						"cliente"],function(err, rows, fields) {
 						if(err){
+							console.log("Error "+ err.message);
 							socket.emit("ResponseImporter",false);
 						}else{
 							socket.emit("ResponseImporter",true);

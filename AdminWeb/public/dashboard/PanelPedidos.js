@@ -709,7 +709,8 @@ $("#btnInsertImporter").click(function(){
 		 personLastName: $("#txtNewImpPersonLastName").val(),
 		 personCi: $("#txtNewImpPersonId").val(),
 		 personPhone: $("#txtNewImpPersonPhone").val(),
-		 personAddress: $("#txtNewImpPersonAddress").val()
+		 personAddress: $("#txtNewImpPersonAddress").val(),
+		 personEmail: $("#txtNewImpEmail").val(),
 	 } 
 	console.log("NUEVO IMPORTADOR");
 	console.log(newImporter);

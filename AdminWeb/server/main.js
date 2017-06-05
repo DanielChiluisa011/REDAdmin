@@ -605,7 +605,24 @@ io.on('connection', function(socket){
 							console.log("Error "+ err.message);
 							socket.emit("ResponseImporter",false);
 						}else{
-							socket.emit("ResponseImporter",true);
+							connection.query("SELECT max(personid)  FROM person",function(error, result){
+								if(error){
+									socket.emit("ResponseImporter",false);
+								}else{
+										connection.query('INSERT INTO users (USEREMAIL,PERSONID,USERPASSWORD,USERPROFILE) VALUES (?,?,?,?)',
+										[importer.personEmail,
+										result[0],
+										"importador",
+										"importador"],function(err, rows, fields) {
+										if(err){
+											console.log("Error "+ err.message);
+											socket.emit("ResponseImporter",false);
+										}else{
+											socket.emit("ResponseImporter",true);
+										}
+									});
+								}
+							})
 						}
 					});
 				}

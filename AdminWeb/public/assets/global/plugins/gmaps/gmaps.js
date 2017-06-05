@@ -477,9 +477,7 @@ var GMaps = (function(global) {
       })(this, this.map, native_methods[i]);
     }
   };
-  this.returnMap = function(){
-    return this.map;
-  }
+
   return GMaps;
 })(this);
 

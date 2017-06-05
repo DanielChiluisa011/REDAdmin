@@ -87,7 +87,7 @@ socket.on('DeviationNotificationToAdmin',function(data){
                   sticky: false,
                   horizontalEdge: 'top',
                   verticalEdge: 'rigth',
-                  zindex: 1500
+                  zindex: 2500
                 });
 })
 

@@ -573,7 +573,34 @@ io.on('connection', function(socket){
 		
 	});
 
-	
+	socket.on("RequestInsertNewImporter", function(importer){
+		connection.query('INSERT INTO importer (IMPORTERNAME,IMPORTERADDRESS,IMPORTERPHONE,IMPORTERRUC,IMPORTERQUOTA,IMPORTERWASTEGENERATORNUMBER) VALUES (?,?,?,?,?,?)',
+						[importer.name,
+						importer.address,
+						importer.phone,
+						importer.rucImporter,
+						importer.quota,
+						importer.licence],function(err, rows, fields) {
+				if(err){
+					socket.emit("ResponseImporter",false);
+				}else{
+					connection.query('INSERT INTO person (PERSONCIRUC,PERSONNAME,PERSONLASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE) VALUES (?,?,?,?,?,?)',
+						[importer.personCi,
+						importer.personName,
+						importer.personLastName,
+						importer.personPhone,
+						importer.personAddress,
+						"cliente"],function(err, rows, fields) {
+						if(err){
+							socket.emit("ResponseImporter",false);
+						}else{
+							socket.emit("ResponseImporter",true);
+						}
+					});
+				}
+			});
+		});
+
 });
 
 function SelectUsers(){

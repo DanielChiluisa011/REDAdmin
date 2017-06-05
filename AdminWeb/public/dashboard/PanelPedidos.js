@@ -709,9 +709,33 @@ $("#btnInsertImporter").click(function(){
 		 personLastName: $("#txtNewImpPersonLastName").val(),
 		 personCi: $("#txtNewImpPersonId").val(),
 		 personPhone: $("#txtNewImpPersonPhone").val(),
-		 personAddress: $("#txtNewImpPersonAddress").val(),
-		 personRuc: $("#txtNewImpPersonRuc").val()
+		 personAddress: $("#txtNewImpPersonAddress").val()
 	 } 
 	console.log("NUEVO IMPORTADOR");
 	console.log(newImporter);
+	socket.emit("RequestInsertNewImporter","");
+	socket.on("ResponseImporter",function(flag){
+		if(flag){
+			$.notific8('Datos guardados correctamente', {
+			      life: 3500,
+			      heading: 'Listo!',
+			      theme: 'teal',
+			      sticky: false,
+			      horizontalEdge: 'top',
+			      verticalEdge: 'rigth',
+			      zindex: 1500
+			    });
+		}else{
+			$.notific8('Error al guardar, intentelo nuevamente', {
+			      life: 3500,
+			      heading: 'Error!',
+			      theme: 'ruby',
+			      sticky: false,
+			      horizontalEdge: 'top',
+			      verticalEdge: 'rigth',
+			      zindex: 1500
+			    });
+		}
+	});
+	
 });

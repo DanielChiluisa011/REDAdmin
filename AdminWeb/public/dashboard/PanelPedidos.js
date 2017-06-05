@@ -139,7 +139,6 @@ $(document).ready(function(){
        	if(lstOrders.length!=0){
        		CreateJourney();	
        	}
-		   console.log()
 		for (var i = 0; i < lstJourney.length; i++) {
 			var TotalQuantity=0;
 			var D='';
@@ -210,10 +209,10 @@ function showData1(i,TotalQuantity){
 	ShowRoute();
 	var Difference=lstImporters[0].IMPORTERMONTLYQUOTAH - TotalQuantity;
 	for (var i = 1; i < lstImporters.length; i++) {
-		console.log(lstImporters[i].IMPORTERNAME+' Direncia: '+Difference);
+		// console.log(lstImporters[i].IMPORTERNAME+' Direncia: '+Difference);
 		// if(lstImporters[i].IMPORTERMONTLYQUOTAH - TotalQuantity<Difference && lstImporters[i].IMPORTERMONTLYQUOTAH!=0){
 			Difference=lstImporters[i].IMPORTERMONTLYQUOTAH - TotalQuantity;
-			console.log(lstImporters[i].IMPORTERNAME+' Direncia: '+Difference);
+			// console.log(lstImporters[i].IMPORTERNAME+' Direncia: '+Difference);
 			ImporterSelectd=lstImporters[i];
 			// alert(ImporterSelectd.IMPORTERID);
 			$('#txtImporterName').val(ImporterSelectd.IMPORTERNAME);
@@ -241,8 +240,8 @@ function showData1(i,TotalQuantity){
 								+'<input id="txtOrderQuantity" value="'+ lstJourney[k][j].order.OrderQuantity +'" type="text" class="form-control" id="form_control_1" disabled>'
 								+'<label for="form_control_1">Cantidad</label>'
 							+'</div>');
-		console.log("lstJourney[k][j].order");
-		console.log(lstJourney[k][j].order);
+		// console.log("lstJourney[k][j].order");
+		// console.log(lstJourney[k][j].order);
 		lstIdOrders.push(lstJourney[k][j].order.OrderId);
 	}
 	$('#txtNewJourneyDate').val(lstJourney[k][0].order.ORDERDEADLINE)
@@ -624,9 +623,9 @@ $('#btnSaveJourney').click(function(){
 		   			JourneyRoute+=',';	
 		   		}
 		   	}
-			console.log(lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1]);
-			console.log('cl');
-			console.log(lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1].RecyclingCenterId)
+			// console.log(lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1]);
+			// console.log('cl');
+			// console.log(lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1].RecyclingCenterId)
 	   		var journey = {
 	   			date: $('#txtNewJourneyDate').val(),
 	   			state: 'Pendiente',
@@ -637,10 +636,10 @@ $('#btnSaveJourney').click(function(){
 	   			quantity: TQ,
 				orders: lstIdOrders
 	   		}
-			   console.log('Numero de ordenes: '+lstIdOrders.length);
-			   for(var i=0;i<lstIdOrders.length;i++){
-				   console.log(lstIdOrders[i]);
-			   }
+			//    console.log('Numero de ordenes: '+lstIdOrders.length);
+			//    for(var i=0;i<lstIdOrders.length;i++){
+			// 	   console.log(lstIdOrders[i]);
+			//    }
 	   		socket.emit('SaveJourney', journey);
 			// socket.emit('AsignJourney',lstIdOrders);
 	   		location.reload();
@@ -697,3 +696,22 @@ function CurrentDate(){
 
 	return output;
 }
+
+$("#btnInsertImporter").click(function(){
+ 	var newImporter = {
+		 name: $("#txtNewImpName").val(),
+		 address: $("#txtNewImpAddress").val(),
+		 phone: $("#txtNewImpPhone").val(),
+		 rucImporter: $("#txtNewImpRuc").val(),
+		 quota: $("#txtNewImpQuota").val(),
+		 licence: $("#txtNewImpLicence").val(),
+		 personName: $("#txtNewImpPersonName").val(),
+		 personLastName: $("#txtNewImpPersonLastName").val(),
+		 personCi: $("#txtNewImpPersonId").val(),
+		 personPhone: $("#txtNewImpPersonPhone").val(),
+		 peronAddress: $("#txtNewImpPersonAddress").val(),
+		 personRuc: $("#txtNewImpPersonRuc").val()
+	 } 
+	console.log("NUEVO IMPORTADOR");
+	console.log(newImporter);
+});

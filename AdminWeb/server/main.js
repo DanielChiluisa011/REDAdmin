@@ -580,7 +580,7 @@ io.on('connection', function(socket){
 	});
 
 	socket.on("RequestInsertNewImporter", function(importer){
-		console.log(ImporterSelectd);
+		console.log(importer);
 		connection.query('INSERT INTO importer (IMPORTERNAME,IMPORTERADDRESS,IMPORTERPHONE,IMPORTERRUC,IMPORTERQUOTA,IMPORTERWASTEGENERATORNUMBER) VALUES (?,?,?,?,?,?)',
 						[importer.name,
 						importer.address,

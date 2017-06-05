@@ -502,7 +502,7 @@ io.on('connection', function(socket){
 		////////////////////////////////////
 		console.log('Se executo AsignJourney '+data.orders.length);
 		for (var i = 0; i < data.orders.length; i++) {
-			console.log('DATA[i] = '+data[i]);
+			// console.log('DATA[i] = '+data[i]);
 			connection.query('UPDATE orders SET JOURNEYID = (SELECT max(JOURNEYID) FROM journey), ORDERSTATE =  "En Proceso" WHERE ORDERID = ?;',[data.orders[i]],function(err, rows, fields) {
 		 		if(err){
 		 			console.log("Error "+ err.message);
@@ -535,7 +535,7 @@ io.on('connection', function(socket){
 	socket.on('AsignJourney', function(data){
 		console.log('Se executo AsignJourney '+data.length);
 		for (var i = 0; i < data.length; i++) {
-			console.log('DATA[i] = '+data[i]);
+			// console.log('DATA[i] = '+data[i]);
 			connection.query('UPDATE orders SET JOURNEYID = (SELECT max(JOURNEYID) FROM journey) WHERE ORDERID = ?;',[data[i]],function(err, rows, fields) {
 		 		if(err){
 		 			console.log("Error "+ err.message);
@@ -580,6 +580,7 @@ io.on('connection', function(socket){
 	});
 
 	socket.on("RequestInsertNewImporter", function(importer){
+		console.log(ImporterSelectd);
 		connection.query('INSERT INTO importer (IMPORTERNAME,IMPORTERADDRESS,IMPORTERPHONE,IMPORTERRUC,IMPORTERQUOTA,IMPORTERWASTEGENERATORNUMBER) VALUES (?,?,?,?,?,?)',
 						[importer.name,
 						importer.address,

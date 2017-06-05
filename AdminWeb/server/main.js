@@ -606,7 +606,7 @@ io.on('connection', function(socket){
 								console.log("Error "+ err.message);
 								socket.emit("ResponseImporter",false);
 							}else{
-								connection.query('INSERT INTO importer (IMPORTERNAME,IMPORTERADDRESS,IMPORTERPHONE,IMPORTERRUC,IMPORTERQUOTA,IMPORTERWASTEGENERATORNUMBER,USEREMAIL) VALUES (?,?,?,?,?,?)',
+								connection.query('INSERT INTO importer (IMPORTERNAME,IMPORTERADDRESS,IMPORTERPHONE,IMPORTERRUC,IMPORTERQUOTA,IMPORTERWASTEGENERATORNUMBER,USEREMAIL) VALUES (?,?,?,?,?,?,?)',
 											[importer.name,
 											importer.address,
 											importer.phone,

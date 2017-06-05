@@ -68,7 +68,7 @@ function sumNotifications(){
 socket.on('NearNotificationToAdmin',function(data){
 	console.log("NearNotification"+data);
     $.notific8("El conductor está por llegar al distribuidor "+data,  {
-                  life: 3500,
+                  life: 35000,
                   heading: 'Llegando!',
                   theme: 'teal',
                   sticky: false,
@@ -79,9 +79,9 @@ socket.on('NearNotificationToAdmin',function(data){
 })
 
 socket.on('DeviationNotificationToAdmin',function(data){
-	console.log("DeviationNotification"+data);
+	console.log(data);
     $.notific8("El conductor "+data.name+" se desvió de su ruta. Tel: "+data.phone, {
-                  life: 3500,
+                  life: 35000,
                   heading: 'Desviado!',
                   theme: 'ruby',
                   sticky: false,

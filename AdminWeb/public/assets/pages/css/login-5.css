@@ -13,6 +13,7 @@
     min-height: 100vh; }
   .user-login-5 .login-logo {
     position: absolute;
+    float:right;
     top: 2.5em;
     right: 2.5em; }
     .user-login-5 .login-logo.login-6 {

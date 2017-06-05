@@ -70,3 +70,8 @@ socket.on('NearNotificationToAdmin',function(data){
     $.notific8("El conductor está por llegar al distribuidor"+data);
 })
 
+socket.on('DeviationNotificationToAdmin',function(data){
+	console.log("DeviationNotification"+data);
+    $.notific8("El conductor "+data.name+" se desvió de su ruta. Tel: "+data.phone);
+})
+

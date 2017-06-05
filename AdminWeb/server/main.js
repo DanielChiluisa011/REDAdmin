@@ -397,6 +397,12 @@ io.on('connection', function(socket){
 
           SendNotificationAlert(socket);
     });
+    socket.on('DeviationNotification',function(data){
+          console.log("DeviationNotification"+data);
+          io.emit('DeviationNotificationToAdmin',data);
+
+          SendNotificationAlert(socket);
+    });
       //Prueba socket en app movil*****************************
 	socket.on("RequestMaxOrder",function(data){
 		connection.query('SELECT max(OrderId) numMax FROM orders',function(error, result){

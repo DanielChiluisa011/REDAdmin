@@ -372,7 +372,7 @@ function ShowRouteTest(i){
 					});
 				}
 			});
-	}
+		}
 	});
 }
 function SortRoute(reference,rt){

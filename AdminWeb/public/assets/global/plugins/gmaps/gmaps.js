@@ -477,7 +477,9 @@ var GMaps = (function(global) {
       })(this, this.map, native_methods[i]);
     }
   };
-
+  this.returnMap = function(){
+    return this.map;
+  }
   return GMaps;
 })(this);
 
@@ -560,7 +562,7 @@ GMaps.prototype.removeControl = function(control) {
 
   return control;
 };
-
+GMaps.prototype.
 GMaps.prototype.createMarker = function(options) {
   if (options.lat == undefined && options.lng == undefined && options.position == undefined) {
     throw 'No latitude or longitude defined.';

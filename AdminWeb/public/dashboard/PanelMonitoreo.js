@@ -359,7 +359,7 @@ function ShowRouteTest(i){
 			mapa.travelRoute({
 				origin: [data.position.lat,data.position.lng],
 				destination: [finishPosition.CoordX,finishPosition.CoordY],
-				travelMode: 'DRIVING',
+				travelMode: 'driving',
 				waypoints: RouteInGo,
 				optimizeWaypoints: true,
 				provideRouteAlternatives: true,

@@ -398,7 +398,8 @@ io.on('connection', function(socket){
           SendNotificationAlert(socket);
     });
     socket.on('DeviationNotification',function(data){
-          console.log("DeviationNotification"+data);
+    	  console.log("Desviacion");
+          console.log(data);
           io.emit('DeviationNotificationToAdmin',data);
 
           SendNotificationAlert(socket);

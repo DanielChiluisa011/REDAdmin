@@ -713,7 +713,7 @@ $("#btnInsertImporter").click(function(){
 	 } 
 	console.log("NUEVO IMPORTADOR");
 	console.log(newImporter);
-	socket.emit("RequestInsertNewImporter","");
+	socket.emit("RequestInsertNewImporter",newImporter);
 	socket.on("ResponseImporter",function(flag){
 		if(flag){
 			$.notific8('Datos guardados correctamente', {

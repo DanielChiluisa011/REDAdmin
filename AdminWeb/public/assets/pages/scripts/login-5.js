@@ -92,6 +92,7 @@ var Login = function() {
             $('.login-bg').backstretch([
                 "../assets/pages/img/login/bg1.png",
                 "../assets/pages/img/login/bg2.png",
+                "../assets/pages/img/login/bg3.png",
                 ], {
                   fade: 1000,
                   duration: 8000

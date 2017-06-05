@@ -67,11 +67,27 @@ function sumNotifications(){
 
 socket.on('NearNotificationToAdmin',function(data){
 	console.log("NearNotification"+data);
-    $.notific8("El conductor está por llegar al distribuidor"+data);
+    $.notific8("El conductor está por llegar al distribuidor "+data,  {
+                  life: 3500,
+                  heading: 'Llegando!',
+                  theme: 'teal',
+                  sticky: false,
+                  horizontalEdge: 'top',
+                  verticalEdge: 'rigth',
+                  zindex: 1500
+                });
 })
 
 socket.on('DeviationNotificationToAdmin',function(data){
 	console.log("DeviationNotification"+data);
-    $.notific8("El conductor "+data.name+" se desvió de su ruta. Tel: "+data.phone);
+    $.notific8("El conductor "+data.name+" se desvió de su ruta. Tel: "+data.phone, {
+                  life: 3500,
+                  heading: 'Desviado!',
+                  theme: 'ruby',
+                  sticky: false,
+                  horizontalEdge: 'top',
+                  verticalEdge: 'rigth',
+                  zindex: 1500
+                });
 })
 

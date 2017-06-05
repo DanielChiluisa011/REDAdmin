@@ -562,7 +562,6 @@ GMaps.prototype.removeControl = function(control) {
 
   return control;
 };
-GMaps.prototype.
 GMaps.prototype.createMarker = function(options) {
   if (options.lat == undefined && options.lng == undefined && options.position == undefined) {
     throw 'No latitude or longitude defined.';

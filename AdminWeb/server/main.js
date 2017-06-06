@@ -675,6 +675,29 @@ io.on('connection', function(socket){
 	 		}
 	 	});
 	});
+
+	socket.on("RequestCRInfo",function(data){
+		connection.query("SELECT "+
+						"I.RECYCLINGCENTERNAME,"+
+						"I.RECYCLINGCENTERPHONE,"+
+						"I.RECYCLINGCENTERADDRESS,"+
+						"P.PERSONNAME,"+
+						"P.PERSONCIRUC,"+
+						"P.PERSONLASTNAME,"+
+						"P.PERSONADDRESS,"+
+						"P.PERSONPHONE,"+
+						"FROM recycling_centers I, "+
+						"person P, users u "+
+						"WHERE I.PERSONID=P.PERSONID "+
+						"ORDER BY I.RECYCLINGCENTERNAME ASC;",function(error, result){
+							if(error){
+								socket.emit("ResponseCRInfo",0);
+							}else{
+								var lstCR=result;
+								socket.emit("ResponseCR",lstCR);
+							}
+						});
+	});	
 });
 
 function SelectUsers(){

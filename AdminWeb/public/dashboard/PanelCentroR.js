@@ -1,5 +1,5 @@
 var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
-var lstImporters= [];
+var lstCR= [];
 var mapa;
 var MapsGoogle = function () {
 
@@ -21,8 +21,8 @@ var MapsGoogle = function () {
 }();
 $(document).ready(function(){
      MapsGoogle.init();
-    socket.emit("RequestImportersInfo","");
-    socket.on("ResponseImporterInfo",function(flag){
+    socket.emit("RequestCRInfo","");
+    socket.on("ResponseCRInfo",function(flag){
         if(flag==0){
             $.notific8('Error al cargar, intentelo nuevamente', {
                 life: 3500,
@@ -35,9 +35,9 @@ $(document).ready(function(){
             });
         }
     });
-    socket.on("ResponseImporter",function(Importador){
-        lstImporters.length=0;
-        lstImporters=Importador;
+    socket.on("ResponseCR",function(CR){
+        lstCR.length=0;
+        lstCR=CR;
         $("#txtNewImpName").val("");
 		$("#txtNewImpAddress").val("");
 		$("#txtNewImpPhone").val("");
@@ -51,17 +51,13 @@ $(document).ready(function(){
 		$("#txtNewImpPersonAddress").val("");
 		$("#txtNewImpEmail").val("");
         $("#ImportersTable > tbody").html("");
-        for (var i = 0; i < Importador.length; i++) {
+        for (var i = 0; i < CR.length; i++) {
             $('#ImportersTable').append("<tbody>"+
                                         "<tr>"+
-                                            "<td>"+Importador[i].IMPORTERNAME+"</td>"+
-                                            "<td>"+Importador[i].IMPORTERRUC+"</td>"+
-                                            "<td>"+Importador[i].IMPORTERADDRESS+"</td>"+
-                                            "<td>"+Importador[i].IMPORTERPHONE+"</td>"+
-                                            "<td>"+Importador[i].IMPORTERQUOTA+"</td>"+
-                                            "<td>"+Importador[i].IMPORTERQUOTAACCOMPLISHED+"</td>"+
-                                            "<td>"+Importador[i].PERSONNAME+' '+Importador[i].PERSONLASTNAME+"</td>"+
-                                            "<td>"+Importador[i].USEREMAIL+"</td>"+
+                                            "<td>"+CR[i].RECYCLINGCENTERNAME+"</td>"+
+                                            "<td>"+CR[i].RECYCLINGCENTERADDRESS+"</td>"+
+                                            "<td>"+CR[i].RECYCLINGCENTERPHONE+"</td>"+
+                                            "<td>"+CR[i].PERSONNAME+' '+CR[i].PERSONLASTNAME+"</td>"+
                                             "<td><a class='btn red btn-outline sbold' data-toggle='modal' href='#addImporter' onclick='ShowImporterInformation("+i+")'> <i class='fa fa-edit'> </i> Editar </a></td>"+
                                         "</tr>"+
                                     "</tbody>");
@@ -117,24 +113,24 @@ $("#btnCancelImporter").click(function(){
 function ShowImporterInformation(i){
         $("#btnInsertImporter").html('Actualizar');
         $("#txtNewImpName").attr("disabled",true);
-        $("#txtNewImpName").val(lstImporters[i].IMPORTERNAME);
-		$("#txtNewImpAddress").val(lstImporters[i].IMPORTERADDRESS);
-		$("#txtNewImpPhone").val(lstImporters[i].IMPORTERPHONE);
+        $("#txtNewImpName").val(lstCR[i].IMPORTERNAME);
+		$("#txtNewImpAddress").val(lstCR[i].IMPORTERADDRESS);
+		$("#txtNewImpPhone").val(lstCR[i].IMPORTERPHONE);
         $("#txtNewImpRuc").attr("disabled",true);
-		$("#txtNewImpRuc").val(lstImporters[i].IMPORTERRUC);
+		$("#txtNewImpRuc").val(lstCR[i].IMPORTERRUC);
         $("#txtNewImpQuota").attr("disabled",true);
-		$("#txtNewImpQuota").val(lstImporters[i].IMPORTERQUOTA);
+		$("#txtNewImpQuota").val(lstCR[i].IMPORTERQUOTA);
         $("#txtNewImpLicence").attr("disabled",true);
-		$("#txtNewImpLicence").val(lstImporters[i].IMPORTERWASTEGENERATORNUMBER);
-		$("#txtNewImpPersonName").val(lstImporters[i].PERSONNAME);
+		$("#txtNewImpLicence").val(lstCR[i].IMPORTERWASTEGENERATORNUMBER);
+		$("#txtNewImpPersonName").val(lstCR[i].PERSONNAME);
         $("#txtNewImpPersonName").attr("disabled",true);
-		$("#txtNewImpPersonLastName").val(lstImporters[i].PERSONLASTNAME);
+		$("#txtNewImpPersonLastName").val(lstCR[i].PERSONLASTNAME);
         $("#txtNewImpPersonLastName").attr("disabled",true);
-		$("#txtNewImpPersonId").val(lstImporters[i].PERSONCIRUC);
+		$("#txtNewImpPersonId").val(lstCR[i].PERSONCIRUC);
         $("#txtNewImpPersonId").attr("disabled",true);
-		$("#txtNewImpPersonPhone").val(lstImporters[i].PERSONPHONE);
-		$("#txtNewImpPersonAddress").val(lstImporters[i].PERSONADDRESS);
-		$("#txtNewImpEmail").val(lstImporters[i].USEREMAIL);
+		$("#txtNewImpPersonPhone").val(lstCR[i].PERSONPHONE);
+		$("#txtNewImpPersonAddress").val(lstCR[i].PERSONADDRESS);
+		$("#txtNewImpEmail").val(lstCR[i].USEREMAIL);
         $("#txtNewImpEmail").attr("disabled",true);
 }
 $("#btnInsertImporter").click(function(){
@@ -153,7 +149,7 @@ $("#btnInsertImporter").click(function(){
         personAddress: $("#txtNewImpPersonAddress").val(),
         personEmail: $("#txtNewImpEmail").val(),
     } 
-    console.log("NUEVO IMPORTADOR");
+    console.log("NUEVO CR");
     console.log(newImporter);
     if($("#btnInsertImporter").html()=="Guardar"){
         bootbox.confirm("¿Desea guardar la información ingresada? ", function(result) {

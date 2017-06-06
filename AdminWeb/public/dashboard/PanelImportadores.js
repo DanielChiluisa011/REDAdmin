@@ -49,30 +49,30 @@ $(document).ready(function(){
     });
 });
 
-$("#addImporter").click(function(){
-        $("#btnInsertImporter").html('Guardar');
-        $("#txtNewImpName").val(""),
-		$("#txtNewImpAddress").val("");
-		$("#txtNewImpPhone").val("");
-		$("#txtNewImpRuc").val("");
-		$("#txtNewImpQuota").val("");
-		$("#txtNewImpLicence").val("");
-		$("#txtNewImpPersonName").val("");
-		$("#txtNewImpPersonLastName").val("");
-		$("#txtNewImpPersonId").val("");
-		$("#txtNewImpPersonPhone").val("");
-		$("#txtNewImpPersonAddress").val("");
-		$("#txtNewImpEmail").val("");
+// $("#addImporter").click(function(){
+//         $("#btnInsertImporter").html('Guardar');
+//         $("#txtNewImpName").val(""),
+// 		$("#txtNewImpAddress").val("");
+// 		$("#txtNewImpPhone").val("");
+// 		$("#txtNewImpRuc").val("");
+// 		$("#txtNewImpQuota").val("");
+// 		$("#txtNewImpLicence").val("");
+// 		$("#txtNewImpPersonName").val("");
+// 		$("#txtNewImpPersonLastName").val("");
+// 		$("#txtNewImpPersonId").val("");
+// 		$("#txtNewImpPersonPhone").val("");
+// 		$("#txtNewImpPersonAddress").val("");
+// 		$("#txtNewImpEmail").val("");
 
-        $("#txtNewImpName").attr("disabled",false);
-        $("#txtNewImpRuc").attr("disabled",false);
-        $("#txtNewImpQuota").attr("disabled",false);
-        $("#txtNewImpLicence").attr("disabled",false);
-        $("#txtNewImpPersonName").attr("disabled",false);
-        $("#txtNewImpPersonLastName").attr("disabled",false);
-        $("#txtNewImpPersonId").attr("disabled",false);
-        $("#txtNewImpEmail").attr("disabled",false);
-});
+//         $("#txtNewImpName").attr("disabled",false);
+//         $("#txtNewImpRuc").attr("disabled",false);
+//         $("#txtNewImpQuota").attr("disabled",false);
+//         $("#txtNewImpLicence").attr("disabled",false);
+//         $("#txtNewImpPersonName").attr("disabled",false);
+//         $("#txtNewImpPersonLastName").attr("disabled",false);
+//         $("#txtNewImpPersonId").attr("disabled",false);
+//         $("#txtNewImpEmail").attr("disabled",false);
+// });
 function ShowImporterInformation(i){
         $("#btnInsertImporter").html('Actualizar');
         $("#txtNewImpName").attr("disabled",true);

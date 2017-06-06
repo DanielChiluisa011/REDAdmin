@@ -117,7 +117,7 @@ $("#btnInsertImporter").click(function(){
                 } 
                 console.log("NUEVO IMPORTADOR");
                 console.log(newImporter);
-                socket.emit("RequestInsertNewImporter",newImporter);
+                // socket.emit("RequestInsertNewImporter",newImporter);
                 socket.on("ResponseImporter",function(flag){
                     if(flag){
                         $.notific8('Datos guardados correctamente', {
@@ -128,7 +128,8 @@ $("#btnInsertImporter").click(function(){
                             horizontalEdge: 'top',
                             verticalEdge: 'rigth',
                             zindex: 1500
-                            });
+                        });
+                        location.reload();	
                     }else{
                         $.notific8('Error al guardar, intentelo nuevamente', {
                             life: 3500,
@@ -160,7 +161,7 @@ $("#btnInsertImporter").click(function(){
                     personAddress: $("#txtNewImpPersonAddress").val(),
                     personEmail: $("#txtNewImpEmail").val(),
                 } 
-                socket.emit("RequestUpdateImporter",newImporter);
+                // socket.emit("RequestUpdateImporter",newImporter);
                 socket.on("RequestErrorUpdateImporter",function(flag){
                     if(flag){
                         $.notific8('Datos actualizados correctamente', {

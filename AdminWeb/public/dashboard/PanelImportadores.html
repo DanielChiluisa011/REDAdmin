@@ -240,107 +240,119 @@
                                 </div>
                             </div>
                             <!-- FIN PESTANIAS -->
-                            <!--INICIO FORMULARIO FLOTANTE -->
-                        <div id="responsive" class="modal fade" aria-hidden="true">
-                            <div class="modal-dialog" style="width: 70%">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                        <h4 class="modal-title"><strong>INFORMACION DEL USUARIO</strong></h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Información personal</h5>
+                        </div>
+                         <!--INICIO FORMULARIO FLOTANTE-->
+         <div id="addImporter" class="modal fade" aria-hidden="true">
+                    <div class="modal-dialog" style="width: 70%">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title"><strong>INGRESO NUEVO IMPORTADOR</strong></h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Información General del Importador</h5>
+                                        </div>
+                                        <div>
+                                            <br><br>
+                                            <form action="#" class="form-horizontal">
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label"><i class='fa fa-hospital-o'> </i>  Nombre:</label>
+                                                    <div class="col-md-4">
+                                                        <input id="txtNewImpName" type="text" class="form-control" style="width: 400px" >
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <br><br>
-                                                    <form action="#" class="form-horizontal">
-                                                        <div class="form-group">
-                                                            <label class="col-md-3 control-label"><i class='fa fa-user'> </i>  Nombre:</label>
-                                                            <div class="col-md-4">
-                                                                <input id="txtPersonName" type="text" class="form-control" style="width: 400px" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-md-3 control-label"><i class='fa fa-user'> </i>  Apellido:</label>
-                                                            <div class="col-md-4">
-                                                                <input id="txtPersonLastName" type="text" class="form-control" style="width: 400px" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-md-3 control-label"><i class='fa fa-credit-card'> </i> Cédula:</label>
-                                                            <div class="col-md-4">
-                                                                <input id="txtPersonId" type="text" class="form-control" style="width: 400px" disabled="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-md-3 control-label"><i class='fa fa-mobile'> </i> Teléfono:</label>
-                                                            <div class="col-md-4">
-                                                                <input id="txtPersonPhone" type="text" class="form-control" style="width: 400px" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-md-3 control-label"><i class='fa fa-home'> </i> Dirección:</label>
-                                                            <div class="col-md-4">
-                                                                <input id="txtPersonAddress" type="text" class="form-control" style="width: 400px" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-md-3 control-label"><i class='fa fa-ellipsis-h'> </i> RUC:</label>
-                                                            <div class="col-md-4">
-                                                                <input id="txtPersonRuc" type="text" class="form-control" style="width: 400px" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-md-3 control-label"><i class='fa fa-tags'> </i> Rol:</label>
-                                                            <div class="col-md-4">
-                                                                <input id="txtPersonRole" type="text" class="form-control" style="width: 400px" disabled>
-                                                            </div>
-                                                        </div>
-                                                    </form>    
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label"><i class='fa fa-home'> </i> Dirección:</label>
+                                                    <div class="col-md-4">
+                                                        <input id="txtNewImpAddress" type="text" class="form-control" style="width: 400px" >
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Información de la Cuenta</h5>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label"><i class='fa fa-mobile'> </i> Teléfono:</label>
+                                                    <div class="col-md-4">
+                                                        <input id="txtNewImpPhone" type="number" class="form-control" style="width: 400px" >
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <br><br>
-                                                    <form action="#" class="form-horizontal">
-                                                        <div class="form-group">
-                                                            <label class="col-md-3 control-label"><i class='fa fa-envelope'> </i>  Correo Electrónico:</label>
-                                                            <div class="col-md-4">
-                                                                <input id="txtUserEmail" type="text" class="form-control" style="width: 350px" disabled="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-md-3 control-label"><i class='fa fa-key'> </i>  Password:</label>
-                                                            <div class="col-md-4">
-                                                                <input id="txtUserPassword" type="Password" class="form-control" value="password" style="width: 350px" ><i id="iconPass" onclick="ShowPassword()" class='fa fa-eye'> </i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-md-3 control-label"><i class='fa fa-users'> </i> Perfil de Usuario:</label>
-                                                            <div class="col-md-4">
-                                                                <input id="txtUserProfile" type="text" class="form-control" style="width: 350px" disabled>
-                                                            </div>
-                                                        </div>
-                                                    </form>    
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label"><i class='fa fa-slack'> </i> RUC:</label>
+                                                    <div class="col-md-4">
+                                                        <input id="txtNewImpRuc" type="number" class="form-control" style="width: 400px" >
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label"><i class='fa fa-tags'> </i> Cuota Anual:</label>
+                                                    <div class="col-md-4">
+                                                        <input id="txtNewImpQuota" type="number" class="form-control" style="width: 400px" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label"><i class='fa fa-recycle'> </i> Licencia Ambiental:</label>
+                                                    <div class="col-md-4">
+                                                        <input id="txtNewImpLicence" type="text" class="form-control" style="width: 400px" >
+                                                    </div>
+                                                </div>
+                                            </form>    
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" data-dismiss="modal" class="btn dark btn-outline">Cancelar</button>
-                                        <button id="btnUpdateUserInfo" type="button" class="btn green" >Guardar Cambios</button>
+                                    <div class="col-md-6">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Información Representante del Importador</h5>
+                                        </div>
+                                        <div>
+                                            <br><br>
+                                            <form action="#" class="form-horizontal">
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label"><i class='fa fa-user'> </i>  Nombre:</label>
+                                                    <div class="col-md-4">
+                                                        <input id="txtNewImpPersonName" type="text" class="form-control" style="width: 350px" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label"><i class='fa fa-user'> </i>  Apellido:</label>
+                                                    <div class="col-md-4">
+                                                        <input id="txtNewImpPersonLastName" type="text" class="form-control" style="width: 350px" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label"><i class='fa fa-credit-card'> </i> Cédula:</label>
+                                                    <div class="col-md-4">
+                                                        <input id="txtNewImpPersonId" type="number" class="form-control" style="width: 350px" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label"><i class='fa fa-mobile'> </i> Teléfono:</label>
+                                                    <div class="col-md-4">
+                                                        <input id="txtNewImpPersonPhone" type="number" class="form-control" style="width: 350px" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label"><i class='fa fa-home'> </i> Dirección:</label>
+                                                    <div class="col-md-4">
+                                                        <input id="txtNewImpPersonAddress" type="text" class="form-control" style="width: 350px" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label"><i class='fa fa-envelope'> </i>  Correo Electrónico:</label>
+                                                    <div class="col-md-4">
+                                                        <input id="txtNewImpEmail" type="text" class="form-control" style="width: 350px" >
+                                                    </div>
+                                                </div>
+                                            </form>    
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="modal-footer">
+                                <button type="button" data-dismiss="modal" class="btn dark btn-outline">Cancelar</button>
+                                <button id="btnInsertImporter" type="button" class="btn green" >Guardar</button>
+                            </div>
                         </div>
-                        <!-- FIN FORMULARIO FLOTANTE -->
-                        </div>
+                    </div>
+                </div>
+        <!--FIN FORULARIO FLOTANTE-->
                         <!-- END PAGE CONTENT INNER -->
                     </div>
                     
@@ -350,6 +362,7 @@
             </div>
             <!-- END CONTENT -->
             
+           
         </div>
         <!-- END CONTAINER -->
         

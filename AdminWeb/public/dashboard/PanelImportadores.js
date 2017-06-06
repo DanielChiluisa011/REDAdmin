@@ -62,21 +62,37 @@ $("#addImporter").click(function(){
 		$("#txtNewImpPersonPhone").val("");
 		$("#txtNewImpPersonAddress").val("");
 		$("#txtNewImpEmail").val("");
+
+        $("#txtNewImpName").attr("disabled",false);
+        $("#txtNewImpRuc").attr("disabled",false);
+        $("#txtNewImpQuota").attr("disabled",false);
+        $("#txtNewImpLicence").attr("disabled",false);
+        $("#txtNewImpPersonName").attr("disabled",false);
+        $("#txtNewImpPersonLastName").attr("disabled",false);
+        $("#txtNewImpPersonId").attr("disabled",false);
+        $("#txtNewImpEmail").attr("disabled",false);
 });
 function ShowImporterInformation(i){
         $("#txtNewImpName").attr("disabled",true);
         $("#txtNewImpName").val(lstImporters[i].IMPORTERNAME);
 		$("#txtNewImpAddress").val(lstImporters[i].IMPORTERADDRESS);
 		$("#txtNewImpPhone").val(lstImporters[i].IMPORTERPHONE);
+        $("#txtNewImpRuc").attr("disabled",true);
 		$("#txtNewImpRuc").val(lstImporters[i].IMPORTERRUC);
+        $("#txtNewImpQuota").attr("disabled",true);
 		$("#txtNewImpQuota").val(lstImporters[i].IMPORTERQUOTA);
+        $("#txtNewImpLicence").attr("disabled",true);
 		$("#txtNewImpLicence").val(lstImporters[i].IMPORTERWASTEGENERATORNUMBER);
 		$("#txtNewImpPersonName").val(lstImporters[i].PERSONNAME);
+        $("#txtNewImpPersonName").attr("disabled",true);
 		$("#txtNewImpPersonLastName").val(lstImporters[i].PERSONLASTNAME);
+        $("#txtNewImpPersonLastName").attr("disabled",true);
 		$("#txtNewImpPersonId").val(lstImporters[i].PERSONCIRUC);
+        $("#txtNewImpPersonId").attr("disabled",true);
 		$("#txtNewImpPersonPhone").val(lstImporters[i].PERSONPHONE);
 		$("#txtNewImpPersonAddress").val(lstImporters[i].PERSONADDRESS);
 		$("#txtNewImpEmail").val(lstImporters[i].USEREMAIL);
+        $("#txtNewImpEmail").attr("disabled",true);
 }
 $("#btnInsertImporter").click(function(){
 	bootbox.confirm("¿Desea guardar la información ingresada? ", function(result) {

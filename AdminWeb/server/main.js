@@ -648,7 +648,7 @@ io.on('connection', function(socket){
 								socket.emit("ResponseImporterInfo",0);
 							}else{
 								var lstImporter=result;
-								socket.on("ResponseImporter",lstImporter);
+								socket.emit("ResponseImporter",lstImporter);
 							}
 						});
 	});

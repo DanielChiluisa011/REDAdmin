@@ -49,6 +49,7 @@ $(document).ready(function(){
     });
 });
 function ShowImporterInformation(i){
+        $("#txtNewImpName").attr("disabled",true);
         $("#txtNewImpName").val(lstImporters[i].IMPORTERNAME);
 		$("#txtNewImpAddress").val(lstImporters[i].IMPORTERADDRESS);
 		$("#txtNewImpPhone").val(lstImporters[i].IMPORTERPHONE);

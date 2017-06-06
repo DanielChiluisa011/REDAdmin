@@ -686,7 +686,7 @@ io.on('connection', function(socket){
 						"P.PERSONLASTNAME,"+
 						"P.PERSONADDRESS,"+
 						"P.PERSONPHONE "+
-						"FROM RECYCLING_CENTERS I, "+
+						"FROM recycling_centers I, "+
 						"person P "+
 						"WHERE I.PERSONID=P.PERSONID "+
 						"ORDER BY I.RECYCLINGCENTERNAME ASC;",function(error, result){

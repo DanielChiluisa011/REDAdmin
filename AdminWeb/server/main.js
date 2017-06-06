@@ -650,7 +650,7 @@ io.on('connection', function(socket){
 								for(var i=0;i<result.length;i++){
 									console.log(result[0])
 								}
-								// socket.on("ResponseImporterInfo",result);
+								socket.on("ResponseImporter",result);
 							}
 						});
 	});

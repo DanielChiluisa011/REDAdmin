@@ -15,6 +15,18 @@ $(document).ready(function(){
         }
     });
     socket.on("ResponseImporter",function(Importador){
+        $("#txtNewImpName").val(""),
+		$("#txtNewImpAddress").val(),
+		$("#txtNewImpPhone").val(""),
+		$("#txtNewImpRuc").val(""),
+		$("#txtNewImpQuota").val(""),
+		$("#txtNewImpLicence").val(""),
+		$("#txtNewImpPersonName").val(""),
+		$("#txtNewImpPersonLastName").val(""),
+		$("#txtNewImpPersonId").val(""),
+		$("#txtNewImpPersonPhone").val(""),
+		$("#txtNewImpPersonAddress").val(""),
+		$("#txtNewImpEmail").val(""),
         $("#ImportersTable > tbody").html("");
         for (var i = 0; i < Importador.length; i++) {
             $('#ImportersTable').append("<tbody>"+

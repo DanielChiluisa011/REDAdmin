@@ -158,7 +158,8 @@ $("#btnInsertImporter").click(function(){
                             horizontalEdge: 'top',
                             verticalEdge: 'rigth',
                             zindex: 1500
-                            });
+                        });
+                        location.reload();	
                     }else{
                         $.notific8('Error al guardar, intentelo nuevamente', {
                             life: 3500,

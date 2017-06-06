@@ -659,7 +659,7 @@ io.on('connection', function(socket){
 	});
 
 	socket.on("RequestUpdateImporter",function(data){
-		connection.query("UPDATE importer SET IMPORTERPHONE ="+data.phone+",IMPORTERADDRESS='"+data.address+"' WHERE IMPORTERNAME = "+data.name,function(err, rows, fields) {
+		connection.query("UPDATE importer SET IMPORTERPHONE ="+data.phone+",IMPORTERADDRESS='"+data.address+"' WHERE IMPORTERNAME = '"+data.name+"'",function(err, rows, fields) {
 	 		if(err){
 				 console.log("Error "+ err.message);
 	 			socket.emit("RequestErrorUpdateImporter",false);

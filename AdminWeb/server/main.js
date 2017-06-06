@@ -46,7 +46,7 @@ io.on('connection', function(socket){
 					       	if(err){
 					        	console.log("Error "+ err.message);
 					        }else{
-								console.log(maxID[0].max);
+								// console.log(maxID[0].max);
 					        	connection.query("INSERT INTO usertemp (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID) VALUES (?,?,?,?)",[data.email,data.pass,'cliente',maxID[0].max],function(err, rows, fields) {
 									if(err){
 										console.log("Error "+ err.message);
@@ -666,8 +666,8 @@ function AppSelectUsers(socket){
 									person: lstTempPerson[j],
 									user: lstTempUsers[i]
 								}
-								console.log(aux.person);
-								console.log(aux.user);
+								// console.log(aux.person);
+								// console.log(aux.user);
 								lstNotificationUsers.push(aux);
 							}
 						}
@@ -695,7 +695,7 @@ function SendNotification(socket){
 				  	lstTempPerson=result;
 					for (var i = 0; i < lstTempUsers.length; i++) {
 						for (var j = 0; j < lstTempPerson.length; j++) {
-							console.log(lstTempUsers[i].PERSONID+" "+lstTempPerson[j].PERSONID);
+							// console.log(lstTempUsers[i].PERSONID+" "+lstTempPerson[j].PERSONID);
 							if(lstTempUsers[i].PERSONID==lstTempPerson[j].PERSONID){
 								var aux = {
 									person: lstTempPerson[j],
@@ -718,7 +718,7 @@ function SendNotificationAlert(socket){
 						throw error;
 					}else{
 						var lstAlerts=result;
-						console.log("alertas:"+lstAlerts.length);
+						// console.log("alertas:"+lstAlerts.length);
 						io.emit('ResponseNotificationAlerts',lstAlerts);
 					}
 	})
@@ -741,7 +741,7 @@ function SelectActiveOrders(){
 		    throw error;
 		}else{
 		  	var lstOrders=result;
-		  	console.log("SelectActiveOrders");
+		  	// console.log("SelectActiveOrders");
 			io.emit('SelectActiveOrders',lstOrders);
        }
 	})
@@ -842,9 +842,9 @@ function SelectPersons(){
 function SaveNewUser(socket){
 	
 	socket.on('SaveNewUser',function(data){
-	console.log(data.person.PERSONCI+" "+data.person.PERSONNAME+" "+data.person.PERSONLASTNAME+" "+
+	// console.log(data.person.PERSONCI+" "+data.person.PERSONNAME+" "+data.person.PERSONLASTNAME+" "+
 																	  data.person.PERSONPHONE+" "+data.person.PERSONADDRESS+" "+data.person.PERSONROLE)
-	console.log(data.user.USEREMAIL+" "+data.user.USERPASSWORD+" "+data.user.USERPROFILE+" "+data.user.PERSONID);
+	// console.log(data.user.USEREMAIL+" "+data.user.USERPASSWORD+" "+data.user.USERPROFILE+" "+data.user.PERSONID);
 	connection.query('INSERT INTO person(PERSONCIRUC,PERSONNAME,PERSONLASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE) VALUES (?,?,?,?,?,?)',[data.person.PERSONCI,data.person.PERSONNAME,data.person.PERSONLASTNAME,
 																	data.person.PERSONPHONE,data.person.PERSONADDRESS,data.person.PERSONROLE],function(err, rows, fields) {
 		if(err){

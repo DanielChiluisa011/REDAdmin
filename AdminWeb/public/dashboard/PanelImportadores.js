@@ -117,23 +117,7 @@ $("#btnInsertImporter").click(function(){
     if($("#btnInsertImporter").html()=="Guardar"){
         bootbox.confirm("¿Desea guardar la información ingresada? ", function(result) {
             if(result){
-                var newImporter = {
-                    name: $("#txtNewImpName").val(),
-                    address: $("#txtNewImpAddress").val(),
-                    phone: $("#txtNewImpPhone").val(),
-                    rucImporter: $("#txtNewImpRuc").val(),
-                    quota: $("#txtNewImpQuota").val(),
-                    licence: $("#txtNewImpLicence").val(),
-                    personName: $("#txtNewImpPersonName").val(),
-                    personLastName: $("#txtNewImpPersonLastName").val(),
-                    personCi: $("#txtNewImpPersonId").val(),
-                    personPhone: $("#txtNewImpPersonPhone").val(),
-                    personAddress: $("#txtNewImpPersonAddress").val(),
-                    personEmail: $("#txtNewImpEmail").val(),
-                } 
-                console.log("NUEVO IMPORTADOR");
-                console.log(newImporter);
-                // socket.emit("RequestInsertNewImporter",newImporter);
+                socket.emit("RequestInsertNewImporter",newImporter);
                 socket.on("ResponseImporter",function(flag){
                     if(flag){
                         $.notific8('Datos guardados correctamente', {
@@ -163,21 +147,7 @@ $("#btnInsertImporter").click(function(){
     }else{
         bootbox.confirm("¿Desea actualizar la información? ", function(result) {
             if(result){
-                var newImporter = {
-                    name: $("#txtNewImpName").val(),
-                    address: $("#txtNewImpAddress").val(),
-                    phone: $("#txtNewImpPhone").val(),
-                    rucImporter: $("#txtNewImpRuc").val(),
-                    quota: $("#txtNewImpQuota").val(),
-                    licence: $("#txtNewImpLicence").val(),
-                    personName: $("#txtNewImpPersonName").val(),
-                    personLastName: $("#txtNewImpPersonLastName").val(),
-                    personCi: $("#txtNewImpPersonId").val(),
-                    personPhone: $("#txtNewImpPersonPhone").val(),
-                    personAddress: $("#txtNewImpPersonAddress").val(),
-                    personEmail: $("#txtNewImpEmail").val(),
-                } 
-                // socket.emit("RequestUpdateImporter",newImporter);
+                socket.emit("RequestUpdateImporter",newImporter);
                 socket.on("RequestErrorUpdateImporter",function(flag){
                     if(flag){
                         $.notific8('Datos actualizados correctamente', {

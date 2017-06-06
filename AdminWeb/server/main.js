@@ -644,11 +644,12 @@ io.on('connection', function(socket){
 						"FROM importer I, "+
 						"person P, users u "+
 						"WHERE I.USEREMAIL=u.USEREMAIL AND u.PERSONID=P.personid;",function(error, result){
-			if(error){
-				socket.emit("ResponseImporterInfo",0);
-			}else{
-				socket.on("ResponseImporterInfo",result);
-			}
+							if(error){
+								socket.emit("ResponseImporterInfo",0);
+							}else{
+								socket.on("ResponseImporterInfo",result);
+							}
+						});
 	});
 });
 

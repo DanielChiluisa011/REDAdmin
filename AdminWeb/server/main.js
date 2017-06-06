@@ -643,7 +643,7 @@ io.on('connection', function(socket){
 						"I.USEREMAIL "+
 						"FROM importer I, "+
 						"person P, users u "+
-						"WHERE I.USEREMAIL=u.USEREMAIL AND u.PERSONID=P.personid"+
+						"WHERE I.USEREMAIL=u.USEREMAIL AND u.PERSONID=P.personid "+
 						"ORDER BY I.IMPORTERNAME ASC;",function(error, result){
 							if(error){
 								socket.emit("ResponseImporterInfo",0);

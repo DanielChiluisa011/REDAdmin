@@ -50,7 +50,7 @@ $(document).ready(function(){
 });
 
 $("#addImporter").click(function(){
-        $("#btnInsertImporter").attr("value","Guardar");
+        $("#btnInsertImporter").html('Guardar');
         $("#txtNewImpName").val(""),
 		$("#txtNewImpAddress").val("");
 		$("#txtNewImpPhone").val("");
@@ -74,7 +74,7 @@ $("#addImporter").click(function(){
         $("#txtNewImpEmail").attr("disabled",false);
 });
 function ShowImporterInformation(i){
-        $("#btnInsertImporter").attr("value","Actualizar");
+        $("#btnInsertImporter").html('Actualizar');
         $("#txtNewImpName").attr("disabled",true);
         $("#txtNewImpName").val(lstImporters[i].IMPORTERNAME);
 		$("#txtNewImpAddress").val(lstImporters[i].IMPORTERADDRESS);

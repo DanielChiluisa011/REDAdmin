@@ -685,7 +685,7 @@ io.on('connection', function(socket){
 						"P.PERSONCIRUC,"+
 						"P.PERSONLASTNAME,"+
 						"P.PERSONADDRESS,"+
-						"P.PERSONPHONE"+
+						"P.PERSONPHONE "+
 						"FROM RECYCLING_CENTERS I, "+
 						"person P "+
 						"WHERE I.PERSONID=P.PERSONID "+

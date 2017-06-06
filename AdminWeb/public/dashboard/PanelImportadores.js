@@ -18,18 +18,18 @@ $(document).ready(function(){
     socket.on("ResponseImporter",function(Importador){
         lstImporters.length=0;
         lstImporters=Importador;
-        $("#txtNewImpName").val(""),
-		$("#txtNewImpAddress").val(""),
-		$("#txtNewImpPhone").val(""),
-		$("#txtNewImpRuc").val(""),
-		$("#txtNewImpQuota").val(""),
-		$("#txtNewImpLicence").val(""),
-		$("#txtNewImpPersonName").val(""),
-		$("#txtNewImpPersonLastName").val(""),
-		$("#txtNewImpPersonId").val(""),
-		$("#txtNewImpPersonPhone").val(""),
-		$("#txtNewImpPersonAddress").val(""),
-		$("#txtNewImpEmail").val(""),
+        $("#txtNewImpName").val("");
+		$("#txtNewImpAddress").val("");
+		$("#txtNewImpPhone").val("");
+		$("#txtNewImpRuc").val("");
+		$("#txtNewImpQuota").val("");
+		$("#txtNewImpLicence").val("");
+		$("#txtNewImpPersonName").val("");
+		$("#txtNewImpPersonLastName").val("");
+		$("#txtNewImpPersonId").val("");
+		$("#txtNewImpPersonPhone").val("");
+		$("#txtNewImpPersonAddress").val("");
+		$("#txtNewImpEmail").val("");
         $("#ImportersTable > tbody").html("");
         for (var i = 0; i < Importador.length; i++) {
             $('#ImportersTable').append("<tbody>"+
@@ -47,6 +47,21 @@ $(document).ready(function(){
                                     "</tbody>");
         }
     });
+});
+
+$("#addImporter").click(function(){
+        $("#txtNewImpName").val(""),
+		$("#txtNewImpAddress").val("");
+		$("#txtNewImpPhone").val("");
+		$("#txtNewImpRuc").val("");
+		$("#txtNewImpQuota").val("");
+		$("#txtNewImpLicence").val("");
+		$("#txtNewImpPersonName").val("");
+		$("#txtNewImpPersonLastName").val("");
+		$("#txtNewImpPersonId").val("");
+		$("#txtNewImpPersonPhone").val("");
+		$("#txtNewImpPersonAddress").val("");
+		$("#txtNewImpEmail").val("");
 });
 function ShowImporterInformation(i){
         $("#txtNewImpName").attr("disabled",true);

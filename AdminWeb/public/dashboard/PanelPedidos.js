@@ -737,7 +737,7 @@ $("#btnInsertImporter").click(function(){
 						horizontalEdge: 'top',
 						verticalEdge: 'rigth',
 						zindex: 1500
-						});
+					});
 				}
 			});
 		}

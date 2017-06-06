@@ -629,6 +629,27 @@ io.on('connection', function(socket){
 		});
 		console.log(importer);
 	});
+
+	socket.on("RequestImportersInfo",function(data){
+		connection.query("SELECT "+
+						"I.IMPORTERNAME,"+
+						"I.IMPORTERADDRESS,"+
+						"I.IMPORTERPHONE,"+
+						"I.IMPORTERRUC,"+
+						"I.IMPORTERQUOTA,"+
+						"I.IMPORTERQUOTAACCOMPLISHED,"+
+						"P.PERSONNAME,"+
+						"P.PERSONLASTNAME,"+
+						"I.USEREMAIL "+
+						"FROM importer I, "+
+						"person P, users u "+
+						"WHERE I.USEREMAIL=u.USEREMAIL AND u.PERSONID=P.personid;",function(error, result){
+			if(error){
+				socket.emit("ResponseImporterInfo",0);
+			}else{
+				socket.on("ResponseImporterInfo",result);
+			}
+	});
 });
 
 function SelectUsers(){

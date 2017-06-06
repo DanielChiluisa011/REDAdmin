@@ -657,6 +657,22 @@ io.on('connection', function(socket){
 							}
 						});
 	});
+
+	socket.on("RequestUpdateImporter",function(data){
+		connection.query('UPDATE importer SET IMPORTERPHONE ='+data.phone+',IMPORTERADDRESS='+data.address+' WHERE IMPORTERNAME = '+data.name,function(err, rows, fields) {
+	 		if(err){
+	 			socket.emit("RequestErrorUpdateImporter",false);
+	 		}else{
+	 			connection.query('UPDATE person SET PERSONPHONE ='+data.personPhone+',PERSONADDRESS='+data.personAddress+' WHERE PERSONCIRUC = '+data.personCi,function(err, rows, fields) {
+					if(err){
+						socket.emit("RequestErrorUpdateImporter",false);
+					}else{
+						socket.emit("RequestErrorUpdateImporter",true);
+					}
+				});
+	 		}
+	 	});
+	});
 });
 
 function SelectUsers(){

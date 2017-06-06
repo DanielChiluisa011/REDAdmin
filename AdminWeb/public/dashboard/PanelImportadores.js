@@ -50,6 +50,7 @@ $(document).ready(function(){
 });
 
 $("#addImporter").click(function(){
+        $("#btnInsertImporter").attr("value","Guardar");
         $("#txtNewImpName").val(""),
 		$("#txtNewImpAddress").val("");
 		$("#txtNewImpPhone").val("");
@@ -73,6 +74,7 @@ $("#addImporter").click(function(){
         $("#txtNewImpEmail").attr("disabled",false);
 });
 function ShowImporterInformation(i){
+        $("#btnInsertImporter").attr("value","Actualizar");
         $("#txtNewImpName").attr("disabled",true);
         $("#txtNewImpName").val(lstImporters[i].IMPORTERNAME);
 		$("#txtNewImpAddress").val(lstImporters[i].IMPORTERADDRESS);
@@ -95,50 +97,96 @@ function ShowImporterInformation(i){
         $("#txtNewImpEmail").attr("disabled",true);
 }
 $("#btnInsertImporter").click(function(){
-	bootbox.confirm("¿Desea guardar la información ingresada? ", function(result) {
-		if(result){
-			var newImporter = {
-				name: $("#txtNewImpName").val(),
-				address: $("#txtNewImpAddress").val(),
-				phone: $("#txtNewImpPhone").val(),
-				rucImporter: $("#txtNewImpRuc").val(),
-				quota: $("#txtNewImpQuota").val(),
-				licence: $("#txtNewImpLicence").val(),
-				personName: $("#txtNewImpPersonName").val(),
-				personLastName: $("#txtNewImpPersonLastName").val(),
-				personCi: $("#txtNewImpPersonId").val(),
-				personPhone: $("#txtNewImpPersonPhone").val(),
-				personAddress: $("#txtNewImpPersonAddress").val(),
-				personEmail: $("#txtNewImpEmail").val(),
-			} 
-			console.log("NUEVO IMPORTADOR");
-			console.log(newImporter);
-			socket.emit("RequestInsertNewImporter",newImporter);
-			socket.on("ResponseImporter",function(flag){
-				if(flag){
-					$.notific8('Datos guardados correctamente', {
-						life: 3500,
-						heading: 'Listo!',
-						theme: 'teal',
-						sticky: false,
-						horizontalEdge: 'top',
-						verticalEdge: 'rigth',
-						zindex: 1500
-						});
-				}else{
-					$.notific8('Error al guardar, intentelo nuevamente', {
-						life: 3500,
-						heading: 'Error!',
-						theme: 'ruby',
-						sticky: false,
-						horizontalEdge: 'top',
-						verticalEdge: 'rigth',
-						zindex: 1500
-					});
-				}
-			});
-		}
-	});
+    if($("#btnInsertImporter").attr("value")=="Guardar"){
+        bootbox.confirm("¿Desea guardar la información ingresada? ", function(result) {
+            if(result){
+                var newImporter = {
+                    name: $("#txtNewImpName").val(),
+                    address: $("#txtNewImpAddress").val(),
+                    phone: $("#txtNewImpPhone").val(),
+                    rucImporter: $("#txtNewImpRuc").val(),
+                    quota: $("#txtNewImpQuota").val(),
+                    licence: $("#txtNewImpLicence").val(),
+                    personName: $("#txtNewImpPersonName").val(),
+                    personLastName: $("#txtNewImpPersonLastName").val(),
+                    personCi: $("#txtNewImpPersonId").val(),
+                    personPhone: $("#txtNewImpPersonPhone").val(),
+                    personAddress: $("#txtNewImpPersonAddress").val(),
+                    personEmail: $("#txtNewImpEmail").val(),
+                } 
+                console.log("NUEVO IMPORTADOR");
+                console.log(newImporter);
+                socket.emit("RequestInsertNewImporter",newImporter);
+                socket.on("ResponseImporter",function(flag){
+                    if(flag){
+                        $.notific8('Datos guardados correctamente', {
+                            life: 3500,
+                            heading: 'Listo!',
+                            theme: 'teal',
+                            sticky: false,
+                            horizontalEdge: 'top',
+                            verticalEdge: 'rigth',
+                            zindex: 1500
+                            });
+                    }else{
+                        $.notific8('Error al guardar, intentelo nuevamente', {
+                            life: 3500,
+                            heading: 'Error!',
+                            theme: 'ruby',
+                            sticky: false,
+                            horizontalEdge: 'top',
+                            verticalEdge: 'rigth',
+                            zindex: 1500
+                        });
+                    }
+                });
+            }
+        });
+    }else{
+        bootbox.confirm("¿Desea actualizar la información? ", function(result) {
+            if(result){
+                var newImporter = {
+                    name: $("#txtNewImpName").val(),
+                    address: $("#txtNewImpAddress").val(),
+                    phone: $("#txtNewImpPhone").val(),
+                    rucImporter: $("#txtNewImpRuc").val(),
+                    quota: $("#txtNewImpQuota").val(),
+                    licence: $("#txtNewImpLicence").val(),
+                    personName: $("#txtNewImpPersonName").val(),
+                    personLastName: $("#txtNewImpPersonLastName").val(),
+                    personCi: $("#txtNewImpPersonId").val(),
+                    personPhone: $("#txtNewImpPersonPhone").val(),
+                    personAddress: $("#txtNewImpPersonAddress").val(),
+                    personEmail: $("#txtNewImpEmail").val(),
+                } 
+                socket.emit("RequestUpdateImporter",newImporter);
+                socket.on("RequestErrorUpdateImporter",function(flag){
+                    if(flag){
+                        $.notific8('Datos actualizados correctamente', {
+                            life: 3500,
+                            heading: 'Listo!',
+                            theme: 'teal',
+                            sticky: false,
+                            horizontalEdge: 'top',
+                            verticalEdge: 'rigth',
+                            zindex: 1500
+                            });
+                    }else{
+                        $.notific8('Error al guardar, intentelo nuevamente', {
+                            life: 3500,
+                            heading: 'Error!',
+                            theme: 'ruby',
+                            sticky: false,
+                            horizontalEdge: 'top',
+                            verticalEdge: 'rigth',
+                            zindex: 1500
+                        });
+                    }
+                });
+            }
+        });
+    }
+	
 	
 	
 });

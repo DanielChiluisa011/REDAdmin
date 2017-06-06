@@ -98,6 +98,22 @@ function ShowImporterInformation(i){
 }
 $("#btnInsertImporter").click(function(){
     // console.log($("#btnInsertImporter").html());
+    var newImporter = {
+                    name: $("#txtNewImpName").val(),
+                    address: $("#txtNewImpAddress").val(),
+                    phone: $("#txtNewImpPhone").val(),
+                    rucImporter: $("#txtNewImpRuc").val(),
+                    quota: $("#txtNewImpQuota").val(),
+                    licence: $("#txtNewImpLicence").val(),
+                    personName: $("#txtNewImpPersonName").val(),
+                    personLastName: $("#txtNewImpPersonLastName").val(),
+                    personCi: $("#txtNewImpPersonId").val(),
+                    personPhone: $("#txtNewImpPersonPhone").val(),
+                    personAddress: $("#txtNewImpPersonAddress").val(),
+                    personEmail: $("#txtNewImpEmail").val(),
+                } 
+                console.log("NUEVO IMPORTADOR");
+                console.log(newImporter);
     if($("#btnInsertImporter").html()=="Guardar"){
         bootbox.confirm("¿Desea guardar la información ingresada? ", function(result) {
             if(result){

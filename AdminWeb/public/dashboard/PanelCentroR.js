@@ -53,7 +53,24 @@ $(document).ready(function(){
         }
     });
 });
+var MapsGoogle = function () {
 
+    var mapBasic = function () {
+        mapa=new GMaps({
+            div: '#MapIngreso',
+            lat: -0.191611,
+            lng:  -78.483574
+        });
+         mapa.setZoom(10);
+		 
+    }
+    return {
+        //main function to initiate map samples
+        init: function () {
+            mapBasic();
+        }
+    };
+}();
 $("#btnCancelImporter").click(function(){
         $("#btnInsertImporter").html('Guardar');
         $("#txtNewImpName").val(""),

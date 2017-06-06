@@ -638,8 +638,12 @@ io.on('connection', function(socket){
 						"I.IMPORTERRUC,"+
 						"I.IMPORTERQUOTA,"+
 						"I.IMPORTERQUOTAACCOMPLISHED,"+
+						"I.IMPORTERWASTEGENERATORNUMBER,"+
 						"P.PERSONNAME,"+
+						"P.PERSONCIRUC,"+
 						"P.PERSONLASTNAME,"+
+						"P.PERSONADDRESS,"+
+						"P.PERSONPHONE,"+
 						"I.USEREMAIL "+
 						"FROM importer I, "+
 						"person P, users u "+

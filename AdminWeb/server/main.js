@@ -647,7 +647,10 @@ io.on('connection', function(socket){
 							if(error){
 								socket.emit("ResponseImporterInfo",0);
 							}else{
-								socket.on("ResponseImporterInfo",result);
+								for(var i=0;i<result.length;i++){
+									console.log(result[0])
+								}
+								// socket.on("ResponseImporterInfo",result);
 							}
 						});
 	});

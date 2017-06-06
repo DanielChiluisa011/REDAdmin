@@ -49,18 +49,18 @@ $(document).ready(function(){
     });
 });
 function ShowImporterInformation(i){
-        $("#txtNewImpName").val(lstImporters[i].IMPORTERNAME),
-		$("#txtNewImpAddress").val(lstImporters[i].IMPORTERADDRESS),
-		$("#txtNewImpPhone").val(lstImporters[i].IMPORTERPHONE),
-		$("#txtNewImpRuc").val(lstImporters[i].IMPORTERRUC),
-		$("#txtNewImpQuota").val(lstImporters[i].IMPORTERQUOTA),
-		$("#txtNewImpLicence").val(lstImporters[i].IMPORTERWASTEGENERATORNUMBER),
-		$("#txtNewImpPersonName").val(lstImporters[i].PERSONNAME),
-		$("#txtNewImpPersonLastName").val(lstImporters[i].PERSONLASTNAME),
-		$("#txtNewImpPersonId").val(lstImporters[i].PERSONCIRUC),
-		$("#txtNewImpPersonPhone").val(lstImporters[i].PERSONPHONE),
-		$("#txtNewImpPersonAddress").val(lstImporters[i].PERSONADDRESS),
-		$("#txtNewImpEmail").val(lstImporters[i].USEREMAIL),
+        $("#txtNewImpName").val(lstImporters[i].IMPORTERNAME);
+		$("#txtNewImpAddress").val(lstImporters[i].IMPORTERADDRESS);
+		$("#txtNewImpPhone").val(lstImporters[i].IMPORTERPHONE);
+		$("#txtNewImpRuc").val(lstImporters[i].IMPORTERRUC);
+		$("#txtNewImpQuota").val(lstImporters[i].IMPORTERQUOTA);
+		$("#txtNewImpLicence").val(lstImporters[i].IMPORTERWASTEGENERATORNUMBER);
+		$("#txtNewImpPersonName").val(lstImporters[i].PERSONNAME);
+		$("#txtNewImpPersonLastName").val(lstImporters[i].PERSONLASTNAME);
+		$("#txtNewImpPersonId").val(lstImporters[i].PERSONCIRUC);
+		$("#txtNewImpPersonPhone").val(lstImporters[i].PERSONPHONE);
+		$("#txtNewImpPersonAddress").val(lstImporters[i].PERSONADDRESS);
+		$("#txtNewImpEmail").val(lstImporters[i].USEREMAIL);
 }
 $("#btnInsertImporter").click(function(){
 	bootbox.confirm("¿Desea guardar la información ingresada? ", function(result) {

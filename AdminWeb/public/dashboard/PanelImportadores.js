@@ -25,7 +25,7 @@ $(document).ready(function(){
                                             "<td>"+Importador[i].IMPORTERPHONE+"</td>"+
                                             "<td>"+Importador[i].IMPORTERQUOTA+"</td>"+
                                             "<td>"+Importador[i].IMPORTERQUOTAACCOMPLISHED+"</td>"+
-                                            "<td>"+Importador[i].PERSONNAME+' '+lstUsers[i].PERSONLASTNAME+"</td>"+
+                                            "<td>"+Importador[i].PERSONNAME+' '+Importador[i].PERSONLASTNAME+"</td>"+
                                             "<td>"+Importador[i].USEREMAIL+"</td>"+
                                             "<td><a class='btn red btn-outline sbold' data-toggle='modal' href='#responsive' onclick='ShowUserInformation("+i+")'> <i class='fa fa-edit'> </i> Editar </a></td>"+
                                         "</tr>"+

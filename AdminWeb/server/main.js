@@ -691,7 +691,7 @@ io.on('connection', function(socket){
 						"WHERE I.PERSONID=P.PERSONID "+
 						"ORDER BY I.RECYCLINGCENTERNAME ASC;",function(error, result){
 							if(error){
-								console.log("Error "+ err.message);
+								console.log("Error "+ error.message);
 								socket.emit("ResponseCRInfo",0);
 							}else{
 								var lstCR=result;

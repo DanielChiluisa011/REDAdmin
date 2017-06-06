@@ -49,30 +49,30 @@ $(document).ready(function(){
     });
 });
 
-// $("#addImporter").click(function(){
-//         $("#btnInsertImporter").html('Guardar');
-//         $("#txtNewImpName").val(""),
-// 		$("#txtNewImpAddress").val("");
-// 		$("#txtNewImpPhone").val("");
-// 		$("#txtNewImpRuc").val("");
-// 		$("#txtNewImpQuota").val("");
-// 		$("#txtNewImpLicence").val("");
-// 		$("#txtNewImpPersonName").val("");
-// 		$("#txtNewImpPersonLastName").val("");
-// 		$("#txtNewImpPersonId").val("");
-// 		$("#txtNewImpPersonPhone").val("");
-// 		$("#txtNewImpPersonAddress").val("");
-// 		$("#txtNewImpEmail").val("");
+$("#btnCancelImporter").click(function(){
+        $("#btnInsertImporter").html('Guardar');
+        $("#txtNewImpName").val(""),
+		$("#txtNewImpAddress").val("");
+		$("#txtNewImpPhone").val("");
+		$("#txtNewImpRuc").val("");
+		$("#txtNewImpQuota").val("");
+		$("#txtNewImpLicence").val("");
+		$("#txtNewImpPersonName").val("");
+		$("#txtNewImpPersonLastName").val("");
+		$("#txtNewImpPersonId").val("");
+		$("#txtNewImpPersonPhone").val("");
+		$("#txtNewImpPersonAddress").val("");
+		$("#txtNewImpEmail").val("");
 
-//         $("#txtNewImpName").attr("disabled",false);
-//         $("#txtNewImpRuc").attr("disabled",false);
-//         $("#txtNewImpQuota").attr("disabled",false);
-//         $("#txtNewImpLicence").attr("disabled",false);
-//         $("#txtNewImpPersonName").attr("disabled",false);
-//         $("#txtNewImpPersonLastName").attr("disabled",false);
-//         $("#txtNewImpPersonId").attr("disabled",false);
-//         $("#txtNewImpEmail").attr("disabled",false);
-// });
+        $("#txtNewImpName").attr("disabled",false);
+        $("#txtNewImpRuc").attr("disabled",false);
+        $("#txtNewImpQuota").attr("disabled",false);
+        $("#txtNewImpLicence").attr("disabled",false);
+        $("#txtNewImpPersonName").attr("disabled",false);
+        $("#txtNewImpPersonLastName").attr("disabled",false);
+        $("#txtNewImpPersonId").attr("disabled",false);
+        $("#txtNewImpEmail").attr("disabled",false);
+});
 function ShowImporterInformation(i){
         $("#btnInsertImporter").html('Actualizar');
         $("#txtNewImpName").attr("disabled",true);
@@ -99,21 +99,21 @@ function ShowImporterInformation(i){
 $("#btnInsertImporter").click(function(){
     // console.log($("#btnInsertImporter").html());
     var newImporter = {
-                    name: $("#txtNewImpName").val(),
-                    address: $("#txtNewImpAddress").val(),
-                    phone: $("#txtNewImpPhone").val(),
-                    rucImporter: $("#txtNewImpRuc").val(),
-                    quota: $("#txtNewImpQuota").val(),
-                    licence: $("#txtNewImpLicence").val(),
-                    personName: $("#txtNewImpPersonName").val(),
-                    personLastName: $("#txtNewImpPersonLastName").val(),
-                    personCi: $("#txtNewImpPersonId").val(),
-                    personPhone: $("#txtNewImpPersonPhone").val(),
-                    personAddress: $("#txtNewImpPersonAddress").val(),
-                    personEmail: $("#txtNewImpEmail").val(),
-                } 
-                console.log("NUEVO IMPORTADOR");
-                console.log(newImporter);
+        name: $("#txtNewImpName").val(),
+        address: $("#txtNewImpAddress").val(),
+        phone: $("#txtNewImpPhone").val(),
+        rucImporter: $("#txtNewImpRuc").val(),
+        quota: $("#txtNewImpQuota").val(),
+        licence: $("#txtNewImpLicence").val(),
+        personName: $("#txtNewImpPersonName").val(),
+        personLastName: $("#txtNewImpPersonLastName").val(),
+        personCi: $("#txtNewImpPersonId").val(),
+        personPhone: $("#txtNewImpPersonPhone").val(),
+        personAddress: $("#txtNewImpPersonAddress").val(),
+        personEmail: $("#txtNewImpEmail").val(),
+    } 
+    console.log("NUEVO IMPORTADOR");
+    console.log(newImporter);
     if($("#btnInsertImporter").html()=="Guardar"){
         bootbox.confirm("¿Desea guardar la información ingresada? ", function(result) {
             if(result){

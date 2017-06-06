@@ -17,7 +17,7 @@ $(document).ready(function(){
     socket.on("ResponseImporter",function(Importador){
         $("#ImportersTable > tbody").html("");
         for (var i = 0; i < Importador.length; i++) {
-            $('#UsersTable').append("<tbody>"+
+            $('#ImportersTable').append("<tbody>"+
                                         "<tr>"+
                                             "<td>"+Importador[i].IMPORTERNAME+"</td>"+
                                             "<td>"+Importador[i].IMPORTERRUC+"</td>"+

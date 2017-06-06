@@ -687,10 +687,11 @@ io.on('connection', function(socket){
 						"P.PERSONADDRESS,"+
 						"P.PERSONPHONE,"+
 						"FROM recycling_centers I, "+
-						"person P, users u "+
+						"person P "+
 						"WHERE I.PERSONID=P.PERSONID "+
 						"ORDER BY I.RECYCLINGCENTERNAME ASC;",function(error, result){
 							if(error){
+								console.log("Error "+ err.message);
 								socket.emit("ResponseCRInfo",0);
 							}else{
 								var lstCR=result;

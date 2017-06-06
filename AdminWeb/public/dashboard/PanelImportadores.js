@@ -16,7 +16,7 @@ $(document).ready(function(){
     });
     socket.on("ResponseImporter",function(Importador){
         $("#txtNewImpName").val(""),
-		$("#txtNewImpAddress").val(),
+		$("#txtNewImpAddress").val(""),
 		$("#txtNewImpPhone").val(""),
 		$("#txtNewImpRuc").val(""),
 		$("#txtNewImpQuota").val(""),

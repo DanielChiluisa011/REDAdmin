@@ -17,7 +17,7 @@ $(document).ready(function(){
     });
     socket.on("ResponseImporter",function(Importador){
         lstImporters.length=0;
-        lstAlerts=Importador;
+        lstImporters=Importador;
         $("#txtNewImpName").val(""),
 		$("#txtNewImpAddress").val(""),
 		$("#txtNewImpPhone").val(""),

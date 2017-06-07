@@ -698,7 +698,46 @@ io.on('connection', function(socket){
 								socket.emit("ResponseCR",lstCR);
 							}
 						});
-	});	
+	});
+	
+
+	// socket.on("RequestInsertNewCR", function(RC){
+	// 	connection.query('INSERT INTO person (PERSONCIRUC,PERSONNAME,PERSONLASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE) VALUES (?,?,?,?,?,?)',
+	// 		[RC.personCi,
+	// 		RC.personName,
+	// 		RC.personLastName,
+	// 		RC.personPhone,
+	// 		RC.personAddress,
+	// 		"Reciclador"],function(err, rows, fields) {
+	// 		if(err){
+	// 			console.log("Error "+ err.message);
+	// 			socket.emit("ResponseImporter",false);
+	// 		}else{
+	// 			connection.query("SELECT max(personid) as max  FROM person",function(error, result){
+	// 				if(error){
+	// 					socket.emit("ResponseCR",false);
+	// 				}else{
+	// 					connection.query('INSERT INTO recycling_centers (RECYCLINGCENTERNAME,RECYCLINGCENTERPHONE,IMPORTERPHONE,IMPORTERRUC,IMPORTERQUOTA,IMPORTERWASTEGENERATORNUMBER,USEREMAIL) VALUES (?,?,?,?,?,?,?)',
+	// 								[RC.name,
+	// 								RC.address,
+	// 								RC.phone,
+	// 								RC.rucImporter,
+	// 								RC.quota,
+	// 								RC.licence,
+	// 								RC.personEmail],function(err, rows, fields) {
+	// 						if(err){
+	// 							console.log("Error "+ err.message);
+	// 							socket.emit("ResponseImporter",false);
+	// 						}else{
+	// 							socket.emit("ResponseImporter",true);
+	// 						}
+	// 					});
+	// 				}
+	// 			});
+	// 		}
+	// 	});
+	// });
+		
 });
 
 function SelectUsers(){

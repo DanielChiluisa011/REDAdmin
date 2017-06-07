@@ -91,37 +91,23 @@ $("#btnCancelImporter").click(function(){
         $("#txtNewImpName").val(""),
 		$("#txtNewImpAddress").val("");
 		$("#txtNewImpPhone").val("");
-		$("#txtNewImpRuc").val("");
-		$("#txtNewImpQuota").val("");
-		$("#txtNewImpLicence").val("");
 		$("#txtNewImpPersonName").val("");
 		$("#txtNewImpPersonLastName").val("");
 		$("#txtNewImpPersonId").val("");
 		$("#txtNewImpPersonPhone").val("");
 		$("#txtNewImpPersonAddress").val("");
-		$("#txtNewImpEmail").val("");
 
         $("#txtNewImpName").attr("disabled",false);
-        $("#txtNewImpRuc").attr("disabled",false);
-        $("#txtNewImpQuota").attr("disabled",false);
-        $("#txtNewImpLicence").attr("disabled",false);
         $("#txtNewImpPersonName").attr("disabled",false);
         $("#txtNewImpPersonLastName").attr("disabled",false);
         $("#txtNewImpPersonId").attr("disabled",false);
-        $("#txtNewImpEmail").attr("disabled",false);
 });
 function ShowImporterInformation(i){
         $("#btnInsertImporter").html('Actualizar');
         $("#txtNewImpName").attr("disabled",true);
-        $("#txtNewImpName").val(lstCR[i].IMPORTERNAME);
-		$("#txtNewImpAddress").val(lstCR[i].IMPORTERADDRESS);
-		$("#txtNewImpPhone").val(lstCR[i].IMPORTERPHONE);
-        $("#txtNewImpRuc").attr("disabled",true);
-		$("#txtNewImpRuc").val(lstCR[i].IMPORTERRUC);
-        $("#txtNewImpQuota").attr("disabled",true);
-		$("#txtNewImpQuota").val(lstCR[i].IMPORTERQUOTA);
-        $("#txtNewImpLicence").attr("disabled",true);
-		$("#txtNewImpLicence").val(lstCR[i].IMPORTERWASTEGENERATORNUMBER);
+        $("#txtNewImpName").val(lstCR[i].RECYCLINGCENTERNAME);
+		$("#txtNewImpAddress").val(lstCR[i].RECYCLINGCENTERADDRESS);
+		$("#txtNewImpPhone").val(lstCR[i].RECYCLINGCENTERPHONE);
 		$("#txtNewImpPersonName").val(lstCR[i].PERSONNAME);
         $("#txtNewImpPersonName").attr("disabled",true);
 		$("#txtNewImpPersonLastName").val(lstCR[i].PERSONLASTNAME);
@@ -130,31 +116,25 @@ function ShowImporterInformation(i){
         $("#txtNewImpPersonId").attr("disabled",true);
 		$("#txtNewImpPersonPhone").val(lstCR[i].PERSONPHONE);
 		$("#txtNewImpPersonAddress").val(lstCR[i].PERSONADDRESS);
-		$("#txtNewImpEmail").val(lstCR[i].USEREMAIL);
-        $("#txtNewImpEmail").attr("disabled",true);
 }
 $("#btnInsertImporter").click(function(){
     // console.log($("#btnInsertImporter").html());
-    var newImporter = {
+    var newCR = {
         name: $("#txtNewImpName").val(),
         address: $("#txtNewImpAddress").val(),
         phone: $("#txtNewImpPhone").val(),
-        rucImporter: $("#txtNewImpRuc").val(),
-        quota: $("#txtNewImpQuota").val(),
-        licence: $("#txtNewImpLicence").val(),
         personName: $("#txtNewImpPersonName").val(),
         personLastName: $("#txtNewImpPersonLastName").val(),
         personCi: $("#txtNewImpPersonId").val(),
         personPhone: $("#txtNewImpPersonPhone").val(),
-        personAddress: $("#txtNewImpPersonAddress").val(),
-        personEmail: $("#txtNewImpEmail").val(),
+        personAddress: $("#txtNewImpPersonAddress").val()
     } 
     console.log("NUEVO CR");
-    console.log(newImporter);
+    console.log(newCR);
     if($("#btnInsertImporter").html()=="Guardar"){
         bootbox.confirm("¿Desea guardar la información ingresada? ", function(result) {
             if(result){
-                socket.emit("RequestInsertNewImporter",newImporter);
+                socket.emit("RequestInsertnewCR",newCR);
                 socket.on("ResponseImporter",function(flag){
                     if(flag){
                         $.notific8('Datos guardados correctamente', {
@@ -184,7 +164,7 @@ $("#btnInsertImporter").click(function(){
     }else{
         bootbox.confirm("¿Desea actualizar la información? ", function(result) {
             if(result){
-                socket.emit("RequestUpdateImporter",newImporter);
+                socket.emit("RequestUpdateImporter",newCR);
                 socket.on("RequestErrorUpdateImporter",function(flag){
                     if(flag){
                         $.notific8('Datos actualizados correctamente', {

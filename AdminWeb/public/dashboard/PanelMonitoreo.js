@@ -204,7 +204,7 @@ function ShowRouteTest(i){
 		mapa.travelRoute({
 		    origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
 		    destination: [finishPosition.CoordX,finishPosition.CoordY],
-		    travelMode: 'driving',
+		    travelMode: 'DRIVING',
 		    waypoints: waypnts,
 		  	optimizeWaypoints: true,
 		  	provideRouteAlternatives: true,
@@ -251,7 +251,10 @@ function ShowRouteTest(i){
 				AuxTruck=lstTrucks[i];
 			}
 		}
+		console.log("if");
+		console.log(data.user.person.PERSONID+" "+ AuxTruck.PERSONID)
 		if(data.user.person.PERSONID == AuxTruck.PERSONID){
+			console.log("")
 			var UserExist=false;
 			if(lstUserMarkers.length==0){
 				userMarker = mapa.addMarker({

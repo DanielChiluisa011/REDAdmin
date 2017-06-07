@@ -192,7 +192,7 @@ function showData1(i,TotalQuantity){
 			$('#txtTruckId').val('');
 		}
 	}
-	// $("#cmbRecyclingCenters")[0].selectedIndex = 1;
+	$("#cmbRecyclingCenters")[0].selectedIndex = 1;
 	$('#txtRecyclingCenterAddress').val(lstRecyclingCenters[$("#cmbRecyclingCenters option:selected").index()-1].RecyclingCenterAddress);
 	$('#txtRecyclingCenterPhone').val(lstRecyclingCenters[$("#cmbRecyclingCenters option:selected").index()-1].RecyclingCenterPhone);
 	finishPosition={

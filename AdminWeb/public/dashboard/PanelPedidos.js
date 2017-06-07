@@ -135,7 +135,7 @@ $(document).ready(function(){
        		// 					"</td><td onclick='ShowData("+i+")'>"+objOrder.importer.DistributorName+"</td></tr><tbody>"); 
        		lstObjOrders.push(objOrder);
        	}
-       	InitialPosition();
+       	// InitialPosition();
        	if(lstOrders.length!=0){
        		CreateJourney();	
        	}
@@ -312,7 +312,7 @@ $('#cmbRecyclingCenters').change(function(){
 		    MapsGoogle.init();
 		});
 		LocateRecyclingCenters();
-		InitialPosition();
+		// InitialPosition();
 		for (var i = 0; i < Route.length; i++) {
 			mapa.addMarker({
 			   	lat: Route[i].CoordX,
@@ -354,7 +354,7 @@ function LocateDistributors(j){
 	    MapsGoogle.init();
 	});
 	LocateRecyclingCenters();
-	InitialPosition();
+	// InitialPosition();
 	Route=[];
 	for (var i = 0; i < lstDistributors.length; i++) {
 		// if(lstDistributors[i].IMPORTER_ImporterId==lstObjOrders[j].importer.ImporterId){

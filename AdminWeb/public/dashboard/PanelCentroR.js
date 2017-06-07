@@ -1,26 +1,8 @@
 var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
 var lstCR= [];
 var mapa;
-var MapsGoogle = function () {
 
-    var mapBasic = function () {
-        mapa=new GMaps({
-            div: '#MapIngreso',
-            lat: -0.191611,
-            lng:  -78.483574
-        });
-         mapa.setZoom(10);
-		 
-    }
-    return {
-        //main function to initiate map samples
-        init: function () {
-            mapBasic();
-        }
-    };
-}();
 $(document).ready(function(){
-     MapsGoogle.init();
     socket.emit("RequestCRInfo","");
     socket.on("ResponseCRInfo",function(flag){
         if(flag==0){

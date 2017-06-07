@@ -327,7 +327,7 @@ $('#cmbRecyclingCenters').change(function(){
 			        }
 				});
 		}		
-		CreateRoute();
+		ShowRoute();
 	}
 });
 

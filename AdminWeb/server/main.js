@@ -699,8 +699,6 @@ io.on('connection', function(socket){
 							}
 						});
 	});
-	
-
 	// socket.on("RequestInsertNewCR", function(RC){
 	// 	connection.query('INSERT INTO person (PERSONCIRUC,PERSONNAME,PERSONLASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE) VALUES (?,?,?,?,?,?)',
 	// 		[RC.personCi,

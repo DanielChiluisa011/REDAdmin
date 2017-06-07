@@ -97,7 +97,6 @@ function ShowImporterInformation(i){
 		$("#txtNewImpPersonAddress").val(lstCR[i].PERSONADDRESS);
 }
 $("#btnInsertImporter").click(function(){
-    // console.log($("#btnInsertImporter").html());
     var newCR = {
         name: $("#txtNewImpName").val(),
         address: $("#txtNewImpAddress").val(),

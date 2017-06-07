@@ -309,68 +309,32 @@ function ShowRouteTest(i){
 				}
 				lstUserMarkers.push(Aux);
 			}
-			// ////////////////////////////////////////////////////////////////////////////////////////////// PRUEBA
-			// //calculateAndDisplayRoute
-			// var waypts = [];
-			// for (var i = 0; i<RouteSelected.length ; i++) {
-			// 	RouteInGo.push({
-			// 		location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
-			// 		stopover: true
-			// 	});
-			// }			
-			// directionsService.route({
-			// 	origin: new google.maps.LatLng(data.position.lat,data.position.lng),
-			// 	destination: new google.maps.LatLng(finishPosition.CoordX,finishPosition.CoordY),
-			// 	waypoints: RouteInGo,
-			// 	optimizeWaypoints: true,
-			// 	travelMode: 'DRIVING'
-			// }, function(response, status) {
-			// if (status === 'OK') {
-			// 	directionsDisplay.setDirections(response);
-			// 	var route = response.routes[0];
-			// 	var summaryPanel = document.getElementById('directions-panel');
-			// 	summaryPanel.innerHTML = '';
-			// 	// For each route, display summary information.
-			// 	for (var i = 0; i < route.legs.length; i++) {
-			// 	var routeSegment = i + 1;
-			// 	summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
-			// 		'</b><br>';
-			// 	summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
-			// 	summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
-			// 	summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
-			// 	}
-			// } else {
-			// 	window.alert('Directions request failed due to ' + status);
-			// }
-			// });
-			// //calculateAndDisplayRoute
-
-
-			// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////fin prueba////////
-			RouteInGo.length=0;
-			for (var i = 0; i<RouteSelected.length ; i++) {
-				RouteInGo.push({
-					location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
-					stopover:false
-				});
-			}
-			SortRoute(data.position,RouteInGo);
-			console.log("Elementos en ROuteInGo "+RouteInGo.length);
-			mapa.travelRoute({
-				origin: [data.position.lat,data.position.lng],
-				destination: [finishPosition.CoordX,finishPosition.CoordY],
-				travelMode: 'driving',
-				waypoints: RouteInGo,
-				optimizeWaypoints: true,
-				provideRouteAlternatives: true,
-				step: function (e) {
-					mapa.drawPolyline({
-						path: e.path,
-						strokeColor: '#131540',
-						strokeOpacity: 0.6,
-						strokeWeight: 6
+			socket.on('DeviationNotificationToAdmin',function(data){
+				RouteInGo.length=0;
+				for (var i = 0; i<RouteSelected.length ; i++) {
+					RouteInGo.push({
+						location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
+						stopover:false
 					});
 				}
+				SortRoute(data.position,RouteInGo);
+				console.log("Elementos en ROuteInGo "+RouteInGo.length);
+				mapa.travelRoute({
+					origin: [data.position.lat,data.position.lng],
+					destination: [finishPosition.CoordX,finishPosition.CoordY],
+					travelMode: 'driving',
+					waypoints: RouteInGo,
+					optimizeWaypoints: true,
+					provideRouteAlternatives: true,
+					step: function (e) {
+						mapa.drawPolyline({
+							path: e.path,
+							strokeColor: '#131540',
+							strokeOpacity: 0.6,
+							strokeWeight: 6
+						});
+					}
+				});
 			});
 		}
 	});

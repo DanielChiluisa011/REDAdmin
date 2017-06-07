@@ -242,9 +242,9 @@ function ShowRouteTest(i){
 	        }
 	    });
 	}
-	
+	var flagFirstDrawing=true;
 	socket.on('TruckLocation',function(data){
-		mapa.removePolylines();
+		
 		var AuxTruck;
 		for(var i=0;i<lstTrucks.length;i++){
 			if(ObjJourney.TRUCK_truck_id==lstTrucks[i].TruckId){
@@ -310,6 +310,10 @@ function ShowRouteTest(i){
 				lstUserMarkers.push(Aux);
 			}
 			socket.on('DeviationNotificationToAdmin',function(data){
+				flagFirstDrawing=true;
+			});
+			if(flagFirstDrawing){
+				mapa.removePolylines();
 				RouteInGo.length=0;
 				for (var i = 0; i<RouteSelected.length ; i++) {
 					RouteInGo.push({
@@ -335,7 +339,8 @@ function ShowRouteTest(i){
 						});
 					}
 				});
-			});
+				flagFirstDrawing=false;
+			}	
 		}
 	});
 }

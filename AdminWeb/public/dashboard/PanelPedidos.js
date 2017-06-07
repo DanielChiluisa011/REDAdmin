@@ -500,7 +500,7 @@ function SiError (error){
 
 function ShowRoute(){ 
 	var waypnts=[];
-	for (var i = 0; i < RouteSelected.length; i++) {
+	for (var i = 1; i < RouteSelected.length; i++) {
 		waypnts.push({
 			location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
 			stopover: false 
@@ -508,7 +508,7 @@ function ShowRoute(){
 	}
 	$('#gmap_routes_instructions').empty();
     mapa.travelRoute({
-        origin: [userPosition.CoordX,userPosition.CoordY],
+        origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
         destination: [finishPosition.CoordX,finishPosition.CoordY],
         travelMode: 'driving',
         waypoints: waypnts,

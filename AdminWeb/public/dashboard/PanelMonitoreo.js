@@ -308,7 +308,7 @@ function ShowRouteTest(i){
 				}
 				lstUserMarkers.push(Aux);
 			}
-			socket.on('DeviationNotificationToAdmin',function(data){
+			//socket.on('DeviationNotificationToAdmin',function(data){
 				mapa.removePolylines();
 				RouteInGo.length=0;
 				for (var i = 0; i<RouteSelected.length ; i++) {
@@ -335,7 +335,7 @@ function ShowRouteTest(i){
 						});
 					}
 				});
-			});
+			//});
 			
 		}
 	});

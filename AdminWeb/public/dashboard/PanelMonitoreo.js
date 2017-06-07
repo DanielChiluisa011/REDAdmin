@@ -311,6 +311,7 @@ function ShowRouteTest(i){
 			}
 			socket.on('DeviationNotificationToAdmin',function(data){
 				flagFirstDrawing=true;
+				console.log("flagFirstDrawing=true")
 			});
 			if(flagFirstDrawing){
 				mapa.removePolylines();

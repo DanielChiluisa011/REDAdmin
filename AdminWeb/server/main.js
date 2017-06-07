@@ -246,7 +246,7 @@ io.on('connection', function(socket){
 	 		}
 	 	})
 	  });
-
+	  
 	  socket.on('RequestDistOrdersP',function(data){
       		connection.query("SELECT ORDERID, DISTRIBUTORID, WASTEONU, DATE_FORMAT(ORDERDATE, '%Y-%m-%d') ORDERDATE,ORDERQUANTITY,ORDERSTATE,ORDERTYPE,ORDERDEADLINE,JOURNEYID FROM orders WHERE JOURNEYID IS NULL AND DISTRIBUTORID="+data+";",function(error, result){
 				if(error){
@@ -314,10 +314,7 @@ io.on('connection', function(socket){
 									}
 									console.log(objUser.person);
 									console.log(objUser.user);
-									
-								
-							
-						
+
 						io.emit('SelectUserData',objUser);
 			       }
 				})
@@ -735,7 +732,20 @@ io.on('connection', function(socket){
 	// 		}
 	// 	});
 	// });
-		
+	socket.on("RequestAsignOrders",function(data){
+		var Total=0;
+		console.log(data);
+		connection.query('SELECT sum(OrderQuantity) as total FROM orders WHERE journeyid='+data+' ','',function(error, result){
+			if(error){
+				throw error;
+			}else{
+				
+				Total=result[0].total;
+				console.log("Total llantas: "+Total);
+				// console.log('numero de usuarios: '+lstUsers.length)
+			}
+		});	
+	});
 });
 
 function SelectUsers(){

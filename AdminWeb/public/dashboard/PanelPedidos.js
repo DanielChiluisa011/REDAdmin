@@ -223,6 +223,7 @@ function showData1(i,TotalQuantity){
 	}
 
 	$('#Orders').empty();
+	console.log("Orders: "+lstJourney[k].length);
 	for (var j = 0; j < lstJourney[k].length; j++) {
 		$('#Orders').append('<div class="caption font-green">'
 								+'<i class="fa fa-sticky-note font-green"></i>'

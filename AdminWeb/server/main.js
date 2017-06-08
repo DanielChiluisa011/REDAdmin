@@ -929,6 +929,16 @@ function SelectTrucks(){
        }
 	})
 }
+function SelectTrucks1(){
+	connection.query('SELECT t.TRUCKID, t.TRUCKMODEL, t.TRUCKSIZE, t.TRUCKTRADEMARK, p.PERSONNAME, p.PERSONLASTNAME FROM trucks t, person p WHERE t.TRUCKDRIVER=p.PERSONCI',function(error, result){
+		if(error){
+		    throw error;
+		}else{
+		  	var lstTrucks=result;
+			io.emit('SelectTrucks1',lstTrucks);
+       }
+	})
+}
 
 function SelectDistributor(){
 	connection.query('SELECT DistributorId,DistributorName,DistributorRuc,DistributorAddress,DistributorPhone,DistributorStock,DistributorEnvironmentalLicense,PersonId,ImporterId,X(GeometryFromText(AsText(DistributorCoordinates)))CoordX, Y(GeometryFromText(AsText(DistributorCoordinates))) CoordY FROM distributor',function(error, result){

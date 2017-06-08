@@ -35,7 +35,7 @@ $(document).ready(function(){
 //             });
 //         }
 //     });
-    socket.on("SelectTrucks",function(CR){
+    socket.on("SelectTrucks1",function(CR){
         lstTrucks.length=0;
         lstTrucks=CR;
         $("#txtNewImpName").val("");

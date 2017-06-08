@@ -739,10 +739,17 @@ io.on('connection', function(socket){
 			if(error){
 				throw error;
 			}else{
-				
 				Total=result[0].total;
 				console.log("Total llantas: "+Total);
-				// console.log('numero de usuarios: '+lstUsers.length)
+
+				connection.query('SELECT importerid, importerquota FROM importer WHERE importerquota=min(importerquota) OR importerquota=max(importerquota)AND importerquota!=0','',function(error, result){
+					if(error){
+						throw error;
+					}else{
+						Total=result[0].total;
+						console.log("Total llantas: "+Total);
+					}
+				});	
 			}
 		});	
 	});

@@ -931,7 +931,7 @@ function SelectTrucks(){
 	})
 }
 function SelectTrucks1(){
-	connection.query('SELECT t.TRUCKID, t.TRUCKMODEL, t.TRUCKSIZE, t.TRUCKTRADEMARK, p.PERSONNAME, p.PERSONLASTNAME FROM trucks t, person p WHERE t.TRUCKDRIVER=p.PERSONCI',function(error, result){
+	connection.query('SELECT t.TRUCKID, t.TRUCKMODEL, t.TRUCKSIZE, t.TRUCKTRADEMARK, p.PERSONNAME, p.PERSONLASTNAME FROM trucks t, person p WHERE t.PERSONID=p.PERSONCI',function(error, result){
 		if(error){
 		    throw error;
 		}else{

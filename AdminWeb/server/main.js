@@ -196,12 +196,13 @@ io.on('connection', function(socket){
 			}else{
 				console.log("result "+result.length);
 				lstImp=result;
+				console.log("importadores "+lstImp.length);
+				for(var i=0;i<lstImp.length;i++){
+					console.log(lstImp[i]);
+				}  
 			}
 		});
-		console.log("importadores "+lstImp.length);
-		for(var i=0;i<lstImp.length;i++){
-			console.log(lstImp[i]);
-		}  
+		
 	  });
 
 	  socket.on('RegisterPickup',function(data){

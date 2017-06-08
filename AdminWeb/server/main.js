@@ -455,6 +455,7 @@ io.on('connection', function(socket){
 	SelectDistributor();
 	UpdateUser(socket);
 	SaveNewUser(socket);
+	SelectTrucks1();
 
 	socket.on("RequestDriver",function(obj){
 		// console.log("RequestTrucks: "+obj.id+" indx"+obj.indx);

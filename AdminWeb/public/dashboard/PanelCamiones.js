@@ -96,6 +96,7 @@ $('#btnSaveTruck').click(function(){
 				// var wasteAux;
 				// var dateAux;
 				driverAux=lstDrivers[$('#cmbNewTruckDriver option:selected').index()-1].PERSONID;
+                alert(driverAux);
 				// wasteAux=lstWaste[$('#cmbNewOrderWaste option:selected').index()-1];
 				// dateAux=$('#txtNewOrderDate').val().split('-');
 				var objTruck = {

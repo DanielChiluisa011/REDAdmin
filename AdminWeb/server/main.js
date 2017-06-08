@@ -189,16 +189,15 @@ io.on('connection', function(socket){
 				console.log("Cantidad total: "+result[0].Total);
 			}
 		});    
-		//select importerid, importerquota from importer where importerquota in ((select max(importerquota) from importer), (select min(importerquota) from importer));
-		console.log(data.journeyid);
 		connection.query("select importerid, importerquota from importer where importerquota in ((select max(importerquota) from importer), (select min(importerquota) from importer)) AND importerquota>0;",function(error, result){
 			if(error){
 				throw error;
+				console.log("Error "+ err.message);
 			}else{
 				lstImp=result;
 			}
 		});
-		console.log("importadores");
+		console.log("importadores "+lstImp.length);
 		for(var i=0;i<lstImp.length;i++){
 			console.log(lstImp[i]);
 		}  

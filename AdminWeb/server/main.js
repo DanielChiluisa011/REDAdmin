@@ -415,7 +415,7 @@ io.on('connection', function(socket){
 			      "title": "Llegando",
 			      "message": "El conductor está por llegar a su ubicación"
 			    } 
-			};
+			}
 			 
 			ionicPushServer(credentials, notification);
           SendNotificationAlert(socket);

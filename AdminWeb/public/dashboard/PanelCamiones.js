@@ -56,15 +56,7 @@ $(document).ready(function(){
                                     "</tbody>");
         }
     });
-    socket.on('SelectDrivers', function(data){
-		// lstDrivers=[];
-       	lstDrivers=data;
-       	$('#cmbNewTruckDriver').append('<option selected>Seleccione un Conductor</option>');
-       	for (var i = 0; i < lstDrivers.length; i++) {
-	   		$('#cmbNewTruckDriver').append(new Option(lstDrivers[i].PERSONNAME+" "+lstDrivers[i].PERSONLASTNAME, 'names'));
-	   	}
-
-   	})
+    
 });
 function Limpiar()
 {
@@ -73,6 +65,15 @@ function Limpiar()
 		$("#txtNewTruckSize").val("");
 		$("#txtNewTruckTradeMark").val("");
         $('#cmbNewTruckDriver').empty();
+        socket.on('SelectDrivers', function(data){
+		// lstDrivers=[];
+       	lstDrivers=data;
+       	$('#cmbNewTruckDriver').append('<option selected>Seleccione un Conductor</option>');
+       	for (var i = 0; i < lstDrivers.length; i++) {
+	   		$('#cmbNewTruckDriver').append(new Option(lstDrivers[i].PERSONNAME+" "+lstDrivers[i].PERSONLASTNAME, 'names'));
+	   	}
+
+   	})
 }
 $('#btnCancelTruck').click(function(){
 	Limpiar();

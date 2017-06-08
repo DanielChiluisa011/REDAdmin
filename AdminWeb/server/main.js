@@ -782,27 +782,27 @@ io.on('connection', function(socket){
 	// 		}
 	// 	});
 	// });
-	socket.on("RequestAsignOrders",function(data){
-		var Total=0;
-		console.log(data);
-		connection.query('SELECT sum(OrderQuantity) as total FROM orders WHERE journeyid='+data+' ','',function(error, result){
-			if(error){
-				throw error;
-			}else{
-				Total=result[0].total;
-				console.log("Total llantas: "+Total);
+	// socket.on("RequestAsignOrders",function(data){
+	// 	var Total=0;
+	// 	console.log(data);
+	// 	connection.query('SELECT sum(OrderQuantity) as total FROM orders WHERE journeyid='+data+' ','',function(error, result){
+	// 		if(error){
+	// 			throw error;
+	// 		}else{
+	// 			Total=result[0].total;
+	// 			console.log("Total llantas: "+Total);
 
-				connection.query('SELECT importerid, importerquota FROM importer WHERE importerquota=min(importerquota) OR importerquota=max(importerquota)AND importerquota!=0','',function(error, result){
-					if(error){
-						throw error;
-					}else{
-						Total=result[0].total;
-						console.log("Total llantas: "+Total);
-					}
-				});	
-			}
-		});	
-	});
+	// 			connection.query('SELECT importerid, importerquota FROM importer WHERE importerquota=min(importerquota) OR importerquota=max(importerquota)AND importerquota!=0','',function(error, result){
+	// 				if(error){
+	// 					throw error;
+	// 				}else{
+	// 					Total=result[0].total;
+	// 					console.log("Total llantas: "+Total);
+	// 				}
+	// 			});	
+	// 		}
+	// 	});	
+	// });
 });
 
 function SelectUsers(){

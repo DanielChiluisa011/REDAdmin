@@ -725,7 +725,7 @@ io.on('connection', function(socket){
 						});
 	});
 	socket.on('NewTruck',function(data){
-		connection.query('INSERT INTO trucks VALUES (?,?,?,?,?)',[,data.truckid,data.truckmodel,data.trucksize,data.trucktrademark,data.personid,"Pendiente","General",null,null],function(err, rows, fields) {
+		connection.query('INSERT INTO trucks VALUES (?,?,?,?,?)',[data.truckid,data.truckmodel,data.trucksize,data.trucktrademark,data.personid],function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{

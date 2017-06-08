@@ -172,13 +172,24 @@ io.on('connection', function(socket){
 
 	  
 	  socket.on('RegisterDelivery',function(data){
-	  	connection.query('INSERT INTO delivery (JOURNEYID, OBSERVATION, SIGNATURE, DELIVERYTIME) VALUES (?,?,?,?)',[data.journeyid, data.observation, data.signature, data.deliverytime],function(error, result){
-	  		if(error){
-					throw error;
-				}else{
-					console.log('Entrega registrada');
-			}
-	  	})
+	  	// connection.query('INSERT INTO delivery (JOURNEYID, OBSERVATION, SIGNATURE, DELIVERYTIME) VALUES (?,?,?,?)',[data.journeyid, data.observation, data.signature, data.deliverytime],function(error, result){
+	  	// 	if(error){
+		// 			throw error;
+		// 		}else{
+		// 			console.log('Entrega registrada');
+		// 	}
+	  	// })
+
+		  console.log(data.journeyid);
+          connection.query("SELECT sum(orderquantity) Total FROM orders WHERE journeyid="+data.journeyid+";",function(error, result){
+                if(error){
+                    throw error;
+                }else{
+                    console.log("Cantidad total: "+result[0].Total);
+               }
+            });    
+          //select importerid, importerquota from importer where importerquota in ((select max(importerquota) from importer), (select min(importerquota) from importer));
+		  
 	  });
 
 	  socket.on('RegisterPickup',function(data){

@@ -416,9 +416,10 @@ io.on('connection', function(socket){
 			      "message": "El conductor está por llegar a su ubicación"
 			    } 
 			}
+			}
 			 
 			ionicPushServer(credentials, notification);
-          SendNotificationAlert(socket);
+          	SendNotificationAlert(socket);
     });
     socket.on('DeviationNotification',function(data){
     	  console.log("Desviacion");

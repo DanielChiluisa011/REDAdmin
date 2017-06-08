@@ -180,15 +180,15 @@ io.on('connection', function(socket){
 		// 	}
 	  	// })
 
-		  console.log(data.journeyid);
-          connection.query("SELECT sum(orderquantity) Total FROM orders WHERE journeyid="+data.journeyid+";",function(error, result){
-                if(error){
-                    throw error;
-                }else{
-                    console.log("Cantidad total: "+result[0].Total);
-               }
-            });    
-          //select importerid, importerquota from importer where importerquota in ((select max(importerquota) from importer), (select min(importerquota) from importer));
+		console.log(data.journeyid);
+		connection.query("SELECT sum(orderquantity) Total FROM orders WHERE journeyid="+data.journeyid+";",function(error, result){
+			if(error){
+				throw error;
+			}else{
+				console.log("Cantidad total: "+result[0].Total);
+			}
+		});    
+		//select importerid, importerquota from importer where importerquota in ((select max(importerquota) from importer), (select min(importerquota) from importer));
 		  
 	  });
 

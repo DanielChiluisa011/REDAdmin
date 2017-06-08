@@ -194,11 +194,11 @@ io.on('connection', function(socket){
 				throw error;
 				console.log("Error "+ err.message);
 			}else{
-				console.log("importadores "+result.length);
+				console.log("result "+result.length);
 				lstImp=result;
 			}
 		});
-		// console.log("importadores "+lstImp.length);
+		console.log("importadores "+lstImp.length);
 		for(var i=0;i<lstImp.length;i++){
 			console.log(lstImp[i]);
 		}  

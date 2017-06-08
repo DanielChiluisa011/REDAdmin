@@ -64,16 +64,17 @@ function Limpiar()
 		$("#txtNewTruckModel").val("");
 		$("#txtNewTruckSize").val("");
 		$("#txtNewTruckTradeMark").val("");
-        $('#cmbNewTruckDriver').empty();
+        
         socket.on('SelectDrivers', function(data){
-		// lstDrivers=[];
-       	lstDrivers=data;
-       	$('#cmbNewTruckDriver').append('<option selected>Seleccione un Conductor</option>');
-       	for (var i = 0; i < lstDrivers.length; i++) {
-	   		$('#cmbNewTruckDriver').append(new Option(lstDrivers[i].PERSONNAME+" "+lstDrivers[i].PERSONLASTNAME, 'names'));
-	   	}
+            // lstDrivers=[];
+            lstDrivers=data;
+            $('#cmbNewTruckDriver').empty();
+            $('#cmbNewTruckDriver').append('<option selected>Seleccione un Conductor</option>');
+            for (var i = 0; i < lstDrivers.length; i++) {
+                $('#cmbNewTruckDriver').append(new Option(lstDrivers[i].PERSONNAME+" "+lstDrivers[i].PERSONLASTNAME, 'names'));
+            }
 
-   	})
+   	    })
 }
 $('#btnCancelTruck').click(function(){
 	Limpiar();

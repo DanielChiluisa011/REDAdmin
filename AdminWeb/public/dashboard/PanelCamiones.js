@@ -36,6 +36,10 @@ $(document).ready(function(){
 //             });
 //         }
 //     });
+    Limpiar();
+});
+function Limpiar()
+{
     socket.on("SelectTrucks1",function(CR){
         lstTrucks.length=0;
         lstTrucks=CR;
@@ -43,15 +47,6 @@ $(document).ready(function(){
 		$("#txtNewTruckModel").val("");
 		$("#txtNewTruckSize").val("");
 		$("#txtNewTruckTradeMark").val("");
-        
-		// $("#txtNewImpQuota").val("");
-		// $("#txtNewImpLicence").val("");
-		// $("#txtNewImpPersonName").val("");
-		// $("#txtNewImpPersonLastName").val("");
-		// $("#txtNewImpPersonId").val("");
-		// $("#txtNewImpPersonPhone").val("");
-		// $("#txtNewImpPersonAddress").val("");
-		// $("#txtNewImpEmail").val("");
         $("#ImportersTable > tbody").html("");
         for (var i = 0; i < CR.length; i++) {
             $('#ImportersTable').append("<tbody>"+
@@ -77,117 +72,57 @@ $(document).ready(function(){
 	   	}
 
    	})
+}
+$('#btnCancelTruck').click(function(){
+	Limpiar();
+    //$.notific8('My notification has a heading line.', {heading: 'Notification Heading'});
+})
+
+$('#btnSaveTruck').click(function(){
+	bootbox.confirm("¿Desea guardar camión ingresado? ", function(result) {
+	   if(result){
+	   		if($('#txtNewTruckId').val()==''||$('#txtNewTruckModel').val()==''||$('#txtNewTruckSize').val()==''||$('#txtNewTruckTradeMark').val()==''){
+	   			$.notific8('Por favor, ingrese todos los datos solicitados', {
+			      life: 3500,
+			      heading: 'Error!',
+			      theme: 'ruby',
+			      sticky: false,
+			      horizontalEdge: 'top',
+			      verticalEdge: 'rigth',
+			      zindex: 1500
+			    });
+	   		}else{
+	   			var driverAux;
+				// var wasteAux;
+				// var dateAux;
+				driverAux=lstDrivers[$('#cmbNewTruckDriver option:selected').index()-1].PERSONID;
+				// wasteAux=lstWaste[$('#cmbNewOrderWaste option:selected').index()-1];
+				// dateAux=$('#txtNewOrderDate').val().split('-');
+				var objDriver = {
+					truckid:$('#txtNewTruckId').val(),
+                    truckmodel:$('#txtNewTruckModel').val(),
+                    trucksize:$('#txtNewTruckSize').val(),
+                    trucktrademark:$('#txtNewTruckTradeMark').val(),
+                    personid:driverAux
+					// date: dateAux[2]+'-'+dateAux[1]+'-'+dateAux[0]
+				}
+
+				$.notific8('El pedido ha sido guardado correctamente', {
+			      life: 3000,
+			      heading: 'INFORMACION',
+			      theme: 'teal',
+			      sticky: false,
+			      horizontalEdge: 'top',
+			      verticalEdge: 'rigth',
+			      zindex: 1500
+			    });
+				socket.emit('NewTruck',objTruck);
+				location.reload();	
+	   		}
+	   }
+	});	
 });
 
 
 
 
-// $("#btnCancelImporter").click(function(){
-//         $("#btnInsertImporter").html('Guardar');
-//         $("#txtNewImpName").val(""),
-// 		$("#txtNewImpAddress").val("");
-// 		$("#txtNewImpPhone").val("");
-// 		$("#txtNewImpPersonName").val("");
-// 		$("#txtNewImpPersonLastName").val("");
-// 		$("#txtNewImpPersonId").val("");
-// 		$("#txtNewImpPersonPhone").val("");
-// 		$("#txtNewImpPersonAddress").val("");
-
-//         $("#txtNewImpName").attr("disabled",false);
-//         $("#txtNewImpPersonName").attr("disabled",false);
-//         $("#txtNewImpPersonLastName").attr("disabled",false);
-//         $("#txtNewImpPersonId").attr("disabled",false);
-// });
-// function ShowImporterInformation(i){
-//         $("#btnInsertImporter").html('Actualizar');
-//         $("#txtNewImpName").attr("disabled",true);
-//         $("#txtNewImpName").val(lstCR[i].RECYCLINGCENTERNAME);
-// 		$("#txtNewImpAddress").val(lstCR[i].RECYCLINGCENTERADDRESS);
-// 		$("#txtNewImpPhone").val(lstCR[i].RECYCLINGCENTERPHONE);
-// 		$("#txtNewImpPersonName").val(lstCR[i].PERSONNAME);
-//         $("#txtNewImpPersonName").attr("disabled",true);
-// 		$("#txtNewImpPersonLastName").val(lstCR[i].PERSONLASTNAME);
-//         $("#txtNewImpPersonLastName").attr("disabled",true);
-// 		$("#txtNewImpPersonId").val(lstCR[i].PERSONCIRUC);
-//         $("#txtNewImpPersonId").attr("disabled",true);
-// 		$("#txtNewImpPersonPhone").val(lstCR[i].PERSONPHONE);
-// 		$("#txtNewImpPersonAddress").val(lstCR[i].PERSONADDRESS);
-// }
-// $("#btnInsertImporter").click(function(){
-//     var newCR = {
-//         name: $("#txtNewImpName").val(),
-//         address: $("#txtNewImpAddress").val(),
-//         phone: $("#txtNewImpPhone").val(),
-//         personName: $("#txtNewImpPersonName").val(),
-//         personLastName: $("#txtNewImpPersonLastName").val(),
-//         personCi: $("#txtNewImpPersonId").val(),
-//         personPhone: $("#txtNewImpPersonPhone").val(),
-//         personAddress: $("#txtNewImpPersonAddress").val()
-//     } 
-//     console.log("NUEVO CR");
-//     console.log(newCR);
-//     if($("#btnInsertImporter").html()=="Guardar"){
-//         bootbox.confirm("¿Desea guardar la información ingresada? ", function(result) {
-//             if(result){
-//                 socket.emit("RequestInsertnewCR",newCR);
-//                 socket.on("ResponseImporter",function(flag){
-//                     if(flag){
-//                         $.notific8('Datos guardados correctamente', {
-//                             life: 3500,
-//                             heading: 'Listo!',
-//                             theme: 'teal',
-//                             sticky: false,
-//                             horizontalEdge: 'top',
-//                             verticalEdge: 'rigth',
-//                             zindex: 1500
-//                         });
-//                         location.reload();	
-//                     }else{
-//                         $.notific8('Error al guardar, intentelo nuevamente', {
-//                             life: 3500,
-//                             heading: 'Error!',
-//                             theme: 'ruby',
-//                             sticky: false,
-//                             horizontalEdge: 'top',
-//                             verticalEdge: 'rigth',
-//                             zindex: 1500
-//                         });
-//                     }
-//                 });
-//             }
-//         });
-//     }else{
-//         bootbox.confirm("¿Desea actualizar la información? ", function(result) {
-//             if(result){
-//                 socket.emit("RequestUpdateImporter",newCR);
-//                 socket.on("RequestErrorUpdateImporter",function(flag){
-//                     if(flag){
-//                         $.notific8('Datos actualizados correctamente', {
-//                             life: 3500,
-//                             heading: 'Listo!',
-//                             theme: 'teal',
-//                             sticky: false,
-//                             horizontalEdge: 'top',
-//                             verticalEdge: 'rigth',
-//                             zindex: 1500
-//                         });
-//                         location.reload();	
-//                     }else{
-//                         $.notific8('Error al guardar, intentelo nuevamente', {
-//                             life: 3500,
-//                             heading: 'Error!',
-//                             theme: 'ruby',
-//                             sticky: false,
-//                             horizontalEdge: 'top',
-//                             verticalEdge: 'rigth',
-//                             zindex: 1500
-//                         });
-//                     }
-//                 });
-//             }
-//         });
-//     }
-	
-	
-	
-// });

@@ -724,6 +724,17 @@ io.on('connection', function(socket){
 							}
 						});
 	});
+	socket.on('NewTruck',function(data){
+		connection.query('INSERT INTO trucks VALUES (?,?,?,?,?)',[,data.truckid,data.truckmodel,data.trucksize,data.trucktrademark,data.personid,"Pendiente","General",null,null],function(err, rows, fields) {
+	 		if(err){
+	 			console.log("Error "+ err.message);
+	 		}else{
+	 			console.log("ok");
+	 			// SelectOrders();
+				 SelectTrucks();
+	 		}
+	 	})
+	});
 	// socket.on("RequestInsertNewCR", function(RC){
 	// 	connection.query('INSERT INTO person (PERSONCIRUC,PERSONNAME,PERSONLASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE) VALUES (?,?,?,?,?,?)',
 	// 		[RC.personCi,

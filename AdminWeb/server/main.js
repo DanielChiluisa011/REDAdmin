@@ -18,6 +18,15 @@ app.get('/', function(req, res){
 	res.status(200).send('hello word');
 });
 
+var ionicPushServer = require('ionic-push-server');
+ 
+var credentials = {
+    IonicApplicationID : "a47b4141",
+    IonicApplicationAPItoken : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmMTlmNzlkZC1jM2JlLTQ1MGYtOThhZi1lZjA4ZjFlYTU2OTEifQ.G3KzGlwDq50RF_iBx9jW71EAJM0xC-su6_VCcveuGh8"
+};
+ 
+
+
 connection.connect();
 io.on('connection', function(socket){
 	// socket.on('New User', function(data){
@@ -392,6 +401,23 @@ io.on('connection', function(socket){
           console.log("nearNotification"+data);
           io.emit('NearNotificationToAdmin',data);
 
+			var notification = {
+			  "emails": ["jose@ejemplo.com"],
+			  "profile": "admin",
+			  "notification": {
+			    "title": "Llegando",
+			    "message": "El conductor está por llegar a su ubicación",
+			    "android": {
+			      "title": "Llegando",
+			      "message": "El conductor está por llegar a su ubicación"
+			    },
+			    "ios": {
+			      "title": "Llegando",
+			      "message": "El conductor está por llegar a su ubicación"
+			    } 
+			};
+			 
+			ionicPushServer(credentials, notification);
           SendNotificationAlert(socket);
     });
     socket.on('DeviationNotification',function(data){

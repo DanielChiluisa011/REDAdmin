@@ -119,6 +119,7 @@ $('#btnSaveTruck').click(function(){
 			    });
                 // alert($('#txtNewTruckId').val());
 				socket.emit('NewTruck',objTruck);
+                Limpiar();
 				// location.reload();	
 	   		}
 	   }

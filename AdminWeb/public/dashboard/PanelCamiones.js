@@ -98,7 +98,7 @@ $('#btnSaveTruck').click(function(){
 				driverAux=lstDrivers[$('#cmbNewTruckDriver option:selected').index()-1].PERSONID;
 				// wasteAux=lstWaste[$('#cmbNewOrderWaste option:selected').index()-1];
 				// dateAux=$('#txtNewOrderDate').val().split('-');
-				var objDriver = {
+				var objTruck = {
 					truckid:$('#txtNewTruckId').val(),
                     truckmodel:$('#txtNewTruckModel').val(),
                     trucksize:$('#txtNewTruckSize').val(),

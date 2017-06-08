@@ -399,10 +399,10 @@ io.on('connection', function(socket){
 	});
 	socket.on('NearNotification',function(data){
           console.log("nearNotification"+data);
-          io.emit('NearNotificationToAdmin',data);
+          io.emit('NearNotificationToAdmin',data.distributorName);
 
 			var notification = {
-			  "emails": ["jose@ejemplo.com"],
+			  "emails": [data.email],
 			  "profile": "admin",
 			  "notification": {
 			    "title": "Llegando",

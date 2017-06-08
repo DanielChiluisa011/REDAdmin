@@ -1,5 +1,5 @@
 var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
-var lstCR= [];
+var lstTrucks= [];
 var mapa;
 var MapsGoogle = function () {
 
@@ -20,24 +20,24 @@ var MapsGoogle = function () {
     };
 }();
 $(document).ready(function(){
-     MapsGoogle.init();
-    socket.emit("RequestCRInfo","");
-    socket.on("ResponseCRInfo",function(flag){
-        if(flag==0){
-            $.notific8('Error al cargar, intentelo nuevamente', {
-                life: 3500,
-                heading: 'Error!',
-                theme: 'ruby',
-                sticky: false,
-                horizontalEdge: 'top',
-                verticalEdge: 'rigth',
-                zindex: 1500
-            });
-        }
-    });
-    socket.on("ResponseCR",function(CR){
-        lstCR.length=0;
-        lstCR=CR;
+//      MapsGoogle.init();
+//     socket.emit("RequestCRInfo","");
+//     socket.on("ResponseCRInfo",function(flag){
+//         if(flag==0){
+//             $.notific8('Error al cargar, intentelo nuevamente', {
+//                 life: 3500,
+//                 heading: 'Error!',
+//                 theme: 'ruby',
+//                 sticky: false,
+//                 horizontalEdge: 'top',
+//                 verticalEdge: 'rigth',
+//                 zindex: 1500
+//             });
+//         }
+//     });
+    socket.on("SelectTrucks",function(CR){
+        lstTrucks.length=0;
+        lstTrucks=CR;
         $("#txtNewImpName").val("");
 		$("#txtNewImpAddress").val("");
 		$("#txtNewImpPhone").val("");
@@ -54,11 +54,13 @@ $(document).ready(function(){
         for (var i = 0; i < CR.length; i++) {
             $('#ImportersTable').append("<tbody>"+
                                         "<tr>"+
-                                            "<td>"+CR[i].RECYCLINGCENTERNAME+"</td>"+
-                                            "<td>"+CR[i].RECYCLINGCENTERADDRESS+"</td>"+
-                                            "<td>"+CR[i].RECYCLINGCENTERPHONE+"</td>"+
+                                            "<td>"+CR[i].TRUCKID+"</td>"+
+                                            "<td>"+CR[i].TRUCKMODEL+"</td>"+
+                                            "<td>"+CR[i].TRUCKSIZE+"</td>"+
+                                            "<td>"+CR[i].TRUCKTRADEMARK+"</td>"+
                                             "<td>"+CR[i].PERSONNAME+' '+CR[i].PERSONLASTNAME+"</td>"+
-                                            //"<td><a class='btn red btn-outline sbold' data-toggle='modal' href='#addImporter' onclick='ShowImporterInformation("+i+")'> <i class='fa fa-edit'> </i> Editar </a></td>"+
+                                            
+                                            // "<td><a class='btn red btn-outline sbold' data-toggle='modal' href='#addImporter' onclick='ShowImporterInformation("+i+")'> <i class='fa fa-edit'> </i> Editar </a></td>"+
                                         "</tr>"+
                                     "</tbody>");
         }

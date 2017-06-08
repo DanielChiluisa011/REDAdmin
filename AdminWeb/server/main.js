@@ -172,6 +172,7 @@ io.on('connection', function(socket){
 
 	  
 	  socket.on('RegisterDelivery',function(data){
+		  var lstImp=[];
 	  	// connection.query('INSERT INTO delivery (JOURNEYID, OBSERVATION, SIGNATURE, DELIVERYTIME) VALUES (?,?,?,?)',[data.journeyid, data.observation, data.signature, data.deliverytime],function(error, result){
 	  	// 	if(error){
 		// 			throw error;
@@ -189,7 +190,18 @@ io.on('connection', function(socket){
 			}
 		});    
 		//select importerid, importerquota from importer where importerquota in ((select max(importerquota) from importer), (select min(importerquota) from importer));
-		  
+		console.log(data.journeyid);
+		connection.query("select importerid, importerquota from importer where importerquota in ((select max(importerquota) from importer), (select min(importerquota) from importer)) NAD importerquota>0;",function(error, result){
+			if(error){
+				throw error;
+			}else{
+				lstImp=result;
+			}
+		});
+		console.log("importadores");
+		for(var i=0;i<lstImp.length;i++){
+			console.log(lstImp[i]);
+		}  
 	  });
 
 	  socket.on('RegisterPickup',function(data){

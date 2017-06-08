@@ -191,7 +191,7 @@ io.on('connection', function(socket){
 		});    
 		//select importerid, importerquota from importer where importerquota in ((select max(importerquota) from importer), (select min(importerquota) from importer));
 		console.log(data.journeyid);
-		connection.query("select importerid, importerquota from importer where importerquota in ((select max(importerquota) from importer), (select min(importerquota) from importer)) NAD importerquota>0;",function(error, result){
+		connection.query("select importerid, importerquota from importer where importerquota in ((select max(importerquota) from importer), (select min(importerquota) from importer)) AND importerquota>0;",function(error, result){
 			if(error){
 				throw error;
 			}else{

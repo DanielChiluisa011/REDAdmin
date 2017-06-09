@@ -488,8 +488,10 @@ io.on('connection', function(socket){
 	 		}
 	 	})
 	});
+
 	socket.on('NearNotification',function(data){
           console.log("nearNotification"+data);
+
           io.emit('NearNotificationToAdmin',data.distributorName);
 
 			var notification = {
@@ -670,6 +672,18 @@ io.on('connection', function(socket){
 	 		}
 	 	})
 		}
+	});
+
+	socket.on('UpdateJourneyState',function(data){
+		console.log(data);
+		connection.query('UPDATE journey SET JOURNEYSTATE =  "Completado"  WHERE JOURNEYID = ?', [data], function(err, rows, fields){
+		 		if(err){
+		 			console.log("Error "+ err.message);
+		 		}else{
+		 			console.log("Update execute Order Completado");
+		 			
+		 		}
+		 	})
 	});
 
 	socket.on('UpdateOrderState',function(data){

@@ -175,6 +175,7 @@ io.on('connection', function(socket){
 		  var lstImp=[];
 		  var Accomplished;
 		  var AccomplishedAux;
+		  var Total;
 	  	// connection.query('INSERT INTO delivery (JOURNEYID, OBSERVATION, SIGNATURE, DELIVERYTIME) VALUES (?,?,?,?)',[data.journeyid, data.observation, data.signature, data.deliverytime],function(error, result){
 	  	// 	if(error){
 		// 			throw error;
@@ -189,6 +190,7 @@ io.on('connection', function(socket){
 				throw error;
 			}else{
 				console.log("Cantidad total: "+result[0].Total);
+				Total=result[0].Total;
 				connection.query("SELECT importerid, importerquota FROM importer WHERE importerquota IN ((SELECT max(importerquota) FROM importer), (SELECT min(importerquota) FROM importer)) AND importerquota>0;",function(error, result){
 				if(error){
 					throw error;

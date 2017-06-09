@@ -221,7 +221,7 @@ io.on('connection', function(socket){
 									
 							}
 						});
-						connection.query('UPDATE journey SET importerid = ? WHERE journeyid= ?',[Accomplished,data.journeyid],function(err,rows,fields){
+						connection.query('UPDATE journey SET importerid = ? WHERE journeyid= ?',[lstImp[1].importerid,data.journeyid],function(err,rows,fields){
 							if(err){
 									console.log("Error "+ err.message);
 								}else{
@@ -254,7 +254,7 @@ io.on('connection', function(socket){
 						});
 
 
-						connection.query('UPDATE journey SET importerid = ? WHERE journeyid= ?',[Accomplished,data.journeyid],function(err,rows,fields){
+						connection.query('UPDATE journey SET importerid = ? WHERE journeyid= ?',[lstImp[0].importerid,data.journeyid],function(err,rows,fields){
 							if(err){
 									console.log("Error "+ err.message);
 								}else{

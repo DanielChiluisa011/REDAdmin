@@ -183,7 +183,7 @@ io.on('connection', function(socket){
 		// 			console.log('Entrega registrada');
 		// 	}
 	  	// })
-		  connection.query('UPDATE journey SET journeystate = "Completado" WHERE journeyid= ?',[Accomplished,data.journeyid],function(err,rows,fields){
+		  connection.query('UPDATE journey SET journeystate = "Completado" WHERE journeyid= ?',[data.journeyid],function(err,rows,fields){
 			if(err){
 					console.log("Error "+ err.message);
 				}else{

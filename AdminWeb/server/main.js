@@ -189,8 +189,8 @@ io.on('connection', function(socket){
 			if(error){
 				throw error;
 			}else{
-				console.log("Cantidad total: "+result[0].Total);
 				Total=result[0].Total;
+				console.log("Cantidad total: "+Total);
 				connection.query("SELECT importerid, importerquota FROM importer WHERE importerquota IN ((SELECT max(importerquota) FROM importer), (SELECT min(importerquota) FROM importer)) AND importerquota>0;",function(error, result){
 				if(error){
 					throw error;

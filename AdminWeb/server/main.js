@@ -218,7 +218,7 @@ io.on('connection', function(socket){
 						AccomplishedAux=Math.abs(lstImp[1].importerquota-Total);
 						Accomplished=Total-AccomplishedAux;
 						console.log("else");
-						console.log("AccomplishedAux "+lstImp[0].importerquota - AccomplishedAux);
+						console.log("AccomplishedAux "+AccomplishedAux);
 						console.log("Accomplished "+Accomplished);
 						
 						// connection.query('UPDATE importer SET importerquota = ? WHERE importerid= ?',[Accomplished,lstImp[1].importerid],function(err,rows,fields){

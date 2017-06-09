@@ -183,7 +183,14 @@ io.on('connection', function(socket){
 		// 			console.log('Entrega registrada');
 		// 	}
 	  	// })
-
+		  connection.query('UPDATE journey SET journeystate = "Completado" WHERE journeyid= ?',[Accomplished,data.journeyid],function(err,rows,fields){
+			if(err){
+					console.log("Error "+ err.message);
+				}else{
+					console.log("Cuota Actualizada");
+					
+			}
+		});
 		console.log(data.journeyid);
 		connection.query("SELECT sum(orderquantity) Total FROM orders WHERE journeyid="+data.journeyid+";",function(error, result){
 			if(error){
@@ -206,38 +213,57 @@ io.on('connection', function(socket){
 					if(lstImp[1].importerquota-Total>=0){
 						Accomplished=lstImp[1].importerquota-Total;
 						console.log("if "+Accomplished);
-						// connection.query('UPDATE importer SET importerquota = ? WHERE importerid= ?',[Accomplished,lstImp[1].importerid],function(err,rows,fields){
-						// 	if(err){
-						// 			console.log("Error "+ err.message);
-						// 		}else{
-						// 			console.log("Cuota Actualizada");
+						connection.query('UPDATE importer SET importerquota = ? WHERE importerid= ?',[Accomplished,lstImp[1].importerid],function(err,rows,fields){
+							if(err){
+									console.log("Error "+ err.message);
+								}else{
+									console.log("Cuota Actualizada");
 									
-						// 	}
-						// })
+							}
+						});
+						connection.query('UPDATE journey SET importerid = ? WHERE journeyid= ?',[Accomplished,data.journeyid],function(err,rows,fields){
+							if(err){
+									console.log("Error "+ err.message);
+								}else{
+									console.log("Cuota Actualizada");
+									
+							}
+						});
 					}else{
 						AccomplishedAux=Math.abs(lstImp[1].importerquota-Total);
 						Accomplished=Total-AccomplishedAux;
 						console.log("else");
-						console.log("AccomplishedAux "+lstImp[0].importerquota+" "+AccomplishedAux);
+						console.log("AccomplishedAux "+(lstImp[0].importerquota-AccomplishedAux));
 						console.log("Accomplished "+Accomplished);
 						
-						// connection.query('UPDATE importer SET importerquota = ? WHERE importerid= ?',[Accomplished,lstImp[1].importerid],function(err,rows,fields){
-						// 	if(err){
-						// 			console.log("Error "+ err.message);
-						// 		}else{
-						// 			console.log("Cuota Actualizada");
+						connection.query('UPDATE importer SET importerid = ? WHERE journeyid= ?',[Accomplished,lstImp[1].importerid],function(err,rows,fields){
+							if(err){
+									console.log("Error "+ err.message);
+								}else{
+									console.log("Cuota Actualizada");
 									
-						// 	}
-						// });
-						// connection.query('UPDATE importer SET importerquota = ? WHERE importerid= ?',[AccomplishedAux,lstImp[0].importerid],function(err,rows,fields){
-						// 	if(err){
-						// 			console.log("Error "+ err.message);
-						// 		}else{
-						// 			console.log("Cuota Actualizada");
+							}
+						});
+						connection.query('UPDATE importer SET importerquota = ? WHERE importerid= ?',[AccomplishedAux,lstImp[0].importerid],function(err,rows,fields){
+							if(err){
+									console.log("Error "+ err.message);
+								}else{
+									console.log("Cuota Actualizada");
 									
-						// 	}
-						// });
+							}
+						});
+
+
+						connection.query('UPDATE journey SET importerid = ? WHERE journeyid= ?',[Accomplished,data.journeyid],function(err,rows,fields){
+							if(err){
+									console.log("Error "+ err.message);
+								}else{
+									console.log("Cuota Actualizada");
+									
+							}
+						});
 					}
+
 				}
 			});
 			}

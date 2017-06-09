@@ -173,6 +173,8 @@ io.on('connection', function(socket){
 	  
 	  socket.on('RegisterDelivery',function(data){
 		  var lstImp=[];
+		  var Accomplished;
+		  var AccomplishedAux;
 	  	// connection.query('INSERT INTO delivery (JOURNEYID, OBSERVATION, SIGNATURE, DELIVERYTIME) VALUES (?,?,?,?)',[data.journeyid, data.observation, data.signature, data.deliverytime],function(error, result){
 	  	// 	if(error){
 		// 			throw error;
@@ -187,21 +189,33 @@ io.on('connection', function(socket){
 				throw error;
 			}else{
 				console.log("Cantidad total: "+result[0].Total);
+				connection.query("SELECT importerid, importerquota FROM importer WHERE importerquota IN ((SELECT max(importerquota) FROM importer), (SELECT min(importerquota) FROM importer)) AND importerquota>0;",function(error, result){
+				if(error){
+					throw error;
+					console.log("Error "+ err.message);
+				}else{
+					console.log("result "+result.length);
+					lstImp=result;
+					console.log("importadores "+lstImp.length);
+					for(var i=0;i<lstImp.length;i++){
+						console.log(lstImp[i]);
+					}
+
+					if(lstImp[1].importerquota-Total>=0){
+						Accomplished=lstImp[1].importerqcuota-Total;
+						console.log("if "+Accomplished);
+					}else{
+						AccomplishedAux=Math.abs(lstImp[1].importerquota-Total);
+						Accomplished=Total-Accomplished;
+						console.log("else");
+						console.log("AccomplishedAux "+AccomplishedAux);
+						console.log("Accomplished "+Accomplished);
+					}
+				}
+			});
 			}
 		});    
-		connection.query("SELECT importerid, importerquota FROM importer WHERE importerquota IN ((SELECT max(importerquota) FROM importer), (SELECT min(importerquota) FROM importer)) AND importerquota>0;",function(error, result){
-			if(error){
-				throw error;
-				console.log("Error "+ err.message);
-			}else{
-				console.log("result "+result.length);
-				lstImp=result;
-				console.log("importadores "+lstImp.length);
-				for(var i=0;i<lstImp.length;i++){
-					console.log(lstImp[i]);
-				}  
-			}
-		});
+		
 		
 	  });
 

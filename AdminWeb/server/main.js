@@ -187,7 +187,7 @@ io.on('connection', function(socket){
 			if(err){
 					console.log("Error "+ err.message);
 				}else{
-					console.log("Cuota Actualizada");
+					console.log("Estado de viaje actualizado");
 					
 			}
 		});
@@ -217,7 +217,7 @@ io.on('connection', function(socket){
 							if(err){
 									console.log("Error "+ err.message);
 								}else{
-									console.log("Cuota Actualizada");
+									console.log("Cuota Actualizada if");
 									
 							}
 						});
@@ -225,7 +225,7 @@ io.on('connection', function(socket){
 							if(err){
 									console.log("Error "+ err.message);
 								}else{
-									console.log("Cuota Actualizada");
+									console.log("Viaje asignado");
 									
 							}
 						});
@@ -236,11 +236,11 @@ io.on('connection', function(socket){
 						console.log("AccomplishedAux "+(lstImp[0].importerquota-AccomplishedAux));
 						console.log("Accomplished "+Accomplished);
 						
-						connection.query('UPDATE importer SET importerid = ? WHERE journeyid= ?',[Accomplished,lstImp[1].importerid],function(err,rows,fields){
+						connection.query('UPDATE importer SET importerquota = ? WHERE importerid= ?',[Accomplished,lstImp[1].importerid],function(err,rows,fields){
 							if(err){
 									console.log("Error "+ err.message);
 								}else{
-									console.log("Cuota Actualizada");
+									console.log("Cuota Actualizada else bajo");
 									
 							}
 						});
@@ -248,7 +248,7 @@ io.on('connection', function(socket){
 							if(err){
 									console.log("Error "+ err.message);
 								}else{
-									console.log("Cuota Actualizada");
+									console.log("Cuota Actualizada else alto");
 									
 							}
 						});
@@ -258,7 +258,7 @@ io.on('connection', function(socket){
 							if(err){
 									console.log("Error "+ err.message);
 								}else{
-									console.log("Cuota Actualizada");
+									console.log("viaje asignado else");
 									
 							}
 						});

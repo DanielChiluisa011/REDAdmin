@@ -204,11 +204,11 @@ io.on('connection', function(socket){
 					}
 
 					if(lstImp[1].importerquota-Total>=0){
-						Accomplished=lstImp[1].importerqcuota-Total;
+						Accomplished=lstImp[1].importerquota-Total;
 						console.log("if "+Accomplished);
 					}else{
 						AccomplishedAux=Math.abs(lstImp[1].importerquota-Total);
-						Accomplished=Total-Accomplished;
+						Accomplished=Total-AccomplishedAux;
 						console.log("else");
 						console.log("AccomplishedAux "+AccomplishedAux);
 						console.log("Accomplished "+Accomplished);

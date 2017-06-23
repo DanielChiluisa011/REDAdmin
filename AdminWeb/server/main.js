@@ -192,7 +192,7 @@ io.on('connection', function(socket){
 			}
 		});
 		console.log(data.journeyid);
-		connection.query("SELECT sum(orderquantity) Total FROM orders WHERE journeyid="+data.journeyid+";",function(error, result){
+		connection.query("SELECT sum(orderquantity) Total FROM orders WHERE wasteonu=1325 and journeyid="+data.journeyid+";",function(error, result){
 			if(error){
 				throw error;
 			}else{

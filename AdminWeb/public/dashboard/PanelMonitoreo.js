@@ -149,6 +149,8 @@ function ShowRouteTest(i){
 	var AuxlstOrders=[];
  	var RouteSelected=[];
 	 var RouteInGo=[];
+	 var RouteItem=[];
+	 var flagCompleted=false;
  	for (var j = 0; j < lstOrders.length; j++) {
  		if(lstOrders[j].JourneyId==lstJourneys[i].JourneyId){
  			AuxlstOrders.push(lstOrders[j])
@@ -166,10 +168,42 @@ function ShowRouteTest(i){
 
 	for(var k=0;k<RouteSelected.length;k++){
 		for (var j = 0; j < AuxlstOrders.length; j++) {
- 					if(RouteSelected[k].DistributorId==AuxlstOrders[j].DistributorId){
+ 					if(lstOrders[i].OrderState=="En Proceso"){
+						RouteItem.push(lstOrders[i]);	
+					}
+					if(RouteSelected[k].DistributorId==AuxlstOrders[j].DistributorId){
  						var aux=AuxlstOrders[k].OrderQuantity
  					}
  				}
+		for(var l=0;l<RouteItem.length;l++)
+		{
+			if(RouteSelected[k].DistributorId==RouteItem[l].DistributorId)
+			{
+				mapa.addMarker({
+				   	lat: RouteSelected[k].CoordX,
+				   	lng: RouteSelected[k].CoordY,
+				   	title: 'Centro de Distribución',
+				   	icon: '../iconos/dPendiente.png',
+				   	infoWindow: {
+				        content: '<div id="content"><strong>'+RouteSelected[k].DistributorName+'</strong><br>'
+				       			+'<label>'+RouteSelected[k].DistributorAddress+'</label><br>'
+				       			+'<label>Stock Disponible: '+aux+' <br></div>'
+				    }
+				});
+			}else{
+				mapa.addMarker({
+				   	lat: RouteSelected[k].CoordX,
+				   	lng: RouteSelected[k].CoordY,
+				   	title: 'Centro de Distribución',
+				   	icon: '../iconos/dListo.png',
+				   	infoWindow: {
+				        content: '<div id="content"><strong>'+RouteSelected[k].DistributorName+'</strong><br>'
+				       			+'<label>'+RouteSelected[k].DistributorAddress+'</label><br>'
+				       			+'<label>Stock Disponible: '+aux+' <br></div>'
+				    }
+				});
+			}
+		}	 
 		mapa.addMarker({
 				   	lat: RouteSelected[k].CoordX,
 				   	lng: RouteSelected[k].CoordY,
@@ -178,7 +212,7 @@ function ShowRouteTest(i){
 				   	infoWindow: {
 				        content: '<div id="content"><strong>'+RouteSelected[k].DistributorName+'</strong><br>'
 				       			+'<label>'+RouteSelected[k].DistributorAddress+'</label><br>'
-				       			+'<label>Stock Disponible: '+aux+' llantas <br></div>'
+				       			+'<label>Stock Disponible: '+aux+' <br></div>'
 				    }
 				});
 
@@ -200,9 +234,9 @@ function ShowRouteTest(i){
 		}
 	}
 
-	if(RouteItem.length == 1){
+	if(RouteSelected.length == 1){
 		mapa.travelRoute({
-		    origin: [RouteItem[0].CoordX,RouteItem[0].CoordY],
+		    origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
 		    destination: [finishPosition.CoordX,finishPosition.CoordY],
 		    travelMode: 'driving',
 		    waypoints: waypnts,
@@ -219,9 +253,9 @@ function ShowRouteTest(i){
 		});
 	}else{
 		var waypnts=[];
-		for (var i = 1; i < RouteSelected.length; i++) {
+		for (var i = 1; i < RouteItem.length; i++) {
 			waypnts.push({
-				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
+				location: new google.maps.LatLng(RouteItem[i].CoordX,RouteItem[i].CoordY),
 				stopover:false
 			});
 		}
@@ -367,216 +401,216 @@ function SortRoute(reference,rt){
 		}
 	}
 }
-function ShowJourney(i){
-	// socket.removeAllListeners();
-	var ObjJourney;
-	jQuery(document).ready(function() {
-	    MapsGoogle.init();
-	});
+// function ShowJourney(i){
+// 	// socket.removeAllListeners();
+// 	var ObjJourney;
+// 	jQuery(document).ready(function() {
+// 	    MapsGoogle.init();
+// 	});
  	
- 	// for (var j = 0; j < lstJourneys.length; j++) {
- 	// 	if(lstJourneys[j].ORDER_order_id==lstOrders[i].OrderId){
- 			ObjJourney = lstJourneys[i];
- 	// 		break;
- 	// 	}
- 	// }
- 	// socket.on('SelectOrders',function(data){
- 	// 	for (var i = 0; i < data.length; i++) {
- 	// 		if(data[i].OrderDeadLine==){
+//  	// for (var j = 0; j < lstJourneys.length; j++) {
+//  	// 	if(lstJourneys[j].ORDER_order_id==lstOrders[i].OrderId){
+//  			ObjJourney = lstJourneys[i];
+//  	// 		break;
+//  	// 	}
+//  	// }
+//  	// socket.on('SelectOrders',function(data){
+//  	// 	for (var i = 0; i < data.length; i++) {
+//  	// 		if(data[i].OrderDeadLine==){
 
- 	// 		}
- 	// 	}
- 	// 	lstOrders=data;
- 	// });
- 	var Orders=[];
- 	var route=ObjJourney.JourneyRoute.split(',');
- 	var RouteSelected=[];
-	var RouteItem=[];
- 	for (var j = 0; j < lstOrders.length; j++) {
-		//  console.log(lstOrders[j].JourneyId+"  "+lstJourneys[i].JourneyId)
- 		if(lstOrders[j].JourneyId==lstJourneys[i].JourneyId){
- 			Orders.push(lstOrders[j])
- 		}	
- 	}
- 	for (var i = 0; i < lstDistributors.length; i++) {
- 		for (var j = 0; j < route.length; j++) {
- 			if(lstDistributors[i].DistributorId==route[j]){
- 				RouteSelected.push(lstDistributors[i]);
- 				for (var k = 0; k < Orders.length; k++) {
- 					// console.log(Orders[k])
-					if(lstOrders[i].OrderState=="En Proceso"){
-						RouteItem.push(lstOrders[i]);	
-					}
- 					if(lstDistributors[i].DistributorId==Orders[k].DistributorId){
- 						var aux=Orders[k].OrderQuantity
- 					}
- 				}
- 				mapa.addMarker({
-				   	lat: lstDistributors[i].CoordX,
-				   	lng: lstDistributors[i].CoordY,
-				   	title: 'Centro de Distribución',
-				   	icon: '../iconos/dPendiente.png',
-				   	infoWindow: {
-				        content: '<div id="content"><strong>'+lstDistributors[i].DistributorName+'</strong><br>'
-				       			+'<label>'+lstDistributors[i].DistributorAddress+'</label><br>'
-				       			+'<label>Stock Disponible: '+aux+' <br></div>'
-				    }
-				});
- 			}
- 		}	
-	}	
-	for (var i = 0; i < lstRecyclingCenters.length; i++) {
-		if(lstRecyclingCenters[i].RecyclingCenterId==ObjJourney.recyclingcenterid){
-			var finishPosition=lstRecyclingCenters[i];
-			mapa.addMarker({
-			   	lat: lstRecyclingCenters[i].CoordX,
-			   	lng: lstRecyclingCenters[i].CoordY,
-			   	title: 'Centro de Distribución',
-			   	icon: '../iconos/recycle.png',
-			   	infoWindow: {
-	                content: '<div id="content"><strong>'+lstRecyclingCenters[i].RecyclingCenterName+'</strong><br>'
-	                			+'<label>'+lstRecyclingCenters[i].RecyclingCenterAddress+'</label><br>'
-	                		+'</div>'
-	            }
-			});
-		}
-	}
-	if(RouteSelected.length == 1){
-		mapa.travelRoute({
-		    origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
-		    destination: [finishPosition.CoordX,finishPosition.CoordY],
-		    travelMode: 'driving',
-		    waypoints: waypnts,
-		  	optimizeWaypoints: true,
-		  	provideRouteAlternatives: true,
-		    step: function (e) {
-		        // $('#gmap_routes_instructions').append('<li>' + e.instructions + '</li>');
-		        // $('#gmap_routes_instructions li:eq(' + e.step_number + ')').fadeIn(500, function () {
-		            mapa.drawPolyline({
-		                path: e.path,
-		                strokeColor: '#131540',
-		                strokeOpacity: 0.6,
-		                strokeWeight: 6
-		            });
-		        // });
-		    }
-		});
-	}else{
-		var waypnts=[];
-		for (var i = 1; i < RouteItem.length; i++) {
-			waypnts.push({
-				location: new google.maps.LatLng(RouteItem[i].CoordX,RouteItem[i].CoordY),
-				stopover: false 
-			});
-		}
-		mapa.travelRoute({
-	        origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
-	        destination: [finishPosition.CoordX,finishPosition.CoordY],
-	        travelMode: 'driving',
-	        waypoints: waypnts,
-	      	optimizeWaypoints: true,
-	      	provideRouteAlternatives: true,
-	        step: function (e) {
-	            // $('#gmap_routes_instructions').append('<li>' + e.instructions + '</li>');
-	            //$('#gmap_routes_instructions li:eq(' + e.step_number + ')').fadeIn(500, function () {
-	                mapa.drawPolyline({
-	                    path: e.path,
-	                    strokeColor: '#131540',
-	                    strokeOpacity: 0.6,
-	                    strokeWeight: 6
-	                });
-	            // });
-	        }
-	    });
-	}
-	var flagFirstDrawing=true;
-	socket.on('TruckLocation',function(data){
+//  	// 		}
+//  	// 	}
+//  	// 	lstOrders=data;
+//  	// });
+//  	var Orders=[];
+//  	var route=ObjJourney.JourneyRoute.split(',');
+//  	var RouteSelected=[];
+// 	var RouteItem=[];
+//  	for (var j = 0; j < lstOrders.length; j++) {
+// 		//  console.log(lstOrders[j].JourneyId+"  "+lstJourneys[i].JourneyId)
+//  		if(lstOrders[j].JourneyId==lstJourneys[i].JourneyId){
+//  			Orders.push(lstOrders[j])
+//  		}	
+//  	}
+//  	for (var i = 0; i < lstDistributors.length; i++) {
+//  		for (var j = 0; j < route.length; j++) {
+//  			if(lstDistributors[i].DistributorId==route[j]){
+//  				RouteSelected.push(lstDistributors[i]);
+//  				for (var k = 0; k < Orders.length; k++) {
+//  					// console.log(Orders[k])
+// 					if(lstOrders[i].OrderState=="En Proceso"){
+// 						RouteItem.push(lstOrders[i]);	
+// 					}
+//  					if(lstDistributors[i].DistributorId==Orders[k].DistributorId){
+//  						var aux=Orders[k].OrderQuantity
+//  					}
+//  				}
+//  				mapa.addMarker({
+// 				   	lat: lstDistributors[i].CoordX,
+// 				   	lng: lstDistributors[i].CoordY,
+// 				   	title: 'Centro de Distribución',
+// 				   	icon: '../iconos/dPendiente.png',
+// 				   	infoWindow: {
+// 				        content: '<div id="content"><strong>'+lstDistributors[i].DistributorName+'</strong><br>'
+// 				       			+'<label>'+lstDistributors[i].DistributorAddress+'</label><br>'
+// 				       			+'<label>Stock Disponible: '+aux+' <br></div>'
+// 				    }
+// 				});
+//  			}
+//  		}	
+// 	}	
+// 	for (var i = 0; i < lstRecyclingCenters.length; i++) {
+// 		if(lstRecyclingCenters[i].RecyclingCenterId==ObjJourney.recyclingcenterid){
+// 			var finishPosition=lstRecyclingCenters[i];
+// 			mapa.addMarker({
+// 			   	lat: lstRecyclingCenters[i].CoordX,
+// 			   	lng: lstRecyclingCenters[i].CoordY,
+// 			   	title: 'Centro de Distribución',
+// 			   	icon: '../iconos/recycle.png',
+// 			   	infoWindow: {
+// 	                content: '<div id="content"><strong>'+lstRecyclingCenters[i].RecyclingCenterName+'</strong><br>'
+// 	                			+'<label>'+lstRecyclingCenters[i].RecyclingCenterAddress+'</label><br>'
+// 	                		+'</div>'
+// 	            }
+// 			});
+// 		}
+// 	}
+// 	if(RouteSelected.length == 1){
+// 		mapa.travelRoute({
+// 		    origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
+// 		    destination: [finishPosition.CoordX,finishPosition.CoordY],
+// 		    travelMode: 'driving',
+// 		    waypoints: waypnts,
+// 		  	optimizeWaypoints: true,
+// 		  	provideRouteAlternatives: true,
+// 		    step: function (e) {
+// 		        // $('#gmap_routes_instructions').append('<li>' + e.instructions + '</li>');
+// 		        // $('#gmap_routes_instructions li:eq(' + e.step_number + ')').fadeIn(500, function () {
+// 		            mapa.drawPolyline({
+// 		                path: e.path,
+// 		                strokeColor: '#131540',
+// 		                strokeOpacity: 0.6,
+// 		                strokeWeight: 6
+// 		            });
+// 		        // });
+// 		    }
+// 		});
+// 	}else{
+// 		var waypnts=[];
+// 		for (var i = 1; i < RouteItem.length; i++) {
+// 			waypnts.push({
+// 				location: new google.maps.LatLng(RouteItem[i].CoordX,RouteItem[i].CoordY),
+// 				stopover: false 
+// 			});
+// 		}
+// 		mapa.travelRoute({
+// 	        origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
+// 	        destination: [finishPosition.CoordX,finishPosition.CoordY],
+// 	        travelMode: 'driving',
+// 	        waypoints: waypnts,
+// 	      	optimizeWaypoints: true,
+// 	      	provideRouteAlternatives: true,
+// 	        step: function (e) {
+// 	            // $('#gmap_routes_instructions').append('<li>' + e.instructions + '</li>');
+// 	            //$('#gmap_routes_instructions li:eq(' + e.step_number + ')').fadeIn(500, function () {
+// 	                mapa.drawPolyline({
+// 	                    path: e.path,
+// 	                    strokeColor: '#131540',
+// 	                    strokeOpacity: 0.6,
+// 	                    strokeWeight: 6
+// 	                });
+// 	            // });
+// 	        }
+// 	    });
+// 	}
+// 	var flagFirstDrawing=true;
+// 	socket.on('TruckLocation',function(data){
 		
-		var AuxTruck;
-		for(var i=0;i<lstTrucks.length;i++){
-			console.log("ObjJourney.TRUCK_truck_id: "+ObjJourney.TRUCK_truck_id+" lstTrucks[i].TruckId: "+lstTrucks[i].TruckId)
-			if(ObjJourney.TRUCK_truck_id==lstTrucks[i].TruckId){
-				AuxTruck=lstTrucks[i];
-			}
-		}
-		console.log("."+data.user.person.PersonCi+'.'+AuxTruck.TruckDriver+".");
-		if(data.user.person.PersonCi == AuxTruck.TruckDriver){
-			var UserExist=false;
-			if(lstUserMarkers.length==0){
-				userMarker = mapa.addMarker({
-					lat: data.position.lat,
-					lng: data.position.lng,
-					title: 'Ubicación actual del camión',
-					icon: '../iconos/truck.png',
-					animation: google.maps.Animation.BOUNCE,
-					infoWindow: {
-						content: '<strong>VIAJE</strong><br><strong>'+data.user.person.PERSONNAME+' '+data.user.person.PERSONLASTNAME+'<strong/>'
-					}
-				});
-				var Aux={
-					data: data,
-					marker:userMarker
-				}
-				lstUserMarkers.push(Aux);
-			}
-			for (var i = 0; i < lstUserMarkers.length; i++) {
-				if(lstUserMarkers[i].data.user.user.UserEmail==data.user.user.UserEmail){
-					if(lstUserMarkers[i].marker!=null){
-						mapa.removeMarker(lstUserMarkers[i].marker);
-						lstUserMarkers[i].marker=null;
-					}
-					lstUserMarkers[i].marker = mapa.addMarker({
-						lat: data.position.lat,
-						lng: data.position.lng,
-						title: 'Ubicación actual del camión',
-						icon: '../iconos/truck.png',
-						animation: google.maps.Animation.BOUNCE,
-						infoWindow: {
-							content: '<strong>VIAJE</strong><br><strong>'+lstUserMarkers[i].data.user.person.PersonName+' '+lstUserMarkers[i].data.user.person.PersonLastName+'<strong/>'
-						}
-					});
-					UserExist=true;
-				}else{
-					UserExist=false;
-				}
-			}
-			if(!UserExist){
-				userMarker = mapa.addMarker({
-					lat: data.position.lat,
-					lng: data.position.lng,
-					title: 'Ubicación actual del camión',
-					icon: '../iconos/truck.png',
-					animation: google.maps.Animation.BOUNCE,
-					infoWindow: {
-						content: '<strong>VIAJE</strong><br><strong>'+data.user.person.PersonName+' '+data.user.person.PersonLastName+'<strong/>'
-					}
-				});
-				var Aux={
-					data: data,
-					marker:userMarker
-				}
-				lstUserMarkers.push(Aux);
-			}
-			mapa.travelRoute({
-				origin: [data.position.lat,data.position.lng],
-				destination: [finishPosition.CoordX,finishPosition.CoordY],
-				travelMode: 'driving',
-				waypoints: waypnts,
-				optimizeWaypoints: true,
-				provideRouteAlternatives: true,
-				step: function (e) {
-					// $('#gmap_routes_instructions').append('<li>' + e.instructions + '</li>');
-					// $('#gmap_routes_instructions li:eq(' + e.step_number + ')').fadeIn(500, function () {
-						mapa.drawPolyline({
-							path: e.path,
-							strokeColor: '#131540',
-							strokeOpacity: 0.6,
-							strokeWeight: 6
-						});
-					// });
-				}
-			});
-	}
+// 		var AuxTruck;
+// 		for(var i=0;i<lstTrucks.length;i++){
+// 			console.log("ObjJourney.TRUCK_truck_id: "+ObjJourney.TRUCK_truck_id+" lstTrucks[i].TruckId: "+lstTrucks[i].TruckId)
+// 			if(ObjJourney.TRUCK_truck_id==lstTrucks[i].TruckId){
+// 				AuxTruck=lstTrucks[i];
+// 			}
+// 		}
+// 		console.log("."+data.user.person.PersonCi+'.'+AuxTruck.TruckDriver+".");
+// 		if(data.user.person.PersonCi == AuxTruck.TruckDriver){
+// 			var UserExist=false;
+// 			if(lstUserMarkers.length==0){
+// 				userMarker = mapa.addMarker({
+// 					lat: data.position.lat,
+// 					lng: data.position.lng,
+// 					title: 'Ubicación actual del camión',
+// 					icon: '../iconos/truck.png',
+// 					animation: google.maps.Animation.BOUNCE,
+// 					infoWindow: {
+// 						content: '<strong>VIAJE</strong><br><strong>'+data.user.person.PERSONNAME+' '+data.user.person.PERSONLASTNAME+'<strong/>'
+// 					}
+// 				});
+// 				var Aux={
+// 					data: data,
+// 					marker:userMarker
+// 				}
+// 				lstUserMarkers.push(Aux);
+// 			}
+// 			for (var i = 0; i < lstUserMarkers.length; i++) {
+// 				if(lstUserMarkers[i].data.user.user.UserEmail==data.user.user.UserEmail){
+// 					if(lstUserMarkers[i].marker!=null){
+// 						mapa.removeMarker(lstUserMarkers[i].marker);
+// 						lstUserMarkers[i].marker=null;
+// 					}
+// 					lstUserMarkers[i].marker = mapa.addMarker({
+// 						lat: data.position.lat,
+// 						lng: data.position.lng,
+// 						title: 'Ubicación actual del camión',
+// 						icon: '../iconos/truck.png',
+// 						animation: google.maps.Animation.BOUNCE,
+// 						infoWindow: {
+// 							content: '<strong>VIAJE</strong><br><strong>'+lstUserMarkers[i].data.user.person.PersonName+' '+lstUserMarkers[i].data.user.person.PersonLastName+'<strong/>'
+// 						}
+// 					});
+// 					UserExist=true;
+// 				}else{
+// 					UserExist=false;
+// 				}
+// 			}
+// 			if(!UserExist){
+// 				userMarker = mapa.addMarker({
+// 					lat: data.position.lat,
+// 					lng: data.position.lng,
+// 					title: 'Ubicación actual del camión',
+// 					icon: '../iconos/truck.png',
+// 					animation: google.maps.Animation.BOUNCE,
+// 					infoWindow: {
+// 						content: '<strong>VIAJE</strong><br><strong>'+data.user.person.PersonName+' '+data.user.person.PersonLastName+'<strong/>'
+// 					}
+// 				});
+// 				var Aux={
+// 					data: data,
+// 					marker:userMarker
+// 				}
+// 				lstUserMarkers.push(Aux);
+// 			}
+// 			mapa.travelRoute({
+// 				origin: [data.position.lat,data.position.lng],
+// 				destination: [finishPosition.CoordX,finishPosition.CoordY],
+// 				travelMode: 'driving',
+// 				waypoints: waypnts,
+// 				optimizeWaypoints: true,
+// 				provideRouteAlternatives: true,
+// 				step: function (e) {
+// 					// $('#gmap_routes_instructions').append('<li>' + e.instructions + '</li>');
+// 					// $('#gmap_routes_instructions li:eq(' + e.step_number + ')').fadeIn(500, function () {
+// 						mapa.drawPolyline({
+// 							path: e.path,
+// 							strokeColor: '#131540',
+// 							strokeOpacity: 0.6,
+// 							strokeWeight: 6
+// 						});
+// 					// });
+// 				}
+// 			});
+// 	}
 
 			// console.log(data.user.user.UserEmail);
 			// if(userMarker!=null){

@@ -200,9 +200,9 @@ function ShowRouteTest(i){
 		}
 	}
 
-	if(RouteSelected.length == 1){
+	if(RouteItem.length == 1){
 		mapa.travelRoute({
-		    origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
+		    origin: [RouteItem[0].CoordX,RouteItem[0].CoordY],
 		    destination: [finishPosition.CoordX,finishPosition.CoordY],
 		    travelMode: 'driving',
 		    waypoints: waypnts,
@@ -391,6 +391,7 @@ function ShowJourney(i){
  	var Orders=[];
  	var route=ObjJourney.JourneyRoute.split(',');
  	var RouteSelected=[];
+	var RouteItem=[];
  	for (var j = 0; j < lstOrders.length; j++) {
 		//  console.log(lstOrders[j].JourneyId+"  "+lstJourneys[i].JourneyId)
  		if(lstOrders[j].JourneyId==lstJourneys[i].JourneyId){
@@ -403,6 +404,9 @@ function ShowJourney(i){
  				RouteSelected.push(lstDistributors[i]);
  				for (var k = 0; k < Orders.length; k++) {
  					// console.log(Orders[k])
+					if(lstOrders[i].OrderState=="En Proceso"){
+						RouteItem.push(lstOrders[i]);	
+					}
  					if(lstDistributors[i].DistributorId==Orders[k].DistributorId){
  						var aux=Orders[k].OrderQuantity
  					}
@@ -415,7 +419,7 @@ function ShowJourney(i){
 				   	infoWindow: {
 				        content: '<div id="content"><strong>'+lstDistributors[i].DistributorName+'</strong><br>'
 				       			+'<label>'+lstDistributors[i].DistributorAddress+'</label><br>'
-				       			+'<label>Stock Disponible: '+aux+' llantas <br></div>'
+				       			+'<label>Stock Disponible: '+aux+' <br></div>'
 				    }
 				});
  			}
@@ -459,9 +463,9 @@ function ShowJourney(i){
 		});
 	}else{
 		var waypnts=[];
-		for (var i = 1; i < RouteSelected.length; i++) {
+		for (var i = 1; i < RouteItem.length; i++) {
 			waypnts.push({
-				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
+				location: new google.maps.LatLng(RouteItem[i].CoordX,RouteItem[i].CoordY),
 				stopover: false 
 			});
 		}

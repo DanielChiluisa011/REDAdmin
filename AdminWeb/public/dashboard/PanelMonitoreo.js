@@ -191,6 +191,7 @@ function ShowRouteTest(i){
 				    }
 				});
 			}else{
+				alert(RouteSelected[k].DistributorId+" "+RouteItem[l].DistributorId);
 				mapa.addMarker({
 				   	lat: RouteSelected[k].CoordX,
 				   	lng: RouteSelected[k].CoordY,

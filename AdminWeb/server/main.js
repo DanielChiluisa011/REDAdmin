@@ -805,7 +805,16 @@ io.on('connection', function(socket){
 	 		}
 	 	});
 	});
-
+	socket.on("RequestWaste",function(data){
+		connection.query('SELECT * FROM waste',function(error, result){
+			if(error){
+				throw error;
+			}else{
+				var lstWastes=result;
+				io.emit('selectWaste',lstWastes);
+		}
+		})
+	});
 	socket.on("RequestCRInfo",function(data){
 		connection.query("SELECT "+
 						"I.RECYCLINGCENTERNAME,"+

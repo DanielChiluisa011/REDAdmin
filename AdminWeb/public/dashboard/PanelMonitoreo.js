@@ -175,50 +175,65 @@ function ShowRouteTest(i){
  						var aux=AuxlstOrders[k].OrderQuantity
  					}
  				}
-		for(var l=0;l<RouteItem.length;l++)
-		{
-			alert("Inicio "+RouteSelected[k].DistributorId+" "+RouteItem[l].DistributorId);
-			if(RouteSelected[k].DistributorId==RouteItem[l].DistributorId)
+		if(RouteItem.length!=0)
+			for(var l=0;l<RouteItem.length;l++)
 			{
+				// alert("Inicio "+RouteSelected[k].DistributorId+" "+RouteItem[l].DistributorId);
+				if(RouteSelected[k].DistributorId==RouteItem[l].DistributorId)
+				{
 
-				alert("Si "+RouteSelected[k].DistributorId+" "+RouteItem[l].DistributorId);
-				mapa.addMarker({
-				   	lat: RouteSelected[k].CoordX,
-				   	lng: RouteSelected[k].CoordY,
-				   	title: 'Centro de Distribución',
-				   	icon: '../iconos/dPendiente.png',
-				   	infoWindow: {
-				        content: '<div id="content"><strong>'+RouteSelected[k].DistributorName+'</strong><br>'
-				       			+'<label>'+RouteSelected[k].DistributorAddress+'</label><br>'
-				       			+'<label>Stock Disponible: '+aux+' <br></div>'
-				    }
-				});
-			}else{
-				alert(RouteSelected[k].DistributorId+" "+RouteItem[l].DistributorId);
-				mapa.addMarker({
-				   	lat: RouteSelected[k].CoordX,
-				   	lng: RouteSelected[k].CoordY,
-				   	title: 'Centro de Distribución',
-				   	icon: '../iconos/dListo.png',
-				   	infoWindow: {
-				        content: '<div id="content"><strong>'+RouteSelected[k].DistributorName+'</strong><br>'
-				       			+'<label>'+RouteSelected[k].DistributorAddress+'</label><br>'
-				       			+'<label>Stock Disponible: '+aux+' <br></div>'
-				    }
-				});
+					// alert("Si "+RouteSelected[k].DistributorId+" "+RouteItem[l].DistributorId);
+					mapa.addMarker({
+						lat: RouteSelected[k].CoordX,
+						lng: RouteSelected[k].CoordY,
+						title: 'Centro de Distribución',
+						icon: '../iconos/dPendiente.png',
+						infoWindow: {
+							content: '<div id="content"><strong>'+RouteSelected[k].DistributorName+'</strong><br>'
+									+'<label>'+RouteSelected[k].DistributorAddress+'</label><br>'
+									+'<label>Stock Disponible: '+aux+' <br></div>'
+						}
+					});
+				}else{
+					// alert(RouteSelected[k].DistributorId+" "+RouteItem[l].DistributorId);
+					mapa.addMarker({
+						lat: RouteSelected[k].CoordX,
+						lng: RouteSelected[k].CoordY,
+						title: 'Centro de Distribución',
+						icon: '../iconos/dListo.png',
+						infoWindow: {
+							content: '<div id="content"><strong>'+RouteSelected[k].DistributorName+'</strong><br>'
+									+'<label>'+RouteSelected[k].DistributorAddress+'</label><br>'
+									+'<label>Stock Disponible: '+aux+' <br></div>'
+						}
+					});
+				}
 			}
+		else{
+			mapa.addMarker({
+						lat: RouteSelected[k].CoordX,
+						lng: RouteSelected[k].CoordY,
+						title: 'Centro de Distribución',
+						icon: '../iconos/dListo.png',
+						infoWindow: {
+							content: '<div id="content"><strong>'+RouteSelected[k].DistributorName+'</strong><br>'
+									+'<label>'+RouteSelected[k].DistributorAddress+'</label><br>'
+									+'<label>Stock Disponible: '+aux+' <br></div>'
+						}
+					});
+
 		}	 
-		mapa.addMarker({
-				   	lat: RouteSelected[k].CoordX,
-				   	lng: RouteSelected[k].CoordY,
-				   	title: 'Centro de Distribución',
-				   	icon: '../iconos/dPendiente.png',
-				   	infoWindow: {
-				        content: '<div id="content"><strong>'+RouteSelected[k].DistributorName+'</strong><br>'
-				       			+'<label>'+RouteSelected[k].DistributorAddress+'</label><br>'
-				       			+'<label>Stock Disponible: '+aux+' <br></div>'
-				    }
-				});
+		// mapa.addMarker({
+		// 		   	lat: RouteSelected[k].CoordX,
+		// 		   	lng: RouteSelected[k].CoordY,
+		// 		   	title: 'Centro de Distribución',
+		// 		   	icon: '../iconos/dPendiente.png',
+		// 		   	infoWindow: {
+		// 		        content: '<div id="content"><strong>'+RouteSelected[k].DistributorName+'</strong><br>'
+		// 		       			+'<label>'+RouteSelected[k].DistributorAddress+'</label><br>'
+		// 		       			+'<label>Stock Disponible: '+aux+' <br></div>'
+		// 		    }
+		// 		});
 
 	}
 	for (var i = 0; i < lstRecyclingCenters.length; i++) {

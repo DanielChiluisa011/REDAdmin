@@ -168,7 +168,7 @@ function ShowRouteTest(i){
 
 	for(var k=0;k<RouteSelected.length;k++){
 		for (var j = 0; j < AuxlstOrders.length; j++) {
- 					if(lstOrders[i].OrderState=="En Proceso"){
+ 					if(AuxlstOrders[i].OrderState=="En Proceso"){
 						RouteItem.push(lstOrders[i]);	
 					}
 					if(RouteSelected[k].DistributorId==AuxlstOrders[j].DistributorId){

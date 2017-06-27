@@ -179,6 +179,7 @@ function ShowRouteTest(i){
 		{
 			if(RouteSelected[k].DistributorId==RouteItem[l].DistributorId)
 			{
+				alert("Si "+RouteSelected[k].DistributorId+" "+RouteItem[l].DistributorId);
 				mapa.addMarker({
 				   	lat: RouteSelected[k].CoordX,
 				   	lng: RouteSelected[k].CoordY,
@@ -286,6 +287,7 @@ function ShowRouteTest(i){
 				AuxTruck=lstTrucks[i];
 			}
 		}
+
 		// console.log("."+data.user.person.PersonCi+'.'+AuxTruck.TruckDriver+".");
 		if(data.user.person.PersonCi == AuxTruck.TruckDriver){
 			var UserExist=false;

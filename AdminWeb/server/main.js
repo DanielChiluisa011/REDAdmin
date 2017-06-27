@@ -811,7 +811,7 @@ io.on('connection', function(socket){
 				throw error;
 			}else{
 				var lstWastes=result;
-				io.emit('selectWaste',lstWastes);
+				io.emit('ReturnWaste',lstWastes);
 		}
 		})
 	});

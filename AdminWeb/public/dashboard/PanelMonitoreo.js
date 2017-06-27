@@ -177,8 +177,10 @@ function ShowRouteTest(i){
  				}
 		for(var l=0;l<RouteItem.length;l++)
 		{
+			alert("Inicio "+RouteSelected[k].DistributorId+" "+RouteItem[l].DistributorId);
 			if(RouteSelected[k].DistributorId==RouteItem[l].DistributorId)
 			{
+
 				alert("Si "+RouteSelected[k].DistributorId+" "+RouteItem[l].DistributorId);
 				mapa.addMarker({
 				   	lat: RouteSelected[k].CoordX,

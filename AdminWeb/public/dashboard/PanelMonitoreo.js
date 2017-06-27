@@ -179,15 +179,15 @@ function ShowRouteTest(i){
  						var aux=AuxlstOrders[k].OrderQuantity
  					}
  				}
-		alert(RouteItem.length);
+		// alert(RouteItem.length);
 		if(RouteItem.length!=0)
 			for(var l=0;l<RouteItem.length;l++)
 			{
-				alert("Inicio "+RouteSelected[k].DistributorId+" "+RouteItem[l].DistributorId);
+				// alert("Inicio "+RouteSelected[k].DistributorId+" "+RouteItem[l].DistributorId);
 				if(RouteSelected[k].DistributorId==RouteItem[l].DistributorId)
 				{
 
-					alert("Si "+RouteSelected[k].DistributorId+" "+RouteItem[l].DistributorId);
+					// alert("Si "+RouteSelected[k].DistributorId+" "+RouteItem[l].DistributorId);
 					mapa.addMarker({
 						lat: RouteSelected[k].CoordX,
 						lng: RouteSelected[k].CoordY,
@@ -201,7 +201,7 @@ function ShowRouteTest(i){
 					});
 					break;
 				}else{
-					alert(RouteSelected[k].DistributorId+" "+RouteItem[l].DistributorId);
+					// alert(RouteSelected[k].DistributorId+" "+RouteItem[l].DistributorId);
 					mapa.addMarker({
 						lat: RouteSelected[k].CoordX,
 						lng: RouteSelected[k].CoordY,

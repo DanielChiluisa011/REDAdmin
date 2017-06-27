@@ -168,13 +168,14 @@ function ShowRouteTest(i){
 
 	for(var k=0;k<RouteSelected.length;k++){
 		for (var j = 0; j < AuxlstOrders.length; j++) {
- 					if(AuxlstOrders[i].OrderState=="En Proceso"){
+ 					if(AuxlstOrders[j].OrderState=="En Proceso"){
 						RouteItem.push(lstOrders[i]);	
 					}
 					if(RouteSelected[k].DistributorId==AuxlstOrders[j].DistributorId){
  						var aux=AuxlstOrders[k].OrderQuantity
  					}
  				}
+		alert(RouteItem.length);
 		if(RouteItem.length!=0)
 			for(var l=0;l<RouteItem.length;l++)
 			{

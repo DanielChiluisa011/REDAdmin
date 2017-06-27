@@ -199,6 +199,7 @@ function ShowRouteTest(i){
 									+'<label>Stock Disponible: '+aux+' <br></div>'
 						}
 					});
+					break;
 				}else{
 					alert(RouteSelected[k].DistributorId+" "+RouteItem[l].DistributorId);
 					mapa.addMarker({

@@ -1,5 +1,7 @@
 var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
 var lstImporters= [];
+var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";\
+var lon=6;
 $(document).ready(function(){
     socket.emit("RequestImportersInfo","");
     socket.on("ResponseImporterInfo",function(flag){
@@ -24,6 +26,7 @@ $(document).ready(function(){
 		$("#txtNewImpRuc").val("");
 		$("#txtNewImpQuota").val("");
 		$("#txtNewImpLicence").val("");
+        $("txtNewImpCode").val(rand_code(chars, lon));
 		$("#txtNewImpPersonName").val("");
 		$("#txtNewImpPersonLastName").val("");
 		$("#txtNewImpPersonId").val("");
@@ -63,7 +66,7 @@ $("#btnCancelImporter").click(function(){
 		$("#txtNewImpPersonPhone").val("");
 		$("#txtNewImpPersonAddress").val("");
 		$("#txtNewImpEmail").val("");
-
+        $("txtNewImpCode").val(rand_code(chars, lon));
         $("#txtNewImpName").attr("disabled",false);
         $("#txtNewImpRuc").attr("disabled",false);
         $("#txtNewImpQuota").attr("disabled",false);
@@ -105,6 +108,7 @@ $("#btnInsertImporter").click(function(){
         rucImporter: $("#txtNewImpRuc").val(),
         quota: $("#txtNewImpQuota").val(),
         licence: $("#txtNewImpLicence").val(),
+        code: $("#txtNewImpCode").val(),
         personName: $("#txtNewImpPersonName").val(),
         personLastName: $("#txtNewImpPersonLastName").val(),
         personCi: $("#txtNewImpPersonId").val(),
@@ -176,6 +180,15 @@ $("#btnInsertImporter").click(function(){
         });
     }
 	
-	
+function rand_code(chars, lon){
+    code = "";
+    for (x=0; x < lon; x++)
+    {
+        rand = Math.floor(Math.random()*chars.length);
+        code += chars.substr(rand, 1);
+    }
+    return code;
+    // $("txtNewImpCode").val(code);
+}
 	
 });

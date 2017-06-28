@@ -1,6 +1,6 @@
 var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
 var lstImporters= [];
-var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";\
+var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 var lon=6;
 $(document).ready(function(){
     socket.emit("RequestImportersInfo","");

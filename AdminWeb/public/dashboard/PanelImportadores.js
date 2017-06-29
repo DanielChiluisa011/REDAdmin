@@ -198,6 +198,8 @@ function rand_code(){
         rand = Math.floor(Math.random()*chars.length);
         code += chars.substr(rand, 1);
     }
+    alert(code);
+    console.log(code);
     // $("txtNewImpCode").val(code);
 }
 	

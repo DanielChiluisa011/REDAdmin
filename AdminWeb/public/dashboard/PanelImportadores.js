@@ -100,7 +100,7 @@ function ShowImporterInformation(i){
 		$("#txtNewImpEmail").val(lstImporters[i].USEREMAIL);
         $("#txtNewImpEmail").attr("disabled",true);
 }
-$("addImporter").ready(function(){
+$("addImporter").click(function(){
     $("txtNewImpCode").val(rand_code());
 });
 $("#btnInsertImporter").click(function(){

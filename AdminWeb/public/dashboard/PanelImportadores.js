@@ -181,7 +181,7 @@ $("#btnInsertImporter").click(function(){
         });
     }
 	
-function rand_code(chars, lon){
+function rand_code(){
     code = "";
     for (x=0; x < lon; x++)
     {

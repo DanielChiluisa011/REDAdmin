@@ -278,9 +278,9 @@ function ShowRouteTest(i){
 		});
 	}else{
 		var waypnts=[];
-		for (var i = 1; i < RouteItem.length; i++) {
+		for (var i = 1; i < RouteSelected.length; i++) {
 			waypnts.push({
-				location: new google.maps.LatLng(RouteItem[i].CoordX,RouteItem[i].CoordY),
+				location: new google.maps.LatLng(RouteSelected[i].CoordX,RouteSelected[i].CoordY),
 				stopover:false
 			});
 		}

@@ -774,7 +774,7 @@ io.on('connection', function(socket){
 						"P.PERSONLASTNAME,"+
 						"P.PERSONADDRESS,"+
 						"P.PERSONPHONE,"+
-						"I.USEREMAIL "+
+						"I.USEREMAIL,I.IMPORTERCODE "+
 						"FROM importer I, "+
 						"person P, users u "+
 						"WHERE I.USEREMAIL=u.USEREMAIL AND u.PERSONID=P.personid "+

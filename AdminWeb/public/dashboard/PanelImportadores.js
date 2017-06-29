@@ -27,7 +27,7 @@ $(document).ready(function(){
 		$("#txtNewImpRuc").val("");
 		$("#txtNewImpQuota").val("");
 		$("#txtNewImpLicence").val("");
-        $("txtNewImpCode").val(rand_code(chars, lon));
+        // $("txtNewImpCode").val();
 		$("#txtNewImpPersonName").val("");
 		$("#txtNewImpPersonLastName").val("");
 		$("#txtNewImpPersonId").val("");
@@ -67,7 +67,7 @@ $("#btnCancelImporter").click(function(){
 		$("#txtNewImpPersonPhone").val("");
 		$("#txtNewImpPersonAddress").val("");
 		$("#txtNewImpEmail").val("");
-        $("txtNewImpCode").val(rand_code(chars, lon));
+        // $("txtNewImpCode").val(rand_code(chars, lon));
         $("#txtNewImpName").attr("disabled",false);
         $("#txtNewImpRuc").attr("disabled",false);
         $("#txtNewImpQuota").attr("disabled",false);

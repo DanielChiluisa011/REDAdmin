@@ -67,7 +67,7 @@ $("#btnCancelImporter").click(function(){
 		$("#txtNewImpPersonPhone").val("");
 		$("#txtNewImpPersonAddress").val("");
 		$("#txtNewImpEmail").val("");
-        $("txtNewImpCode").val(rand_code());
+        // $("txtNewImpCode").val(rand_code());
         $("#txtNewImpName").attr("disabled",false);
         $("#txtNewImpRuc").attr("disabled",false);
         $("#txtNewImpQuota").attr("disabled",false);
@@ -99,6 +99,7 @@ function ShowImporterInformation(i){
 		$("#txtNewImpPersonAddress").val(lstImporters[i].PERSONADDRESS);
 		$("#txtNewImpEmail").val(lstImporters[i].USEREMAIL);
         $("#txtNewImpEmail").attr("disabled",true);
+        $("txtNewImpCode").val(rand_code());
 }
 $("addImporter").click(function(){
     $("txtNewImpCode").val(rand_code());

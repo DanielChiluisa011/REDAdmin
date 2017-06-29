@@ -78,6 +78,7 @@ $("#btnCancelImporter").click(function(){
         $("#txtNewImpEmail").attr("disabled",false);
 });
 function ShowImporterInformation(i){
+        alert(rand_code());
         $("#btnInsertImporter").html('Actualizar');
         $("#txtNewImpName").attr("disabled",true);
         $("#txtNewImpName").val(lstImporters[i].IMPORTERNAME);
@@ -101,9 +102,9 @@ function ShowImporterInformation(i){
         $("#txtNewImpEmail").attr("disabled",true);
         $("txtNewImpCode").val(rand_code());
 }
-$("addImporter").click(function(){
-    $("txtNewImpCode").val(rand_code());
-});
+// $("addImporter")(function(){
+//     $("txtNewImpCode").val(rand_code());
+// });
 $("#btnInsertImporter").click(function(){
     // console.log($("#btnInsertImporter").html());
     var newImporter = {

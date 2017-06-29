@@ -764,6 +764,7 @@ io.on('connection', function(socket){
 		connection.query("SELECT "+
 						"I.IMPORTERNAME,"+
 						"I.IMPORTERADDRESS,"+
+						"I.IMPORTERCODE,"+
 						"I.IMPORTERPHONE,"+
 						"I.IMPORTERRUC,"+
 						"I.IMPORTERQUOTA,"+
@@ -774,7 +775,7 @@ io.on('connection', function(socket){
 						"P.PERSONLASTNAME,"+
 						"P.PERSONADDRESS,"+
 						"P.PERSONPHONE,"+
-						"I.USEREMAIL,I.IMPORTERCODE "+
+						"I.USEREMAIL "+
 						"FROM importer I, "+
 						"person P, users u "+
 						"WHERE I.USEREMAIL=u.USEREMAIL AND u.PERSONID=P.personid "+

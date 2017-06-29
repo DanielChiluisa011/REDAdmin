@@ -3,7 +3,7 @@ var lstImporters= [];
 var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 var lon=6;
 $(document).ready(function(){
-    alert(rand_code());
+    // alert(rand_code());
     
     socket.emit("RequestImportersInfo","");
     socket.on("ResponseImporterInfo",function(flag){
@@ -101,11 +101,11 @@ function ShowImporterInformation(i){
 		$("#txtNewImpPersonAddress").val(lstImporters[i].PERSONADDRESS);
 		$("#txtNewImpEmail").val(lstImporters[i].USEREMAIL);
         $("#txtNewImpEmail").attr("disabled",true);
-        $("txtNewImpCode").val(rand_code());
+        $("#txtNewImpCode").val(rand_code());
 }
-// $("addImporter")(function(){
-//     $("txtNewImpCode").val(rand_code());
-// });
+$("#addImporter").ready(function(){
+     $("txtNewImpCode").val(rand_code());
+ });
 $("#btnInsertImporter").click(function(){
     // console.log($("#btnInsertImporter").html());
     var newImporter = {

@@ -19,7 +19,7 @@ $(document).ready(function(){
     });
     socket.on("ResponseImporter",function(Importador){
         lstImporters.length=0;
-        alert(rand_code(chars, lon));
+        // alert(rand_code(chars, lon));
         lstImporters=Importador;
         $("#txtNewImpName").val("");
 		$("#txtNewImpAddress").val("");

@@ -101,10 +101,10 @@ function ShowImporterInformation(i){
 		$("#txtNewImpPersonAddress").val(lstImporters[i].PERSONADDRESS);
 		$("#txtNewImpEmail").val(lstImporters[i].USEREMAIL);
         $("#txtNewImpEmail").attr("disabled",true);
-        $("#txtNewImpCode").val(rand_code());
+        $("#txtNewImpCode").val("hola");
 }
 $("#addImporter").ready(function(){
-     $("txtNewImpCode").val(rand_code());
+     $("#txtNewImpCode").val("aaa");
  });
 $("#btnInsertImporter").click(function(){
     // console.log($("#btnInsertImporter").html());

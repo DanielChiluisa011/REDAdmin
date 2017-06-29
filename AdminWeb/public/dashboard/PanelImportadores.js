@@ -3,6 +3,8 @@ var lstImporters= [];
 var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 var lon=6;
 $(document).ready(function(){
+    alert(rand_code());
+    
     socket.emit("RequestImportersInfo","");
     socket.on("ResponseImporterInfo",function(flag){
         if(flag==0){
@@ -78,7 +80,6 @@ $("#btnCancelImporter").click(function(){
         $("#txtNewImpEmail").attr("disabled",false);
 });
 function ShowImporterInformation(i){
-        alert(rand_code());
         $("#btnInsertImporter").html('Actualizar');
         $("#txtNewImpName").attr("disabled",true);
         $("#txtNewImpName").val(lstImporters[i].IMPORTERNAME);

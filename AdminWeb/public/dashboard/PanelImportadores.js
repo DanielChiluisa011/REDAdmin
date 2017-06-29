@@ -2,6 +2,7 @@ var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
 var lstImporters= [];
 var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 var lon=6;
+var code;
 $(document).ready(function(){
     // alert(rand_code());
     
@@ -101,10 +102,13 @@ function ShowImporterInformation(i){
 		$("#txtNewImpPersonAddress").val(lstImporters[i].PERSONADDRESS);
 		$("#txtNewImpEmail").val(lstImporters[i].USEREMAIL);
         $("#txtNewImpEmail").attr("disabled",true);
-        $("#txtNewImpCode").val("hola");
+        
+        $("#txtNewImpCode").val(lstImporters[i].IMPORTERCODE);
+        
 }
 $("#addImporter").ready(function(){
-     $("#txtNewImpCode").val("aaa");
+     rand_code();
+     $("#txtNewImpCode").val(code);
  });
 $("#btnInsertImporter").click(function(){
     // console.log($("#btnInsertImporter").html());
@@ -194,7 +198,6 @@ function rand_code(){
         rand = Math.floor(Math.random()*chars.length);
         code += chars.substr(rand, 1);
     }
-    return code;
     // $("txtNewImpCode").val(code);
 }
 	

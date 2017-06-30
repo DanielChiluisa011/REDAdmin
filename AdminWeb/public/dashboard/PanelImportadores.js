@@ -108,8 +108,8 @@ function ShowImporterInformation(i){
         $("#txtNewImpCode").val(lstImporters[i].IMPORTERCODE);
         
 }
-$("#addImporter").ready(function(){
-     rand_code();
+$("#addImporter").click(function(){
+    //  rand_code();
      $("#txtNewImpCode").val("Si");
  });
 $("#btnInsertImporter").click(function(){

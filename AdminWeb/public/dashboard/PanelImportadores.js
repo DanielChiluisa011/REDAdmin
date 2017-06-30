@@ -108,7 +108,7 @@ function ShowImporterInformation(i){
         $("#txtNewImpCode").val(lstImporters[i].IMPORTERCODE);
         
 }
-$("#addImporter").click(function(){
+$("#addImporter").ready(function(){
     //  rand_code();
      $("#txtNewImpCode").val("Si");
  });

@@ -2,7 +2,7 @@ var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
 var lstImporters= [];
 var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 var lon=6;
-var code;
+var code="";
 $(document).ready(function(){
     // alert(rand_code());
     
@@ -204,8 +204,8 @@ function rand_code(){
         rand = Math.floor(Math.random()*chars.length);
         code += chars.substr(rand, 1);
     }
-    alert(code);
-    console.log(code);
+    // alert(code);
+    // console.log(code);
     // $("txtNewImpCode").val(code);
 }
 	

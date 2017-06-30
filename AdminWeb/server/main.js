@@ -736,7 +736,7 @@ io.on('connection', function(socket){
 								console.log("Error "+ err.message);
 								socket.emit("ResponseImporter",false);
 							}else{
-								alert(importer.code);
+								console.log(importer.code);
 								connection.query('INSERT INTO importer (IMPORTERNAME,IMPORTERADDRESS,IMPORTERPHONE,IMPORTERRUC,IMPORTERQUOTA,IMPORTERWASTEGENERATORNUMBER,IMPORTERCODE,USEREMAIL) VALUES (?,?,?,?,?,?,?,?)',
 											[importer.name,
 											importer.address,

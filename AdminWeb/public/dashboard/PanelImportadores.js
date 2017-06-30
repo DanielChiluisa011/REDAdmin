@@ -5,7 +5,7 @@ var lon=6;
 var code="h";
 $(document).ready(function(){
     // alert(rand_code());
-    
+    rand_code();
     socket.emit("RequestImportersInfo","");
     socket.on("ResponseImporterInfo",function(flag){
         if(flag==0){

@@ -22,6 +22,8 @@ $(document).ready(function(){
     });
     socket.on("ResponseImporter",function(Importador){
         lstImporters.length=0;
+        rand_code();
+        
         // alert(rand_code(chars, lon));
         lstImporters=Importador;
         $("#txtNewImpName").val("");
@@ -30,7 +32,7 @@ $(document).ready(function(){
 		$("#txtNewImpRuc").val("");
 		$("#txtNewImpQuota").val("");
 		$("#txtNewImpLicence").val("");
-        // $("txtNewImpCode").val();
+        $("txtNewImpCode").val(code);
 		$("#txtNewImpPersonName").val("");
 		$("#txtNewImpPersonLastName").val("");
 		$("#txtNewImpPersonId").val("");

@@ -71,6 +71,7 @@ $("#btnCancelImporter").click(function(){
 		$("#txtNewImpPersonPhone").val("");
 		$("#txtNewImpPersonAddress").val("");
 		$("#txtNewImpEmail").val("");
+        $("txtNewImpCode").val();
         // $("txtNewImpCode").val(rand_code());
         $("#txtNewImpName").attr("disabled",false);
         $("#txtNewImpRuc").attr("disabled",false);
@@ -109,7 +110,7 @@ function ShowImporterInformation(i){
 }
 $("#addImporter").ready(function(){
      rand_code();
-     $("#txtNewImpCode").val(code);
+     $("#txtNewImpCode").val("Si");
  });
 $("#btnInsertImporter").click(function(){
     // console.log($("#btnInsertImporter").html());

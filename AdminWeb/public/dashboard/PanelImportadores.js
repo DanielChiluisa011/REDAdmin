@@ -134,6 +134,7 @@ $("#btnInsertImporter").click(function(){
         personEmail: $("#txtNewImpEmail").val(),
         // importercode: $("#txtNewImpCode").val()
     } 
+    
     console.log("NUEVO IMPORTADOR");
     console.log(newImporter);
     if($("#btnInsertImporter").html()=="Guardar"){

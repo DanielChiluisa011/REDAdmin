@@ -132,7 +132,7 @@ $("#btnInsertImporter").click(function(){
         personPhone: $("#txtNewImpPersonPhone").val(),
         personAddress: $("#txtNewImpPersonAddress").val(),
         personEmail: $("#txtNewImpEmail").val(),
-        importercode: $("#txtNewImpCode").val()
+        // importercode: $("#txtNewImpCode").val()
     } 
     console.log("NUEVO IMPORTADOR");
     console.log(newImporter);

@@ -743,8 +743,8 @@ io.on('connection', function(socket){
 											importer.rucImporter,
 											importer.quota,
 											importer.licence,
-											importer.personEmail,
-											importer.importercode],function(err, rows, fields) {
+											importer.code,
+											importer.personEmail],function(err, rows, fields) {
 									if(err){
 										console.log("Error "+ err.message);
 										socket.emit("ResponseImporter",false);

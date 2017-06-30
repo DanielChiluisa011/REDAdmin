@@ -37,6 +37,7 @@ $(document).ready(function(){
 		$("#txtNewImpPersonPhone").val("");
 		$("#txtNewImpPersonAddress").val("");
 		$("#txtNewImpEmail").val("");
+
         $("#ImportersTable > tbody").html("");
         for (var i = 0; i < Importador.length; i++) {
             $('#ImportersTable').append("<tbody>"+
@@ -71,7 +72,7 @@ $("#btnCancelImporter").click(function(){
 		$("#txtNewImpPersonPhone").val("");
 		$("#txtNewImpPersonAddress").val("");
 		$("#txtNewImpEmail").val("");
-        $("txtNewImpCode").val("");
+        $("#txtNewImpCode").val("");
         // $("txtNewImpCode").val(rand_code());
         $("#txtNewImpName").attr("disabled",false);
         $("#txtNewImpRuc").attr("disabled",false);

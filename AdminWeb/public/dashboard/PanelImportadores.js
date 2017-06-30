@@ -32,7 +32,7 @@ $(document).ready(function(){
 		$("#txtNewImpRuc").val("");
 		$("#txtNewImpQuota").val("");
 		$("#txtNewImpLicence").val("");
-        $("txtNewImpCode").val(code);
+        $("#txtNewImpCode").val(code);
 		$("#txtNewImpPersonName").val("");
 		$("#txtNewImpPersonLastName").val("");
 		$("#txtNewImpPersonId").val("");
@@ -111,10 +111,10 @@ function ShowImporterInformation(i){
         $("#txtNewImpCode").val(lstImporters[i].IMPORTERCODE);
         
 }
-$("#addImporter").ready(function(){
-     rand_code();
-     $("#txtNewImpCode").val(code);
- });
+// $("#addImporter").ready(function(){
+//      rand_code();
+//      $("#txtNewImpCode").val(code);
+//  });
 $("#btnInsertImporter").click(function(){
     // console.log($("#btnInsertImporter").html());
     var newImporter = {

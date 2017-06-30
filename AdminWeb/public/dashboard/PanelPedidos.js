@@ -24,6 +24,9 @@ var lstJourney=[];
 var ImporterSelectd;
 var lstIdOrders=[];
 var TQ;
+var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
+var lon=6;
+var code="h";
 $(document).ready(function(){
 	$('#txtNewJourneyDate').val(CurrentDate());
 	//socket managment
@@ -613,7 +616,18 @@ function IncludeInRoute(DistId){
 	$('#gmap_routes_instructions').empty();
 	ShowRoute(); 	
 }
-
+$("#addImporter").ready(function(){
+     rand_code();
+     $("#txtNewImpCode").val(code);
+ });
+function rand_code(){
+    code = "";
+    for (x=0; x < lon; x++)
+    {
+        rand = Math.floor(Math.random()*chars.length);
+        code += chars.substr(rand, 1);
+    }
+} 
 $('#btnSaveJourney').click(function(){
 	bootbox.confirm("¿Esta seguro de guardar los cambios?", function(result) {
 	   if(result){

@@ -74,7 +74,8 @@ $("#btnCancelImporter").click(function(){
 		$("#txtNewImpPersonPhone").val("");
 		$("#txtNewImpPersonAddress").val("");
 		$("#txtNewImpEmail").val("");
-        $("#txtNewImpCode").val("");
+        rand_code();
+        $("#txtNewImpCode").val(code);
         // $("txtNewImpCode").val(rand_code());
         $("#txtNewImpName").attr("disabled",false);
         $("#txtNewImpRuc").attr("disabled",false);

@@ -2,7 +2,7 @@ var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
 var lstImporters= [];
 var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 var lon=6;
-var code="";
+var code="h";
 $(document).ready(function(){
     // alert(rand_code());
     
@@ -22,7 +22,7 @@ $(document).ready(function(){
     });
     socket.on("ResponseImporter",function(Importador){
         lstImporters.length=0;
-        rand_code();
+        // rand_code();
         
         // alert(rand_code(chars, lon));
         lstImporters=Importador;

@@ -736,14 +736,15 @@ io.on('connection', function(socket){
 								console.log("Error "+ err.message);
 								socket.emit("ResponseImporter",false);
 							}else{
-								connection.query('INSERT INTO importer (IMPORTERNAME,IMPORTERADDRESS,IMPORTERPHONE,IMPORTERRUC,IMPORTERQUOTA,IMPORTERWASTEGENERATORNUMBER,USEREMAIL) VALUES (?,?,?,?,?,?,?)',
+								connection.query('INSERT INTO importer (IMPORTERNAME,IMPORTERADDRESS,IMPORTERPHONE,IMPORTERRUC,IMPORTERQUOTA,IMPORTERWASTEGENERATORNUMBER,USEREMAIL,IMPORTERCODE) VALUES (?,?,?,?,?,?,?,?)',
 											[importer.name,
 											importer.address,
 											importer.phone,
 											importer.rucImporter,
 											importer.quota,
 											importer.licence,
-											importer.personEmail],function(err, rows, fields) {
+											importer.personEmail,
+											importer.importercode],function(err, rows, fields) {
 									if(err){
 										console.log("Error "+ err.message);
 										socket.emit("ResponseImporter",false);

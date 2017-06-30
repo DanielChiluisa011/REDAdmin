@@ -197,6 +197,9 @@ $("#btnInsertImporter").click(function(){
         });
     }
 	
+
+	
+});
 function rand_code(){
     code = "";
     for (x=0; x < lon; x++)
@@ -208,5 +211,3 @@ function rand_code(){
     // console.log(code);
     // $("txtNewImpCode").val(code);
 }
-	
-});

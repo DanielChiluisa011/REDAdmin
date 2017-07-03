@@ -311,7 +311,7 @@ function ShowRouteTest(i){
 			}
 		}
 
-		alert("."+data.user.person.PersonCi+'.'+AuxTruck.TruckDriver+".");
+		// alert("."+data.user.person.PersonCi+'.'+AuxTruck.TruckDriver+".");
 		if(data.user.person.PersonCi == AuxTruck.TruckDriver){
 			var UserExist=false;
 			if(lstUserMarkers.length==0){

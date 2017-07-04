@@ -1,11 +1,11 @@
 var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
 var lstCR= [];
 var mapa;
-var mapa=new GMaps({
-    div: '#map_centroR',
-    lat: -0.191611,
-    lng:  -78.483574
-});
+// var mapa=new GMaps({
+//     div: '#map_centroR',
+//     lat: -0.191611,
+//     lng:  -78.483574
+// });
 var MapsGoogle = function () {
 
     var mapBasic = function () {

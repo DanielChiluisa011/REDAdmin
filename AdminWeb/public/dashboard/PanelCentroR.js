@@ -1,11 +1,17 @@
 var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
 var lstCR= [];
 var mapa;
+// var mapa=new GMaps({
+//     div: '#gmap_basic',
+//     lat: -0.191611,
+//     lng:  -78.483574
+// });
 var MapsGoogle = function () {
 
     var mapBasic = function () {
         mapa=new GMaps({
-            div: '#MapIngreso',
+            // div: '#MapIngreso',
+            div: '#gmap_basic',
             lat: -0.191611,
             lng:  -78.483574
         });
@@ -20,7 +26,7 @@ var MapsGoogle = function () {
     };
 }();
 $(document).ready(function(){
-     MapsGoogle.init();
+    MapsGoogle.init();
     socket.emit("RequestCRInfo","");
     socket.on("ResponseCRInfo",function(flag){
         if(flag==0){

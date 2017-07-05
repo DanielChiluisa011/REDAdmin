@@ -25,7 +25,9 @@ var MapsGoogle = function () {
         }
     };
 }();
-
+jQuery(document).ready(function() {
+    MapsGoogle.init();
+});
 $(document).ready(function(){
     MapsGoogle.init();
     socket.emit("RequestCRInfo","");

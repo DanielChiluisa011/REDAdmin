@@ -6,28 +6,7 @@ var mapa;
 //     lat: -0.191611,
 //     lng:  -78.483574
 // });
-var MapsGoogle = function () {
 
-    var mapBasic = function () {
-        mapa=new GMaps({
-            // div: '#MapIngreso',
-            div: '#map_centroR',
-            lat: -0.191611,
-            lng:  -78.483574
-        });
-         mapa.setZoom(10);
-		 
-    }
-    return {
-        //main function to initiate map samples
-        init: function () {
-            mapBasic();
-        }
-    };
-}();
-jQuery(document).ready(function() {
-    MapsGoogle.init();
-});
 $(document).ready(function(){
     MapsGoogle.init();
     socket.emit("RequestCRInfo","");
@@ -73,7 +52,25 @@ $(document).ready(function(){
         }
     });
 });
+var MapsGoogle = function () {
 
+    var mapBasic = function () {
+        mapa=new GMaps({
+            // div: '#MapIngreso',
+            div: '#map_centroR',
+            lat: -0.191611,
+            lng:  -78.483574
+        });
+         mapa.setZoom(10);
+		 
+    }
+    return {
+        //main function to initiate map samples
+        init: function () {
+            mapBasic();
+        }
+    };
+}();
 $("#btnCancelImporter").click(function(){
         $("#btnInsertImporter").html('Guardar');
         $("#txtNewImpName").val(""),

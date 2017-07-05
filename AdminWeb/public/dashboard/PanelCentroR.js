@@ -51,6 +51,17 @@ $(document).ready(function(){
                                     "</tbody>");
         }
     });
+                    mapa.addMarker({
+						lat: RouteSelected[k].CoordX,
+						lng: RouteSelected[k].CoordY,
+						title: 'Centro de Distribución',
+						icon: '../iconos/recycle.png',
+						infoWindow: {
+							content: '<div id="content"><strong>'+RouteSelected[k].DistributorName+'</strong><br>'
+									+'<label>'+RouteSelected[k].DistributorAddress+'</label><br>'
+									+'<label>Stock Disponible: '+aux+' <br></div>'
+						}
+					});
 });
 var MapsGoogle = function () {
 

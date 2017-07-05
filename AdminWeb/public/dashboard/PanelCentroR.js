@@ -56,6 +56,7 @@ $(document).ready(function(){
 						lng: -78.483574,
 						title: 'Centro de Reciclaje',
 						icon: '../iconos/recycle.png',
+                        dragable: true
 					});
 });
 var MapsGoogle = function () {

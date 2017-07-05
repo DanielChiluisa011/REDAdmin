@@ -135,6 +135,22 @@ io.on('connection', function(socket){
 		       }
 			});
       });
+      socket.on('RequestDistributorData2',function(data){
+      		connection.query("SELECT DistributorId, DistributorName, DistributorRuc,DistributorAddress,DistributorPhone,DistributorStock,DistributorEnvironmentalLicense,PersonId,ImporterCode,X(GeometryFromText(AsText(DistributorCoordinates)))CoordX, Y(GeometryFromText(AsText(DistributorCoordinates))) CoordY FROM distributor, importer where distributor.IMPORTERID=importer.IMPORTERID and PERSONID='"+data+"'",function(error, result){
+				if(error){
+				    throw error;
+				}else{
+					console.log(result.length);
+					if(result.length==0){
+						socket.emit('DistributorData2',0);
+					}else{
+						var lstDistributor=result;
+						socket.emit('DistributorData2',lstDistributor);
+						// console.log('Select Distributors executed');
+					}
+		       }
+			});
+      });
       socket.on('RequestJourneyRoute',function(data){
       	console.log('RequestJourneyRoute cedula: '+data);
       		connection.query("select j.JourneyId, j.JourneyRoute, j.recyclingcenterid, j.truckid from journey j, trucks t, person p where j.truckid=t.TruckId and t.PersonId=p.PersonId and  p.PersonId='"+data+"'",function(error, result){

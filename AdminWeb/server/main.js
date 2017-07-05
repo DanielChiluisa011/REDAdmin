@@ -450,6 +450,20 @@ io.on('connection', function(socket){
 		 	})
 	  });
 
+	  socket.on('UpdateDistributor2',function(data){
+		//   console.log(data.address+" "+data.phone+" "+data.personid+" "+data.coordx+" "+data.coordy);
+		console.log("updateDistributor2");
+		console.log(data);
+		  connection.query("UPDATE distributor SET DISTRIBUTORADDRESS = ?, DISTRIBUTORPHONE = ?, IMPORTERID=? ,DISTRIBUTORCOORDINATES=GeomFromText('POINT ("+data.coordx+" "+data.coordy+")') WHERE PERSONID = ?",[data.address,data.phone,data.importercode,data.personid],function(err, rows, fields) {
+		 		if(err){
+					 socket.emit('msg',false)
+		 			console.log("Error "+ err.message);
+		 		}else{
+		 			socket.emit('msg',true);
+		 		}
+		 	})
+	  });
+
 	  socket.on('UpdateOrderQuantity',function(data){
 	        connection.query('UPDATE orders SET OrderQuantity = ? WHERE OrderId= ?',[data.quantity,data.orderid],function(err,rows,fields){
 	            if(err){

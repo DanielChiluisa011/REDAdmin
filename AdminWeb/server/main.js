@@ -899,7 +899,7 @@ io.on('connection', function(socket){
 					if(error){
 						socket.emit("ResponseNewCR",false);
 					}else{
-						connection.query("INSERT INTO recycling_centers (PERSONID,RECYCLINGCENTERNAME,RECYCLINGCENTERPHONE,RECYCLINGCENTERADDRESS,RECYCLINGCENTERENVIROMENTALLICENSE,RECYCLINGCENTERCOORDINATES) VALUES (?,?,?,?,?,GeomFromText('POINT("+RC.CoordX+" "+RC.CoordY+")'))",
+						connection.query("INSERT INTO recycling_centers (PERSONID,RECYCLINGCENTERNAME,RECYCLINGCENTERPHONE,RECYCLINGCENTERADDRESS,RECYCLINGENVIROMENTALLICENSE,RECYCLINGCENTERCOORDINATES) VALUES (?,?,?,?,?,GeomFromText('POINT("+RC.CoordX+" "+RC.CoordY+")'))",
 									[result[0].max,
 									RC.name,
 									RC.phone,

@@ -120,7 +120,7 @@ function ShowRCInformation(i){
 		$("#txtNewImpPersonAddress").val(lstCR[i].PERSONADDRESS);
 }
 
-$("#btnSaveCR").click(function(){
+$("#btnSaveRC").click(function(){
     alert(marcador.getPosition());
     // var newCR = {
     //     name: $("#txtNewRCName").val(),
@@ -135,7 +135,7 @@ $("#btnSaveCR").click(function(){
     // } 
     // console.log("NUEVO CR");
     // console.log(newCR);
-    // if($("#btnSaveCR").html()=="Guardar"){
+    // if($("#btnSaveRC").html()=="Guardar"){
     //     bootbox.confirm("¿Desea guardar la información ingresada? ", function(result) {
     //         if(result){
     //             socket.emit("RequestInsertnewCR",newCR);

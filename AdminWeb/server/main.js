@@ -910,12 +910,12 @@ io.on('connection', function(socket){
 									
 									// RC.personEmail
 									],function(err, rows, fields) {
-							if(err){
-								console.log("Error "+ err.message);
-								socket.emit("ResponseNewCR",false);
-							}else{
-								socket.emit("ResponseNewCR",true);
-							}
+										if(err){
+											console.log("Error "+ err.message);
+											socket.emit("ResponseNewCR",false);
+										}else{
+											socket.emit("ResponseNewCR",true);
+										}
 						});
 					}
 				});

@@ -510,7 +510,7 @@ io.on('connection', function(socket){
     //   });
 
 	socket.on('RequestSaveDistributor',function(objDistributor){
-		connection.query("INSERT INTO distributor(PERSONID,DISTRIBUTORNAME,DISTRIBUTORADDRESS,DISTRIBUTORRUC,DISTRIBUTORPHONE,DISTRIBUTORENVIRONMENTALLICENSE,DISTRIBUTORCOORDINATES,IMPORTERID) VALUES (?,?,?,?,?,?,GeomFromText('POINT ("+objDistributor.CoordX+" "+objDistributor.CoordY+")'))",[objDistributor.person,objDistributor.name,objDistributor.address,objDistributor.ruc,objDistributor.phone,objDistributor.licence,objDistributor.importer],function(err, rows, fields) {
+		connection.query("INSERT INTO distributor(PERSONID,DISTRIBUTORNAME,DISTRIBUTORADDRESS,DISTRIBUTORRUC,DISTRIBUTORPHONE,DISTRIBUTORENVIRONMENTALLICENSE,DISTRIBUTORCOORDINATES,IMPORTERID) VALUES (?,?,?,?,?,?,GeomFromText('POINT ("+objDistributor.CoordX+" "+objDistributor.CoordY+")'),?)",[objDistributor.person,objDistributor.name,objDistributor.address,objDistributor.ruc,objDistributor.phone,objDistributor.licence,objDistributor.importer],function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{

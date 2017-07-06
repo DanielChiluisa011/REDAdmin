@@ -136,7 +136,8 @@ $("#btnSaveRC").click(function(){
         personAddress: $("#txtNewRCPersonDirection").val(),
         position:marcador.getPosition(),
         CoordX:marcador.position.lat(),
-        CoordY:marcador.position.lng()
+        CoordY:marcador.position.lng(),
+        licence:$("#txtNewRCLicence").val()
     } 
     console.log("NUEVO CR");
     console.log(newCR);

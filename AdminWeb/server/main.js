@@ -893,11 +893,11 @@ io.on('connection', function(socket){
 			"Reciclador"],function(err, rows, fields) {
 			if(err){
 				console.log("Error "+ err.message);
-				socket.emit("ResponseImporter",false);
+				socket.emit("ResponseNewCR",false);
 			}else{
 				connection.query("SELECT max(personid) as max  FROM person",function(error, result){
 					if(error){
-						socket.emit("ResponseCR",false);
+						socket.emit("ResponseNewCR",false);
 					}else{
 						connection.query("INSERT INTO recycling_centers (PERSONID,RECYCLINGCENTERNAME,RECYCLINGCENTERPHONE,RECYCLINGCENTERADDRESS,RECYCLINGCENTERENVIROMENTALLICENSE,RECYCLINGCENTERCOORDINATES) VALUES (?,?,?,?,?,GeomFromText('POINT("+RC.CoordX+" "+RC.CoordY+")'))",
 									[result[0].max,
@@ -912,9 +912,9 @@ io.on('connection', function(socket){
 									],function(err, rows, fields) {
 							if(err){
 								console.log("Error "+ err.message);
-								socket.emit("ResponseImporter",false);
+								socket.emit("ResponseNewCR",false);
 							}else{
-								socket.emit("ResponseImporter",true);
+								socket.emit("ResponseNewCR",true);
 							}
 						});
 					}

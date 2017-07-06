@@ -144,8 +144,8 @@ $("#btnSaveRC").click(function(){
         
         bootbox.confirm("¿Desea guardar la información ingresada? ", function(result) {
             if(result){
-                socket.emit("RequestInsertnewCR",newCR);
-                socket.on("ResponseImporter",function(flag){
+                socket.emit("RequestInsertNewCR",newCR);
+                socket.on("ResponseNewCR",function(flag){
                     if(flag){
                         $.notific8('Datos guardados correctamente', {
                             life: 3500,

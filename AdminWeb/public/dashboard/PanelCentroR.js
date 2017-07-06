@@ -123,6 +123,8 @@ function ShowRCInformation(i){
 
 $("#btnSaveRC").click(function(){
     alert(marcador.getPosition());
+    alert(marcador.getLat()+" "+marcador.getLng());
+    // Latitud = y
     // var newCR = {
     //     name: $("#txtNewRCName").val(),
     //     address: $("#txtNewRCDirection").val(),
@@ -132,7 +134,9 @@ $("#btnSaveRC").click(function(){
     //     personCi: $("#txtNewRCPersonCi").val(),
     //     personPhone: $("#txtNewRCPersonPhone").val(),
     //     personAddress: $("#txtNewRCPersonDirection").val(),
-    //     position:marcador.getPosition()
+    //     position:marcador.getPosition(),
+    //     CoordX:marcador.getLat(),
+    //     CoordY:marcador.getLng()
     // } 
     // console.log("NUEVO CR");
     // console.log(newCR);

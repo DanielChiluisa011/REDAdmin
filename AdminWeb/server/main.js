@@ -192,13 +192,13 @@ io.on('connection', function(socket){
 		  var Accomplished;
 		  var AccomplishedAux;
 		  var Total;
-	  	// connection.query('INSERT INTO delivery (JOURNEYID, OBSERVATION, SIGNATURE, DELIVERYTIME) VALUES (?,?,?,?)',[data.journeyid, data.observation, data.signature, data.deliverytime],function(error, result){
-	  	// 	if(error){
-		// 			throw error;
-		// 		}else{
-		// 			console.log('Entrega registrada');
-		// 	}
-	  	// })
+	  	connection.query('INSERT INTO delivery (JOURNEYID, OBSERVATION, SIGNATURE, DELIVERYTIME) VALUES (?,?,?,?)',[data.journeyid, data.observation, data.signature, data.deliverytime],function(error, result){
+	  		if(error){
+					throw error;
+				}else{
+					console.log('Entrega registrada Firma');
+			}
+	  	})
 		  connection.query('UPDATE journey SET journeystate = "Completado" WHERE journeyid= ?',[data.journeyid],function(err,rows,fields){
 			if(err){
 					console.log("Error "+ err.message);

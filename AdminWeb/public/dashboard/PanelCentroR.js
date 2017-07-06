@@ -46,7 +46,7 @@ $(document).ready(function(){
                                     "</tbody>");
         }
     });
-    marcador=mapa.addMarker({
+    mapa.addMarker({
 		lat: -0.191611,
 		lng: -78.483574,
 		title: 'Centro de Reciclaje',

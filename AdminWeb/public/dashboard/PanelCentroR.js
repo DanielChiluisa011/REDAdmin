@@ -11,13 +11,7 @@ var marcador;
 $(document).ready(function(){
     MapsGoogle.init();
     CleanInputText();
-    marcador=mapa.addMarker({
-		lat: -0.191611,
-		lng: -78.483574,
-		title: 'Centro de Reciclaje',
-		icon: '../iconos/recycle.png',
-        draggable: true
-	});
+    
     socket.emit("RequestCRInfo","");
     socket.on("ResponseCRInfo",function(flag){
         if(flag==0){
@@ -52,6 +46,13 @@ $(document).ready(function(){
                                     "</tbody>");
         }
     });
+    marcador=mapa.addMarker({
+		lat: -0.191611,
+		lng: -78.483574,
+		title: 'Centro de Reciclaje',
+		icon: '../iconos/recycle.png',
+        draggable: true
+	});
     
 });
 function CleanInputText()

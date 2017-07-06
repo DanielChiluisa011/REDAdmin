@@ -123,7 +123,7 @@ function ShowRCInformation(i){
 
 $("#btnSaveRC").click(function(){
     alert(marcador.getPosition());
-    alert(marcador.getLat()+" "+marcador.getLng());
+    alert(marcador.position.lat()+" "+marcador.position.lng());
     // Latitud = y
     // var newCR = {
     //     name: $("#txtNewRCName").val(),

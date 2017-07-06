@@ -122,85 +122,85 @@ function ShowRCInformation(i){
 }
 
 $("#btnSaveRC").click(function(){
-    alert(marcador.getPosition());
-    alert(marcador.position.lat()+" "+marcador.position.lng());
+    // alert(marcador.getPosition());
+    // alert(marcador.position.lat()+" "+marcador.position.lng());
     // Latitud = y
-    // var newCR = {
-    //     name: $("#txtNewRCName").val(),
-    //     address: $("#txtNewRCDirection").val(),
-    //     phone: $("#txtNewRCPhone").val(),
-    //     personName: $("#txtNewRCPersonName").val(),
-    //     personLastName: $("#txtNewRCPersonLastName").val(),
-    //     personCi: $("#txtNewRCPersonCi").val(),
-    //     personPhone: $("#txtNewRCPersonPhone").val(),
-    //     personAddress: $("#txtNewRCPersonDirection").val(),
-    //     position:marcador.getPosition(),
-    //     CoordX:marcador.getLat(),
-    //     CoordY:marcador.getLng()
-    // } 
-    // console.log("NUEVO CR");
-    // console.log(newCR);
-    // if($("#btnSaveRC").html()=="Guardar"){
-    //     bootbox.confirm("¿Desea guardar la información ingresada? ", function(result) {
-    //         if(result){
-    //             socket.emit("RequestInsertnewCR",newCR);
-    //             socket.on("ResponseImporter",function(flag){
-    //                 if(flag){
-    //                     $.notific8('Datos guardados correctamente', {
-    //                         life: 3500,
-    //                         heading: 'Listo!',
-    //                         theme: 'teal',
-    //                         sticky: false,
-    //                         horizontalEdge: 'top',
-    //                         verticalEdge: 'rigth',
-    //                         zindex: 1500
-    //                     });
-    //                     location.reload();	
-    //                 }else{
-    //                     $.notific8('Error al guardar, intentelo nuevamente', {
-    //                         life: 3500,
-    //                         heading: 'Error!',
-    //                         theme: 'ruby',
-    //                         sticky: false,
-    //                         horizontalEdge: 'top',
-    //                         verticalEdge: 'rigth',
-    //                         zindex: 1500
-    //                     });
-    //                 }
-    //             });
-    //         }
-    //     });
-    // }else{
-    //     bootbox.confirm("¿Desea actualizar la información? ", function(result) {
-    //         if(result){
-    //             socket.emit("RequestUpdateImporter",newCR);
-    //             socket.on("RequestErrorUpdateImporter",function(flag){
-    //                 if(flag){
-    //                     $.notific8('Datos actualizados correctamente', {
-    //                         life: 3500,
-    //                         heading: 'Listo!',
-    //                         theme: 'teal',
-    //                         sticky: false,
-    //                         horizontalEdge: 'top',
-    //                         verticalEdge: 'rigth',
-    //                         zindex: 1500
-    //                     });
-    //                     location.reload();	
-    //                 }else{
-    //                     $.notific8('Error al guardar, intentelo nuevamente', {
-    //                         life: 3500,
-    //                         heading: 'Error!',
-    //                         theme: 'ruby',
-    //                         sticky: false,
-    //                         horizontalEdge: 'top',
-    //                         verticalEdge: 'rigth',
-    //                         zindex: 1500
-    //                     });
-    //                 }
-    //             });
-    //         }
-    //     });
-    // }
+    var newCR = {
+        name: $("#txtNewRCName").val(),
+        address: $("#txtNewRCDirection").val(),
+        phone: $("#txtNewRCPhone").val(),
+        personName: $("#txtNewRCPersonName").val(),
+        personLastName: $("#txtNewRCPersonLastName").val(),
+        personCi: $("#txtNewRCPersonCi").val(),
+        personPhone: $("#txtNewRCPersonPhone").val(),
+        personAddress: $("#txtNewRCPersonDirection").val(),
+        position:marcador.getPosition(),
+        CoordX:marcador.position.lat(),
+        CoordY:marcador.gposition.lng()
+    } 
+    console.log("NUEVO CR");
+    console.log(newCR);
+    if($("#btnSaveRC").html()=="Guardar"){
+        bootbox.confirm("¿Desea guardar la información ingresada? ", function(result) {
+            if(result){
+                socket.emit("RequestInsertnewCR",newCR);
+                socket.on("ResponseImporter",function(flag){
+                    if(flag){
+                        $.notific8('Datos guardados correctamente', {
+                            life: 3500,
+                            heading: 'Listo!',
+                            theme: 'teal',
+                            sticky: false,
+                            horizontalEdge: 'top',
+                            verticalEdge: 'rigth',
+                            zindex: 1500
+                        });
+                        location.reload();	
+                    }else{
+                        $.notific8('Error al guardar, intentelo nuevamente', {
+                            life: 3500,
+                            heading: 'Error!',
+                            theme: 'ruby',
+                            sticky: false,
+                            horizontalEdge: 'top',
+                            verticalEdge: 'rigth',
+                            zindex: 1500
+                        });
+                    }
+                });
+            }
+        });
+    }else{
+        bootbox.confirm("¿Desea actualizar la información? ", function(result) {
+            if(result){
+                socket.emit("RequestUpdateImporter",newCR);
+                socket.on("RequestErrorUpdateImporter",function(flag){
+                    if(flag){
+                        $.notific8('Datos actualizados correctamente', {
+                            life: 3500,
+                            heading: 'Listo!',
+                            theme: 'teal',
+                            sticky: false,
+                            horizontalEdge: 'top',
+                            verticalEdge: 'rigth',
+                            zindex: 1500
+                        });
+                        location.reload();	
+                    }else{
+                        $.notific8('Error al guardar, intentelo nuevamente', {
+                            life: 3500,
+                            heading: 'Error!',
+                            theme: 'ruby',
+                            sticky: false,
+                            horizontalEdge: 'top',
+                            verticalEdge: 'rigth',
+                            zindex: 1500
+                        });
+                    }
+                });
+            }
+        });
+    }
 	
 	
 	

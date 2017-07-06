@@ -899,14 +899,17 @@ io.on('connection', function(socket){
 					if(error){
 						socket.emit("ResponseCR",false);
 					}else{
-						connection.query("INSERT INTO recycling_centers (PERSONID,RECYCLINGCENTERNAME,RECYCLINGCENTERPHONE,RECYCLINGCENTERADDRESS,RECYCLINGCENTERENVIROMENTALLICENSE,RECYCLINGCENTERCOORDINATES) VALUES (?,?,?,?,?,?,GeomFromText('POINT("+RC.CoordX+" "+RC.CoordY+")'))",
-									[RC.name,
-									RC.address,
+						connection.query("INSERT INTO recycling_centers (PERSONID,RECYCLINGCENTERNAME,RECYCLINGCENTERPHONE,RECYCLINGCENTERADDRESS,RECYCLINGCENTERENVIROMENTALLICENSE,RECYCLINGCENTERCOORDINATES) VALUES (?,?,?,?,?,GeomFromText('POINT("+RC.CoordX+" "+RC.CoordY+")'))",
+									[result[0].max,
+									RC.name,
 									RC.phone,
-									// RC.rucImporter,
-									RC.quota,
+									RC.address,
 									RC.licence,
-									RC.personEmail],function(err, rows, fields) {
+									// RC.rucImporter,
+									// RC.quota,
+									
+									// RC.personEmail
+									],function(err, rows, fields) {
 							if(err){
 								console.log("Error "+ err.message);
 								socket.emit("ResponseImporter",false);

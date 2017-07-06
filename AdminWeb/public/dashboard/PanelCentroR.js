@@ -136,11 +136,12 @@ $("#btnSaveRC").click(function(){
         personAddress: $("#txtNewRCPersonDirection").val(),
         position:marcador.getPosition(),
         CoordX:marcador.position.lat(),
-        CoordY:marcador.gposition.lng()
+        CoordY:marcador.position.lng()
     } 
     console.log("NUEVO CR");
     console.log(newCR);
     if($("#btnSaveRC").html()=="Guardar"){
+        
         bootbox.confirm("¿Desea guardar la información ingresada? ", function(result) {
             if(result){
                 socket.emit("RequestInsertnewCR",newCR);

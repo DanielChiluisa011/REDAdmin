@@ -186,6 +186,7 @@ jQuery(document).ready(function() {
 function showData1(i,TotalQuantity){
 	k=i;
 	$("#cmbDrivers")[0].selectedIndex = getRandomArbitrary(1, lstDrivers.length);
+	console.log(getRandomArbitrary(1, lstDrivers.length))
 	$('#txtDriverPhone').val(lstDrivers[$("#cmbDrivers option:selected").index()].PersonPhone);	
 	for (var j = 0; j < lstTrucks.length; j++) {
 		if(lstTrucks[j].PERSONID==lstDrivers[$("#cmbDrivers option:selected").index()].PERSONID){

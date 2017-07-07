@@ -649,7 +649,7 @@ $('#btnSaveJourney').click(function(){
 	   			truckId: $('#txtTruckId').val(),
 	   			RecyclingCenter: lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1].RecyclingCenterId,
 	   			route: JourneyRoute,
-	   			importer: null,
+	   			// importer: null,
 	   			quantity: TQ,
 				orders: lstIdOrders
 	   		}

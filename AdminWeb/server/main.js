@@ -604,7 +604,7 @@ io.on('connection', function(socket){
 
 	socket.on('SaveJourney',function(data){
 		var lstRoute=data.route.split(',');
-		connection.query('INSERT INTO journey (IMPORTERID,RECYCLINGCENTERID,TRUCKID,JOURNEYDATE,JOURNEYSTATE,JOURNEYROUTE)VALUES (?,?,?,?,?,?)',[data.importer.IMPORTERID,data.RecyclingCenter,data.truckId,data.date,data.state,data.route],function(err, rows, fields) {
+		connection.query('INSERT INTO journey (RECYCLINGCENTERID,TRUCKID,JOURNEYDATE,JOURNEYSTATE,JOURNEYROUTE)VALUES (?,?,?,?,?)',[data.RecyclingCenter,data.truckId,data.date,data.state,data.route],function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error SaveJourney"+ err.message);
 	 		}else{

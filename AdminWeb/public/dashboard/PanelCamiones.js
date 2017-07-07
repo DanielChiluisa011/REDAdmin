@@ -93,7 +93,7 @@ function Limpiar()
 }
 function ShowTruckInformation(i){
     
-       idtruck=i;
+       idtruck=CR[i].TRUCKID;
 }
 $('#btnCancelTruck').click(function(){
 	Limpiar();

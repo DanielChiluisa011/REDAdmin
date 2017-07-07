@@ -124,7 +124,7 @@ io.on('connection', function(socket){
 				if(error){
 				    throw error;
 				}else{
-					console.log(result.length);
+					console.log("RequestDistributorData"+result.length);
 					if(result.length==0){
 						socket.emit('DistributorData',0);
 					}else{
@@ -140,7 +140,7 @@ io.on('connection', function(socket){
 				if(error){
 				    throw error;
 				}else{
-					console.log(result.length);
+					console.log("RequestDistributorData2"+result.length);
 					if(result.length==0){
 						socket.emit('DistributorData2',0);
 					}else{

@@ -1072,7 +1072,7 @@ function SelectImporters(){
 }
 
 function SelectDrivers(){
-	connection.query('SELECT * FROM person WHERE PersonRole LIKE "conductor"  ',function(error, result){
+	connection.query('SELECT * FROM person WHERE PersonRole LIKE "Gestor"  ',function(error, result){
 		if(error){
 		    throw error;
 		}else{

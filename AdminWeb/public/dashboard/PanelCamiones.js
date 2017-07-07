@@ -38,16 +38,16 @@ $(document).ready(function(){
 //         }
 //     });
     Limpiar();
-    socket.on('SelectDrivers', function(data){
-            // lstDrivers=[];
-            lstDrivers=data;
-            $('#cmbTruckDriver').empty();
-            $('#cmbTruckDriver').append('<option selected>Seleccione un Conductor</option>');
-            for (var i = 0; i < lstDrivers.length; i++) {
-                $('#cmbTruckDriver').append(new Option(lstDrivers[i].PERSONNAME+" "+lstDrivers[i].PERSONLASTNAME, 'names'));
-            }
+    // socket.on('SelectDrivers', function(data){
+    //         // lstDrivers=[];
+    //         lstDrivers=data;
+    //         $('#cmbTruckDriver').empty();
+    //         $('#cmbTruckDriver').append('<option selected>Seleccione un Conductor</option>');
+    //         for (var i = 0; i < lstDrivers.length; i++) {
+    //             $('#cmbTruckDriver').append(new Option(lstDrivers[i].PERSONNAME+" "+lstDrivers[i].PERSONLASTNAME, 'names'));
+    //         }
 
-   	})
+   	// })
     socket.on("SelectTrucks1",function(CR){
         lstTrucks.length=0;
         lstTrucks=CR;
@@ -84,7 +84,11 @@ function Limpiar()
             for (var i = 0; i < lstDrivers.length; i++) {
                 $('#cmbNewTruckDriver').append(new Option(lstDrivers[i].PERSONNAME+" "+lstDrivers[i].PERSONLASTNAME, 'names'));
             }
-
+            $('#cmbTruckDriver').empty();
+            $('#cmbTruckDriver').append('<option selected>Seleccione un Conductor</option>');
+            for (var i = 0; i < lstDrivers.length; i++) {
+                $('#cmbTruckDriver').append(new Option(lstDrivers[i].PERSONNAME+" "+lstDrivers[i].PERSONLASTNAME, 'names'));
+            }
    	    })
 }
 function ShowTruckInformation(i){
@@ -96,6 +100,7 @@ $('#btnCancelTruck').click(function(){
     //$.notific8('My notification has a heading line.', {heading: 'Notification Heading'});
 })
 $('#btnUpdateTruck').click(function(){
+    alert(lstDrivers[$('#cmbTruckDriver option:selected').index()-1].PERSONID+" "+idtruck);
     var updateTruck={
         personid:lstDrivers[$('#cmbTruckDriver option:selected').index()-1].PERSONID,
         truckid:idtruck

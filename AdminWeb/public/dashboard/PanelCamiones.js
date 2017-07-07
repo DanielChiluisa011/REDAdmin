@@ -100,7 +100,7 @@ $('#btnCancelTruck').click(function(){
     //$.notific8('My notification has a heading line.', {heading: 'Notification Heading'});
 })
 $('#btnUpdateTruck').click(function(){
-    alert(lstDrivers[$('#cmbTruckDriver option:selected').index()-1].PERSONID+" "+idtruck);
+    // alert(lstDrivers[$('#cmbTruckDriver option:selected').index()-1].PERSONID+" "+idtruck);
     var updateTruck={
         personid:lstDrivers[$('#cmbTruckDriver option:selected').index()-1].PERSONID,
         truckid:idtruck
@@ -119,7 +119,7 @@ $('#btnUpdateTruck').click(function(){
                             verticalEdge: 'rigth',
                             zindex: 1500
                         });
-                        // location.reload();	
+                        location.reload();	
                     }else{
                         $.notific8('Error al guardar, intentelo nuevamente', {
                             life: 3500,

@@ -614,40 +614,40 @@ io.on('connection', function(socket){
 	 			console.log("Insert Savejourney execute");
 	 		}
 	 	})
-		 
-		if(data.importer.ImporterMontlyQuotah-data.quantity>=0){
-			connection.query('UPDATE importer SET IMPORTERMONTLYQUOTAH = IMPORTERMONTLYQUOTAH - ?, IMPORTERQUOTAACCOMPLISHED = IMPORTERQUOTAACCOMPLISHED + ? WHERE IMPORTERID = ?',[data.quantity,data.quantity,data.importer.IMPORTERID],function(err, rows, fields) {
-		 		if(err){
-		 			console.log("Error SaveJourneyImporter"+ err.message);
-		 		}else{
-		 			console.log("Insert journey execute");
-		 		}
-		 	})
-		}else{
-			// console.log('sobrante = '+ ((data.importer.ImporterMontlyQuotah-data.quantity)*-1));
-			connection.query('UPDATE importer C SET C.IMPORTERMONTLYQUOTAH = 0, C.IMPORTERQUOTAACCOMPLISHED = C.IMPORTERQUOTAACCOMPLISHED + ? WHERE C.IMPORTERID = ?',[data.quantity-((data.importer.IMPORTERMONTLYQUOTAH-data.quantity)*-1),data.importer.IMPORTERID],function(err, rows, fields) {
-		 		if(err){
-		 			console.log("Error Updateimporter1 "+ err.message);
-		 		}else{
-		 			connection.query('SELECT MIN(B.IMPORTERMONTLYQUOTAH) AS NextQuota FROM importer B WHERE B.IMPORTERMONTLYQUOTAH!=0;',function(error, result) {
-				 		if(err){
-				 			console.log("Error "+ err.message);
-				 		}else{
-				 			var aux=result;
-				 			// console.log('Siguiente: '+aux[0].NextQuota);
-				 			connection.query('UPDATE importer A SET IMPORTERMONTLYQUOTAH = A.IMPORTERMONTLYQUOTAH - ?, IMPORTERQUOTAACCOMPLISHED = A.IMPORTERQUOTAACCOMPLISHED + ? WHERE IMPORTERMONTLYQUOTAH = ?;',[(data.importer.IMPORTERMONTLYQUOTAH-data.quantity)*-1,(data.importer.IMPORTERMONTLYQUOTAH-data.quantity)*-1,aux[0].NextQuota],function(err, rows, fields) {
-						 		if(err){
-						 			console.log("Error UpdateImporter2"+ err.message);
-						 		}else{
+		/////////////////////////////////////////////////////// 
+		// if(data.importer.ImporterMontlyQuotah-data.quantity>=0){
+		// 	connection.query('UPDATE importer SET IMPORTERMONTLYQUOTAH = IMPORTERMONTLYQUOTAH - ?, IMPORTERQUOTAACCOMPLISHED = IMPORTERQUOTAACCOMPLISHED + ? WHERE IMPORTERID = ?',[data.quantity,data.quantity,data.importer.IMPORTERID],function(err, rows, fields) {
+		//  		if(err){
+		//  			console.log("Error SaveJourneyImporter"+ err.message);
+		//  		}else{
+		//  			console.log("Insert journey execute");
+		//  		}
+		//  	})
+		// }else{
+		// 	// console.log('sobrante = '+ ((data.importer.ImporterMontlyQuotah-data.quantity)*-1));
+		// 	connection.query('UPDATE importer C SET C.IMPORTERMONTLYQUOTAH = 0, C.IMPORTERQUOTAACCOMPLISHED = C.IMPORTERQUOTAACCOMPLISHED + ? WHERE C.IMPORTERID = ?',[data.quantity-((data.importer.IMPORTERMONTLYQUOTAH-data.quantity)*-1),data.importer.IMPORTERID],function(err, rows, fields) {
+		//  		if(err){
+		//  			console.log("Error Updateimporter1 "+ err.message);
+		//  		}else{
+		//  			connection.query('SELECT MIN(B.IMPORTERMONTLYQUOTAH) AS NextQuota FROM importer B WHERE B.IMPORTERMONTLYQUOTAH!=0;',function(error, result) {
+		// 		 		if(err){
+		// 		 			console.log("Error "+ err.message);
+		// 		 		}else{
+		// 		 			var aux=result;
+		// 		 			// console.log('Siguiente: '+aux[0].NextQuota);
+		// 		 			connection.query('UPDATE importer A SET IMPORTERMONTLYQUOTAH = A.IMPORTERMONTLYQUOTAH - ?, IMPORTERQUOTAACCOMPLISHED = A.IMPORTERQUOTAACCOMPLISHED + ? WHERE IMPORTERMONTLYQUOTAH = ?;',[(data.importer.IMPORTERMONTLYQUOTAH-data.quantity)*-1,(data.importer.IMPORTERMONTLYQUOTAH-data.quantity)*-1,aux[0].NextQuota],function(err, rows, fields) {
+		// 				 		if(err){
+		// 				 			console.log("Error UpdateImporter2"+ err.message);
+		// 				 		}else{
 						 			
-						 		}
-						 	})
-				 		}
-				 	})
+		// 				 		}
+		// 				 	})
+		// 		 		}
+		// 		 	})
 		 			
-		 		}
-		 	})
-		}
+		//  		}
+		//  	})
+		// }
 		////////////////////////////////////
 		console.log('Se executo AsignJourney '+data.orders.length);
 		for (var i = 0; i < data.orders.length; i++) {

@@ -224,7 +224,7 @@ function showData1(i,TotalQuantity){
 	// 		$('#txtImporterAddress').val(ImporterSelectd.IMPORTERADDRESS);
 	// 		$('#txtImporterPhone').val(ImporterSelectd.IMPORTERPHONE);
 		// }
-	}
+	// }
 
 	$('#Orders').empty();
 	console.log("Orders: "+lstJourney[k].length);
@@ -251,7 +251,7 @@ function showData1(i,TotalQuantity){
 	}
 	$('#txtNewJourneyDate').val(lstJourney[k][0].order.ORDERDEADLINE)
 	$('#txtNewJourneyDate').val(CurrentDate());
-;	TQ=TotalQuantity;
+	TQ=TotalQuantity;
 }
 
 function RemoveRow () {

@@ -93,6 +93,7 @@ $(document).ready(function(){
 	socket.on('SelectDrivers', function(data){
 		lstDrivers=[];
        	lstDrivers=data;
+		console.log(lstDrivers.length);
        	$('#cmbDrivers').empty();
        	$('#cmbDrivers').append('<option selected>Seleccione un Conductor</option>');
        	for (var i = 0; i < lstDrivers.length; i++) {

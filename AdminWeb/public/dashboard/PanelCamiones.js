@@ -38,6 +38,16 @@ $(document).ready(function(){
 //         }
 //     });
     Limpiar();
+    socket.on('SelectDrivers', function(data){
+            // lstDrivers=[];
+            lstDrivers=data;
+            $('#cmbTruckDriver').empty();
+            $('#cmbTruckDriver').append('<option selected>Seleccione un Conductor</option>');
+            for (var i = 0; i < lstDrivers.length; i++) {
+                $('#cmbTruckDriver').append(new Option(lstDrivers[i].PERSONNAME+" "+lstDrivers[i].PERSONLASTNAME, 'names'));
+            }
+
+   	})
     socket.on("SelectTrucks1",function(CR){
         lstTrucks.length=0;
         lstTrucks=CR;
@@ -78,16 +88,7 @@ function Limpiar()
    	    })
 }
 function ShowTruckInformation(i){
-    socket.on('SelectDrivers', function(data){
-            // lstDrivers=[];
-            lstDrivers=data;
-            $('#cmbTruckDriver').empty();
-            $('#cmbTruckDriver').append('<option selected>Seleccione un Conductor</option>');
-            for (var i = 0; i < lstDrivers.length; i++) {
-                $('#cmbTruckDriver').append(new Option(lstDrivers[i].PERSONNAME+" "+lstDrivers[i].PERSONLASTNAME, 'names'));
-            }
-
-   	})
+    
        idtruck=i;
 }
 $('#btnCancelTruck').click(function(){

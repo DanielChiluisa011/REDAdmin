@@ -90,7 +90,7 @@ $(document).ready(function(data){
 			$('#ActiveOrders').append("<tbody><tr><td onclick='ShowRouteTest("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='ShowRouteTest("+j+")'>"+
 									lstJourneys[j].JourneyDate+"</td><td onclick='ShowRouteTest("+j+")'>"+lstJourneys[j].truckId+"</td><td onclick='ShowRouteTest("+j+")'>"+RCName+
 									// "</td><td onclick='ShowRouteTest("+j+")'>"+importerName+"</td></tr><tbody>");  
-									"</td>");  
+									"</td></tr><tbody>");  
 		}
 		socket.removeListener("SelectActiveOrders");
     }) 

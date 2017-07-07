@@ -226,8 +226,8 @@ io.on('connection', function(socket){
 						console.log(lstImp[i]);
 					}
 
-					if(lstImp[1].importerquota-Total>=0){
-						Accomplished=lstImp[1].importerquota-Total;
+					if(lstImp[0].importerquota-Total>=0){
+						Accomplished=lstImp[0].importerquota-Total;
 						console.log("if "+Accomplished);
 						connection.query('UPDATE importer SET importerquota = ? WHERE importerid= ?',[Accomplished,lstImp[1].importerid],function(err,rows,fields){
 							if(err){
@@ -246,7 +246,7 @@ io.on('connection', function(socket){
 							}
 						});
 					}else{
-						AccomplishedAux=Math.abs(lstImp[1].importerquota-Total);
+						AccomplishedAux=Math.abs(lstImp[0].importerquota-Total);
 						Accomplished=Total-AccomplishedAux;
 						console.log("else");
 						console.log("AccomplishedAux "+(lstImp[0].importerquota-AccomplishedAux));

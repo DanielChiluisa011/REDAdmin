@@ -186,7 +186,7 @@ io.on('connection', function(socket){
 	  });
 	  
 
-	  socketo.on('RequestUpdateDriver',function(data){
+	  socket.on('RequestUpdateDriver',function(data){
 		  connection.query("Update trucks set personid= "+data.personid+" where truckid= "+data.truckid);
 		  	if(err){
 				console.log("Error "+ err.message);

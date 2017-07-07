@@ -141,13 +141,13 @@ io.on('connection', function(socket){
 				    throw error;
 				}else{
 					console.log(result.length);
-					//if(result.length==0){
-					//	socket.emit('DistributorData2',0);
-					//}else{
+					if(result.length==0){
+						socket.emit('DistributorData2',0);
+					}else{
 						var lstDistributor=result;
 						socket.emit('DistributorData2',lstDistributor);
 						// console.log('Select Distributors executed');
-					//}
+					}
 		       }
 			});
       });
@@ -1072,7 +1072,7 @@ function SelectImporters(){
 }
 
 function SelectDrivers(){
-	connection.query('SELECT * FROM person WHERE PersonRole LIKE "Gestor"',function(error, result){
+	connection.query('SELECT * FROM person WHERE PersonRole LIKE "conductor"  ',function(error, result){
 		if(error){
 		    throw error;
 		}else{

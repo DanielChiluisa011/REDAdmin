@@ -2,6 +2,7 @@ var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
 var lstTrucks= [];
 var lstDrivers=[];
 var mapa;
+var idtruck;
 var MapsGoogle = function () {
 
     var mapBasic = function () {
@@ -87,11 +88,47 @@ function ShowTruckInformation(i){
             }
 
    	})
+       idtruck=i;
 }
 $('#btnCancelTruck').click(function(){
 	Limpiar();
     //$.notific8('My notification has a heading line.', {heading: 'Notification Heading'});
 })
+$('#btnUpdateTruck').click(function(){
+    var updateTruck={
+        personid:lstDrivers[$('#cmbTruckDriver option:selected').index()-1].PERSONID,
+        truckid:idtruck
+    }
+    bootbox.confirm("¿Desea actualizar la información? ", function(result) {
+            if(result){
+                socket.emit("RequestUpdateDriver",updateTruck);
+                socket.on("ResponseUpdateDriver",function(flag){
+                    if(flag){
+                        $.notific8('Datos actualizados correctamente', {
+                            life: 3500,
+                            heading: 'Listo!',
+                            theme: 'teal',
+                            sticky: false,
+                            horizontalEdge: 'top',
+                            verticalEdge: 'rigth',
+                            zindex: 1500
+                        });
+                        // location.reload();	
+                    }else{
+                        $.notific8('Error al guardar, intentelo nuevamente', {
+                            life: 3500,
+                            heading: 'Error!',
+                            theme: 'ruby',
+                            sticky: false,
+                            horizontalEdge: 'top',
+                            verticalEdge: 'rigth',
+                            zindex: 1500
+                        });
+                    }
+                });
+            }
+        });
+});
 
 $('#btnSaveTruck').click(function(){
 	bootbox.confirm("¿Desea guardar camión ingresado? ", function(result) {

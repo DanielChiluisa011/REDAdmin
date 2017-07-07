@@ -186,7 +186,17 @@ io.on('connection', function(socket){
 	  });
 	  
 
-	  
+	  socketo.on('RequestUpdateDriver',function(data){
+		  connection.query("Update trucks set personid= "+data.personid+" where truckid= "+data.truckid);
+		  	if(err){
+				console.log("Error "+ err.message);
+				socket.emit('ResponseUpdateDriver',false);
+			}else{
+				socket.emit('ResponseUpdateDriver',true)
+				console.log("Driver updated");
+									
+		 }
+	  });
 	  socket.on('RegisterDelivery',function(data){
 		  var lstImp=[];
 		  var Accomplished;

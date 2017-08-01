@@ -158,7 +158,6 @@ io.on('connection', function(socket){
 				    throw error;
 				}else{
 				  	var JourneyRoute=result;
-					  result.reverse();
 				  	// console.log(JourneyRoute);
 					io.emit('JourneyRouteData',JourneyRoute);
 					// console.log('Select Distributors executed');
@@ -301,7 +300,7 @@ io.on('connection', function(socket){
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		//-------------------------------------------NUEVO CODIGO-----------------------------------------------------------------------
-		connection.query("select * from orders where journeyid="+data.journeyid+" and distributorid in (select distributorid from distributor where importerid is  NULL);",function(error, result){
+		connection.query("select * from orders where journeyid="+data.journeyid+" and distributorid in (select distributorid from distributor where importerid is not NULL);",function(error, result){
 			if(error){
 				throw error;
 			}else{
@@ -328,7 +327,7 @@ io.on('connection', function(socket){
 							if(err){
 								console.log("Error "+ err.message);
 							}else{
-								ImpId=result[i].importerid;
+								ImpId=result[i].IMPORTERID;
 								console.log("Importador asignado");	
 							}
 						});
@@ -356,7 +355,7 @@ io.on('connection', function(socket){
 			}
 		});
 
-		connection.query("select * from orders where journeyid="+data.journeyid+" and distributorid in (select distributorid from distributor where importerid is not NULL);",function(error, result){
+		connection.query("select * from orders where journeyid="+data.journeyid+" and distributorid in (select distributorid from distributor where importerid is NULL);",function(error, result){
 			if(error){
 				throw error;
 			}else{

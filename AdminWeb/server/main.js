@@ -321,18 +321,25 @@ io.on('connection', function(socket){
 						}else{
 							NewJ=result[0].maxid;
 						}
-					});	
+					});
 					for(var i=0;i<result.length;i++){
-						connection.query('UPDATE journey SET importerid = ? WHERE journeyid= ?',[result[i].importerid,NewJ],function(err,rows,fields){
-							if(err){
-								console.log("Error "+ err.message);
-							}else{
-								ImpId=result[i].IMPORTERID;
-								console.log("Importador asignado");	
-							}
-						});
 						Quantity+=result[i].orderquantity;
+						console.log(Quantity);
+						connection.query("select importerid from distributor where distributorid="+result[i].distributorid,function(error, result1){
+							if(error){
+								throw error;
+							}else{
+								ImpId=result1[i].importerid;
+							}
+						});	
 					}
+					connection.query('UPDATE journey SET importerid = ? WHERE journeyid= ?',[ImpId,NewJ],function(err,rows,fields){
+						if(err){
+							console.log("Error "+ err.message);
+						}else{
+							console.log("Importador asignado");	
+						}
+					});
 					connection.query('UPDATE importer SET importerquota = importerquota - ? WHERE importerid= ?',[Quantity,ImpId],function(err,rows,fields){
 						if(err){
 							console.log("Error "+ err.message);

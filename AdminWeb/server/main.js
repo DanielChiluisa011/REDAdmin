@@ -203,6 +203,7 @@ io.on('connection', function(socket){
 		  var Accomplished;
 		  var AccomplishedAux;
 		  var Total;
+		  console.log("RegisterDelivery: "+data.journeyid);
 	  	connection.query('INSERT INTO delivery (JOURNEYID, OBSERVATION, SIGNATURE, DELIVERYTIME) VALUES (?,?,?,?)',[data.journeyid, data.observation, data.signature, data.deliverytime],function(error, result){
 	  		if(error){
 					throw error;

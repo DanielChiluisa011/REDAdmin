@@ -158,6 +158,7 @@ io.on('connection', function(socket){
 				    throw error;
 				}else{
 				  	var JourneyRoute=result;
+					  result.reverse();
 				  	// console.log(JourneyRoute);
 					io.emit('JourneyRouteData',JourneyRoute);
 					// console.log('Select Distributors executed');

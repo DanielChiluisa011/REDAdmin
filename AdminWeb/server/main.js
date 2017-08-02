@@ -300,68 +300,7 @@ io.on('connection', function(socket){
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		//-------------------------------------------NUEVO CODIGO-----------------------------------------------------------------------
-		connection.query("select * from orders where journeyid="+data.journeyid+" and distributorid in (select distributorid from distributor where importerid is not NULL);",function(error, result){
-			if(error){
-				throw error;
-			}else{
-				if(result.length!=0){
-					var Quantity=0;
-					var ImpId=0;
-					var NewJ=0;
-					connection.query('insert into journey (RECYCLINGCENTERID,TRUCKID,JOURNEYDATE,JOURNEYSTATE,JOURNEYROUTE) SELECT RECYCLINGCENTERID,TRUCKID,JOURNEYDATE,JOURNEYSTATE,JOURNEYROUTE FROM journey WHERE journeyid=?;',[data.journeyid],function(error, result){
-						if(error){
-								throw error;
-							}else{
-								console.log('NUEVO VIAJE CREADO');
-						}
-					});
-					connection.query("select max(journeyid) maxid from journey;",function(error, result){
-						if(error){
-							throw error;
-						}else{
-							NewJ=result[0].maxid;
-						}
-					});
-					for(var i=0;i<result.length;i++){
-						Quantity+=result[i].orderquantity;
-						console.log(Quantity);
-						connection.query("select importerid from distributor where distributorid="+result[i].distributorid,function(error, result1){
-							if(error){
-								throw error;
-							}else{
-								ImpId=result1[i].importerid;
-							}
-						});	
-					}
-					connection.query('UPDATE journey SET importerid = ? WHERE journeyid= ?',[ImpId,NewJ],function(err,rows,fields){
-						if(err){
-							console.log("Error "+ err.message);
-						}else{
-							console.log("Importador asignado");	
-						}
-					});
-					connection.query('UPDATE importer SET importerquota = importerquota - ? WHERE importerid= ?',[Quantity,ImpId],function(err,rows,fields){
-						if(err){
-							console.log("Error "+ err.message);
-						}else{
-							ImpId=result[i].importerid;
-							console.log("Cuota Importador actualizada");	
-						}
-					});
-					for(var i=0;i<result.length;i++){
-						connection.query('UPDATE orders SET journeyid = ? WHERE orderid= ?',[NewJ,result[i].orderid],function(err,rows,fields){
-						if(err){
-							console.log("Error "+ err.message);
-						}else{
-							ImpId=result[i].importerid;
-							console.log("Cuota Importador actualizada");	
-						}
-					});
-					}
-				}	
-			}
-		});
-
+		//____________________________________________________INICIO SIN IMPORTADOR___________________________________________________________
 		connection.query("select * from orders where journeyid="+data.journeyid+" and distributorid in (select distributorid from distributor where importerid is NULL);",function(error, result){
 			if(error){
 				throw error;
@@ -446,6 +385,77 @@ io.on('connection', function(socket){
 				}
 			}
 		});	
+		//____________________________________________________FIN SIN IMPORTADOR___________________________________________________________
+		//____________________________________________________INICIO CON IMPORTADOR___________________________________________________________
+		connection.query("select * from orders where journeyid="+data.journeyid+" and distributorid in (select distributorid from distributor where importerid is not NULL);",function(error, result){
+			if(error){
+				throw error;
+			}else{
+				if(result.length!=0){
+					var Quantity=0;
+					var ImpId=0;
+					var NewJ=0;
+					connection.query('insert into journey (RECYCLINGCENTERID,TRUCKID,JOURNEYDATE,JOURNEYSTATE,JOURNEYROUTE) SELECT RECYCLINGCENTERID,TRUCKID,JOURNEYDATE,JOURNEYSTATE,JOURNEYROUTE FROM journey WHERE journeyid=?;',[data.journeyid],function(error, result){
+						if(error){
+								throw error;
+							}else{
+								console.log('NUEVO VIAJE CREADO');
+						}
+					});
+					connection.query('INSERT INTO delivery (JOURNEYID, OBSERVATION, SIGNATURE, DELIVERYTIME) VALUES (?,?,?,?)',[data.journeyid, data.observation, data.signature, data.deliverytime],function(error, result){
+						if(error){
+								throw error;
+							}else{
+								console.log('Entrega registrada Firma');
+						}
+					});
+					connection.query("select max(journeyid) maxid from journey;",function(error, result){
+						if(error){
+							throw error;
+						}else{
+							NewJ=result[0].maxid;
+						}
+					});
+					for(var i=0;i<result.length;i++){
+						Quantity+=result[i].orderquantity;
+						console.log(Quantity);
+						connection.query("select importerid from distributor where distributorid="+result[i].distributorid,function(error, result1){
+							if(error){
+								throw error;
+							}else{
+								ImpId=result1[i].importerid;
+							}
+						});	
+					}
+					connection.query('UPDATE journey SET importerid = ? WHERE journeyid= ?',[ImpId,NewJ],function(err,rows,fields){
+						if(err){
+							console.log("Error "+ err.message);
+						}else{
+							console.log("Importador asignado");	
+						}
+					});
+					connection.query('UPDATE importer SET importerquota = importerquota - ? WHERE importerid= ?',[Quantity,ImpId],function(err,rows,fields){
+						if(err){
+							console.log("Error "+ err.message);
+						}else{
+							ImpId=result[i].importerid;
+							console.log("Cuota Importador actualizada");	
+						}
+					});
+					for(var i=0;i<result.length;i++){
+						connection.query('UPDATE orders SET journeyid = ? WHERE orderid= ?',[NewJ,result[i].orderid],function(err,rows,fields){
+						if(err){
+							console.log("Error "+ err.message);
+						}else{
+							ImpId=result[i].importerid;
+							console.log("Cuota Importador actualizada");	
+						}
+					});
+					}
+				}	
+			}
+		});
+			//____________________________________________________FIN CON IMPORTADOR___________________________________________________________
 		//-----------------------------------------FIN NUEVO CODIGO---------------------------------------------------------------------
 	  });
 

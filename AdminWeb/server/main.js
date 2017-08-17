@@ -1134,7 +1134,7 @@ io.on('connection', function(socket){
 
 function SelectUsers(){
 	lstUsers.length=0;
-	connection.query('SELECT * FROM users ','',function(error, result){
+	connection.query('SELECT * FROM users where USERSTATE=1','',function(error, result){
       if(error){
          throw error;
       }else{

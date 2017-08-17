@@ -515,8 +515,10 @@ io.on('connection', function(socket){
 		  connection.query("update users set USERSTATE=0 where personid="+data.PERSONID,function(error){
 				if(error){
 					throw error;
+					socket.emit("ErrorDeleteUser",true);
 				}else
 				{
+					socket.emit("ErrorDeleteUser",false);
 					console.log("Usuario eliminado");
 				}
 		  }

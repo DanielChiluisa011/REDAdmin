@@ -68,8 +68,8 @@ function DeleteUser(i){
 	var id=lstUsers[i].user.PERSONID;
 	bootbox.confirm("¿Seguro que desea eliminar al usuario seleccionado? ", function(result) {
 			   if(result){
-				   	socket.emit('UserDelete',id);
-					socket.on('ErrorUserDelte',flagDelete);
+				   	socket.emit('DeleteUser',id);
+					socket.on('ErrorDelteUser',flagDelete);
 					if(flagDelete)
 					   $.notific8('Usuario eliminado');
 					location.reload();

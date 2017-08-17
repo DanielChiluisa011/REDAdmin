@@ -524,7 +524,7 @@ io.on('connection', function(socket){
 					flag=0;
 					//console.log("Usuario eliminado");
 				}
-				socket.emit("ErrorDeleteUser",false);
+				socket.emit("ErrorDeleteUser",flag);
 		  }
 		  )
 	  });

@@ -511,7 +511,17 @@ io.on('connection', function(socket){
 			}
 			})
 	  });
-
+	  socket.on('DeleteUser',function(data){
+		  connection.query("update users set USERSTATE=0 where personid="+data.PERSONID,function(error){
+				if(error){
+					throw error;
+				}else
+				{
+					console.log("Usuario eliminado");
+				}
+		  }
+		  )
+	  });
 	  socket.on('RequestImporters',function(data){
 		  connection.query('SELECT * FROM importer',function(error, result){
 				if(error){

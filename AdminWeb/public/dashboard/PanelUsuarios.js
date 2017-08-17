@@ -63,7 +63,15 @@ function ShowUserInformation(i){
 	$('#txtUserPassword').val(lstUsers[i].user.USERPASSWORD);
 	$('#txtUserProfile').val(lstUsers[i].user.USERPROFILE);
 }
-
+function DeleteUser(i){
+	bootbox.confirm("¿Seguro que desea eliminar al usuario seleccionado? ", function(result) {
+			   if(result){
+				   	socket.emit('UserDelete',lstUsers[i].user);
+					$.notific8('Usuario eliminado');
+					location.reload();
+			   }
+			});
+}
 $('#btnUpdateUserInfo').click(function(){
 	for (var i = 0; i < lstUsers.length; i++) {
 		if(lstUsers[i].person.PersonCi==$('#txtPersonId').val()){

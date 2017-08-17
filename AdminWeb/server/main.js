@@ -39,9 +39,10 @@ io.on('connection', function(socket){
 				      if(error){
 				         throw error;
 				      }else{
-				      	lstUsers=result;
-						socket.emit('AppSelectUsers', lstUsers);
-						// console.log('numero de usuarios: '+lstUsers.length)
+						  lstUsers=result;
+
+							socket.emit('AppSelectUsers', lstUsers);
+							console.log('numero de usuarios: '+lstUsers.length)
 				      }
 					});	
       });

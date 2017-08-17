@@ -35,7 +35,7 @@ io.on('connection', function(socket){
       
       //Prueba socket en app movil********************************
       socket.on('appUsuarios', function(msg){
-			connection.query('SELECT * FROM users ','',function(error, result){
+			connection.query('SELECT * FROM users where USERSTATE=1 ','',function(error, result){
 				      if(error){
 				         throw error;
 				      }else{

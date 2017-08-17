@@ -33,7 +33,7 @@ function FillTable(){
 			for (var i = 0; i < lstUsers.length; i++) {
 				$('#UsersTable').append("<tbody><tr><td>"+lstUsers[i].person.PERSONCIRUC+"</td><td>"+lstUsers[i].person.PERSONNAME+' '+lstUsers[i].person.PERSONLASTNAME+"</td><td>"+lstUsers[i].user.USEREMAIL+"</td><td>"+lstUsers[i].person.PERSONROLE+
 								   "</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='#responsive' onclick='ShowUserInformation("+i+")'> <i class='fa fa-edit'> </i> Editar </a>"+
-								   "<a class='btn red btn-outline sbold' data-toggle='modal' href='#responsive' onclick='DeleteUser("+i+")'> <i class='fa fa-delete'> </i> Editar </a></td></tr></tbody>");
+								   "<a class='btn red btn-outline sbold' data-toggle='modal' href='#responsive' onclick='DeleteUser("+i+")'> <i class='fa fa-edit'> </i> Editar </a></td></tr></tbody>");
 			}
 		})
 	})

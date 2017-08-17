@@ -512,7 +512,7 @@ io.on('connection', function(socket){
 			})
 	  });
 	  socket.on('DeleteUser',function(data){
-		  connection.query("update users set USERSTATE=0 where personid="+data.PERSONID,function(error){
+		  connection.query("update users set USERSTATE=0 where personid="+data,function(error){
 				if(error){
 					throw error;
 					socket.emit("ErrorDeleteUser",true);

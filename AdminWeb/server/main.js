@@ -517,12 +517,12 @@ io.on('connection', function(socket){
 				if(error){
 					flag=1;
 					throw error;
-					
+					console.log(error.message);
 					
 				}else
 				{
 					flag=0;
-					//console.log("Usuario eliminado");
+					console.log("Usuario eliminado");
 				}
 				socket.emit("ErrorDeleteUser",flag);
 		  }

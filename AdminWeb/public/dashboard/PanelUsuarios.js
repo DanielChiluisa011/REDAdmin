@@ -70,8 +70,7 @@ function DeleteUser(i){
 			   if(result){
 				   	socket.emit('DeleteUser',id);
 					socket.on('ErrorDeleteUser',flagDelete);
-					if(flagDelete==0)
-					   $.notific8('Usuario eliminado');
+					$.notific8('Usuario eliminado correctamente');
 					location.reload();
 			   }
 			});

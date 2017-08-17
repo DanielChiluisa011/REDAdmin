@@ -64,13 +64,13 @@ function ShowUserInformation(i){
 	$('#txtUserProfile').val(lstUsers[i].user.USERPROFILE);
 }
 function DeleteUser(i){
-	var flagDelete=true;
+	var flagDelete=2;
 	var id=lstUsers[i].user.PERSONID;
 	bootbox.confirm("¿Seguro que desea eliminar al usuario seleccionado? ", function(result) {
 			   if(result){
 				   	socket.emit('DeleteUser',id);
 					socket.on('ErrorDeleteUser',flagDelete);
-					if(!flagDelete)
+					if(flagDelete==0)
 					   $.notific8('Usuario eliminado');
 					location.reload();
 			   }

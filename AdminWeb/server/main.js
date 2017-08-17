@@ -512,15 +512,19 @@ io.on('connection', function(socket){
 			})
 	  });
 	  socket.on('DeleteUser',function(data){
+		  var flag;
 		  connection.query("UPDATE users SET USERSTATE=0 WHERE PERSONID="+data,function(error){
 				if(error){
+					flag=1;
 					throw error;
-					socket.emit("ErrorDeleteUser",true);
+					
+					
 				}else
 				{
-					socket.emit("ErrorDeleteUser",false);
+					flag=0;
 					//console.log("Usuario eliminado");
 				}
+				socket.emit("ErrorDeleteUser",false);
 		  }
 		  )
 	  });

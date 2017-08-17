@@ -64,6 +64,7 @@ function ShowUserInformation(i){
 	$('#txtUserProfile').val(lstUsers[i].user.USERPROFILE);
 }
 function DeleteUser(i){
+	var flagDelete=false;
 	bootbox.confirm("¿Seguro que desea eliminar al usuario seleccionado? ", function(result) {
 			   if(result){
 				   	socket.emit('UserDelete',lstUsers[i].user);

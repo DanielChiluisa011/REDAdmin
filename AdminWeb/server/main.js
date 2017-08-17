@@ -512,14 +512,14 @@ io.on('connection', function(socket){
 			})
 	  });
 	  socket.on('DeleteUser',function(data){
-		  connection.query("update users set USERSTATE=0 where PERSONID="+data,function(error){
+		  connection.query("UPDATE USERS SET USERSTATE=0 WHERE PERSONID="+data,function(error){
 				if(error){
 					throw error;
 					socket.emit("ErrorDeleteUser",true);
 				}else
 				{
 					socket.emit("ErrorDeleteUser",false);
-					console.log("Usuario eliminado");
+					//console.log("Usuario eliminado");
 				}
 		  }
 		  )
@@ -579,7 +579,7 @@ io.on('connection', function(socket){
 		       }
 			});	
       });
-
+ 
       socket.on('DeleteAlerts', function(data){
       	connection.query("DELETE FROM alert where ALERTID="+data.ALERTID,function(error){
       			if(error){

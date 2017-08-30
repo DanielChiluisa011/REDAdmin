@@ -1369,7 +1369,7 @@ function SaveNewUser(socket){
 		if(err){
 			console.log("Error "+ err.message);
 		}else{
-			connection.query('INSERT INTO users VALUES (?,?,?,?)',[data.user.USEREMAIL,maxID[0].maxID,data.user.USERPASSWORD,data.user.USERPROFILE],function(err, rows, fields) {
+			connection.query('INSERT INTO users VALUES (?,?,?,?,?)',[data.user.USEREMAIL,maxID[0].maxID,data.user.USERPASSWORD,data.user.USERPROFILE,1],function(err, rows, fields) {
 				if(err){
 					console.log("Error "+ err.message);
 				}else{

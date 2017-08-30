@@ -945,7 +945,7 @@ io.on('connection', function(socket){
 						socket.emit("ResponseImporter",false);
 					}else{
 						console.log(result[0].max);
-							connection.query('INSERT INTO users (USEREMAIL,PERSONID,USERPASSWORD,USERPROFILE) VALUES (?,?,?,?)',
+							connection.query('INSERT INTO users (USEREMAIL,PERSONID,USERPASSWORD,USERPROFILE,USERSTATE) VALUES (?,?,?,?,1)',
 							[importer.personEmail,
 							result[0].max,
 							"importador",

@@ -1071,7 +1071,7 @@ io.on('connection', function(socket){
 	 	})
 	});
 	socket.on("RequestInsertNewCR", function(RC){
-		connection.query('INSERT INTO person (PERSONCIRUC,PERSONNAME,PERSONLASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE) VALUES (?,?,?,?,?,?)',
+		connection.query('INSERT INTO person (PERSONCIRUC,PERSONNAME,PERSONLASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE, PERSONSTATE) VALUES (?,?,?,?,?,?,1)',
 			[RC.personCi,
 			RC.personName,
 			RC.personLastName,

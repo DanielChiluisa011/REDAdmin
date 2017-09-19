@@ -32,7 +32,8 @@ function FillTable(){
 			$("#UsersTable > tbody").html("");
 			for (var i = 0; i < lstUsers.length; i++) {
 				$('#UsersTable').append("<tbody><tr><td>"+lstUsers[i].person.PERSONCIRUC+"</td><td>"+lstUsers[i].person.PERSONNAME+' '+lstUsers[i].person.PERSONLASTNAME+"</td><td>"+lstUsers[i].user.USEREMAIL+"</td><td>"+lstUsers[i].person.PERSONROLE+
-       							"</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='#responsive' onclick='ShowUserInformation("+i+")'> <i class='fa fa-edit'> </i> Editar </a></td></tr></tbody>");
+								   "</td><td><a class='btn red btn-outline sbold' data-toggle='modal' href='#responsive' onclick='ShowUserInformation("+i+")'> <i class='fa fa-edit'> </i> Editar </a>"+
+								   "<a class='btn red btn-outline sbold' onclick='DeleteUser("+i+")'> <i class='fa fa-delete'> </i> Eliminar </a></td></tr></tbody>");
 			}
 		})
 	})
@@ -62,7 +63,18 @@ function ShowUserInformation(i){
 	$('#txtUserPassword').val(lstUsers[i].user.USERPASSWORD);
 	$('#txtUserProfile').val(lstUsers[i].user.USERPROFILE);
 }
-
+function DeleteUser(i){
+	var flagDelete=2;
+	var id=lstUsers[i].user.PERSONID;
+	bootbox.confirm("¿Seguro que desea eliminar al usuario seleccionado? ", function(result) {
+			   if(result){
+				   	socket.emit('DeleteUser',id);
+					socket.on('ErrorDeleteUser',flagDelete);
+					$.notific8('Usuario eliminado correctamente');
+					location.reload();
+			   }
+			});
+}
 $('#btnUpdateUserInfo').click(function(){
 	for (var i = 0; i < lstUsers.length; i++) {
 		if(lstUsers[i].person.PersonCi==$('#txtPersonId').val()){

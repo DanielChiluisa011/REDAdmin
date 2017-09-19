@@ -35,13 +35,14 @@ io.on('connection', function(socket){
       
       //Prueba socket en app movil********************************
       socket.on('appUsuarios', function(msg){
-			connection.query('SELECT * FROM users ','',function(error, result){
+			connection.query('SELECT * FROM users where USERSTATE=1 ','',function(error, result){
 				      if(error){
 				         throw error;
 				      }else{
-				      	lstUsers=result;
-						socket.emit('AppSelectUsers', lstUsers);
-						// console.log('numero de usuarios: '+lstUsers.length)
+						  lstUsers=result;
+
+							socket.emit('AppSelectUsers', lstUsers);
+							console.log('numero de usuarios: '+lstUsers.length)
 				      }
 					});	
       });
@@ -75,7 +76,7 @@ io.on('connection', function(socket){
 		var lstTempUsers=[];
 		var lstTempPerson=[];
 		var aux;
-		connection.query('SELECT * FROM users;',function(error, result){
+		connection.query('SELECT * FROM users where USERSTATE=1;',function(error, result){
 			if(error){
 			    throw error;
 			}else{
@@ -511,7 +512,23 @@ io.on('connection', function(socket){
 			}
 			})
 	  });
-
+	  socket.on('DeleteUser',function(data){
+		  var flag;
+		  connection.query("UPDATE users SET USERSTATE=0 WHERE PERSONID="+data,function(error){
+				if(error){
+					flag=1;
+					throw error;
+					console.log(error.message);
+					
+				}else
+				{
+					flag=0;
+					console.log("Usuario eliminado");
+				}
+				socket.emit("ErrorDeleteUser",flag);
+		  }
+		  )
+	  });
 	  socket.on('RequestImporters',function(data){
 		  connection.query('SELECT * FROM importer',function(error, result){
 				if(error){
@@ -567,7 +584,7 @@ io.on('connection', function(socket){
 		       }
 			});	
       });
-
+ 
       socket.on('DeleteAlerts', function(data){
       	connection.query("DELETE FROM alert where ALERTID="+data.ALERTID,function(error){
       			if(error){
@@ -928,7 +945,7 @@ io.on('connection', function(socket){
 						socket.emit("ResponseImporter",false);
 					}else{
 						console.log(result[0].max);
-							connection.query('INSERT INTO users (USEREMAIL,PERSONID,USERPASSWORD,USERPROFILE) VALUES (?,?,?,?)',
+							connection.query('INSERT INTO users (USEREMAIL,PERSONID,USERPASSWORD,USERPROFILE,USERSTATE) VALUES (?,?,?,?,1)',
 							[importer.personEmail,
 							result[0].max,
 							"importador",
@@ -1054,7 +1071,7 @@ io.on('connection', function(socket){
 	 	})
 	});
 	socket.on("RequestInsertNewCR", function(RC){
-		connection.query('INSERT INTO person (PERSONCIRUC,PERSONNAME,PERSONLASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE) VALUES (?,?,?,?,?,?)',
+		connection.query('INSERT INTO person (PERSONCIRUC,PERSONNAME,PERSONLASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE, PERSONSTATE) VALUES (?,?,?,?,?,?,1)',
 			[RC.personCi,
 			RC.personName,
 			RC.personLastName,
@@ -1118,7 +1135,7 @@ io.on('connection', function(socket){
 
 function SelectUsers(){
 	lstUsers.length=0;
-	connection.query('SELECT * FROM users ','',function(error, result){
+	connection.query('SELECT * FROM users where USERSTATE=1','',function(error, result){
       if(error){
          throw error;
       }else{
@@ -1352,7 +1369,7 @@ function SaveNewUser(socket){
 		if(err){
 			console.log("Error "+ err.message);
 		}else{
-			connection.query('INSERT INTO users VALUES (?,?,?,?)',[data.user.USEREMAIL,maxID[0].maxID,data.user.USERPASSWORD,data.user.USERPROFILE],function(err, rows, fields) {
+			connection.query('INSERT INTO users VALUES (?,?,?,?,?)',[data.user.USEREMAIL,maxID[0].maxID,data.user.USERPASSWORD,data.user.USERPROFILE,1],function(err, rows, fields) {
 				if(err){
 					console.log("Error "+ err.message);
 				}else{

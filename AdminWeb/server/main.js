@@ -175,7 +175,15 @@ io.on('connection', function(socket){
 					socket.emit('DistOrders',result);
 		       }
 			});	
-      });
+	  });
+		
+
+
+
+	  
+		
+
+
 	  socket.on('RequestNumOrder',function(){
 			connection.query("SELECT MAX(OrderId) MAXORDER FROM orders;",function(error, result){
 				if(error){
@@ -1236,7 +1244,15 @@ function SelectOrders(){
        }
 	})
 }
-
+function SelectOrdersList(){
+	connection.query("select O.OrderId,DAY(O.OrderDate) Oday,MONTH(O.ORDERDATE) Omonth,YEAR(O.OrderDate) Oyear,O.OrderState,O.WasteONU,O.OrderQuantity, WasteDescription, DistributorName from distributor D, orders O, waste W Where W.WasteONU=O.WasteONU AND D.DistributorId=O.DistributorId;",function(error, result){
+		if(error){
+			throw error;
+		}else{
+			io.emit('DistOrdersAdmin',result);
+		}
+		});	
+}
 function SelectActiveOrders(){
 	connection.query("SELECT OrderId,OrderDate,OrderQuantity,DistributorId,WasteONU,OrderState,OrderType,DATE_FORMAT(OrderDeadLine ,'%Y-%m-%d') AS OrderDeadLine,JourneyId FROM orders WHERE OrderState like 'En Proceso' or OrderState like 'Completado' ORDER BY OrderDeadLine ASC",function(error, result){
 		if(error){

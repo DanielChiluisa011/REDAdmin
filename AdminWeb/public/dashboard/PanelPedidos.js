@@ -27,6 +27,7 @@ var TQ;
 var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 var lon=6;
 var code="h";
+var lstDistributorsList=[];
 $(document).ready(function(){
 	$('#txtNewJourneyDate').val(CurrentDate());
 	//socket managment
@@ -41,7 +42,25 @@ $(document).ready(function(){
 	   		$('#cmbNewOrderImporters').append(new Option(lstDistributors[i].DistributorName, 'names'));
 	   	}
 
-   	})
+	   })
+	socket.on('DistOrdersAdmin', function(data){
+		lstDistributorsList=[];
+		lstDistributorsList=data;
+        $("#OrdersHistoryTable > tbody").html("");
+        for (var i = 0; i < lstDistributorsList.length; i++) {
+            $('#OrdersHistoryTable').append("<tbody>"+
+                                        "<tr>"+
+                                            "<td>"+lstDistributorsList[i].O.OrderId+"</td>"+
+                                            "<td>"+lstDistributorsList[i].O.OrderQuantity+"</td>"+
+                                            "<td>"+lstDistributorsList[i].WasteDescription+"</td>"+
+                                            "<td>"+lstDistributorsList[i].O.OrderState+"</td>"+
+                                            "<td>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+"</td>"+
+                                            
+                                            
+                                        "</tr>"+
+                                    "</tbody>");
+        }
+	});
 	//socket.emit('ReqSelectImporters','');
 	socket.on('SelectImporters', function(data){
 		lstImporters=[];
@@ -112,7 +131,7 @@ $(document).ready(function(){
 			// alert(data);
        		$('#txtNewOrderNumber').val(data);	
        	});
-		
+	
        	lstObjOrders=[];
        	$("#orderTable > tbody").html("");
        	for (var i = 0; i <lstOrders.length; i++) {
@@ -153,6 +172,7 @@ $(document).ready(function(){
 			OrdersTable.append("<tbody> <tr><td onclick='showData1("+i+","+TotalQuantity+")'>"+lstJourney[i][0].order.OrderDeadLine+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+
 							TotalQuantity+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+D+"</td></tr><tbody>"); 
 		}
+		
    	})
 
 

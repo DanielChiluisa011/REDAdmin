@@ -99,7 +99,7 @@ io.on('connection', function(socket){
 	         })
 		});
 		socket.on('EmailNewUserRequest',function(email){
-			connection.query("SELECT PERSONID FROM USERS WHERE USEREMAIL="+email+";",function(error,result){
+			connection.query("SELECT PERSONID FROM users WHERE USEREMAIL='"+email+"';",function(error,result){
 				if(error){
 					throw error;
 				}else{

@@ -775,6 +775,7 @@ io.on('connection', function(socket){
 	UpdateUser(socket);
 	SaveNewUser(socket);
 	SelectTrucks1();
+	SelectOrdersList();
 
 	socket.on("RequestDriver",function(obj){
 		// console.log("RequestTrucks: "+obj.id+" indx"+obj.indx);

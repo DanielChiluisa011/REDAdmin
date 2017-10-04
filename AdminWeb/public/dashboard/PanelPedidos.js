@@ -43,7 +43,7 @@ $(document).ready(function(){
 	   	}
 
 	   })
-	socket.on('DistOrdersAdmin', function(data){
+	socket.on('SelectOrdersList', function(data){
 		lstDistributorsList=[];
 		lstDistributorsList=data;
         $("#OrdersHistoryTable > tbody").html("");

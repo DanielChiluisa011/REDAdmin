@@ -1250,7 +1250,7 @@ function SelectOrdersList(){
 		if(error){
 			throw error;
 		}else{
-			io.emit('DistOrdersAdmin',result);
+			io.emit('SelectOrdersList',result);
 		}
 		});	
 }

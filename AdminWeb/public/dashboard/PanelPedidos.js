@@ -50,7 +50,8 @@ $(document).ready(function(){
         for (var i = 0; i < lstDistributorsList.length; i++) {
             $('#OrdersHistoryTable').append("<tbody>"+
                                         "<tr>"+
-                                            "<td>"+lstDistributorsList[i].OrderId+"</td>"+
+											"<td>"+lstDistributorsList[i].OrderId+"</td>"+
+											"<td>"+lstDistributorsList[i].DistributorName+"</td>"+
                                             "<td>"+lstDistributorsList[i].OrderQuantity+"</td>"+
                                             "<td>"+lstDistributorsList[i].WasteDescription+"</td>"+
                                             "<td>"+lstDistributorsList[i].OrderState+"</td>"+

@@ -60,7 +60,7 @@ $(document).ready(function(){
                                         "</tr>"+
                                     "</tbody>");
         }
-	});
+	})
 	//socket.emit('ReqSelectImporters','');
 	socket.on('SelectImporters', function(data){
 		lstImporters=[];

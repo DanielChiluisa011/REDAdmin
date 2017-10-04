@@ -69,7 +69,51 @@ io.on('connection', function(socket){
 			         	
 			        }
 	         })
-    	});
+		});
+			
+
+
+		////////////////////////////////   Unificacion Registro ///////////////////////////////////////////
+		socket.on('AppNewUserRequestV2',function(data){
+	  		//console.log('AppNewUserRequest');
+	    		connection.query('INSERT INTO persont (PERSONCI,PERSONNAME,PERSONLASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE) VALUES (?,?,?,?,?,?)',[data.ci,data.name,data.lastName,data.phone,data.address,data.role],function(err, rows, fields) {
+		        	if(err){
+		         	console.log("Error "+ err.message);
+				}else{
+						connection.query("select max(PERSONID) max from persontemp",function(err,maxID) {
+					       	if(err){
+					        	console.log("Error "+ err.message);
+					        }else{
+								// console.log(maxID[0].max);
+					        	connection.query("INSERT INTO user (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID,USERSTATE) VALUES (?,?,?,?)",[data.email,data.pass,'cliente',maxID[0].max,2],function(err, rows, fields) {
+									if(err){
+										console.log("Error "+ err.message);
+									}else{
+										SendNotification(socket); 
+									}
+								})
+					        }
+			            })
+			         	
+			        }
+	         })
+		});
+		socket.on('EmailNewUserRequest',function(email){
+			connection.query("SELECT PERSONID FROM USERS WHERE USEREMAIL="+email+";",function(error,result){
+				if(error){
+					throw error;
+				}else{
+					socket.emit('EmailNewUserResponse',result);
+				}
+			})
+		});	
+
+		//////////////
+
+
+
+
+
       socket.on('AppDataUsersRequest',function(data){
 		  console.log(data);
       	var lstNotificationUsers=[];

@@ -85,7 +85,7 @@ io.on('connection', function(socket){
 					        	console.log("Error maximo "+ err.message);
 					        }else{
 								console.log(maxID[0].max);
-					        	connection.query("INSERT INTO users (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID,USERSTATE) VALUES (?,?,?,?)",[data.email,data.pass,'cliente',maxID[0].max,2],function(err, rows, fields) {
+					        	connection.query("INSERT INTO users (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID,USERSTATE) VALUES (?,?,?,?,?)",[data.email,data.pass,'cliente',maxID[0].max,2],function(err, rows, fields) {
 									if(err){
 										console.log("Error inserción usuarios "+ err.message);
 									}else{

@@ -76,7 +76,7 @@ io.on('connection', function(socket){
 		////////////////////////////////   Unificacion Registro ///////////////////////////////////////////
 		socket.on('AppNewUserRequestV2',function(data){
 	  		//console.log('AppNewUserRequest');
-	    		connection.query('INSERT INTO person (PERSONCI,PERSONNAME,PERSONLASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE) VALUES (?,?,?,?,?,?)',[data.ci,data.name,data.lastName,data.phone,data.address,data.role],function(err, rows, fields) {
+	    		connection.query('INSERT INTO person (PERSONCIRUC,PERSONNAME,PERSONLASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE) VALUES (?,?,?,?,?,?)',[data.ci,data.name,data.lastName,data.phone,data.address,data.role],function(err, rows, fields) {
 		        	if(err){
 		         	console.log("Error "+ err.message);
 				}else{

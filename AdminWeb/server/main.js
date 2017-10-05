@@ -80,14 +80,14 @@ io.on('connection', function(socket){
 		        	if(err){
 		         	console.log("Error "+ err.message);
 				}else{
-						connection.query("select max(PERSONID) max from persontemp",function(err,maxID) {
+						connection.query("select max(PERSONID) max from person",function(err,maxID) {
 					       	if(err){
-					        	console.log("Error "+ err.message);
+					        	console.log("Error maximo "+ err.message);
 					        }else{
-								// console.log(maxID[0].max);
+								console.log(maxID[0].max);
 					        	connection.query("INSERT INTO users (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID,USERSTATE) VALUES (?,?,?,?)",[data.email,data.pass,'cliente',maxID[0].max,2],function(err, rows, fields) {
 									if(err){
-										console.log("Error "+ err.message);
+										console.log("Error inserción usuarios "+ err.message);
 									}else{
 										SendNotification(socket); 
 									}

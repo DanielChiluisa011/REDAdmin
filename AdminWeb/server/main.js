@@ -101,8 +101,9 @@ io.on('connection', function(socket){
 		socket.on('EmailNewUserRequest',function(email){
 			connection.query("SELECT PERSONID FROM users WHERE USEREMAIL='"+email+"';",function(error,result){
 				if(error){
-					throw error;
+					console.log("Error email "+ err.message);
 				}else{
+					console.log(result);
 					socket.emit('EmailNewUserResponse',result);
 				}
 			})

@@ -89,7 +89,15 @@ io.on('connection', function(socket){
 									if(err){
 										console.log("Error inserción usuarios "+ err.message);
 									}else{
-										SendNotification(socket); 
+										// SendNotification(socket); 
+										console.log(data.objDist.name);
+										connection.query("INSERT INTO distributor(PERSONID,DISTRIBUTORNAME,DISTRIBUTORADDRESS,DISTRIBUTORRUC,DISTRIBUTORPHONE,DISTRIBUTORENVIRONMENTALLICENSE,DISTRIBUTORCOORDINATES,IMPORTERID) VALUES (?,?,?,?,?,?,GeomFromText('POINT ("+data.objDist.CoordX+" "+data.objDist.CoordY+")'),?)",[maxID[0].max,data.objDist.name,data.objDist.address,data.objDist.ruc,data.objDist.phone,data.objDist.licence,data.objDist.importer],function(err, rows, fields) {
+											if(err){
+												console.log("Error distribuidor"+ err.message);
+											}else{
+												console.log("Distribuidor Ingresado correctamente");
+											}
+										})
 									}
 								})
 					        }
@@ -98,16 +106,17 @@ io.on('connection', function(socket){
 			        }
 	         })
 		});
-		socket.on('EmailNewUserRequest',function(email){
-			connection.query("SELECT PERSONID FROM users WHERE USEREMAIL='"+email+"';",function(error,result){
-				if(error){
-					console.log("Error email "+ err.message);
-				}else{
-					console.log(result);
-					socket.emit('EmailNewUserResponse',result);
-				}
-			})
-		});	
+
+		// socket.on('EmailNewUserRequest',function(email){
+		// 	connection.query("SELECT PERSONID FROM users WHERE USEREMAIL='"+email+"';",function(error,result){
+		// 		if(error){
+		// 			console.log("Error email "+ err.message);
+		// 		}else{
+		// 			console.log(result);
+		// 			socket.emit('EmailNewUserResponse',result);
+		// 		}
+		// 	})
+		// });	
 
 		////////////////////////////////////////////////////////////////////////////
 

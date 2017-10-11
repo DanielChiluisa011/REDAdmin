@@ -91,14 +91,17 @@ io.on('connection', function(socket){
 									}else{
 										// SendNotification(socket); 
 										//console.log(data.distributor.name);
-										console.log(data.distributor.CoordX);
-										connection.query("INSERT INTO distributor(PERSONID,DISTRIBUTORNAME,DISTRIBUTORADDRESS,DISTRIBUTORRUC,DISTRIBUTORPHONE,DISTRIBUTORENVIRONMENTALLICENSE,DISTRIBUTORCOORDINATES,IMPORTERID) VALUES (?,?,?,?,?,?,GeomFromText('POINT ("+data.distributor.CoordX+" "+data.distributor.CoordY+")'),?)",[maxID[0].max,data.distributor.name,data.distributor.address,data.distributor.ruc,data.distributor.phone,data.distributor.licence,data.distributor.importer],function(err, rows, fields) {
-											if(err){
-												console.log("Error distribuidor"+ err.message);
-											}else{
-												console.log("Distribuidor Ingresado correctamente");
-											}
-										})
+										// console.log(data.distributor.Role);
+										if(data.role==='Generador')
+										{
+											connection.query("INSERT INTO distributor(PERSONID,DISTRIBUTORNAME,DISTRIBUTORADDRESS,DISTRIBUTORRUC,DISTRIBUTORPHONE,DISTRIBUTORENVIRONMENTALLICENSE,DISTRIBUTORCOORDINATES,IMPORTERID) VALUES (?,?,?,?,?,?,GeomFromText('POINT ("+data.distributor.CoordX+" "+data.distributor.CoordY+")'),?)",[maxID[0].max,data.distributor.name,data.distributor.address,data.distributor.ruc,data.distributor.phone,data.distributor.licence,data.distributor.importer],function(err, rows, fields) {
+												if(err){
+													console.log("Error distribuidor"+ err.message);
+												}else{
+													console.log("Distribuidor Ingresado correctamente");
+												}
+											})
+										}
 									}
 								})
 					        }

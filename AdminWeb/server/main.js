@@ -1507,7 +1507,7 @@ function SaveNewUser(socket){
 	// console.log(data.person.PERSONCI+" "+data.person.PERSONNAME+" "+data.person.PERSONLASTNAME+" "+
 																	//   data.person.PERSONPHONE+" "+data.person.PERSONADDRESS+" "+data.person.PERSONROLE)
 	// console.log(data.user.USEREMAIL+" "+data.user.USERPASSWORD+" "+data.user.USERPROFILE+" "+data.user.PERSONID);
-	connection.query('UPDATE users set USERSTATE=2 WHERE PERSONID='+data,function(err, rows, fields) {
+	connection.query('UPDATE users set USERSTATE=2 where PERSONID='+data.person.personid+';',function(err, rows, fields) {
 		if(err){
 			console.log("Error "+ err.message);
 		}else{

@@ -1249,12 +1249,42 @@ function SendNotification(socket){
 	var lstTempUsers=[];
 	var lstTempPerson=[];
 
-	connection.query('SELECT * FROM usertemp',function(error, result){
+	// connection.query('SELECT * FROM usertemp',function(error, result){
+	// 	if(error){
+	// 	    throw error;
+	// 	}else{
+	// 	  	lstTempUsers=result;
+	// 	  	connection.query('SELECT * FROM persontemp',function(error, result){
+	// 			if(error){
+	// 			    throw error;
+	// 			}else{
+	// 			  	lstTempPerson=result;
+	// 				for (var i = 0; i < lstTempUsers.length; i++) {
+	// 					for (var j = 0; j < lstTempPerson.length; j++) {
+	// 						// console.log(lstTempUsers[i].PERSONID+" "+lstTempPerson[j].PERSONID);
+	// 						if(lstTempUsers[i].PERSONID==lstTempPerson[j].PERSONID){
+	// 							var aux = {
+	// 								person: lstTempPerson[j],
+	// 								user: lstTempUsers[i]
+	// 							}
+	// 							lstNotificationUsers.push(aux);
+	// 						}
+	// 					}
+	// 				}
+	// 				socket.emit('NotificationNewUser',lstNotificationUsers);
+	// 	       }
+	// 		})
+    //    }
+	// })
+
+
+
+	connection.query('SELECT * FROM users where USERSTATE=2',function(error, result){
 		if(error){
 		    throw error;
 		}else{
 		  	lstTempUsers=result;
-		  	connection.query('SELECT * FROM persontemp',function(error, result){
+		  	connection.query('SELECT * FROM person',function(error, result){
 				if(error){
 				    throw error;
 				}else{
@@ -1271,7 +1301,7 @@ function SendNotification(socket){
 							}
 						}
 					}
-					socket.emit('NotificationNewUser',lstNotificationUsers);
+					socket.emit('NotificationNewUserV2',lstNotificationUsers);
 		       }
 			})
        }
@@ -1467,6 +1497,22 @@ function SaveNewUser(socket){
 	 	});
 		SendNotification(socket);
 	});
+
+
+
+	socket.on('SaveNewUserV2',function(data){
+	// console.log(data.person.PERSONCI+" "+data.person.PERSONNAME+" "+data.person.PERSONLASTNAME+" "+
+																	//   data.person.PERSONPHONE+" "+data.person.PERSONADDRESS+" "+data.person.PERSONROLE)
+	// console.log(data.user.USEREMAIL+" "+data.user.USERPASSWORD+" "+data.user.USERPROFILE+" "+data.user.PERSONID);
+	connection.query('UPDATE users set USERSTATE=2 WHERE PERSONID='+data,function(err, rows, fields) {
+		if(err){
+			console.log("Error "+ err.message);
+		}else{
+			console.log("Usuario actualizado correctamente");
+		}
+	});
+	});
+	
 }
 
 function UpdateUser(socket){

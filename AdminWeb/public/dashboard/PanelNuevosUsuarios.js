@@ -15,7 +15,7 @@ $(document).ready(function(){
 function SaveNewUser(i){
 	bootbox.confirm("¿Esta seguro de guardar el usuario "+lstObjNewUsers[i].user.USEREMAIL+"?", function(result) {
 	   if(result){
-		   	socket.emit('SaveNewUser', lstObjNewUsers[i]);
+		   	socket.emit('SaveNewUserV2', lstObjNewUsers[i]);
 			$.notific8('Usuario guardado correctamente');
 	   }
 	});
@@ -23,7 +23,7 @@ function SaveNewUser(i){
 }
 
 function FillTable(){
-	socket.on('NotificationNewUser', function(data){
+	socket.on('NotificationNewUserV2', function(data){
 		$("#NewUsersTable > tbody").html("");
 		for (var i = 0; i < data.length; i++) {
 				$('#NewUsersTable').append("<tbody><tr><td>"+data[i].person.PERSONCI+"</td><td>"+data[i].person.PERSONNAME+' '+data[i].person.PERSONLASTNAME+"</td><td>"+data[i].person.PERSONADDRESS+"</td><td>"+data[i].person.PERSONPHONE+"</td><td>"+data[i].person.PERSONROLE+"</td><td>"+data[i].user.USEREMAIL+"</td><td>"+data[i].user.USERPROFILE+

@@ -9,7 +9,7 @@ $(document).ready(function(){
 	
 })
 
-socket.on('NotificationNewUser', function(data){
+socket.on('NotificationNewUserV2', function(data){
 	lstNewUsers=[];
 	lstNewUsers=data;
 	notifNewUser=data.length;

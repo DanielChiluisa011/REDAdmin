@@ -16,14 +16,12 @@ function FillTable(){
 			PersonAux=data1;
 			for (var j = 0; j < PersonAux.length; j++) {
 				for (var i = 0; i < UsersAux.length; i++) {
-					// console.log(UsersAux[i].PERSONID+"    "+PersonAux[j].PERSONID)
 					if(UsersAux[i].PERSONID==PersonAux[j].PERSONID){
 						var objUser={
 							user: UsersAux[i],
 							person: PersonAux[j]
 						}
-						console.log(objUser.user)
-						console.log(objUser.person)
+						
 						lstUsers.push(objUser);
 					}	
 				}

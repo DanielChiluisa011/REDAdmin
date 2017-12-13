@@ -13,6 +13,7 @@ socket.on('NotificationNewUser', function(data){
 	lstNewUsers=[];
 	lstNewUsers=data;
 	notifNewUser=data.length;
+	console.log("notificación de nuevo usuario");
 	// totalNotifications=notifNewUser+notifAlert;
 	sumNotifications();
 	$('#NewUserNotifi').html(" "+data.length);

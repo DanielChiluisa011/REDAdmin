@@ -169,11 +169,13 @@ $(document).ready(function(){
 			var DetalleCantidad="";
 			for (var j = 0; j < lstJourney[i].length; j++) {
 				TotalQuantity+=lstJourney[i][j].order.OrderQuantity;
+				DetalleFechas+=lstJourney[i][j].order.OrderDate+'<br>';
 				DetalleCantidad+=lstJourney[i][j].order.OrderQuantity+'<br>';
 				D+=lstJourney[i][j].importer.DistributorName+'<br>';
 			}
 			OrdersTable.append("<tbody> <tr><td onclick='showData1("+i+","+TotalQuantity+")'>"+lstJourney[i][0].order.OrderDeadLine+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+
-			DetalleCantidad+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+D+"</td></tr><tbody>"); 
+			DetalleCantidad+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+
+			DetalleFechas+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+D+"</td></tr><tbody>"); 
 		}
 		
    	})
@@ -469,7 +471,7 @@ $('#btnSaveOrder').click(function(){
 				}
 				
 				socket.emit('NewOrder',objOrder);
-				
+
 				$.notific8('El pedido ha sido guardado correctamente', {
 			      life: 3000,
 			      heading: 'INFORMACION',

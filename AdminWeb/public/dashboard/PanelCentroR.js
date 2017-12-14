@@ -77,15 +77,15 @@ function geocodeAddress(geocoder, resultsMap) {
 		
         var address = document.getElementById('txtNewRCDirection').value;
         geocoder.geocode({'address': address}, function(results, status) {
-            alert(status);
+            
           if (status === 'OK') {
-			  
+			alert(results[0].geometry.location.lat()+" "+results[0].geometry.location.lng());
             resultsMap.setCenter(results[0].geometry.location.lat(),results[0].geometry.location.lng());
             var marker = new google.maps.Marker({
               map: resultsMap,
-				animation: google.maps.Animation.BOUNCE,
-				icon: '../iconos/recycle.png',
-              position: {lat:results[0].geometry.location.lat(),lng:results[0].geometry.location.lng()},
+                icon: '../iconos/recycle.png',
+                title: 'Centro de Reciclaje',
+                lat:results[0].geometry.location.lat(),lng:results[0].geometry.location.lng(),
 				draggable: true,
             });
             marcador=marker;

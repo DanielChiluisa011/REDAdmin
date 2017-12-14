@@ -89,7 +89,7 @@ function geocodeAddress(geocoder, resultsMap) {
 				draggable: true,
             });
             //marcador.setMap(null);
-            marcador.setMap(null);
+            //marcador.setMap(null);
             marcador=marker;
             mapa.addMarker(marcador);
             marcador.setMap(mapa);

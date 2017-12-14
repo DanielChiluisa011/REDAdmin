@@ -167,6 +167,7 @@ $(document).ready(function(){
 			var TotalQuantity=0;
 			var D='';
 			var DetalleCantidad="";
+			var DetalleFechas="";
 			for (var j = 0; j < lstJourney[i].length; j++) {
 				TotalQuantity+=lstJourney[i][j].order.OrderQuantity;
 				DetalleFechas+=lstJourney[i][j].order.OrderDate+'<br>';

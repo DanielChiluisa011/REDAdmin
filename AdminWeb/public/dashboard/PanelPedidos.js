@@ -170,13 +170,11 @@ $(document).ready(function(){
 			var DetalleFechas="";
 			for (var j = 0; j < lstJourney[i].length; j++) {
 				TotalQuantity+=lstJourney[i][j].order.OrderQuantity;
-				DetalleFechas+=lstJourney[i][j].order.OrderDate+'<br>';
 				DetalleCantidad+=lstJourney[i][j].order.OrderQuantity+'<br>';
 				D+=lstJourney[i][j].importer.DistributorName+'<br>';
 			}
 			console.log(DetalleFechas);
-			OrdersTable.append("<tbody> <tr><td onclick='showData1("+i+","+TotalQuantity+")'>"+lstJourney[i][0].order.OrderDeadLine+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+
-			DetalleFechas+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+
+			OrdersTable.append("<tbody> <tr><td onclick='showData1("+i+","+TotalQuantity+")'>"+lstJourney[i][0].order.OrderDate+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+
 			DetalleCantidad+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+D+"</td></tr><tbody>"); 
 		}
 		

@@ -79,7 +79,7 @@ function geocodeAddress(geocoder, resultsMap) {
         geocoder.geocode({'address': address}, function(results, status) {
             
           if (status === 'OK') {
-			alert(results[0].geometry.location.lat()+" "+results[0].geometry.location.lng());
+			//alert(results[0].geometry.location.lat()+" "+results[0].geometry.location.lng());
             resultsMap.setCenter(results[0].geometry.location.lat(),results[0].geometry.location.lng());
             //var marker = new google.maps.Marker({
             //  map: resultsMap,

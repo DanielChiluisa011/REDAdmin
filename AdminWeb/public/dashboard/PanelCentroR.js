@@ -85,12 +85,12 @@ function geocodeAddress(geocoder, resultsMap) {
             //  map: resultsMap,
             var marker=resultsMap.addMarker({
                 icon: '../iconos/recycle.png',
-                title: 'Centro de Reciclaje',
+                title: 'Centro de Reciclajes',
                 lat:results[0].geometry.location.lat(),lng:results[0].geometry.location.lng(),
 				draggable: true,
             });
            
-            
+            marcador.setMap(null);
             marcador=marker;
             
             //marcador.setPosition(results[0].geometry.location.lat(),results[0].geometry.location.lng());

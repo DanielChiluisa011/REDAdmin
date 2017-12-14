@@ -91,7 +91,7 @@ function geocodeAddress(geocoder, resultsMap) {
             //marcador.setMap(null);
             //marcador.setMap(null);
             
-            mapa.addMarker(marker);
+            resultsMap.addMarker(marker);
             //marcador.setMap(null);
             marcador=marker;
 

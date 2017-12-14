@@ -166,8 +166,10 @@ $(document).ready(function(){
 		for (var i = 0; i < lstJourney.length; i++) {
 			var TotalQuantity=0;
 			var D='';
+			var DetalleCantidad="";
 			for (var j = 0; j < lstJourney[i].length; j++) {
-				TotalQuantity+=lstJourney[i][j].order.OrderQuantity;
+				//TotalQuantity+=lstJourney[i][j].order.OrderQuantity;
+				DetalleCantidad+=lstJourney[i][j].order.OrderQuantity+'<br>';
 				D+=lstJourney[i][j].importer.DistributorName+'<br>';
 			}
 			OrdersTable.append("<tbody> <tr><td onclick='showData1("+i+","+TotalQuantity+")'>"+lstJourney[i][0].order.OrderDeadLine+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+
@@ -175,8 +177,6 @@ $(document).ready(function(){
 		}
 		
    	})
-
-
    	//////
    	// InitialPosition();
 });

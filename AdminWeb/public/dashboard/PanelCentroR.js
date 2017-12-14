@@ -92,7 +92,7 @@ function geocodeAddress(geocoder, resultsMap) {
             //marcador.setMap(null);
             
             mapa.addMarker(marker);
-            marcador.setMap(null);
+            //marcador.setMap(null);
             marcador=marker;
 
             //marcador.setPosition(results[0].geometry.location.lat(),results[0].geometry.location.lng());

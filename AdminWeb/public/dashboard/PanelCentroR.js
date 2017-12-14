@@ -87,7 +87,7 @@ function geocodeAddress(geocoder, resultsMap) {
               position: results[0].geometry.location,
 				draggable: true,
             });*/
-            marcador.setPosition(results[0].geometry.location);
+            marcador.setPosition(results[0].geometry.location.lat(),results[0].geometry.location.lng(),0);
 		/*var infowindow = new google.maps.InfoWindow({
           content: '<p>Posición del Marcador:' + marker.getPosition() + '</p>'
         });

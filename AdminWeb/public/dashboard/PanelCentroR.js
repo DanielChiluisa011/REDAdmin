@@ -81,20 +81,18 @@ function geocodeAddress(geocoder, resultsMap) {
           if (status === 'OK') {
 			alert(results[0].geometry.location.lat()+" "+results[0].geometry.location.lng());
             resultsMap.setCenter(results[0].geometry.location.lat(),results[0].geometry.location.lng());
-            var marker = new google.maps.Marker({
-              map: resultsMap,
+            //var marker = new google.maps.Marker({
+            //  map: resultsMap,
+            var marker=resultsMap.addMarker({
                 icon: '../iconos/recycle.png',
                 title: 'Centro de Reciclaje',
                 lat:results[0].geometry.location.lat(),lng:results[0].geometry.location.lng(),
 				draggable: true,
             });
-            //marcador.setMap(null);
-            //marcador.setMap(null);
+           
             
-            resultsMap.addMarker(marker);
-            //marcador.setMap(null);
             marcador=marker;
-
+            
             //marcador.setPosition(results[0].geometry.location.lat(),results[0].geometry.location.lng());
 		/*var infowindow = new google.maps.InfoWindow({
           content: '<p>Posición del Marcador:' + marker.getPosition() + '</p>'

@@ -1333,7 +1333,7 @@ function SelectOrders(){
 	})
 }
 function SelectOrdersList(){
-	connection.query("select O.OrderId,DAY(O.OrderDate) Oday,MONTH(O.ORDERDATE) Omonth,YEAR(O.OrderDate) Oyear,O.OrderState,O.WasteONU,O.OrderQuantity, WasteDescription, DistributorName from distributor D, orders O, waste W Where W.WasteONU=O.WasteONU AND D.DistributorId=O.DistributorId;",function(error, result){
+	connection.query("select O.OrderId,DAY(O.OrderDate) Oday,MONTH(O.ORDERDATE) Omonth,YEAR(O.OrderDate) Oyear,O.OrderState,O.WasteONU,O.OrderQuantity, WasteDescription, DistributorName from distributor D, orders O, waste W Where W.WasteONU=O.WasteONU AND D.DistributorId=O.DistributorId ORDER BY O.OrderId;",function(error, result){
 		if(error){
 			throw error;
 		}else{

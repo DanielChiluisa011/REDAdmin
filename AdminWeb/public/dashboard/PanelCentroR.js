@@ -81,14 +81,15 @@ function geocodeAddress(geocoder, resultsMap) {
           if (status === 'OK') {
 			  
             resultsMap.setCenter(results[0].geometry.location.lat(),results[0].geometry.location.lng());
-            /*var marker = new google.maps.Marker({
+            var marker = new google.maps.Marker({
               map: resultsMap,
 				animation: google.maps.Animation.BOUNCE,
 				icon: iconoMarc,
               position: results[0].geometry.location,
 				draggable: true,
-            });*/
-            marcador.setPosition(results[0].geometry.location.lat(),results[0].geometry.location.lng());
+            });
+            marcador=marker;
+            //marcador.setPosition(results[0].geometry.location.lat(),results[0].geometry.location.lng());
 		/*var infowindow = new google.maps.InfoWindow({
           content: '<p>Posición del Marcador:' + marker.getPosition() + '</p>'
         });

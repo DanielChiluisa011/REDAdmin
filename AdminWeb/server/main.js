@@ -845,7 +845,7 @@ io.on('connection', function(socket){
 		})
 	});
 	socket.on('NewOrder',function(data){
-		connection.query('INSERT INTO orders VALUES (?,?,?,?,?,?,?,?,?)',[,data.date,data.quantity,data.importer.DistributorId,data.waste.WasteONU,"Pendiente","General",null,null],function(err, rows, fields) {
+		connection.query('INSERT INTO orders VALUES (?,?,?,?,?,?,?,?,?)',[,data.importer.DistributorId,data.waste.WasteONU,data.date,data.quantity,"Pendiente","General",null,null],function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{

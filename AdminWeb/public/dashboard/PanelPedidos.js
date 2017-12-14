@@ -467,7 +467,9 @@ $('#btnSaveOrder').click(function(){
 					quantity: $('#txtNewOrderQuantity').val(),
 					date: dateAux[2]+'-'+dateAux[1]+'-'+dateAux[0]
 				}
-
+				
+				socket.emit('NewOrder',objOrder);
+				
 				$.notific8('El pedido ha sido guardado correctamente', {
 			      life: 3000,
 			      heading: 'INFORMACION',
@@ -477,7 +479,7 @@ $('#btnSaveOrder').click(function(){
 			      verticalEdge: 'rigth',
 			      zindex: 1500
 			    });
-				socket.emit('NewOrder',objOrder);
+				
 				location.reload();	
 	   		}
 	   }

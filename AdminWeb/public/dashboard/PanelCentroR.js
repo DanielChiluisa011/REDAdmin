@@ -90,7 +90,7 @@ function geocodeAddress(geocoder, resultsMap) {
             });
             marcador.setMap(null);
             marcador=marker;
-            mapa.addMarker(marcador);
+            marcador.setMap(mapa);
             
             //marcador.setPosition(results[0].geometry.location.lat(),results[0].geometry.location.lng());
 		/*var infowindow = new google.maps.InfoWindow({

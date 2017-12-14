@@ -88,7 +88,10 @@ function geocodeAddress(geocoder, resultsMap) {
                 lat:results[0].geometry.location.lat(),lng:results[0].geometry.location.lng(),
 				draggable: true,
             });
+            marcador.setMap(null);
             marcador=marker;
+            mapa.addMarker(marcador);
+            
             //marcador.setPosition(results[0].geometry.location.lat(),results[0].geometry.location.lng());
 		/*var infowindow = new google.maps.InfoWindow({
           content: '<p>Posición del Marcador:' + marker.getPosition() + '</p>'

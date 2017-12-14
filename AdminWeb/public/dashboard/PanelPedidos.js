@@ -176,8 +176,8 @@ $(document).ready(function(){
 			}
 			console.log(DetalleFechas);
 			OrdersTable.append("<tbody> <tr><td onclick='showData1("+i+","+TotalQuantity+")'>"+lstJourney[i][0].order.OrderDeadLine+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+
-			DetalleCantidad+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+
-			DetalleFechas+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+D+"</td></tr><tbody>"); 
+			DetalleFechas+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+
+			DetalleCantidad+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+D+"</td></tr><tbody>"); 
 		}
 		
    	})

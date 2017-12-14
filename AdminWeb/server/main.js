@@ -1323,7 +1323,7 @@ function SendNotificationAlert(socket){
 }
 
 function SelectOrders(){
-	connection.query("SELECT OrderId,OrderDate,OrderQuantity,DistributorId,WasteONU,OrderState,OrderType,DATE_FORMAT(OrderDeadLine ,'%Y-%m-%d') AS OrderDeadLine  FROM orders WHERE OrderState like 'Pendiente' ORDER BY OrderDeadLine ASC",function(error, result){
+	connection.query("SELECT OrderId,DATE_FORMAT(OrderDate, '%Y-%m-%d'),OrderQuantity,DistributorId,WasteONU,OrderState,OrderType,DATE_FORMAT(OrderDeadLine ,'%Y-%m-%d') AS OrderDeadLine  FROM orders WHERE OrderState like 'Pendiente' ORDER BY OrderDeadLine ASC",function(error, result){
 		if(error){
 		    throw error;
 		}else{

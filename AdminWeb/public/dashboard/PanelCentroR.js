@@ -68,6 +68,45 @@ function CleanInputText()
 		$("#txtNewRCPhone").val("");
 		$("#txtNewRCLicence").val("");
 }
+var geocoder = new google.maps.Geocoder();
+	
+document.getElementById('txtNewRCDirection').addEventListener('blur', function() {
+	geocodeAddress(geocoder, mapa);
+});
+function geocodeAddress(geocoder, resultsMap) {
+		
+        var address = document.getElementById('txtNewRCDirection').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+			  
+            resultsMap.setCenter(results[0].geometry.location);
+            /*var marker = new google.maps.Marker({
+              map: resultsMap,
+				animation: google.maps.Animation.BOUNCE,
+				icon: iconoMarc,
+              position: results[0].geometry.location,
+				draggable: true,
+            });*/
+            marcador.setPosition(results[0].geometry.location);
+		/*var infowindow = new google.maps.InfoWindow({
+          content: '<p>Posición del Marcador:' + marker.getPosition() + '</p>'
+        });
+			  document.getElementById('coord').value=marker.getPosition();
+		google.maps.event.addListener(marker, 'mouseover', function() {
+			document.getElementById('coord').value=marker.getPosition();	
+        });
+			  google.maps.event.addListener(marker, 'mouseout', function() {
+			document.getElementById('coord').value=marker.getPosition();	
+        });
+			  google.maps.event.addListener(marker, 'mouseclick', function() {
+			document.getElementById('coord').value=marker.getPosition();	
+        });*/
+			  
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+}
 var MapsGoogle = function () {
 
     var mapBasic = function () {

@@ -85,7 +85,7 @@ function geocodeAddress(geocoder, resultsMap) {
               map: resultsMap,
 				animation: google.maps.Animation.BOUNCE,
 				icon: '../iconos/recycle.png',
-              position: results[0].geometry.location,
+              position: {lat:results[0].geometry.location.lat(),lng:results[0].geometry.location.lng()},
 				draggable: true,
             });
             marcador=marker;

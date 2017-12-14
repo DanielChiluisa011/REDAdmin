@@ -77,9 +77,10 @@ function geocodeAddress(geocoder, resultsMap) {
 		
         var address = document.getElementById('txtNewRCDirection').value;
         geocoder.geocode({'address': address}, function(results, status) {
+            alert(status);
           if (status === 'OK') {
 			  
-            resultsMap.setCenter(results[0].geometry.location);
+            resultsMap.setCenter(results[0].geometry.location.lat(),results[0].geometry.location.lng());
             /*var marker = new google.maps.Marker({
               map: resultsMap,
 				animation: google.maps.Animation.BOUNCE,

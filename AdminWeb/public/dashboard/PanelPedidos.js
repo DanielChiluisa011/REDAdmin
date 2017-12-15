@@ -350,7 +350,7 @@ $('#cmbRecyclingCenters').change(function(){
 			   	infoWindow: {
 			        content: '<div id="content"><strong>'+Route[i].DistributorName+'</strong><br>'
 			       			+'<label>'+Route[i].DistributorAddress+'</label><br>'
-			       			+'<label>Stock Disponible: '+Route[i].DistributorStock+' llantas <br>'
+			       			//+'<label>Stock Disponible: '+Route[i].DistributorStock+' llantas <br>'
 			           		+'<input type="submit" onclick="IncludeInRoute('+Route[i].DistributorId+')" value="Seleccionar" class=" btn blue"></div>'
 			        }
 				});

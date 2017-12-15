@@ -394,7 +394,7 @@ function LocateDistributors(j){
 			    	infoWindow: {
 		                content: '<div id="content"><strong>'+lstDistributors[i].DistributorName+'</strong><br>'
 		                			+'<label>'+lstDistributors[i].DistributorAddress+'</label><br>'
-		                			+'<label>Stock Disponible: '+lstDistributors[i].DistributorStock+' llantas <br>'
+		                		//	+'<label>Stock Disponible: '+lstDistributors[i].DistributorStock+' llantas <br>'
 		                		+'<input type="submit" onclick="IncludeInRoute('+lstDistributors[i].DistributorId+')" value="Seleccionar "class=" btn blue"> </div>'
 		            }
 				});

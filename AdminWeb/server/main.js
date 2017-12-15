@@ -492,6 +492,7 @@ io.on('connection', function(socket){
 												console.log("------------------------------");
 												actualizarCaso1(result1[0],result2[i], data.journeyid);
 												//i -= 1;
+												break;
 											}
 											else{
 												console.log("CASO 2");

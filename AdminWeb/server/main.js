@@ -93,7 +93,7 @@ f								// console.log(maxID[0].max);
 										// console.log(data.distributor.Role);
 										if(data.role==='Generador')
 										{
-											connection.query("INSERT INTO distributor(PERSONID,DISTRIBUTORNAME,DISTRIBUTORADDRESS,DISTRIBUTORRUC,DISTRIBUTORPHONE,DISTRIBUTORENVIRONMENTALLICENSE,DISTRIBUTORCOORDINATES,IMPORTERID) VALUES (?,?,?,?,?,?,GeomFromText('POINT ("+data.distributor.CoordX+" "+data.distributor.CoordY+")'),?)",[maxID[0].max,data.distributor.name,data.distributor.address,data.distributor.ruc,data.distributor.phone,data.distributor.licence,data.distributor.importer],function(err, rows, fields) {
+											connection.query("INSERT INTO distributor(PERSONID,DISTRIBUTORNAME,DISTRIBUTORADDRESS,DISTRIBUTORRUC,DISTRIBUTORPHONE,DISTRIBUTORENVIRONMENTALLICENSE,DISTRIBUTORCOORDINATES,IMPORTERID,PROVINCEID,DISTRIBUTORCITY) VALUES (?,?,?,?,?,?,GeomFromText('POINT ("+data.distributor.CoordX+" "+data.distributor.CoordY+")'),?,?,?)",[maxID[0].max,data.distributor.name,data.distributor.address,data.distributor.ruc,data.distributor.phone,data.distributor.licence,data.distributor.importer,data.distributor.provinceid,data.distributor.distributorcity],function(err, rows, fields) {
 												if(err){
 													console.log("Error distribuidor"+ err.message);
 												}else{
@@ -182,7 +182,7 @@ f								// console.log(maxID[0].max);
 					throw error;
 				}else{
 					socket.emit('ResponseProvinces',result);
-					console.log(result[0]);
+					//console.log(result[0]);
 				}
 			});
 	  });

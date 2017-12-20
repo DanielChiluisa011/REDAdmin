@@ -177,7 +177,7 @@ f								// console.log(maxID[0].max);
       		io.emit('TruckLocation',data);
       });
 	  socket.on('RequestProvinces',function(){
-			connection.query("SELECT * FROM PROVINCES",function(error,result){
+			connection.query("SELECT * FROM PROVINCE",function(error,result){
 				if(error){
 					throw error;
 				}else{

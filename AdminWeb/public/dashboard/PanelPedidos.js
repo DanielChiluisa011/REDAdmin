@@ -24,6 +24,7 @@ var lstJourney=[];
 var ImporterSelectd;
 var lstIdOrders=[];
 var TQ;
+var fechaactual;
 var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 var lon=6;
 var code="h";
@@ -92,8 +93,8 @@ $(document).ready(function(){
 	   	}
 	   	$("#cmbRecyclingCenters").prop('selectedIndex', 0);
    	})
-
-   	
+	fechaactual=new Date();
+   	$('#txtUpdateOrderDate').html()=fechaactual;
    	socket.on('selectWaste', function(data){
 		lstWaste=[];
        	lstWaste=data;

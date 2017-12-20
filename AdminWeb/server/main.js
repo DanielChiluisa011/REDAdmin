@@ -53,10 +53,8 @@ io.on('connection', function(socket){
 		         	console.log("Error "+ err.message);
 				}else{
 						connection.query("select max(PERSONID) max from persontemp",function(err,maxID) {
-					       	if(err){
-					        	console.log("Error "+ err.message);
-					        }else{
-								// console.log(maxID[0].max);
+					       	if(err){bvcxz>bfvcxz>
+f								// console.log(maxID[0].max);
 					        	connection.query("INSERT INTO usertemp (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID) VALUES (?,?,?,?)",[data.email,data.pass,'cliente',maxID[0].max],function(err, rows, fields) {
 									if(err){
 										console.log("Error "+ err.message);
@@ -178,7 +176,15 @@ io.on('connection', function(socket){
       		console.log(data);
       		io.emit('TruckLocation',data);
       });
-
+	  socket.on('RequestProvinces',function(){
+			connection.query("SELECT * FROM PROVINCES",function(error,result){
+				if(error){
+					throw error;
+				}else{
+					socket.emit('ResponseProvinces',result);
+				}
+			});
+	  });
       socket.on('RequestDistributorData',function(data){
       		connection.query("SELECT DistributorId, DistributorName, DistributorRuc,DistributorAddress,DistributorPhone,DistributorStock,DistributorEnvironmentalLicense,PersonId,ImporterId,X(GeometryFromText(AsText(DistributorCoordinates)))CoordX, Y(GeometryFromText(AsText(DistributorCoordinates))) CoordY FROM distributor where PERSONID='"+data+"'",function(error, result){
 				if(error){
@@ -491,8 +497,7 @@ io.on('connection', function(socket){
 												console.log("CASO 1");
 												console.log("------------------------------");
 												actualizarCaso1(result1[0],result2[i], data.journeyid);
-												//i -= 1;
-												break;
+												i -= 1;
 											}
 											else{
 												console.log("CASO 2");

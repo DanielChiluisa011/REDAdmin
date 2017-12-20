@@ -94,7 +94,7 @@ $(document).ready(function(){
 	   	$("#cmbRecyclingCenters").prop('selectedIndex', 0);
    	})
 	fechaactual=new Date();
-   	$('#txtUpdateOrderDate').html()=fechaactual;
+   	$('#txtUpdateOrderDate').html(fechaactual);
    	socket.on('selectWaste', function(data){
 		lstWaste=[];
        	lstWaste=data;

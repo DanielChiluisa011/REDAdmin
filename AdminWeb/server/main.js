@@ -182,6 +182,7 @@ f								// console.log(maxID[0].max);
 					throw error;
 				}else{
 					socket.emit('ResponseProvinces',result);
+					console.log(result[0]);
 				}
 			});
 	  });

@@ -94,7 +94,9 @@ $(document).ready(function(){
 	   	$("#cmbRecyclingCenters").prop('selectedIndex', 0);
    	})
 	fechaactual=new Date();
-   	$('#txtUpdateOrderDate').html(fechaactual);
+	$('#txtUpdateOrderDate').disabled();
+	alert(fechaactual.getFullYear()+"-"+(fechaactual.getMonth() +1)+"-"+fechaactual.getDate());
+   	$('#txtUpdateOrderDate').html(fechaactual.getFullYear()+"-"+(fechaactual.getMonth() +1)+"-"+fechaactual.getDate());
    	socket.on('selectWaste', function(data){
 		lstWaste=[];
        	lstWaste=data;

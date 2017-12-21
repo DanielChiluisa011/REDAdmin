@@ -96,7 +96,7 @@ $(document).ready(function(){
 	fechaactual=new Date();
 	//$('#txtUpdateOrderDate').disabled();
 	alert(fechaactual.getFullYear()+"-"+(fechaactual.getMonth() +1)+"-"+fechaactual.getDate());
-   	$('#txtUpdateOrderDate').val(fechaactual.getFullYear()+"-"+(fechaactual.getMonth() +1)+"-"+fechaactual.getDate());
+   	$('#txtNewOrderDate').val(fechaactual.getFullYear()+"-"+(fechaactual.getMonth() +1)+"-"+fechaactual.getDate());
    	socket.on('selectWaste', function(data){
 		lstWaste=[];
        	lstWaste=data;

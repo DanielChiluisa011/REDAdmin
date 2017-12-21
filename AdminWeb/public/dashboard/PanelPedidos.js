@@ -470,7 +470,8 @@ $('#btnSaveOrder').click(function(){
 					importer: importerAux,
 					waste: wasteAux,
 					quantity: $('#txtNewOrderQuantity').val(),
-					date: dateAux[2]+'-'+dateAux[1]+'-'+dateAux[0]
+					date: fechaactual.getFullYear()+"-"+(fechaactual.getMonth() +1)+"-"+fechaactual.getDate()
+					//date: dateAux[2]+'-'+dateAux[1]+'-'+dateAux[0]
 				}
 				
 				socket.emit('NewOrder',objOrder);

@@ -231,6 +231,34 @@ $("#btnInsertImporter").click(function(){
 
 	
 });
+
+function updateImporterQuota(){
+	bootbox.confirm("¿Desea guardar el pedido ingresado? ", function(result) {
+	   if(result){
+	   		if($('#txtUpdateQuantity').val()==''){
+	   			$.notific8('Por favor, ingrese todos los datos solicitados', {
+			      life: 3500,
+			      heading: 'Error!',
+			      theme: 'ruby',
+			      sticky: false,
+			      horizontalEdge: 'top',
+			      verticalEdge: 'rigth',
+			      zindex: 1500
+			    });
+	   		}else{
+	   			var quota={
+					importer:lstImporters[$('#cmbUpdateImporters option:selected').index()-1],
+					quantity: $('#txtUpdateQuantity').val(),
+					monthQuantity: $('#txtUpdateQuantity').val()/12
+				}
+				socket.emit('UpdateQuota',quota);
+				location.reload();
+	   		}
+	   }
+	});
+}
+
+
 function rand_code(){
     code = "";
     for (x=0; x < lon; x++)

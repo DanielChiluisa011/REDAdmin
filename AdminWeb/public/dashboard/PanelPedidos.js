@@ -701,7 +701,7 @@ function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-function updateImporterQuota(){
+/*function updateImporterQuota(){
 	bootbox.confirm("¿Desea guardar el pedido ingresado? ", function(result) {
 	   if(result){
 	   		if($('#txtUpdateQuantity').val()==''){
@@ -725,7 +725,7 @@ function updateImporterQuota(){
 	   		}
 	   }
 	});
-}
+}*/
 
 function isNumberKey(evt)
 {

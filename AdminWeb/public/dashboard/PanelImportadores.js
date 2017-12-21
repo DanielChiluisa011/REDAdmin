@@ -3,6 +3,7 @@ var lstImporters= [];
 var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 var lon=6;
 var code="h";
+var fechaactual;
 $(document).ready(function(){
     // alert(rand_code());
     rand_code();
@@ -58,6 +59,34 @@ $(document).ready(function(){
                                     "</tbody>");
         }
     });
+
+    socket.on('SelectImporters', function(data){
+		lstImporters=[];
+       	lstImporters=data;
+       	// $('#cmbNewOrderImporters').empty();
+       	$('#cmbUpdateImporters').empty();
+       	$('#cmbUpdateImporters').append('<option selected>Seleccione un importador</option>');
+       	for (var i = 0; i < lstImporters.length; i++) {
+	   		// $('#cmbNewOrderImporters').append(new Option(lstImporters[i].ImporterName, 'names', true, true));
+	   		$('#cmbUpdateImporters').append(new Option(lstImporters[i].IMPORTERNAME, 'names'));
+	   	}
+       })
+    fechaactual=new Date();
+	//$('#txtUpdateOrderDate').disabled();
+	//alert(fechaactual.getFullYear()+"-"+(fechaactual.getMonth() +1)+"-"+fechaactual.getDate());
+       $('#txtUpdateOrderDate').val(fechaactual.getFullYear()+"-"+(fechaactual.getMonth() +1)+"-"+fechaactual.getDate());
+       socket.on('selectWaste', function(data){
+		lstWaste=[];
+       	lstWaste=data;
+       	$('#cmbNewOrderWaste').empty();
+       	$('#cmbUpdateWaste').empty();
+       	$('#cmbNewOrderWaste').append('<option selected>Seleccione un tipo de desecho</option>');
+       	$('#cmbUpdateWaste').append('<option selected>Seleccione un tipo de desecho</option>');
+       	for (var i = 0; i < lstWaste.length; i++) {
+	   		//$('#cmbNewOrderWaste').append(new Option(lstWaste[i].WASTEDESCRIPTION, 'names',false,false));
+	   		$('#cmbUpdateWaste').append(new Option(lstWaste[i].WASTEDESCRIPTION, 'names',false,false));
+	   	}
+   	})
 });
 
 $("#btnCancelImporter").click(function(){

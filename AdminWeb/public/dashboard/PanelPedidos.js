@@ -64,7 +64,7 @@ $(document).ready(function(){
         }
 	})
 	//socket.emit('ReqSelectImporters','');
-	socket.on('SelectImporters', function(data){
+	/*socket.on('SelectImporters', function(data){
 		lstImporters=[];
        	lstImporters=data;
        	// $('#cmbNewOrderImporters').empty();
@@ -74,7 +74,7 @@ $(document).ready(function(){
 	   		// $('#cmbNewOrderImporters').append(new Option(lstImporters[i].ImporterName, 'names', true, true));
 	   		$('#cmbUpdateImporters').append(new Option(lstImporters[i].IMPORTERNAME, 'names'));
 	   	}
-   	})
+   	})*/
    	socket.on('SelectRecyclingCenters', function(data){
 		lstRecyclingCenters=[];
        	lstRecyclingCenters=data;
@@ -95,7 +95,7 @@ $(document).ready(function(){
    	})
 	fechaactual=new Date();
 	//$('#txtUpdateOrderDate').disabled();
-	alert(fechaactual.getFullYear()+"-"+(fechaactual.getMonth() +1)+"-"+fechaactual.getDate());
+	//alert(fechaactual.getFullYear()+"-"+(fechaactual.getMonth() +1)+"-"+fechaactual.getDate());
    	$('#txtNewOrderDate').val(fechaactual.getFullYear()+"-"+(fechaactual.getMonth() +1)+"-"+fechaactual.getDate());
    	socket.on('selectWaste', function(data){
 		lstWaste=[];

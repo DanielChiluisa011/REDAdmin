@@ -610,7 +610,7 @@ f								// console.log(maxID[0].max);
 			}
 			})
 	  });
-
+	
 	  socket.on('AppInsertOrder',function(order){
 		connection.query('INSERT INTO orders (DISTRIBUTORID,WASTEONU,ORDERDATE,ORDERQUANTITY,ORDERSTATE,ORDERTYPE) VALUES (?,?,?,?,?,?)',[order.distributor,order.waste,order.date,order.quantity,"Pendiente",order.type],function(err, rows, fields) {
 	 		if(err){
@@ -1315,6 +1315,21 @@ function SendNotification(socket){
 			})
        }
 	})
+
+
+
+
+	connection.query("SELECT * FROM orders where ORDERSTATE='Pendiente'",function(error, result){
+		if(error){
+		    throw error;
+		}else{
+		  	lstOrders=result;
+					socket.emit('NotificationPendingOrders',lstOrders);
+		       
+			
+       }
+	})
+	
 }
 
 function SendNotificationAlert(socket){

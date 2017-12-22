@@ -1,6 +1,6 @@
 var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
 var lstNewUsers=[];
-
+var lstPendingOrders=[];
 var notifNewUser=0;
 var notifAlert=0;
 var totalNotifications=0;
@@ -19,6 +19,18 @@ socket.on('NotificationNewUserV2', function(data){
 	$('#NewUserNotifi').html(" "+data.length);
 	if(lstNewUsers.length!=0){
 		$.notific8('Nueva solicitud de usuario recibida');
+	}
+})
+socket.on('NotificationPendingOrders', function(data){
+	lstPendingOrders=[];
+	lstPendingOrders=data;
+	//notifNewUser=data.length;
+	console.log("notificación de nuevo usuario");
+	// totalNotifications=notifNewUser+notifAlert;
+	//sumNotifications();
+	$('#NewUserNotifi').html(" "+data.length);
+	if(lstPendingOrders.length!=0){
+		$.notific8('Tiene Órdenes pendientes de asignar');
 	}
 })
 

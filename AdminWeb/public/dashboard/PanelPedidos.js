@@ -50,16 +50,33 @@ $(document).ready(function(){
         $("#OrdersHistoryTable > tbody").html("");
         for (var i = 0; i < lstDistributorsList.length; i++) {
             $('#OrdersHistoryTable').append("<tbody>"+
-                                        "<tr>"+
-											"<td>"+lstDistributorsList[i].OrderId+"</td>"+
+										"<tr>");
+											if(lstDistributorsList[i].OrderState=='Pendiente')
+											{
+												$('#OrdersHistoryTable').append("<b> ");
+											}else{
+												if(lstDistributorsList[i].OrderState=='Completado')
+												{
+													$('#OrdersHistoryTable').append("<strike>");
+												}
+											}
+											$('#OrdersHistoryTable').append("<td>"+lstDistributorsList[i].OrderId+"</td>"+
 											"<td>"+lstDistributorsList[i].DistributorName+"</td>"+
                                             "<td>"+lstDistributorsList[i].OrderQuantity+"</td>"+
                                             "<td>"+lstDistributorsList[i].WasteDescription+"</td>"+
                                             "<td>"+lstDistributorsList[i].OrderState+"</td>"+
-                                            "<td>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+"</td>"+
+                                            "<td>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+"</td>");
+                                            if(lstDistributorsList[i].OrderState=='Pendiente')
+											{
+												$('#OrdersHistoryTable').append("</b>");
+											}else{
+												if(lstDistributorsList[i].OrderState=='Completado')
+												{
+													$('#OrdersHistoryTable').append("</strike>");
+												}
+											}
                                             
-                                            
-                                        "</tr>"+
+                                    $('#OrdersHistoryTable').append("</tr>"+
                                     "</tbody>");
         }
 	})

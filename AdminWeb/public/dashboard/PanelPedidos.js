@@ -53,28 +53,25 @@ $(document).ready(function(){
 										"<tr>");
 											if(lstDistributorsList[i].OrderState=='Pendiente')
 											{
-												$('#OrdersHistoryTable').append("<strong>");
+												$('#OrdersHistoryTable').append("<td> <b>"+lstDistributorsList[i].OrderId+"</b></td>"+
+												"<td>"+lstDistributorsList[i].DistributorName+"</td>"+
+												"<td>"+lstDistributorsList[i].OrderQuantity+"</td>"+
+												"<td>"+lstDistributorsList[i].WasteDescription+"</td>"+
+												"<td>"+lstDistributorsList[i].OrderState+"</td>"+
+												"<td>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+"</td>");
 											}else{
 												if(lstDistributorsList[i].OrderState=='Completado')
 												{
-													$('#OrdersHistoryTable').append("<del>");
+													$('#OrdersHistoryTable').append("<td> <del>"+lstDistributorsList[i].OrderId+"</del></td>"+
+													"<td>"+lstDistributorsList[i].DistributorName+"</td>"+
+													"<td>"+lstDistributorsList[i].OrderQuantity+"</td>"+
+													"<td>"+lstDistributorsList[i].WasteDescription+"</td>"+
+													"<td>"+lstDistributorsList[i].OrderState+"</td>"+
+													"<td>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+"</td>");
 												}
 											}
-											$('#OrdersHistoryTable').append("<td>"+lstDistributorsList[i].OrderId+"</td>"+
-											"<td>"+lstDistributorsList[i].DistributorName+"</td>"+
-                                            "<td>"+lstDistributorsList[i].OrderQuantity+"</td>"+
-                                            "<td>"+lstDistributorsList[i].WasteDescription+"</td>"+
-                                            "<td>"+lstDistributorsList[i].OrderState+"</td>"+
-                                            "<td>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+"</td>");
-                                            if(lstDistributorsList[i].OrderState=='Pendiente')
-											{
-												$('#OrdersHistoryTable').append("</strong>");
-											}else{
-												if(lstDistributorsList[i].OrderState=='Completado')
-												{
-													$('#OrdersHistoryTable').append("</del>");
-												}
-											}
+											
+                                            
                                             
                                     $('#OrdersHistoryTable').append("</tr>"+
                                     "</tbody>");

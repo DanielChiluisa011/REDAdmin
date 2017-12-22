@@ -53,16 +53,23 @@ $(document).ready(function(){
 										"<tr>");
 											if(lstDistributorsList[i].OrderState=='Pendiente')
 											{
-												$('#OrdersHistoryTable').append("<td> <b>"+lstDistributorsList[i].OrderId+"</b></td>"+
-												"<td>"+lstDistributorsList[i].DistributorName+"</td>"+
-												"<td>"+lstDistributorsList[i].OrderQuantity+"</td>"+
-												"<td>"+lstDistributorsList[i].WasteDescription+"</td>"+
-												"<td>"+lstDistributorsList[i].OrderState+"</td>"+
-												"<td>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+"</td>");
+												$('#OrdersHistoryTable').append("<td style='color:red'> <b>"+lstDistributorsList[i].OrderId+"</b></td>"+
+												"<td <b>>"+lstDistributorsList[i].DistributorName+"</b></td>"+
+												"<td <b>>"+lstDistributorsList[i].OrderQuantity+"</b></td>"+
+												"<td <b>>"+lstDistributorsList[i].WasteDescription+"</b></td>"+
+												"<td <b>>"+lstDistributorsList[i].OrderState+"</b></td>"+
+												"<td <b>>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+"</b></td>");
 											}else{
 												if(lstDistributorsList[i].OrderState=='Completado')
 												{
 													$('#OrdersHistoryTable').append("<td> <del>"+lstDistributorsList[i].OrderId+"</del></td>"+
+													"<td><del>"+lstDistributorsList[i].DistributorName+"</del></td>"+
+													"<td><del>"+lstDistributorsList[i].OrderQuantity+"</del></td>"+
+													"<td><del>"+lstDistributorsList[i].WasteDescription+"</del></td>"+
+													"<td><del>"+lstDistributorsList[i].OrderState+"</del></td>"+
+													"<td><del>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+"</del></td>");
+												}else{
+													$('#OrdersHistoryTable').append("<td>"+lstDistributorsList[i].OrderId+"</td>"+
 													"<td>"+lstDistributorsList[i].DistributorName+"</td>"+
 													"<td>"+lstDistributorsList[i].OrderQuantity+"</td>"+
 													"<td>"+lstDistributorsList[i].WasteDescription+"</td>"+

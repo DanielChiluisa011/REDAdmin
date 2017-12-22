@@ -54,11 +54,11 @@ $(document).ready(function(){
 											if(lstDistributorsList[i].OrderState=='Pendiente')
 											{
 												$('#OrdersHistoryTable').append("<td style='color:red'> <b>"+lstDistributorsList[i].OrderId+"</b></td>"+
-												"<td <b>>"+lstDistributorsList[i].DistributorName+"</b></td>"+
-												"<td <b>>"+lstDistributorsList[i].OrderQuantity+"</b></td>"+
-												"<td <b>>"+lstDistributorsList[i].WasteDescription+"</b></td>"+
-												"<td <b>>"+lstDistributorsList[i].OrderState+"</b></td>"+
-												"<td <b>>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+"</b></td>");
+												"<td><b>"+lstDistributorsList[i].DistributorName+"</b></td>"+
+												"<td><b>"+lstDistributorsList[i].OrderQuantity+"</b></td>"+
+												"<td><b>"+lstDistributorsList[i].WasteDescription+"</b></td>"+
+												"<td><b>"+lstDistributorsList[i].OrderState+"</b></td>"+
+												"<td><b>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+"</b></td>");
 											}else{
 												if(lstDistributorsList[i].OrderState=='Completado')
 												{

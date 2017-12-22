@@ -53,11 +53,11 @@ $(document).ready(function(){
 										"<tr>");
 											if(lstDistributorsList[i].OrderState=='Pendiente')
 											{
-												$('#OrdersHistoryTable').append("<b> ");
+												$('#OrdersHistoryTable').append("<strong>");
 											}else{
 												if(lstDistributorsList[i].OrderState=='Completado')
 												{
-													$('#OrdersHistoryTable').append("<strike>");
+													$('#OrdersHistoryTable').append("<del>");
 												}
 											}
 											$('#OrdersHistoryTable').append("<td>"+lstDistributorsList[i].OrderId+"</td>"+
@@ -68,11 +68,11 @@ $(document).ready(function(){
                                             "<td>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+"</td>");
                                             if(lstDistributorsList[i].OrderState=='Pendiente')
 											{
-												$('#OrdersHistoryTable').append("</b>");
+												$('#OrdersHistoryTable').append("</strong>");
 											}else{
 												if(lstDistributorsList[i].OrderState=='Completado')
 												{
-													$('#OrdersHistoryTable').append("</strike>");
+													$('#OrdersHistoryTable').append("</del>");
 												}
 											}
                                             

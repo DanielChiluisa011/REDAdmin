@@ -493,7 +493,7 @@ $('#btnSaveOrder').click(function(){
 					waste: wasteAux,
 					quantity: $('#txtNewOrderQuantity').val(),
 					date: fechaactual.getFullYear()+"-"+(fechaactual.getMonth() +1)+"-"+fechaactual.getDate(),
-					time: this.fechaactual.getHours()+":"+this.fechaactual.getMinutes()
+					time: fechaactual.getHours()+":"+fechaactual.getMinutes()
 					//date: dateAux[2]+'-'+dateAux[1]+'-'+dateAux[0]
 				}
 				alert(objOrder.time);

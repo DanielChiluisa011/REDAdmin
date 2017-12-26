@@ -29,6 +29,7 @@ var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 var lon=6;
 var code="h";
 var lstDistributorsList=[];
+var lstProvinces=[];
 $(document).ready(function(){
 	$('#txtNewJourneyDate').val(CurrentDate());
 	//socket managment
@@ -44,6 +45,16 @@ $(document).ready(function(){
 	   	}
 
 	   })
+	socket.on('ResponseProvinces',((data)=>{
+		lstProvinces=[];
+		lstProvinces=data;
+		$('#cmbNewImpProvinces').empty();
+       	$('#cmbNewImpProvinces').append('<option selected>Seleccione un Distribuidor</option>');
+       	for (var i = 0; i < lstDistributors.length; i++) {
+	   		$('#cmbNewImpProvinces').append(new Option(lstProvinces[i].PROVINCENAME, 'names'));
+	   	}
+      //alert(this.lstProvinces.length);
+    }))
 	socket.on('SelectOrdersList', function(data){
 		lstDistributorsList=[];
 		lstDistributorsList=data;
@@ -55,12 +66,12 @@ $(document).ready(function(){
 			if(lstDistributorsList[i].Ominute<=9)
 				minute="0"+lstDistributorsList[i].Ominute;
 			else
-				if(lstDistributorsList[i].Ominute!=null)
+				if(lstDistributorsList[i].Ominute)
 					minute=lstDistributorsList[i].Ominute;
 			if(lstDistributorsList[i].Ohour<=9)
 				hour="0"+lstDistributorsList[i].Ohour;
 			else
-				if(lstDistributorsList[i].Ohour!=null)
+				if(lstDistributorsList[i].Ohour)
 					hour=lstDistributorsList[i].Ohour;
 			
 			if(lstDistributorsList[i].OrderState=='Pendiente')

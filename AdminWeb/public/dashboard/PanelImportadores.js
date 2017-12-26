@@ -35,7 +35,7 @@ $(document).ready(function(){
         lstImporters.length=0;
         // rand_code();
         
-        for (var i = 0; i < lstDistributors.length; i++) {
+        for (var i = 0; i < lstProvinces.length; i++) {
 	   		$('#cmbNewImpProvince').append(new Option(lstProvinces[i].PROVINCENAME, 'names'));
            }
         // alert(rand_code(chars, lon));

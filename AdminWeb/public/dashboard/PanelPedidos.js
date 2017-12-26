@@ -60,11 +60,19 @@ $(document).ready(function(){
 				hour="0"+lstDistributorsList[i].Ohour;
 			else
 				hour=lstDistributorsList[i].Ohour;
-			if((hoy.getTime()-1)<lstDistributorsList[i].Fecha)
-				color="style='color:red'";
-			else
-				color="style='color:green'"									
-            $('#OrdersHistoryTable').append("<tbody>"+
+			if(i==0)
+			{
+					alert(hoy.getTime()-1);
+					alert(hoy.getTime()-1-lstDistributorsList[i].Fecha);
+			}
+			if(lstDistributorsList[i].OrderState=='Pendiente')
+			{
+				if((hoy.getTime()-1)<lstDistributorsList[i].Fecha)
+					color="style='color:red'";
+				else
+					color="style='color:green'"									
+			}
+			$('#OrdersHistoryTable').append("<tbody>"+
 										"<tr>");
 											if(lstDistributorsList[i].OrderState=='Pendiente')
 											{

@@ -60,7 +60,7 @@ $(document).ready(function(){
 				hour="0"+lstDistributorsList[i].Ohour;
 			else
 				hour=lstDistributorsList[i].Ohour;
-			if((hoy.getTime()-1)>=lstDistributorsList[i].Fecha)
+			if((hoy.getTime()-1)<lstDistributorsList[i].Fecha)
 				color="style='color:red'";
 			else
 				color="style='color:green'"									

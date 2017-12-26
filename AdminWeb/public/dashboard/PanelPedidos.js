@@ -59,7 +59,8 @@ $(document).ready(function(){
 												"<td style='color:red'><b>"+lstDistributorsList[i].OrderQuantity+"</b></td>"+
 												"<td style='color:red'><b>"+lstDistributorsList[i].WasteDescription+"</b></td>"+
 												"<td style='color:red'><b>"+lstDistributorsList[i].OrderState+"</b></td>"+
-												"<td style='color:red'><b>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+"</b></td>");
+												"<td style='color:red'><b>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+" "+lstDistributorsList[i].Ohour+":"+
+												lstDistributorsList[i].Ominute+"</b></td>");
 											}else{
 												if(lstDistributorsList[i].OrderState=='Completado')
 												{

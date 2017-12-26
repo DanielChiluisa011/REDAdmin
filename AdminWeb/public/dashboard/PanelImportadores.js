@@ -23,7 +23,11 @@ $(document).ready(function(){
         }
     });
     
-    socket.on('ResponseProvinces',function(data){
+    
+    socket.on("ResponseImporter",function(Importador){
+        lstImporters.length=0;
+        // rand_code();
+        socket.on('ResponseProvinces',function(data){
 		lstProvinces=[];
         lstProvinces=data;
         alert(lstProvinces.length);
@@ -33,10 +37,6 @@ $(document).ready(function(){
 	   		$('#cmbNewImpProvince').append(new Option(lstProvinces[i].PROVINCENAME, 'names'));
            }
     });
-    socket.on("ResponseImporter",function(Importador){
-        lstImporters.length=0;
-        // rand_code();
-        
         // alert(rand_code(chars, lon));
         lstImporters=Importador;
         $("#txtNewImpName").val("");

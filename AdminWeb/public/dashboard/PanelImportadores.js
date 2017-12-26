@@ -174,6 +174,9 @@ $("#btnInsertImporter").click(function(){
         personPhone: $("#txtNewImpPersonPhone").val(),
         personAddress: $("#txtNewImpPersonAddress").val(),
         personEmail: $("#txtNewImpEmail").val(),
+        provincia: lstProvinces[$('#cmbNewImpProvince option:selected')],
+        canton: $("#txtNewImpCanton").val(),
+        parroquia: $("#txtNewImpParroquia").val()
         // importercode: $("#txtNewImpCode").val()
     } 
     // alert(newImporter.code);

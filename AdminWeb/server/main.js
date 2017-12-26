@@ -1028,7 +1028,7 @@ f								// console.log(maxID[0].max);
 								socket.emit("ResponseImporter",false);
 							}else{
 								console.log(importer.code);
-								connection.query('INSERT INTO importer (IMPORTERNAME,IMPORTERADDRESS,IMPORTERPHONE,IMPORTERRUC,IMPORTERQUOTA,IMPORTERWASTEGENERATORNUMBER,IMPORTERCODE,USEREMAIL) VALUES (?,?,?,?,?,?,?,?)',
+								connection.query('INSERT INTO importer (IMPORTERNAME,IMPORTERADDRESS,IMPORTERPHONE,IMPORTERRUC,IMPORTERQUOTA,IMPORTERWASTEGENERATORNUMBER,IMPORTERCODE,USEREMAIL,IMPORTERIMPORTERPROVINCIA,IMPORTERCANTON,IMPORTERPARROQUIA) VALUES (?,?,?,?,?,?,?,?,?,?,?)',
 											[importer.name,
 											importer.address,
 											importer.phone,
@@ -1036,7 +1036,11 @@ f								// console.log(maxID[0].max);
 											importer.quota,
 											importer.licence,
 											importer.code,
-											importer.personEmail],function(err, rows, fields) {
+											importer.personEmail,
+											importer.provincia,
+											importer.canton,
+											importer.parroquia,
+											],function(err, rows, fields) {
 									if(err){
 										console.log("Error "+ err.message);
 										socket.emit("ResponseImporter",false);

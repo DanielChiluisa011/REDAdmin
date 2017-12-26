@@ -160,7 +160,7 @@ function ShowImporterInformation(i){
 //  });
 $("#btnInsertImporter").click(function(){
     // console.log($("#btnInsertImporter").html());
-    alert(lstProvinces[$('#cmbNewImpProvince option:selected')]+$('#codigoTelef option:selected'));
+    alert(lstProvinces[$('#cmbNewImpProvince option:selected').index()-1].PROVINCENAME+" | "+$('#codigoTelef option:selected').val());
     var newImporter = {
         name: $("#txtNewImpName").val(),
         address: $("#txtNewImpAddress").val(),

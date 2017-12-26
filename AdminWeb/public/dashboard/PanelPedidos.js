@@ -60,21 +60,21 @@ $(document).ready(function(){
 				hour="0"+lstDistributorsList[i].Ohour;
 			else
 				hour=lstDistributorsList[i].Ohour;
-			if((hoy.getTime()-1)==lstDistributorsList[i].Fecha)
+			if((hoy.getTime()-1)>=lstDistributorsList[i].Fecha)
 				color="style='color:red'";
 			else
-				color="style='color:blue'"									
+				color="style='color:green'"									
             $('#OrdersHistoryTable').append("<tbody>"+
 										"<tr>");
 											if(lstDistributorsList[i].OrderState=='Pendiente')
 											{
 												
-												$('#OrdersHistoryTable').append("<td style='color:red'> "+lstDistributorsList[i].OrderId+"</td>"+
+												$('#OrdersHistoryTable').append("<td "+color+"> "+lstDistributorsList[i].OrderId+"</td>"+
 												"<td "+color+">"+lstDistributorsList[i].DistributorName+"</td>"+
-												"<td style='color:red'>"+lstDistributorsList[i].OrderQuantity+"</td>"+
-												"<td style='color:red'>"+lstDistributorsList[i].WasteDescription+"></td>"+
-												"<td style='color:red'>"+lstDistributorsList[i].OrderState+"</td>"+
-												"<td style='color:red'>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+" "+hour+":"+minute+"</td>");
+												"<td "+color+">"+lstDistributorsList[i].OrderQuantity+"</td>"+
+												"<td "+color+">"+lstDistributorsList[i].WasteDescription+"></td>"+
+												"<td "+color+">"+lstDistributorsList[i].OrderState+"</td>"+
+												"<td "+color+">"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+" "+hour+":"+minute+"</td>");
 												
 											}else{
 												if(lstDistributorsList[i].OrderState=='Completado')

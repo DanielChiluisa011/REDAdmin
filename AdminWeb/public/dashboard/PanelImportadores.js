@@ -160,6 +160,7 @@ function ShowImporterInformation(i){
 //  });
 $("#btnInsertImporter").click(function(){
     // console.log($("#btnInsertImporter").html());
+    alert(lstProvinces[$('#cmbNewImpProvince option:selected')]+$('#codigoTelef option:selected'));
     var newImporter = {
         name: $("#txtNewImpName").val(),
         address: $("#txtNewImpAddress").val(),
@@ -185,7 +186,7 @@ $("#btnInsertImporter").click(function(){
     if($("#btnInsertImporter").html()=="Guardar"){
         bootbox.confirm("¿Desea guardar la información ingresada? ", function(result) {
             if(result){
-                socket.emit("RequestInsertNewImporter",newImporter);
+                //socket.emit("RequestInsertNewImporter",newImporter);
                 socket.on("ResponseImporter",function(flag){
                     if(flag){
                         $.notific8('Datos guardados correctamente', {

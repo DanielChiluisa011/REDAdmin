@@ -496,8 +496,8 @@ $('#btnSaveOrder').click(function(){
 					time: fechaactual.getHours()+":"+fechaactual.getMinutes()
 					//date: dateAux[2]+'-'+dateAux[1]+'-'+dateAux[0]
 				}
-				alert(objOrder.time);
-				//socket.emit('NewOrder',objOrder);
+				//alert(objOrder.time);
+				socket.emit('NewOrder',objOrder);
 
 				$.notific8('El pedido ha sido guardado correctamente', {
 			      life: 3000,

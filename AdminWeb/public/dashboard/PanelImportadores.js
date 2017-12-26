@@ -150,7 +150,11 @@ function ShowImporterInformation(i){
 		$("#txtNewImpPersonAddress").val(lstImporters[i].PERSONADDRESS);
 		$("#txtNewImpEmail").val(lstImporters[i].USEREMAIL);
         $("#txtNewImpEmail").attr("disabled",true);
-        
+        $("#codigoTelef").hide();
+        $("#cmbNewImpProvincia").val(lstImporters[i].IMPORTERPROVINCIA);
+        $("#txtNewImpParroquia").val(lstImporters[i].IMPORTERPARROQUIA);
+        $("#txtNewImpCanton").val(lstImporters[i].IMPORTERCANTON);
+
         $("#txtNewImpCode").val(lstImporters[i].IMPORTERCODE);
         
 }
@@ -164,7 +168,7 @@ $("#btnInsertImporter").click(function(){
     var newImporter = {
         name: $("#txtNewImpName").val(),
         address: $("#txtNewImpAddress").val(),
-        phone: $("#txtNewImpPhone").val(),
+        phone: $('#codigoTelef option:selected').val()+$("#txtNewImpPhone").val(),
         rucImporter: $("#txtNewImpRuc").val(),
         quota: $("#txtNewImpQuota").val(),
         licence: $("#txtNewImpLicence").val(),
@@ -172,7 +176,7 @@ $("#btnInsertImporter").click(function(){
         personName: $("#txtNewImpPersonName").val(),
         personLastName: $("#txtNewImpPersonLastName").val(),
         personCi: $("#txtNewImpPersonId").val(),
-        personPhone: $('#codigoTelef option:selected').val()+$("#txtNewImpPersonPhone").val(),
+        personPhone: $("#txtNewImpPersonPhone").val(),
         personAddress: $("#txtNewImpPersonAddress").val(),
         personEmail: $("#txtNewImpEmail").val(),
         provincia: lstProvinces[$('#cmbNewImpProvince option:selected').index()-1].PROVINCENAME,

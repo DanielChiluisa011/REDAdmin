@@ -63,11 +63,11 @@ $(document).ready(function(){
 			if(i==0)
 			{
 					alert(hoy.getTime()-1);
-					alert(hoy.getTime()-1-lstDistributorsList[i].Fecha);
+					alert(lstDistributorsList[i].Fecha.getTime());
 			}
 			if(lstDistributorsList[i].OrderState=='Pendiente')
 			{
-				if((hoy.getTime()-1)<lstDistributorsList[i].Fecha)
+				if((hoy.getTime())<lstDistributorsList[i].Fecha.getTime())
 					color="style='color:red'";
 				else
 					color="style='color:green'"									

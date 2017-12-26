@@ -47,6 +47,8 @@ $(document).ready(function(){
 	socket.on('SelectOrdersList', function(data){
 		lstDistributorsList=[];
 		lstDistributorsList=data;
+		hoy=new Date();
+		var color;
         $("#OrdersHistoryTable > tbody").html("");
         for (var i = 0; i < lstDistributorsList.length; i++) {
 			var minute, hour;
@@ -58,18 +60,21 @@ $(document).ready(function(){
 				hour="0"+lstDistributorsList[i].Ohour;
 			else
 				hour=lstDistributorsList[i].Ohour;
-												
+			if((hoy.format("YYYY-MM-DD")-1)==lstDistributorsList[i].Fecha)
+				color="style='color:red'";
+			else
+				color="style='color:blue'"									
             $('#OrdersHistoryTable').append("<tbody>"+
 										"<tr>");
 											if(lstDistributorsList[i].OrderState=='Pendiente')
 											{
 												
-												$('#OrdersHistoryTable').append("<td style='color:red'> <b>"+lstDistributorsList[i].OrderId+"</b></td>"+
-												"<td style='color:red'><b>"+lstDistributorsList[i].DistributorName+"</b></td>"+
-												"<td style='color:red'><b>"+lstDistributorsList[i].OrderQuantity+"</b></td>"+
-												"<td style='color:red'><b>"+lstDistributorsList[i].WasteDescription+"</b></td>"+
-												"<td style='color:red'><b>"+lstDistributorsList[i].OrderState+"</b></td>"+
-												"<td style='color:red'><b>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+" "+hour+":"+minute);
+												$('#OrdersHistoryTable').append("<td style='color:red'> "+lstDistributorsList[i].OrderId+"</td>"+
+												"<td "+color+">"+lstDistributorsList[i].DistributorName+"</td>"+
+												"<td style='color:red'>"+lstDistributorsList[i].OrderQuantity+"</td>"+
+												"<td style='color:red'>"+lstDistributorsList[i].WasteDescription+"></td>"+
+												"<td style='color:red'>"+lstDistributorsList[i].OrderState+"</td>"+
+												"<td style='color:red'>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+" "+hour+":"+minute+"</td>");
 												
 											}else{
 												if(lstDistributorsList[i].OrderState=='Completado')

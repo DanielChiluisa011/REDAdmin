@@ -26,10 +26,10 @@ $(document).ready(function(){
     socket.on('ResponseProvinces',((data)=>{
 		lstProvinces=[];
 		lstProvinces=data;
-		$('#cmbNewImpProvinces').empty();
-       	$('#cmbNewImpProvinces').append('<option selected>Seleccione un Distribuidor</option>');
+		$('#cmbNewImpProvince').empty();
+       	$('#cmbNewImpProvince').append('<option selected>Seleccione una Provincia</option>');
        	for (var i = 0; i < lstDistributors.length; i++) {
-	   		$('#cmbNewImpProvinces').append(new Option(lstProvinces[i].PROVINCENAME, 'names'));
+	   		$('#cmbNewImpProvince').append(new Option(lstProvinces[i].PROVINCENAME, 'names'));
            }
     }))
     socket.on("ResponseImporter",function(Importador){

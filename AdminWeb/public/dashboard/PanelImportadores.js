@@ -22,7 +22,7 @@ $(document).ready(function(){
             });
         }
     });
-    
+    socket.emit('RequestProvinces','');
     socket.on('ResponseProvinces',function(data){
 		lstProvinces=[];
         lstProvinces=data;

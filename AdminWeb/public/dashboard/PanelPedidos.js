@@ -49,6 +49,16 @@ $(document).ready(function(){
 		lstDistributorsList=data;
         $("#OrdersHistoryTable > tbody").html("");
         for (var i = 0; i < lstDistributorsList.length; i++) {
+			var minute, hour;
+			if(lstDistributorsList[i].Ominute<=9)
+				minute="0"+lstDistributorsList[i].Ominute;
+			else
+				minute=lstDistributorsList[i].Ominute;
+			if(lstDistributorsList[i].Ohour<=9)
+				hour="0"+lstDistributorsList[i].Ohour;
+			else
+				hour=lstDistributorsList[i].Ohour;
+												
             $('#OrdersHistoryTable').append("<tbody>"+
 										"<tr>");
 											if(lstDistributorsList[i].OrderState=='Pendiente')
@@ -59,11 +69,8 @@ $(document).ready(function(){
 												"<td style='color:red'><b>"+lstDistributorsList[i].OrderQuantity+"</b></td>"+
 												"<td style='color:red'><b>"+lstDistributorsList[i].WasteDescription+"</b></td>"+
 												"<td style='color:red'><b>"+lstDistributorsList[i].OrderState+"</b></td>"+
-												"<td style='color:red'><b>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+" "+lstDistributorsList[i].Ohour+":");
-												if(lstDistributorsList[i].Ominute<=9)
-													$('#OrdersHistoryTable').append("0"+lstDistributorsList[i].Ominute+"</b></td>");
-												else
-													$('#OrdersHistoryTable').append(lstDistributorsList[i].Ominute+"</b></td>");
+												"<td style='color:red'><b>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+" "+hour+":"+minute);
+												
 											}else{
 												if(lstDistributorsList[i].OrderState=='Completado')
 												{

@@ -23,20 +23,21 @@ $(document).ready(function(){
         }
     });
     
-    
-    socket.on("ResponseImporter",function(Importador){
-        lstImporters.length=0;
-        // rand_code();
-        socket.on('ResponseProvinces',function(data){
+    socket.on('ResponseProvinces',function(data){
 		lstProvinces=[];
         lstProvinces=data;
         alert(lstProvinces.length);
 		$('#cmbNewImpProvince').empty();
        	$('#cmbNewImpProvince').append('<option selected>Seleccione una Provincia</option>');
-       	for (var i = 0; i < lstDistributors.length; i++) {
+       	
+    });
+    socket.on("ResponseImporter",function(Importador){
+        lstImporters.length=0;
+        // rand_code();
+        
+        for (var i = 0; i < lstDistributors.length; i++) {
 	   		$('#cmbNewImpProvince').append(new Option(lstProvinces[i].PROVINCENAME, 'names'));
            }
-    });
         // alert(rand_code(chars, lon));
         lstImporters=Importador;
         $("#txtNewImpName").val("");

@@ -45,16 +45,9 @@ $(document).ready(function(){
 	   	}
 
 	   })
-	socket.on('ResponseProvinces',((data)=>{
-		lstProvinces=[];
-		lstProvinces=data;
-		$('#cmbNewImpProvinces').empty();
-       	$('#cmbNewImpProvinces').append('<option selected>Seleccione un Distribuidor</option>');
-       	for (var i = 0; i < lstDistributors.length; i++) {
-	   		$('#cmbNewImpProvinces').append(new Option(lstProvinces[i].PROVINCENAME, 'names'));
-	   	}
+	
       //alert(this.lstProvinces.length);
-    }))
+    
 	socket.on('SelectOrdersList', function(data){
 		lstDistributorsList=[];
 		lstDistributorsList=data;

@@ -4,6 +4,7 @@ var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 var lon=6;
 var code="h";
 var fechaactual;
+var lstProvinces=[];
 $(document).ready(function(){
     // alert(rand_code());
     rand_code();
@@ -21,6 +22,16 @@ $(document).ready(function(){
             });
         }
     });
+
+    socket.on('ResponseProvinces',((data)=>{
+		lstProvinces=[];
+		lstProvinces=data;
+		$('#cmbNewImpProvinces').empty();
+       	$('#cmbNewImpProvinces').append('<option selected>Seleccione un Distribuidor</option>');
+       	for (var i = 0; i < lstDistributors.length; i++) {
+	   		$('#cmbNewImpProvinces').append(new Option(lstProvinces[i].PROVINCENAME, 'names'));
+           }
+    }))
     socket.on("ResponseImporter",function(Importador){
         lstImporters.length=0;
         // rand_code();

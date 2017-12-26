@@ -1066,7 +1066,7 @@ f								// console.log(maxID[0].max);
 						"I.IMPORTERRUC,"+
 						"I.IMPORTERQUOTA,"+
 						"I.IMPORTERQUOTAACCOMPLISHED,"+
-						"I.IMPORTERWASTEGENERATORNUMBER,I.IMPORTERPROVINCIA,I.IMPORTERPARROQUIA,I.IMPORTERCANTON"+
+						"I.IMPORTERWASTEGENERATORNUMBER,I.IMPORTERPROVINCIA,I.IMPORTERPARROQUIA,I.IMPORTERCANTON,"+
 						"P.PERSONNAME,"+
 						"P.PERSONCIRUC,"+
 						"P.PERSONLASTNAME,"+
@@ -1078,6 +1078,7 @@ f								// console.log(maxID[0].max);
 						"WHERE I.USEREMAIL=u.USEREMAIL AND u.PERSONID=P.personid "+
 						"ORDER BY I.IMPORTERNAME ASC;",function(error, result){
 							if(error){
+								console.log(error);
 								socket.emit("ResponseImporterInfo",0);
 							}else{
 								var lstImporter=result;

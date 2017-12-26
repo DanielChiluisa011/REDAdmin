@@ -22,10 +22,11 @@ $(document).ready(function(){
             });
         }
     });
-
+    
     socket.on('ResponseProvinces',((data)=>{
 		lstProvinces=[];
-		lstProvinces=data;
+        lstProvinces=data;
+        alert(lstProvinces.length);
 		$('#cmbNewImpProvince').empty();
        	$('#cmbNewImpProvince').append('<option selected>Seleccione una Provincia</option>');
        	for (var i = 0; i < lstDistributors.length; i++) {

@@ -186,6 +186,7 @@ $("#btnSaveRC").click(function(){
     } 
     console.log("NUEVO CR");
     console.log(newCR);
+    alert(newCR.phone+" "+newCR.personPhone);
     if($("#btnSaveRC").html()=="Guardar"){
         
         bootbox.confirm("¿Desea guardar la información ingresada? ", function(result) {

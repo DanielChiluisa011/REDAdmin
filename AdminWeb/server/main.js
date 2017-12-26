@@ -1355,7 +1355,7 @@ function SelectOrders(){
 	})
 }
 function SelectOrdersList(){
-	connection.query("select O.OrderDate as Fecha, O.OrderId,DAY(O.OrderDate) Oday,MONTH(O.ORDERDATE) Omonth,YEAR(O.OrderDate) Oyear,O.OrderState,O.WasteONU,O.OrderQuantity, WasteDescription, DistributorName, HOUR(ORDERTIME) Ohour, MINUTE(ORDERTIME) Ominute from distributor D, orders O, waste W Where W.WasteONU=O.WasteONU AND D.DistributorId=O.DistributorId ORDER BY O.OrderId;",function(error, result){
+	connection.query("select O.OrderDate as Fecha, O.OrderId,DAY(O.OrderDate) Oday,MONTH(O.ORDERDATE) Omonth,YEAR(O.OrderDate) Oyear,O.OrderState,O.WasteONU,O.OrderQuantity, WasteDescription, DistributorName, HOUR(ORDERTIME) Ohour, MINUTE(ORDERTIME) Ominute, DATE_SUB(CURDATE(), INTERVAL 1 DAY)-ORDERDATE as RestaFechas from distributor D, orders O, waste W Where W.WasteONU=O.WasteONU AND D.DistributorId=O.DistributorId ORDER BY O.OrderId;",function(error, result){
 		if(error){
 			throw error;
 		}else{

@@ -51,15 +51,17 @@ $(document).ready(function(){
 		var color;
         $("#OrdersHistoryTable > tbody").html("");
         for (var i = 0; i < lstDistributorsList.length; i++) {
-			var minute, hour;
+			var minute="", hour="";
 			if(lstDistributorsList[i].Ominute<=9)
 				minute="0"+lstDistributorsList[i].Ominute;
 			else
-				minute=lstDistributorsList[i].Ominute;
+				if(lstDistributorsList[i].Ominute!=null)
+					minute=lstDistributorsList[i].Ominute;
 			if(lstDistributorsList[i].Ohour<=9)
 				hour="0"+lstDistributorsList[i].Ohour;
 			else
-				hour=lstDistributorsList[i].Ohour;
+				if(lstDistributorsList[i].Ohour!=null)
+					hour=lstDistributorsList[i].Ohour;
 			if(i==0)
 			{
 					alert(hoy.getTime()-1);
@@ -67,7 +69,7 @@ $(document).ready(function(){
 			}
 			if(lstDistributorsList[i].OrderState=='Pendiente')
 			{
-				if((hoy.getTime())<lstDistributorsList[i].Fecha.getTime())
+				if(lstDistributorsList[i].RestaFechas>0)
 					color="style='color:red'";
 				else
 					color="style='color:green'"									

@@ -62,11 +62,7 @@ $(document).ready(function(){
 			else
 				if(lstDistributorsList[i].Ohour!=null)
 					hour=lstDistributorsList[i].Ohour;
-			if(i==0)
-			{
-					alert(hoy.getTime()-1);
-					alert(lstDistributorsList[i].Fecha.getTime());
-			}
+			
 			if(lstDistributorsList[i].OrderState=='Pendiente')
 			{
 				if(lstDistributorsList[i].RestaFechas>0)

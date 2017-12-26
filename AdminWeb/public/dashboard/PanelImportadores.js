@@ -29,15 +29,15 @@ $(document).ready(function(){
         alert(lstProvinces.length);
 		$('#cmbNewImpProvince').empty();
        	$('#cmbNewImpProvince').append('<option selected>Seleccione una Provincia</option>');
-       	
+       	for (var i = 0; i < lstProvinces.length; i++) {
+	   		$('#cmbNewImpProvince').append(new Option(lstProvinces[i].PROVINCENAME, 'names'));
+           }
     });
     socket.on("ResponseImporter",function(Importador){
         lstImporters.length=0;
         // rand_code();
         
-        for (var i = 0; i < lstProvinces.length; i++) {
-	   		$('#cmbNewImpProvince').append(new Option(lstProvinces[i].PROVINCENAME, 'names'));
-           }
+        
         // alert(rand_code(chars, lon));
         lstImporters=Importador;
         $("#txtNewImpName").val("");

@@ -173,11 +173,11 @@ $("#btnSaveRC").click(function(){
     var newCR = {
         name: $("#txtNewRCName").val(),
         address: $("#txtNewRCDirection").val(),
-        phone: $("#txtNewRCPhone").val(),
+        phone: $('#codigoTelefC option:selected').val()+$("#txtNewRCPhone").val(),
         personName: $("#txtNewRCPersonName").val(),
         personLastName: $("#txtNewRCPersonLastName").val(),
         personCi: $("#txtNewRCPersonCi").val(),
-        personPhone: $("#txtNewRCPersonPhone").val(),
+        personPhone: $('#codigoTelef option:selected').val()+$("#txtNewRCPersonPhone").val(),
         personAddress: $("#txtNewRCPersonDirection").val(),
         position:marcador.getPosition(),
         CoordX:marcador.position.lat(),

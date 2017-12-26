@@ -853,7 +853,7 @@ f								// console.log(maxID[0].max);
 	});
 	socket.on('NewOrder',function(data){
 		
-		connection.query('INSERT INTO orders VALUES (?,?,?,?,?,?,?,?,?)',[,data.importer.DistributorId,data.waste.WASTEONU,data.date,data.quantity,"Pendiente","General",null,null],function(err, rows, fields) {
+		connection.query('INSERT INTO orders VALUES (?,?,?,?,?,?,?,?,?,?)',[,data.importer.DistributorId,data.waste.WASTEONU,data.date,data.quantity,"Pendiente","General",null,null,data.time],function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{

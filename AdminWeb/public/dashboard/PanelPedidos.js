@@ -492,11 +492,12 @@ $('#btnSaveOrder').click(function(){
 					importer: importerAux,
 					waste: wasteAux,
 					quantity: $('#txtNewOrderQuantity').val(),
-					date: fechaactual.getFullYear()+"-"+(fechaactual.getMonth() +1)+"-"+fechaactual.getDate()
+					date: fechaactual.getFullYear()+"-"+(fechaactual.getMonth() +1)+"-"+fechaactual.getDate(),
+					time: this.fechaactual.getHours()+":"+this.fechaactual.getMinutes()
 					//date: dateAux[2]+'-'+dateAux[1]+'-'+dateAux[0]
 				}
-				
-				socket.emit('NewOrder',objOrder);
+				alert(objOrder.time);
+				//socket.emit('NewOrder',objOrder);
 
 				$.notific8('El pedido ha sido guardado correctamente', {
 			      life: 3000,

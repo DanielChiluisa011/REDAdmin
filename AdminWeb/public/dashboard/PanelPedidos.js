@@ -53,6 +53,7 @@ $(document).ready(function(){
 										"<tr>");
 											if(lstDistributorsList[i].OrderState=='Pendiente')
 											{
+												
 												$('#OrdersHistoryTable').append("<td style='color:red'> <b>"+lstDistributorsList[i].OrderId+"</b></td>"+
 												"<td style='color:red'><b>"+lstDistributorsList[i].DistributorName+"</b></td>"+
 												"<td style='color:red'><b>"+lstDistributorsList[i].OrderQuantity+"</b></td>"+

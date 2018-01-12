@@ -43,74 +43,95 @@ $(document).ready(function(){
        	for (var i = 0; i < lstDistributors.length; i++) {
 	   		$('#cmbNewOrderImporters').append(new Option(lstDistributors[i].DistributorName, 'names'));
 	   	}
-
+		   
 	   })
 	
       //alert(this.lstProvinces.length);
-    
+	
 	socket.on('SelectOrdersList', function(data){
 		lstDistributorsList=[];
 		lstDistributorsList=data;
 		hoy=new Date();
 		var color;
-        $("#OrdersHistoryTable > tbody").html("");
-        for (var i = 0; i < lstDistributorsList.length; i++) {
-			var minute="", hour="";
-			if(lstDistributorsList[i].Ominute<=9)
-				minute="0"+lstDistributorsList[i].Ominute;
-			else
-				if(lstDistributorsList[i].Ominute)
-					minute=lstDistributorsList[i].Ominute;
-			if(lstDistributorsList[i].Ohour<=9)
-				hour="0"+lstDistributorsList[i].Ohour;
-			else
-				if(lstDistributorsList[i].Ohour)
-					hour=lstDistributorsList[i].Ohour;
-			
-			if(lstDistributorsList[i].OrderState=='Pendiente')
-			{
-				if(lstDistributorsList[i].RestaFechas>0)
-					color="style='color:red'";
-				else
-					color="style='color:green'"									
+		$("#OrdersHistoryTable > tbody").html("");
+		$('#OrdersHistoryTable').append("<tbody>");
+			for (var i = 0; i < lstDistributorsList.length; i++) {
+				var minute="", hour="",day="", month="";
+				if(lstDistributorsList[i].Ominute==null || lstDistributorsList[i].Ohour==null){
+					minute="00";
+					hour="00";
+				}else{
+					if(lstDistributorsList[i].Ominute<=9)
+						minute="0"+lstDistributorsList[i].Ominute;
+					else
+						if(lstDistributorsList[i].Ominute)
+							minute=lstDistributorsList[i].Ominute;
+					if(lstDistributorsList[i].Ohour<=9)
+						hour="0"+lstDistributorsList[i].Ohour;
+					else
+						if(lstDistributorsList[i].Ohour)
+							hour=lstDistributorsList[i].Ohour;
+				}
+				/*if(lstDistributorsList[i].OrderState=='Pendiente')
+				{
+					if(lstDistributorsList[i].RestaFechas>0)
+						color="style='color:red'";
+					else
+						color="style='color:green'"									
+				}*/
+				if(lstDistributorsList[i].Oday<=9){
+					day="0"+lstDistributorsList[i].Oday;
+				}else{
+					day=lstDistributorsList[i].Oday;
+				}
+				if(lstDistributorsList[i].Omonth<=9){
+					month="0"+lstDistributorsList[i].Omonth;
+				}else{
+					month=lstDistributorsList[i].Omonth;
+				}
+				
+				if(lstDistributorsList[i].OrderState=='Pendiente')
+				{
+					if(lstDistributorsList[i].RestaFechas<2){
+						$('#OrdersHistoryTable').append("<tr><td><input type='button' style='border-radius:100%; border-style:none; background:red' disabled>&nbsp&nbsp&nbsp"+lstDistributorsList[i].OrderId+"</td>"+
+						"<td>"+lstDistributorsList[i].DistributorName+"</td>"+
+						"<td>"+lstDistributorsList[i].OrderQuantity+"</td>"+
+						"<td>"+lstDistributorsList[i].WasteDescription+"</td>"+
+						"<td>"+lstDistributorsList[i].OrderState+"</td>"+
+						"<td>"+day+'/'+month+'/'+lstDistributorsList[i].Oyear+" "+hour+":"+minute+"</td></tr>");
+					}else{
+						$('#OrdersHistoryTable').append("<tr><td><input type='button' style='border-radius:100%; border-style:none; background:red' disabled>&nbsp<b style='color:red'>!</b>&nbsp&nbsp&nbsp"+lstDistributorsList[i].OrderId+"</td>"+
+						"<td>"+lstDistributorsList[i].DistributorName+"</td>"+
+						"<td>"+lstDistributorsList[i].OrderQuantity+"</td>"+
+						"<td>"+lstDistributorsList[i].WasteDescription+"</td>"+
+						"<td>"+lstDistributorsList[i].OrderState+"</td>"+
+						"<td>"+day+'/'+month+'/'+lstDistributorsList[i].Oyear+" "+hour+":"+minute+"</td></tr>");
+					}
+				}else{
+					if(lstDistributorsList[i].OrderState=='Completado')
+						{
+							$('#OrdersHistoryTable').append("<tr><td><input type='button' style='border-radius:100%; border-style:none; background:green' disabled>&nbsp&nbsp&nbsp"+lstDistributorsList[i].OrderId+"</td>"+
+							"<td>"+lstDistributorsList[i].DistributorName+"</td>"+
+							"<td>"+lstDistributorsList[i].OrderQuantity+"</td>"+
+							"<td>"+lstDistributorsList[i].WasteDescription+"</td>"+
+							"<td>"+lstDistributorsList[i].OrderState+"</td>"+
+							"<td>"+day+'/'+month+'/'+lstDistributorsList[i].Oyear+"</td></tr>");
+					}else{
+							$('#OrdersHistoryTable').append("<tr><td><input type='button' style='border-radius:100%; border-style:none; background:yellow' disabled>&nbsp&nbsp&nbsp"+lstDistributorsList[i].OrderId+"</td>"+
+							"<td>"+lstDistributorsList[i].DistributorName+"</td>"+
+							"<td>"+lstDistributorsList[i].OrderQuantity+"</td>"+
+							"<td>"+lstDistributorsList[i].WasteDescription+"</td>"+
+							"<td>"+lstDistributorsList[i].OrderState+"</td>"+
+							"<td>"+day+'/'+month+'/'+lstDistributorsList[i].Oyear+"</td></tr>");
+							}
+				}                    
 			}
-			$('#OrdersHistoryTable').append("<tbody>"+
-										"<tr>");
-											if(lstDistributorsList[i].OrderState=='Pendiente')
-											{
-												
-												$('#OrdersHistoryTable').append("<td "+color+"> "+lstDistributorsList[i].OrderId+"</td>"+
-												"<td "+color+">"+lstDistributorsList[i].DistributorName+"</td>"+
-												"<td "+color+">"+lstDistributorsList[i].OrderQuantity+"</td>"+
-												"<td "+color+">"+lstDistributorsList[i].WasteDescription+"></td>"+
-												"<td "+color+">"+lstDistributorsList[i].OrderState+"</td>"+
-												"<td "+color+">"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+" "+hour+":"+minute+"</td>");
-												
-											}else{
-												if(lstDistributorsList[i].OrderState=='Completado')
-												{
-													$('#OrdersHistoryTable').append("<td> <del>"+lstDistributorsList[i].OrderId+"</del></td>"+
-													"<td><del>"+lstDistributorsList[i].DistributorName+"</del></td>"+
-													"<td><del>"+lstDistributorsList[i].OrderQuantity+"</del></td>"+
-													"<td><del>"+lstDistributorsList[i].WasteDescription+"</del></td>"+
-													"<td><del>"+lstDistributorsList[i].OrderState+"</del></td>"+
-													"<td><del>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+"</del></td>");
-												}else{
-													$('#OrdersHistoryTable').append("<td>"+lstDistributorsList[i].OrderId+"</td>"+
-													"<td>"+lstDistributorsList[i].DistributorName+"</td>"+
-													"<td>"+lstDistributorsList[i].OrderQuantity+"</td>"+
-													"<td>"+lstDistributorsList[i].WasteDescription+"</td>"+
-													"<td>"+lstDistributorsList[i].OrderState+"</td>"+
-													"<td>"+lstDistributorsList[i].Oday+'/'+lstDistributorsList[i].Omonth+'/'+lstDistributorsList[i].Oyear+"</td>");
-												}
-											}
-											
-                                            
-                                            
-                                    $('#OrdersHistoryTable').append("</tr>"+
-                                    "</tbody>");
-        }
+		$('#OrdersHistoryTable').append("</tbody>");
 	})
+
+	
+	
+	
 	//socket.emit('ReqSelectImporters','');
 	/*socket.on('SelectImporters', function(data){
 		lstImporters=[];
@@ -183,8 +204,13 @@ $(document).ready(function(){
 			// alert(data);
        		$('#txtNewOrderNumber').val(data);	
        	});
-	
-       	lstObjOrders=[];
+		lstObjOrders=[];
+		/*socket.emit("SelectDistributors","");
+		socket.on('SelectDistributors', function(data){
+			lstDistributors=[];
+			lstDistributors=data;
+			alert(lstDistributors.length);
+		});*/
        	$("#orderTable > tbody").html("");
        	for (var i = 0; i <lstOrders.length; i++) {
        		var objOrder = {
@@ -209,7 +235,10 @@ $(document).ready(function(){
        		// 					objOrder.waste.WasteDescription+"</td><td onclick='ShowData("+i+")'>"+objOrder.order.OrderDeadLine+"</td><td onclick='ShowData("+i+")'>"+objOrder.order.OrderQuantity+
        		// 					"</td><td onclick='ShowData("+i+")'>"+objOrder.importer.DistributorName+"</td></tr><tbody>"); 
        		lstObjOrders.push(objOrder);
-       	}
+		}
+		//alert("order="+lstObjOrders.length);
+		//alert("waste="+lstWaste.length);
+		//alert("distri="+lstDistributors.length);
        	// InitialPosition();
        	if(lstOrders.length!=0){
        		CreateJourney();	
@@ -225,14 +254,46 @@ $(document).ready(function(){
 				D+=lstJourney[i][j].importer.DistributorName+'<br>';
 			}
 			console.log(DetalleFechas);
-			OrdersTable.append("<tbody> <tr><td onclick='showData1("+i+","+TotalQuantity+")'>"+lstJourney[i][0].order.OrderDate+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+
+			OrdersTable.append("<tbody align='center'> <tr><td onclick='showData1("+i+","+TotalQuantity+")'>"+lstJourney[i][0].order.OrderDate+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+
 			DetalleCantidad+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+D+"</td></tr><tbody>"); 
 		}
 		
    	})
    	//////
-   	// InitialPosition();
+	   // InitialPosition();
+	 
 });
+var band1ordernotification5=0;
+var aux=0;
+setInterval("ordernotification5()",10000);
+
+function ordernotification5(){
+	//alert(aux);
+	
+	var band=false;
+	//alert(band1ordernotification5);
+	socket.emit("SelectCountOrders","");
+	socket.on('SelectCountOrders', function(data){
+		aux=data[0].cont;
+	}); 
+	//alert(aux);
+	//alert(band1ordernotification5);
+	if(band){
+		if(aux!=band1ordernotification5){
+			$.notific8('Nuevos Pedidos', {
+				life: 4000,
+				heading: 'INFORMACION',
+				theme: 'teal',
+				sticky: false,
+				horizontalEdge: 'top',
+				verticalEdge: 'rigth',
+				zindex: 1500
+			});
+		}
+	}else
+		band=true;
+	band1ordernotification5=aux;
+}
 
 var MapsGoogle = function () {
 

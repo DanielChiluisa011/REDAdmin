@@ -53,8 +53,7 @@ io.on('connection', function(socket){
 		         	console.log("Error "+ err.message);
 				}else{
 						connection.query("select max(PERSONID) max from persontemp",function(err,maxID) {
-					       	if(err){bvcxz>bfvcxz>
-f								// console.log(maxID[0].max);
+					       	if(err){								// console.log(maxID[0].max);
 					        	connection.query("INSERT INTO usertemp (USEREMAIL,USERPASSWORD,USERPROFILE,PERSONID) VALUES (?,?,?,?)",[data.email,data.pass,'cliente',maxID[0].max],function(err, rows, fields) {
 									if(err){
 										console.log("Error "+ err.message);
@@ -839,6 +838,7 @@ f								// console.log(maxID[0].max);
 	SaveNewUser(socket);
 	SelectTrucks1();
 	SelectOrdersList();
+	SelectCountOrders();
 
 	socket.on("RequestDriver",function(obj){
 		// console.log("RequestTrucks: "+obj.id+" indx"+obj.indx);
@@ -1085,6 +1085,15 @@ f								// console.log(maxID[0].max);
 								socket.emit("ResponseImporter",lstImporter);
 							}
 						});
+	});
+	socket.on('SelectCountOrders',function(data){
+	connection.query("select count(*) as cont from orders;",function(error, result){
+		if(error){
+			throw error;
+		}else{
+			socket.emit('SelectCountOrders',result);
+		}
+		});	
 	});
 
 	socket.on("RequestUpdateImporter",function(data){
@@ -1360,14 +1369,28 @@ function SelectOrders(){
 	})
 }
 function SelectOrdersList(){
-	connection.query("select O.OrderDate as Fecha, O.OrderId,DAY(O.OrderDate) Oday,MONTH(O.ORDERDATE) Omonth,YEAR(O.OrderDate) Oyear,O.OrderState,O.WasteONU,O.OrderQuantity, WasteDescription, DistributorName, HOUR(ORDERTIME) Ohour, MINUTE(ORDERTIME) Ominute, DATE_SUB(CURDATE(), INTERVAL 1 DAY)-ORDERDATE as RestaFechas from distributor D, orders O, waste W Where W.WasteONU=O.WasteONU AND D.DistributorId=O.DistributorId ORDER BY O.OrderId;",function(error, result){
+	//connection.query("select O.OrderDate as Fecha, O.OrderId,DAY(O.OrderDate) Oday,MONTH(O.ORDERDATE) Omonth,YEAR(O.OrderDate) Oyear,O.OrderState,O.WasteONU,O.OrderQuantity, WasteDescription, DistributorName, HOUR(ORDERTIME) Ohour, MINUTE(ORDERTIME) Ominute, DATE_SUB(CURDATE(), INTERVAL 1 DAY)-ORDERDATE as RestaFechas from distributor D, orders O, waste W Where W.WasteONU=O.WasteONU AND D.DistributorId=O.DistributorId ORDER BY O.OrderId;",function(error, result){
+	connection.query("select DATE_FORMAT(O.OrderDate,'%Y-%m-%d') as Fecha, O.OrderId,DAY(O.OrderDate) Oday,MONTH(O.ORDERDATE) Omonth,YEAR(O.OrderDate) Oyear,O.OrderState,O.WasteONU,O.OrderQuantity, WasteDescription, DistributorName, HOUR(ORDERTIME) Ohour, MINUTE(ORDERTIME) Ominute, DATEDIFF(CURDATE(),ORDERDATE) as RestaFechas from distributor D, orders O, waste W Where W.WasteONU=O.WasteONU AND D.DistributorId=O.DistributorId ORDER BY O.OrderId;",function(error, result){
+
 		if(error){
 			throw error;
 		}else{
 			io.emit('SelectOrdersList',result);
+			//console.log("si");
 		}
 		});	
 }
+
+function SelectCountOrders(){
+	connection.query("select count(*) as cont from orders;",function(error, result){
+		if(error){
+			throw error;
+		}else{
+			io.emit('SelectCountOrders',result);
+		}
+		});	
+}
+
 function SelectActiveOrders(){
 	connection.query("SELECT OrderId,OrderDate,OrderQuantity,DistributorId,WasteONU,OrderState,OrderType,DATE_FORMAT(OrderDeadLine ,'%Y-%m-%d') AS OrderDeadLine,JourneyId FROM orders WHERE OrderState like 'En Proceso' or OrderState like 'Completado' ORDER BY OrderDeadLine ASC",function(error, result){
 		if(error){
@@ -1665,5 +1688,4 @@ function actualizarCaso3(objeto1, objeto2, viaje){
 server.listen(8080, function(){
    console.log('listening on *:8080');
  });
-
 

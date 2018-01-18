@@ -839,6 +839,7 @@ io.on('connection', function(socket){
 	SelectTrucks1();
 	SelectOrdersList();
 	SelectCountOrders();
+	SelectConfimJourney(socket)
 
 	socket.on("RequestDriver",function(obj){
 		// console.log("RequestTrucks: "+obj.id+" indx"+obj.indx);
@@ -1389,6 +1390,20 @@ function SelectCountOrders(){
 			io.emit('SelectCountOrders',result);
 		}
 		});	
+}
+
+function SelectConfimJourney(socket){
+    socket.on('SelectConfimJourney',function(data){
+        connection.query('SELECT JOURNEYSTATE FROM journey WHERE JOURNEYID="'+data.journeyid+'";',function(error, result) {
+            if(err){
+				throw error;
+                console.log("Error "+ err.message);
+            }else{
+				console.log("estado journey"+result);
+				io.emit('SelectConfimJourney2',result);
+            }
+        });
+    });
 }
 
 function SelectActiveOrders(){

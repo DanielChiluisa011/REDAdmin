@@ -1395,9 +1395,8 @@ function SelectCountOrders(){
 function SelectConfimJourney(socket){
     socket.on('SelectConfimJourney',function(data){
         connection.query('SELECT JOURNEYSTATE FROM journey WHERE JOURNEYID="'+data.journeyid+'";',function(error, result) {
-            if(err){
+            if(error){
 				throw error;
-                console.log("Error "+ err.message);
             }else{
 				console.log("estado journey"+result);
 				io.emit('SelectConfimJourney2',result);

@@ -497,7 +497,7 @@ io.on('connection', function(socket){
 												console.log("CASO 1");
 												console.log("------------------------------");
 												actualizarCaso1(result1[0],result2[i], data.journeyid);
-												i -= 1;
+												
 											}
 											else{
 												console.log("CASO 2");
@@ -1637,7 +1637,8 @@ function actualizarCaso1(objeto1, objeto2, viaje){
     var valor = objeto2.IMPORTERQUOTA - objeto1.cantidad;
     connection.query('UPDATE importer SET importerquota = ? WHERE importerid= ?',[valor, objeto2.IMPORTERID],function(error){
         if(error){
-            throw error;
+			throw error;
+			console.log("Caso1"+error);
         }else{
             console.log("Cantidad Importador Actualizada");
             //INSERT en tabla nueva donde vaya el viaje, importador, cantidad asignada al importador
@@ -1655,7 +1656,8 @@ function actualizarCaso1(objeto1, objeto2, viaje){
 function actualizarCaso2(objeto1, objeto2, viaje){
     connection.query('UPDATE importer SET importerquota = ? WHERE importerid= ?',[0, objeto2.IMPORTERID],function(error){
         if(error){
-            throw error;
+			throw error;
+			console.log("Caso2"+error);
         }else{
             console.log("Cantidad en Importador Actualizada");
             connection.query('INSERT INTO journeyximporter (IMPORTERID,JOURNEYID,QUANTITY) VALUES (?,?,?)',[objeto2.IMPORTERID, viaje, objeto2.IMPORTERQUOTA],function(error2){

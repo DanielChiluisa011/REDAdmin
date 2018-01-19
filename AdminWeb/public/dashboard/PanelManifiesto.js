@@ -1,0 +1,52 @@
+var socket = io.connect("http://localhost:8080",{"forceNew": true});
+var lstObjManifest=[];
+$(document).ready(function(){
+	FillTable();
+	// socket.on('NotificationNewUser', function(data){
+	// 	$("#NewUsersTable > tbody").html("");
+	// 	for (var i = 0; i < data.length; i++) {
+	// 			$('#NewUsersTable').append("<tbody><tr><td>"+data[i].person.PersonCi+"</td><td>"+data[i].person.PersonName+' '+data[i].person.PersonLastName+"</td><td>"+data[i].person.PersonAddress+"</td><td>"+data[i].person.PersonPhone+"</td><td>"+data[i].person.PersonRuc+"</td><td>"+data[i].person.PersonRole+"</td><td>"+data[i].user.UserEmail+"</td><td>"+data[i].user.UserProfile+
+ //       							"</td><td><button class='btn green' onclick='SaveNewUser("+i+")'>seleccionar</</td></tr></tbody>");
+	// 		}
+	// 	lstObjNewUsers=data;
+	// });
+})
+
+function UpdateManifest(i){
+	var b1="txpeso"+i;
+	var b2="txobservacion"+i;
+
+	lstObjManifest[i].PESO=document.getElementById(b1).value;
+	lstObjManifest[i].OBSERVACION=document.getElementById(b2).value;
+	bootbox.confirm("¿Esta seguro de modificar el manifiesto (Viaje: "+lstObjManifest[i].JOURNEYID+" Importador: "+lstObjManifest[i].IMPORTERNAME+" ?", function(result) {
+	   if(result){
+		   	socket.emit('UpdateManifest', lstObjManifest[i]);
+			$.notific8('Manifiesto modificado');
+			setTimeout("location.reload()",1500);
+	   }
+	});
+	
+}
+
+function FillTable(){
+	socket.on('SelectManifest', function(data){
+		$("#ManifestTable > tbody").html("");
+		$('#OrdersHistoryTable').append("<tbody>");
+		var peso1="";
+		var obs1="";
+		for (var i = 0; i < data.length; i++) {
+			if(data[i].PESO==null)
+				peso1="0";
+			else
+				peso1=data[i].PESO;
+			if(data[i].OBSERVACION==null)
+				obs1="";
+			else
+				obs1=data[i].OBSERVACION;
+				
+				$('#ManifestTable').append("<tr align='center'><td>"+data[i].JOURNEYID+"</td><td>"+data[i].IMPORTERNAME+"</td><td><input type='number' min='0' id='txpeso"+i+"' value="+peso1+"></td><td><textarea rows='3' cols='30' id='txobservacion"+i+"'>"+obs1+"</textarea></td><td><button class='btn green' onclick='UpdateManifest("+i+")'><i class='fa fa-save'></i>Modificar</button></td></tr>");
+		}
+		$('#OrdersHistoryTable').append("</tbody>");
+		lstObjManifest=data;
+	});
+}

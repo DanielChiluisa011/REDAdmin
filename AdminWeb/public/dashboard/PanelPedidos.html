@@ -193,6 +193,11 @@
                                     <span class="arrow"></span>
                                 </a>
                             </li>
+                            <li class="menu-dropdown mega-menu-dropdown">
+                                <a href="PanelManifiesto.html"> Informacion manifiesto
+                                    <span class="arrow"></span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 <!-- END MEGA MENU -->
@@ -240,6 +245,86 @@
                                 </li>
                             </ul>
                             <div class="tab-content">
+
+                                <div class="tab-pane fade" id="tab_1_1">
+                                    <!-- INICIO PESTANA 2 -->
+                                    <div class="portlet box green" style="margin: 50px">
+                                        <div class="portlet-title">
+                                            <div class="caption">
+                                                <i class="fa fa-gift"></i>NUEVO PEDIDO </div>
+                                            <div class="tools">
+                                                <a href="javascript:;" class="collapse"> </a>
+                                                <a href="javascript:;" class="reload"> </a>
+                                            </div>
+                                        </div>
+                                        <div class="portlet-body form">
+                                            <!-- BEGIN FORM-->
+                                            <form action="#" class="form-horizontal">
+                                                <div class="form-body">
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label">Número de Pedido</label>
+                                                        <div class="col-md-4">
+                                                            <input id="txtNewOrderNumber" type="text" class="form-control input-circle" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label">Fecha</label>
+                                                        <div class="col-md-4">
+                                                            <!--<div class="input-group input-medium date date-picker" data-date-format="dd-mm-yyyy" data-date-start-date="+0d">-->
+                                                                <input id="txtNewOrderDate" type="text" class="form-control input-circle-left" disabled>
+                                                                <!--<span class="input-group-addon input-circle-right">-->
+                                                                    <!-- <button class="btn default" type="button"> -->
+                                                                        <!--<i class="fa fa-calendar default"></i>
+                                                                    <!-- </button> -->
+                                                                <!--</span>
+                                                            </div>-->
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label">Cantidad</label>
+                                                        <div class="col-md-4">
+                                                            <div class="input-group">
+                                                                <input id="txtNewOrderQuantity" onkeypress="return isNumberKey(event)" type="number" class="form-control input-circle" placeholder="Ej: 500">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label">Seleccionar Distribuidor</label>
+                                                        <div class="col-md-4">
+                                                            <select id="cmbNewOrderImporters" type="text" class="form-control input-circle" ></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label">Seleccionar Desecho</label>
+                                                        <div class="col-md-4">
+                                                            <select id="cmbNewOrderWaste" type="text" class="form-control input-circle" ></select>
+                                                        </div>
+                                                    </div>
+                                                    <div hidden>
+                                                        <label>Tipo de Pedido</label>
+                                                        <div class="radio-list">
+                                                            <label class="radio-inline">
+                                                                <input type="radio" name="optionsRadios" id="optionsRadios4" value="option1" checked> General</label>
+                                                            <label class="radio-inline">
+                                                                <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2"> Privado</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-actions">
+                                                    <div class="row">
+                                                        <div class="col-md-offset-3 col-md-9">
+                                                            <button id="btnSaveOrder" class="btn green-sharp btn-circle" >Guardar</button>
+                                                            <button id="btnCancelOrder" type="reset" class="btn btn-circle grey-salsa btn-outline">Cancelar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <!-- END FORM-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- FIN PESTANA 2 -->
+
                                 <div class="tab-pane fade active in" id="tab_1_2">
                                     <!-- INICIO PESTANA 1 -->
                                     <div class="portlet box green">
@@ -405,84 +490,6 @@
                                     </div>
                                 </div>
                                 <!-- FIN PESTANA 1 -->
-                                <div class="tab-pane fade" id="tab_1_1">
-                                    <!-- INICIO PESTANA 2 -->
-                                    <div class="portlet box green" style="margin: 50px">
-                                        <div class="portlet-title">
-                                            <div class="caption">
-                                                <i class="fa fa-gift"></i>NUEVO PEDIDO </div>
-                                            <div class="tools">
-                                                <a href="javascript:;" class="collapse"> </a>
-                                                <a href="javascript:;" class="reload"> </a>
-                                            </div>
-                                        </div>
-                                        <div class="portlet-body form">
-                                            <!-- BEGIN FORM-->
-                                            <form action="#" class="form-horizontal">
-                                                <div class="form-body">
-                                                    <div class="form-group">
-                                                        <label class="col-md-3 control-label">Número de Pedido</label>
-                                                        <div class="col-md-4">
-                                                            <input id="txtNewOrderNumber" type="text" class="form-control input-circle" disabled>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-md-3 control-label">Fecha</label>
-                                                        <div class="col-md-4">
-                                                            <!--<div class="input-group input-medium date date-picker" data-date-format="dd-mm-yyyy" data-date-start-date="+0d">-->
-                                                                <input id="txtNewOrderDate" type="text" class="form-control input-circle-left" disabled>
-                                                                <!--<span class="input-group-addon input-circle-right">-->
-                                                                    <!-- <button class="btn default" type="button"> -->
-                                                                        <!--<i class="fa fa-calendar default"></i>
-                                                                    <!-- </button> -->
-                                                                <!--</span>
-                                                            </div>-->
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-md-3 control-label">Cantidad</label>
-                                                        <div class="col-md-4">
-                                                            <div class="input-group">
-                                                                <input id="txtNewOrderQuantity" onkeypress="return isNumberKey(event)" type="text" class="form-control input-circle" placeholder="Ej: 500">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-md-3 control-label">Seleccionar Distribuidor</label>
-                                                        <div class="col-md-4">
-                                                            <select id="cmbNewOrderImporters" type="text" class="form-control input-circle" ></select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-md-3 control-label">Seleccionar Desecho</label>
-                                                        <div class="col-md-4">
-                                                            <select id="cmbNewOrderWaste" type="text" class="form-control input-circle" ></select>
-                                                        </div>
-                                                    </div>
-                                                    <div hidden>
-                                                        <label>Tipo de Pedido</label>
-                                                        <div class="radio-list">
-                                                            <label class="radio-inline">
-                                                                <input type="radio" name="optionsRadios" id="optionsRadios4" value="option1" checked> General</label>
-                                                            <label class="radio-inline">
-                                                                <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2"> Privado</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-actions">
-                                                    <div class="row">
-                                                        <div class="col-md-offset-3 col-md-9">
-                                                            <button id="btnSaveOrder" class="btn green-sharp btn-circle" >Guardar</button>
-                                                            <button id="btnCancelOrder" type="button" class="btn btn-circle grey-salsa btn-outline">Cancelar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                            <!-- END FORM-->
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- FIN PESTANA 2 -->
                                 
                             <div class="tab-pane fade" id="tab_1_4">
                                 <div class="portlet box green" style="margin: 50px"> 

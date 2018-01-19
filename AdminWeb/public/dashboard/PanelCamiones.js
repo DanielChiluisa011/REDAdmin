@@ -136,7 +136,8 @@ $('#btnUpdateTruck').click(function(){
         });
 });
 
-$('#btnSaveTruck').click(function(){
+$('#btnSaveTruck').click(function(e){
+    e.preventDefault();
 	bootbox.confirm("¿Desea guardar camión ingresado? ", function(result) {
 	   if(result){
 	   		if($('#txtNewTruckId').val()==''||$('#txtNewTruckModel').val()==''||$('#txtNewTruckSize').val()==''||$('#txtNewTruckTradeMark').val()==''){

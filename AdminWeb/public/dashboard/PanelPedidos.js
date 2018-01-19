@@ -265,7 +265,7 @@ $(document).ready(function(){
 });
 var band1ordernotification5=0;
 var aux=0;
-setInterval("ordernotification5()",10000);
+//setInterval("ordernotification5()",3000);
 
 function ordernotification5(){
 	//alert(aux);
@@ -275,8 +275,9 @@ function ordernotification5(){
 	socket.emit("SelectCountOrders","");
 	socket.on('SelectCountOrders', function(data){
 		aux=data[0].cont;
+		//alert(aux);
 	}); 
-	//alert(aux);
+	
 	//alert(band1ordernotification5);
 	if(band){
 		if(aux!=band1ordernotification5){
@@ -552,10 +553,12 @@ function LocateRecyclingCenters(){
 }
 
 $('#btnCancelOrder').click(function(){
-	$.notific8('My notification has a heading line.', {heading: 'Notification Heading'});
+	//$.notific8('My notification has a heading line.', {heading: 'Notification Heading'});
+	location.reload();
 })
 
-$('#btnSaveOrder').click(function(){
+$('#btnSaveOrder').click(function(e){
+	e.preventDefault();
 	bootbox.confirm("¿Desea guardar el pedido ingresado? ", function(result) {
 	   if(result){
 	   		if($('#txtNewOrderQuantity').val()==''){
@@ -587,7 +590,7 @@ $('#btnSaveOrder').click(function(){
 				socket.emit('NewOrder',objOrder);
 
 				$.notific8('El pedido ha sido guardado correctamente', {
-			      life: 3000,
+			      life: 1500,
 			      heading: 'INFORMACION',
 			      theme: 'teal',
 			      sticky: false,
@@ -596,7 +599,7 @@ $('#btnSaveOrder').click(function(){
 			      zindex: 1500
 			    });
 				
-				location.reload();	
+				setTimeout("location.reload()",1500);	
 	   		}
 	   }
 	});	

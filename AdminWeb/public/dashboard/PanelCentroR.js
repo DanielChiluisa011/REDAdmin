@@ -166,7 +166,8 @@ function ShowRCInformation(i){
 		$("#txtNewImpPersonAddress").val(lstCR[i].PERSONADDRESS);
 }
 
-$("#btnSaveRC").click(function(){
+$("#btnSaveRC").click(function(e){
+    e.preventDefault();
     // alert(marcador.getPosition());
     // alert(marcador.position.lat()+" "+marcador.position.lng());
     // Latitud = y

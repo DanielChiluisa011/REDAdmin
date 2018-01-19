@@ -253,7 +253,8 @@ $("#btnInsertImporter").click(function(){
 	
 });
 
-function updateImporterQuota(){
+function updateImporterQuota(evt){
+    evt.preventDefault();
 	bootbox.confirm("¿Desea guardar el pedido ingresado? ", function(result) {
 	   if(result){
 	   		if($('#txtUpdateQuantity').val()==''){

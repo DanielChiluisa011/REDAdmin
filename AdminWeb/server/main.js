@@ -827,6 +827,8 @@ io.on('connection', function(socket){
 	SelectActiveOrders();
 	SelectUsers();
 	selectWaste();
+	SelectManifest();
+	UpdateManifest(socket);
 	SelectPersons();
 	SendNotification(socket); 
 	SendNotificationAlert(socket);
@@ -1087,7 +1089,7 @@ io.on('connection', function(socket){
 							}
 						});
 	});
-	socket.on('SelectCountOrders',function(data){
+	/*socket.on('SelectCountOrders',function(data){
 	connection.query("select count(*) as cont from orders;",function(error, result){
 		if(error){
 			throw error;
@@ -1095,7 +1097,7 @@ io.on('connection', function(socket){
 			socket.emit('SelectCountOrders',result);
 		}
 		});	
-	});
+	});*/
 
 	socket.on("RequestUpdateImporter",function(data){
 		connection.query("UPDATE importer SET IMPORTERPHONE ="+data.phone+",IMPORTERADDRESS='"+data.address+"' WHERE IMPORTERNAME = '"+data.name+"'",function(err, rows, fields) {
@@ -1380,6 +1382,29 @@ function SelectOrdersList(){
 			//console.log("si");
 		}
 		});	
+}
+	
+function SelectManifest(){
+	connection.query("SELECT jxi.JOURNEYID,jxi.IMPORTERID,i.IMPORTERNAME,jxi.PESO,jxi.OBSERVACION FROM journeyximporter jxi, importer i WHERE jxi.IMPORTERID=i.IMPORTERID;",function(error, result){
+		if(error){
+			throw error;
+		}else{
+			io.emit('SelectManifest',result);
+			//console.log("si");
+		}
+		});	
+}
+
+function UpdateManifest(socket){
+	socket.on('UpdateManifest',function(data){
+		connection.query('UPDATE journeyximporter SET PESO="'+data.PESO+'", OBSERVACION="'+data.OBSERVACION+'" WHERE IMPORTERID="'+data.IMPORTERID+'" AND JOURNEYID="'+data.JOURNEYID+'";',function(err, rows, fields) {
+			if(err){
+				console.log("Error "+ err.message);
+			}else{
+				console.log("journeyximporter actualizado correctamente");
+			}
+		});
+	});
 }
 
 function SelectCountOrders(){

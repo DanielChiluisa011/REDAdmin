@@ -828,7 +828,7 @@ io.on('connection', function(socket){
 	SelectUsers();
 	selectWaste();
 	SelectManifest();
-	UpdateManifest(socket);
+	UpdateManifest(socket)
 	SelectPersons();
 	SendNotification(socket); 
 	SendNotificationAlert(socket);
@@ -1383,7 +1383,7 @@ function SelectOrdersList(){
 		}
 		});	
 }
-	
+
 function SelectManifest(){
 	connection.query("SELECT jxi.JOURNEYID,jxi.IMPORTERID,i.IMPORTERNAME,jxi.PESO,jxi.OBSERVACION FROM journeyximporter jxi, importer i WHERE jxi.IMPORTERID=i.IMPORTERID;",function(error, result){
 		if(error){

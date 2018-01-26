@@ -1407,6 +1407,19 @@ function UpdateManifest(socket){
 	});
 }
 
+socket.on('SelectJourneyDriver',function(data){
+		connection.query("SELECT dis.DISTRIBUTORNAME, ord.ORDERQUANTITY FROM distributor dis, orders ord WHERE dis.DISTRIBUTORID=ord.DISTRIBUTORID AND ord.JOURNEYID=(select Max(j.JourneyId) from journey j, trucks t, person p where j.truckid=t.TruckId and t.PersonId=p.PersonId and  p.PersonId='"+data+"')",function(error, result){
+		  if(error){
+			  throw error;
+		  }else{
+			var JourneyRoute=result;
+				// console.log(JourneyRoute);
+			io.emit('SelectListRoutes',JourneyRoute);
+			  // console.log('Select Distributors executed');
+		 }
+	  });
+});
+
 function SelectCountOrders(){
 	connection.query("select count(*) as cont from orders;",function(error, result){
 		if(error){

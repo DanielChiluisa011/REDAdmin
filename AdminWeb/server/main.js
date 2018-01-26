@@ -841,7 +841,8 @@ io.on('connection', function(socket){
 	SelectTrucks1();
 	SelectOrdersList();
 	SelectCountOrders();
-	SelectConfimJourney(socket)
+	SelectConfimJourney(socket);
+	SelectJourneyDriver(socket);
 
 	socket.on("RequestDriver",function(obj){
 		// console.log("RequestTrucks: "+obj.id+" indx"+obj.indx);
@@ -1406,7 +1407,7 @@ function UpdateManifest(socket){
 		});
 	});
 }
-
+function SelectJourneyDriver(socket){
 socket.on('SelectJourneyDriver',function(data){
 		connection.query("SELECT dis.DISTRIBUTORNAME, ord.ORDERQUANTITY FROM distributor dis, orders ord WHERE dis.DISTRIBUTORID=ord.DISTRIBUTORID AND ord.JOURNEYID=(select Max(j.JourneyId) from journey j, trucks t, person p where j.truckid=t.TruckId and t.PersonId=p.PersonId and  p.PersonId='"+data+"')",function(error, result){
 		  if(error){
@@ -1419,7 +1420,7 @@ socket.on('SelectJourneyDriver',function(data){
 		 }
 	  });
 });
-
+}
 function SelectCountOrders(){
 	connection.query("select count(*) as cont from orders;",function(error, result){
 		if(error){

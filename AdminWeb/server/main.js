@@ -632,7 +632,7 @@ io.on('connection', function(socket){
       });
 
       socket.on('RequestJourneyOrders',function(data){
-      	connection.query("SELECT ORDERID, DISTRIBUTORID, WASTEONU, DATE_FORMAT(ORDERDATE, '%Y-%m-%d') ORDERDATE,ORDERQUANTITY,ORDERSTATE,ORDERTYPE,ORDERDEADLINE,JOURNEYID FROM orders WHERE JOURNEYID="+data+";",function(error, result){
+      	connection.query("SELECT o.ORDERID, o.DISTRIBUTORID, d.DISTRIBUTORNAME, o.WASTEONU, DATE_FORMAT(o.ORDERDATE, '%Y-%m-%d') ORDERDATE,o.ORDERQUANTITY,o.ORDERSTATE,o.ORDERTYPE,o.ORDERDEADLINE,o.JOURNEYID FROM orders o,distributor d WHERE o.DISTRIBUTORID=d.DISTRIBUTORID AND JOURNEYID="+data+";",function(error, result){
 				if(error){
 				    throw error;
 				}else{

@@ -292,3 +292,7 @@ function rand_code(){
     // console.log(code);
     // $("txtNewImpCode").val(code);
 }
+
+function codnum(x){
+    document.getElementById("txtNewImpPhone").value=x;
+}

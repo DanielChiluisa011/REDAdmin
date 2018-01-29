@@ -92,7 +92,7 @@ io.on('connection', function(socket){
 										// console.log(data.distributor.Role);
 										if(data.role==='Generador')
 										{
-											connection.query("INSERT INTO distributor(PERSONID,DISTRIBUTORNAME,DISTRIBUTORADDRESS,DISTRIBUTORRUC,DISTRIBUTORPHONE,DISTRIBUTORENVIRONMENTALLICENSE,DISTRIBUTORCOORDINATES,IMPORTERID,PROVINCEID,DISTRIBUTORCITY) VALUES (?,?,?,?,?,?,GeomFromText('POINT ("+data.distributor.CoordX+" "+data.distributor.CoordY+")'),?,?,?)",[maxID[0].max,data.distributor.name,data.distributor.address,data.distributor.ruc,data.distributor.phone,data.distributor.licence,data.distributor.importer,data.distributor.provinceid,data.distributor.distributorcity],function(err, rows, fields) {
+											connection.query("INSERT INTO distributor(PERSONID,DISTRIBUTORNAME,DISTRIBUTORADDRESS,DISTRIBUTORRUC,DISTRIBUTORPHONE,DISTRIBUTORENVIRONMENTALLICENSE,DISTRIBUTORCOORDINATES,IMPORTERID,PROVINCEID,DISTRIBUTORCITY,DISTRIBUTORPARROQUIA) VALUES (?,?,?,?,?,?,GeomFromText('POINT ("+data.distributor.CoordX+" "+data.distributor.CoordY+")'),?,?,?,?)",[maxID[0].max,data.distributor.name,data.distributor.address,data.distributor.ruc,data.distributor.phone,data.distributor.licence,data.distributor.importer,data.distributor.provinceid,data.distributor.distributorcity,data.distributor.distributorparroquia],function(err, rows, fields) {
 												if(err){
 													console.log("Error distribuidor"+ err.message);
 												}else{
@@ -1414,7 +1414,7 @@ socket.on('SelectJourneyDriver',function(data){
 			  throw error;
 		  }else{
 			var JourneyRoute=result;
-			console.log(result[0]);
+			//console.log(result[0]+" "+result.length);
 				// console.log(JourneyRoute);
 			io.emit('SelectListRoutes',JourneyRoute);
 			  // console.log('Select Distributors executed');

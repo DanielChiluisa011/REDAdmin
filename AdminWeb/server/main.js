@@ -1409,7 +1409,7 @@ function UpdateManifest(socket){
 }
 function SelectJourneyDriver(socket){
 socket.on('SelectJourneyDriver',function(data){
-		connection.query("SELECT dis.DISTRIBUTORNAME, ord.ORDERQUANTITY FROM distributor dis, orders ord WHERE dis.DISTRIBUTORID=ord.DISTRIBUTORID AND ord.JOURNEYID=(select Max(j.JourneyId) from journey j, trucks t, person p where j.truckid=t.TruckId and t.PersonId=p.PersonId and  p.PersonId='"+data+"')",function(error, result){
+		connection.query("SELECT dis.DISTRIBUTORNAME, ord.ORDERQUANTITY,pic.OBSERVATION FROM distributor dis, orders ord,pickup pic WHERE dis.DISTRIBUTORID=ord.DISTRIBUTORID AND ord.ORDERID=pic.ORDERID AND ord.JOURNEYID=(select Max(j.JourneyId) from journey j, trucks t, person p where j.truckid=t.TruckId and t.PersonId=p.PersonId and  p.PersonId='"+data+"')",function(error, result){
 		  if(error){
 			  throw error;
 		  }else{

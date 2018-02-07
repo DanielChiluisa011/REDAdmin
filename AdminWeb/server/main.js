@@ -632,7 +632,7 @@ io.on('connection', function(socket){
       });
 
       socket.on('RequestJourneyOrders',function(data){
-      	connection.query("SELECT o.ORDERID, o.DISTRIBUTORID, d.DISTRIBUTORNAME, o.WASTEONU, DATE_FORMAT(o.ORDERDATE, '%Y-%m-%d') ORDERDATE,o.ORDERQUANTITY,o.ORDERSTATE,o.ORDERTYPE,o.ORDERDEADLINE,o.JOURNEYID FROM orders o,distributor d WHERE o.DISTRIBUTORID=d.DISTRIBUTORID AND JOURNEYID="+data+";",function(error, result){
+      	connection.query("SELECT o.ORDERID, o.DISTRIBUTORID, d.DISTRIBUTORNAME,  wt.WASTEDESCRIPTION, DATE_FORMAT(o.ORDERDATE, '%Y-%m-%d') ORDERDATE,o.ORDERQUANTITY,o.ORDERSTATE,o.ORDERTYPE,o.ORDERDEADLINE,o.JOURNEYID FROM orders o,distributor d,waste wt WHERE o.DISTRIBUTORID=d.DISTRIBUTORID AND wt.WASTEONU=o.WASTEONU AND JOURNEYID="+data+";",function(error, result){
 				if(error){
 				    throw error;
 				}else{
@@ -1446,7 +1446,7 @@ function SelectConfimJourney(socket){
 }
 
 function SelectActiveOrders(){
-	connection.query("SELECT OrderId,OrderDate,OrderQuantity,DistributorId,WasteONU,OrderState,OrderType,DATE_FORMAT(OrderDeadLine ,'%Y-%m-%d') AS OrderDeadLine,JourneyId FROM orders WHERE OrderState like 'En Proceso' or OrderState like 'Completado' ORDER BY OrderDeadLine ASC",function(error, result){
+	connection.query("SELECT o.OrderId,o.OrderDate,o.OrderQuantity,o.DistributorId,w.WASTEDESCRIPTION,o.OrderState,o.OrderType,DATE_FORMAT(o.OrderDeadLine ,'%Y-%m-%d') AS OrderDeadLine,o.JourneyId FROM orders o,waste w WHERE o.WASTEONU=w.WASTEONU AND o.OrderState like 'En Proceso' or o.OrderState like 'Completado' ORDER BY o.OrderDeadLine ASC;",function(error, result){
 		if(error){
 		    throw error;
 		}else{

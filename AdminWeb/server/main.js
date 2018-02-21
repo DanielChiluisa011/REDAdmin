@@ -504,7 +504,7 @@ io.on('connection', function(socket){
 												console.log("------------------------------");
 												actualizarCaso2(result1[0],result2[i], data.journeyid);
 												result1[0].cantidad -= result2[i].IMPORTERQUOTA; 
-												cont += 1;
+												//cont += 1;
 											}
 										} 
 										else{
@@ -827,8 +827,10 @@ io.on('connection', function(socket){
 	SelectActiveOrders();
 	SelectUsers();
 	selectWaste();
+	selectWasteType();
 	SelectManifest();
-	UpdateManifest(socket)
+	UpdateManifest(socket);
+	UpdateDetailOrder(socket);
 	SelectPersons();
 	SendNotification(socket); 
 	SendNotificationAlert(socket);
@@ -1407,6 +1409,21 @@ function UpdateManifest(socket){
 		});
 	});
 }
+function UpdateDetailOrder(socket){
+	socket.on('UpdateDetailOrder',function(data){
+		lstdetorder=data[1];
+		for(var i=0;i<lstdetorder.length;i++){
+			connection.query('INSERT INTO details_orders VALUES ('+data[0]+','+lstdetorder[i][0]+','+lstdetorder[i][1]+')',function(err, rows, fields) {
+				if(err){
+					console.log("Error "+ err.message);
+				}else{
+					console.log("ingreso detalle de orden");
+				}
+			});			
+		}
+	});
+}
+
 function SelectJourneyDriver(socket){
 socket.on('SelectJourneyDriver',function(data){
 		connection.query("SELECT dis.DISTRIBUTORNAME, ord.ORDERQUANTITY,pic.OBSERVATION FROM distributor dis, orders ord,pickup pic WHERE dis.DISTRIBUTORID=ord.DISTRIBUTORID AND ord.ORDERID=pic.ORDERID AND ord.JOURNEYID=(select Max(j.JourneyId) from journey j, trucks t, person p where j.truckid=t.TruckId and t.PersonId=p.PersonId and  p.PersonId='"+data+"')",function(error, result){
@@ -1530,6 +1547,17 @@ function selectWaste(){
 		}else{
 		  	var lstWastes=result;
 			io.emit('selectWaste',lstWastes);
+       }
+	})
+}
+
+function selectWasteType(){
+	connection.query('SELECT * FROM waste_type',function(error, result){
+		if(error){
+		    throw error;
+		}else{
+		  	var lstWastes=result;
+			io.emit('selectWasteType',lstWastes);
        }
 	})
 }

@@ -1413,13 +1413,15 @@ function UpdateDetailOrder(socket){
 	socket.on('UpdateDetailOrder',function(data){
 		lstdetorder=data[1];
 		for(var i=0;i<lstdetorder.length;i++){
-			connection.query('INSERT INTO details_orders VALUES ('+data[0]+','+lstdetorder[i][0]+','+lstdetorder[i][1]+')',function(err, rows, fields) {
+			console.log("waste "+ lstdetorder[i][0]);
+			console.log("can "+ lstdetorder[i][1]);
+			/*connection.query('INSERT INTO details_orders VALUES ('+data[0]+','+lstdetorder[i][0]+','+lstdetorder[i][1]+')',function(err, rows, fields) {
 				if(err){
 					console.log("Error "+ err.message);
 				}else{
 					console.log("ingreso detalle de orden");
 				}
-			});			
+			});*/			
 		}
 	});
 }

@@ -471,6 +471,59 @@ io.on('connection', function(socket){
 			}
 		});
 	
+	connection.query("select orderid,ORDEREQUIVALENCE as cantidad from orders where journeyid="+data.journeyid+" and wasteonu=1325;",function(error1, result1){
+		if(error1){
+			throw error1;
+		}else{	
+			connection.query("SELECT IMPORTERID, IMPORTERQUOTA,WASTETYPEID FROM importer ORDER BY importerquota DESC;",function(error2, result2){
+			if(error2){
+				console.log("Error 2: " + error2);
+			}else{
+				console.log("Obteniedo lista de prioridad");
+				if(result2.length!=0){
+					var cont = 0;
+					var numorder=0;
+					for(var i=0;i<result2.length;i++){
+						console.log("Cuota Imp:" + result2[i].IMPORTERQUOTA);
+						if(numorder < result1.length){
+							break;
+						} 
+						else{
+							console.log("Cuota Importador: " + result2[i].IMPORTERQUOTA);
+							console.log("Cantidad Orden: " + result1[numorder].cantidad);
+							//console.log("Cuota: " + cont);
+							if(result2[i].IMPORTERQUOTA > 0){
+								if(result1[numorder].cantidad <= result2[i].IMPORTERQUOTA){
+									console.log("CASO 1");
+									console.log("------------------------------");
+									actualizarCaso1(result1[numorder],result2[i], data.journeyid);
+								}else{
+									console.log("CASO 2");
+									console.log("------------------------------");
+									actualizarCaso2(result1[numorder],result2[i], data.journeyid);
+									//result1[0].cantidad -= result2[i].IMPORTERQUOTA; 
+								}
+								numorder+=1;
+							}else{
+								cont += 1;
+							}
+							if(cont == result2.length){
+								console.log("CASO 3");
+								console.log("------------------------------");
+								var impAleatorio = 0;
+								impAleatorio = Math.floor(Math.random() * result2.length);
+								console.log("aleatorio: " + impAleatorio);
+								console.log("result con aleat = " + result2[impAleatorio]);
+								actualizarCaso3(result1[0],result2[impAleatorio], data.journeyid);
+							}
+						}
+					}
+				}
+			}
+		});
+		}
+	});			
+		/*
 		connection.query("select sum(orderquantity) as cantidad from orders where journeyid="+data.journeyid+" and wasteonu=1325;",function(error1, result1){
 			if(error1){
 				throw error1;
@@ -526,7 +579,7 @@ io.on('connection', function(socket){
 					});
 				}
 			}
-		});
+		});*/
 		/////////////////////////CODIGO JOSE/////////////////////////////////////
 	  });
 
@@ -1412,7 +1465,9 @@ function UpdateManifest(socket){
 function UpdateDetailOrder(socket){
 	socket.on('UpdateDetailOrder',function(data){
 		lstdetorder=data[1];
+		var cantidadequivalente=0;
 		for(var i=0;i<lstdetorder.length;i++){
+			cantidadequivalente=cantidadequivalente+equivalencia(lstdetorder[i][0],lstdetorder[i][1],3);
 			//console.log("waste "+ lstdetorder[i][0]);
 			//console.log("can "+ lstdetorder[i][1]);
 			connection.query('INSERT INTO details_orders VALUES ('+data[0]+','+lstdetorder[i][0]+','+lstdetorder[i][1]+')',function(err, rows, fields) {
@@ -1423,6 +1478,13 @@ function UpdateDetailOrder(socket){
 				}
 			});		
 		}
+		connection.query('UPDATE orders SET ORDEREQUIVALENCE='+cantidadequivalente+' WHERE ORDERID='+data[0],function(err, rows, fields) {
+			if(err){
+				console.log("Error "+ err.message);
+			}else{
+				console.log("cantidad equivalente ingresada");
+			}
+		});	
 	});
 }
 
@@ -1711,6 +1773,79 @@ function actualizarCaso1(objeto1, objeto2, viaje){
 			console.log("Caso1"+error);
         }else{
             console.log("Cantidad Importador Actualizada");
+        }
+    });
+}
+
+function actualizarCaso2(objeto1, objeto2, viaje){
+    connection.query('UPDATE importer SET importerquota = ? WHERE importerid= ?',[0, objeto2.IMPORTERID],function(error){
+        if(error){
+			throw error;
+			console.log("Caso2"+error);
+        }else{
+            console.log("Cantidad en Importador Actualizada");
+        }
+    });
+}
+
+function actualizarCaso3(objeto1, objeto2, viaje){
+    console.log("tamanio: " + objeto2.IMPORTERID, viaje, objeto1.cantidad);
+	connection.query('INSERT INTO journeyximporter (IMPORTERID,JOURNEYID,QUANTITY) VALUES (?,?,?)',[objeto2.IMPORTERID, viaje, objeto1.cantidad],function(error2){
+		if(error2){
+			connection.query("SELECT QUANTITY FROM journeyximporter WHERE IMPORTERID = " + objeto2.IMPORTERID + " AND JOURNEYID = " + viaje + ";",function(error, result){
+				if(error){
+					console.log("Error 2: " + error);
+				}else{
+					console.log("Cantidad en Importador Actualizada");
+					if(result.length!=0){
+						var auxCant = objeto1.cantidad + result[0].QUANTITY;
+						console.log("Nueva cantidad: " + auxCant);
+						connection.query('UPDATE journeyximporter SET QUANTITY = ? WHERE IMPORTERID = ? AND JOURNEYID = ?',[auxCant, objeto2.IMPORTERID, viaje],function(error2){
+							if(error2){
+								throw error2;
+							}else{
+								console.log("Actualizacion de la cantidad en el registro del importador por viaje");
+							}
+						});
+					}
+				}
+			});
+		}else{
+			console.log("Registro de la cantidad en el detalle del viaje");
+		}
+	});
+}
+
+function equivalencia(typewasteentrada,cantidad,typewastesalida){
+	var went,wsal,equi;
+	connection.query('SELECT * FROM waste_type where WASTETYPEID='+typewasteentrada,function(error, result){
+		if(error){
+		    throw error;
+		}else{
+		  	went=result;
+       }
+	});
+	connection.query('SELECT * FROM waste_type where WASTETYPEID='+typewastesalida,function(error, result){
+		if(error){
+		    throw error;
+		}else{
+		  	wsal=result;
+       }
+	});
+	equi=(went.WASTETYPEFACTOR/wsal.WASTETYPEFACTOR)*cantidad;
+	return equi; 
+}
+/*
+function actualizarCaso1(objeto1, objeto2, viaje){
+    console.log("Order Quantity: " + objeto1.cantidad);
+    console.log("Data Importador: " + objeto2.IMPORTERID + " - " + objeto2.IMPORTERQUOTA);
+    var valor = objeto2.IMPORTERQUOTA - objeto1.cantidad;
+    connection.query('UPDATE importer SET importerquota = ? WHERE importerid= ?',[valor, objeto2.IMPORTERID],function(error){
+        if(error){
+			throw error;
+			console.log("Caso1"+error);
+        }else{
+            console.log("Cantidad Importador Actualizada");
             //INSERT en tabla nueva donde vaya el viaje, importador, cantidad asignada al importador
             connection.query('INSERT INTO journeyximporter (IMPORTERID,JOURNEYID,QUANTITY) VALUES (?,?,?)',[objeto2.IMPORTERID, viaje, objeto1.cantidad],function(error2){
                 if(error2){
@@ -1766,7 +1901,7 @@ function actualizarCaso3(objeto1, objeto2, viaje){
 			console.log("Registro de la cantidad en el detalle del viaje");
 		}
 	});
-}
+}*/
 
 
 

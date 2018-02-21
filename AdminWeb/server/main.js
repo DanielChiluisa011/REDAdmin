@@ -1468,6 +1468,7 @@ function UpdateDetailOrder(socket){
 		var cantidadequivalente=0;
 		for(var i=0;i<lstdetorder.length;i++){
 			cantidadequivalente=cantidadequivalente+equivalencia(lstdetorder[i][0],lstdetorder[i][1],3);
+			console.log("Equivalencia"+ cantidadequivalente);
 			//console.log("waste "+ lstdetorder[i][0]);
 			//console.log("can "+ lstdetorder[i][1]);
 			connection.query('INSERT INTO details_orders VALUES ('+data[0]+','+lstdetorder[i][0]+','+lstdetorder[i][1]+')',function(err, rows, fields) {
@@ -1478,7 +1479,7 @@ function UpdateDetailOrder(socket){
 				}
 			});		
 		}
-		connection.query('UPDATE orders SET ORDEREQUIVALENCE=floor('+cantidadequivalente+') WHERE ORDERID='+data[0],function(err, rows, fields) {
+		connection.query('UPDATE orders SET ORDEREQUIVALENCE=floor('+cantidadequivalente+') WHERE ORDERID='+data[0]+';',function(err, rows, fields) {
 			if(err){
 				console.log("Error "+ err.message);
 			}else{

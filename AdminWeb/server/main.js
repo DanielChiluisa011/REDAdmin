@@ -1822,17 +1822,17 @@ function equivalencia(typewasteentrada,cantidad,typewastesalida){
 		if(error){
 		    throw error;
 		}else{
-		  	went=result;
+		  	went=result[0];
        }
 	});
 	connection.query('SELECT * FROM waste_type where WASTETYPEID='+typewastesalida,function(error, result){
 		if(error){
 		    throw error;
 		}else{
-		  	wsal=result;
+		  	wsal=result[0];
        }
 	});
-	equi=(went[0].WASTETYPEFACTOR/wsal[0].WASTETYPEFACTOR)*cantidad;
+	equi=(went.WASTETYPEFACTOR/wsal.WASTETYPEFACTOR)*cantidad;
 	return equi; 
 }
 /*

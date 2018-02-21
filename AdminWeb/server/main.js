@@ -1832,7 +1832,7 @@ function equivalencia(typewasteentrada,cantidad,typewastesalida){
 		  	wsal=result;
        }
 	});
-	equi=(went.WASTETYPEFACTOR/wsal.WASTETYPEFACTOR)*cantidad;
+	equi=(went[0].WASTETYPEFACTOR/wsal[0].WASTETYPEFACTOR)*cantidad;
 	return equi; 
 }
 /*

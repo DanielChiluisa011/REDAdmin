@@ -1818,21 +1818,21 @@ function actualizarCaso3(objeto1, objeto2, viaje){
 
 function equivalencia(typewasteentrada,cantidad,typewastesalida){
 	var went,wsal,equi;
-	connection.query('SELECT * FROM waste_type where WASTETYPEID='+typewasteentrada,function(error, result){
+	connection.query('SELECT * FROM waste_type where WASTETYPEID='+typewasteentrada+';',function(error, result){
 		if(error){
 		    throw error;
 		}else{
-		  	went=result[0];
+		  	went=result[0].WASTETYPEFACTOR;
        }
 	});
-	connection.query('SELECT * FROM waste_type where WASTETYPEID='+typewastesalida,function(error, result){
+	connection.query('SELECT * FROM waste_type where WASTETYPEID='+typewastesalida+';',function(error, result){
 		if(error){
 		    throw error;
 		}else{
-		  	wsal=result[0];
+		  	wsal=result[0].WASTETYPEFACTOR;
        }
 	});
-	equi=(went.WASTETYPEFACTOR/wsal.WASTETYPEFACTOR)*cantidad;
+	equi=(went/wsal)*cantidad;
 	return equi; 
 }
 /*

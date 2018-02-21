@@ -1478,7 +1478,7 @@ function UpdateDetailOrder(socket){
 				}
 			});		
 		}
-		connection.query('UPDATE orders SET ORDEREQUIVALENCE='+cantidadequivalente+' WHERE ORDERID='+data[0],function(err, rows, fields) {
+		connection.query('UPDATE orders SET ORDEREQUIVALENCE=floor('+cantidadequivalente+') WHERE ORDERID='+data[0],function(err, rows, fields) {
 			if(err){
 				console.log("Error "+ err.message);
 			}else{

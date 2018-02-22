@@ -492,30 +492,48 @@ io.on('connection', function(socket){
 							console.log("Cuota Importador: " + result2[i].IMPORTERQUOTA);
 							console.log("Cantidad Orden: " + result1[numorder].cantidad);
 							//console.log("Cuota: " + cont);
-							if(result2[i].IMPORTERQUOTA > 0){
-								if(result1[numorder].cantidad <= result2[i].IMPORTERQUOTA){
-									console.log("CASO 1");
-									console.log("------------------------------");
-									actualizarCaso1(result1[numorder],result2[i], data.journeyid);
-								}else{
-									console.log("CASO 2");
-									console.log("------------------------------");
-									actualizarCaso2(result1[numorder],result2[i], data.journeyid);
-									//result1[0].cantidad -= result2[i].IMPORTERQUOTA; 
-								}
-								numorder+=1;
-							}else{
-								cont += 1;
-							}
-							if(cont == result2.length){
-								console.log("CASO 3");
-								console.log("------------------------------");
-								var impAleatorio = 0;
-								impAleatorio = Math.floor(Math.random() * result2.length);
-								console.log("aleatorio: " + impAleatorio);
-								console.log("result con aleat = " + result2[impAleatorio]);
-								actualizarCaso3(result1[0],result2[impAleatorio], data.journeyid);
-							}
+							connection.query('SELECT FLOOR((WASTETYPEFACTOR/(SELECT WASTETYPEFACTOR FROM waste_type where WASTETYPEID='+result2[i].WASTETYPEID+'))*'+result1[numorder].cantidad+') as cantidad FROM waste_type where WASTETYPEID=3;',function(error, result3){
+								//connection.query('SELECT * FROM waste_type where WASTETYPEID='+lstdetorder[i][0]+';',function(error, result){
+									if(error){
+										throw error;
+										console.log("query1: "+error);
+									}else{
+										if(result2[i].IMPORTERQUOTA > 0){
+											if(result3[0].cantidad <= result2[i].IMPORTERQUOTA){
+												console.log("CASO 1");
+												console.log("------------------------------");
+												actualizarCaso1(result1[numorder],result2[i], data.journeyid);
+											}else{
+												console.log("CASO 2");
+												console.log("------------------------------");
+												actualizarCaso2(result1[numorder],result2[i], data.journeyid);
+												//result1[0].cantidad -= result2[i].IMPORTERQUOTA; 
+											}
+											connection.query('UPDATE orders SET ORDEREQUIVALENCE='+result3[0].cantidad+' WHERE ORDERID='+result1[numorder].orderid+';',function(err, rows, fields) {
+												if(err){
+													console.log("Error "+ err.message);
+												}else{
+													console.log("cantidad equivalente ingresada");
+												}
+											});
+											numorder+=1;
+										}else{
+											cont += 1;
+										}
+										if(cont == result2.length){
+											console.log("CASO 3");
+											console.log("------------------------------");
+											for(var j=0;j<result1.length;j++){
+												var impAleatorio = 0;
+												impAleatorio = Math.floor(Math.random() * result2.length);
+												console.log("aleatorio: " + impAleatorio);
+												console.log("result con aleat = " + result2[impAleatorio]);
+												actualizarCaso3(result1[j],result2[impAleatorio], data.journeyid);
+											}
+										}	
+								   }
+							});
+							
 						}
 					}
 				}

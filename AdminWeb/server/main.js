@@ -1467,43 +1467,36 @@ function UpdateDetailOrder(socket){
 		lstdetorder=data[1];
 		var cantidadequivalente=0;
 		for(var i=0;i<lstdetorder.length;i++){
-			connection.query('SELECT * FROM waste_type where WASTETYPEID='+lstdetorder[i][0]+';',function(error, result){
+			connection.query('SELECT FLOOR((WASTETYPEFACTOR/(SELECT WASTETYPEFACTOR FROM waste_type where WASTETYPEID=3))*12) as cantidad FROM waste_type where WASTETYPEID='+lstdetorder[i][0]+';',function(error, result){
+			//connection.query('SELECT * FROM waste_type where WASTETYPEID='+lstdetorder[i][0]+';',function(error, result){
 				if(error){
 					throw error;
+					console.log("query1: "+error);
 				}else{
 					console.log("query1: "+result[0].WASTETYPEFACTOR);
 					//went=result[0].WASTETYPEFACTOR;
-					connection.query('SELECT * FROM waste_type where WASTETYPEID=3;',function(error, result1){
-						if(error){
-							throw error;
+					connection.query('UPDATE orders SET ORDEREQUIVALENCE=ORDEREQUIVALENCE+'+result[0].cantidad+' WHERE ORDERID='+data[0]+';',function(err, rows, fields) {
+						if(err){
+							console.log("Error "+ err.message);
 						}else{
-							console.log("query2: "+result1[0].WASTETYPEFACTOR);
-							//wsal=result1[0].WASTETYPEFACTOR;
-							cantidadequivalente=(result[0].WASTETYPEFACTOR/result1[0].WASTETYPEFACTOR)*lstdetorder[i][1];
-							console.log("equivalencia: "+cantidadequivalente);	
-					   }
+							console.log("cantidad equivalente ingresada");
+						}
 					});
 			   }
 			});
 			//cantidadequivalente=cantidadequivalente+equivalencia(lstdetorder[i][0],lstdetorder[i][1],3);
-			console.log("EQUIVALENCIA"+ cantidadequivalente);
+			//console.log("EQUIVALENCIA"+ cantidadequivalente);
 			//console.log("waste "+ lstdetorder[i][0]);
 			//console.log("can "+ lstdetorder[i][1]);
 			connection.query('INSERT INTO details_orders VALUES ('+data[0]+','+lstdetorder[i][0]+','+lstdetorder[i][1]+')',function(err, rows, fields) {
 				if(err){
-					console.log("Error "+ err.message);
+					console.log("query2 "+ err.message);
 				}else{
 					console.log("ingreso detalle de orden");
 				}
 			});		
 		}
-		connection.query('UPDATE orders SET ORDEREQUIVALENCE=floor('+cantidadequivalente+') WHERE ORDERID='+data[0]+';',function(err, rows, fields) {
-			if(err){
-				console.log("Error "+ err.message);
-			}else{
-				console.log("cantidad equivalente ingresada");
-			}
-		});	
+			
 	});
 }
 

@@ -1833,7 +1833,11 @@ function equivalencia(typewasteentrada,cantidad,typewastesalida){
 		  	wsal=result[0].WASTETYPEFACTOR;
        }
 	});
+	console.log("waste salida"+wsal);
+	console.log("waste entrada"+went);
+
 	equi=(went/wsal)*cantidad;
+	console.log("equivalencia"+equi);
 	return equi; 
 }
 /*

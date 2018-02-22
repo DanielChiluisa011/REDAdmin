@@ -488,11 +488,6 @@ io.on('connection', function(socket){
 						console.log("numorder:" + numorder);
 						console.log("result1.length:" + result1.length);
 						if(numorder < result1.length){
-							console.log("salio");
-							break;
-							
-						} 
-						else{
 							console.log("Cuota Importador: " + result2[i].IMPORTERQUOTA);
 							console.log("Cantidad Orden: " + result1[numorder].cantidad);
 							//console.log("Cuota: " + cont);
@@ -536,8 +531,11 @@ io.on('connection', function(socket){
 											}
 										}	
 								   }
-							});
-							
+							});	
+						} 
+						else{
+							console.log("salio");
+							break;	
 						}
 					}
 				}

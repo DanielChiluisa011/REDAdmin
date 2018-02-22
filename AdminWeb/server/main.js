@@ -1818,29 +1818,31 @@ function actualizarCaso3(objeto1, objeto2, viaje){
 }
 
 function equivalencia(typewasteentrada,cantidad,typewastesalida){
-	var went,wsal,equi;
+	var equi;
 	connection.query('SELECT * FROM waste_type where WASTETYPEID='+typewasteentrada+';',function(error, result){
 		if(error){
 		    throw error;
 		}else{
 			console.log("query1: "+result[0].WASTETYPEFACTOR);
-		  	went=result[0].WASTETYPEFACTOR;
+			//went=result[0].WASTETYPEFACTOR;
+			connection.query('SELECT * FROM waste_type where WASTETYPEID='+typewastesalida+';',function(error, result1){
+				if(error){
+					throw error;
+				}else{
+					console.log("query2: "+result1[0].WASTETYPEFACTOR);
+					//wsal=result1[0].WASTETYPEFACTOR;
+					equi=(result[0].WASTETYPEFACTOR/result1[0].WASTETYPEFACTOR)*cantidad;
+					return equi;
+			   }
+			});
        }
 	});
-	connection.query('SELECT * FROM waste_type where WASTETYPEID='+typewastesalida+';',function(error, result){
-		if(error){
-		    throw error;
-		}else{
-			console.log("query2: "+result[0].WASTETYPEFACTOR);
-		  	wsal=result[0].WASTETYPEFACTOR;
-       }
-	});
+	
 	console.log("waste salida: "+wsal);
 	console.log("waste entrada: "+went);
 
-	equi=(went/wsal)*cantidad;
-	console.log("equivalencia: "+equi);
-	return equi; 
+	//equi=(went/wsal)*cantidad;
+	console.log("equivalencia: "+equi);	 
 }
 /*
 function actualizarCaso1(objeto1, objeto2, viaje){

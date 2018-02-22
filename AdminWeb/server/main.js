@@ -1479,7 +1479,7 @@ function UpdateDetailOrder(socket){
 						}else{
 							console.log("query2: "+result1[0].WASTETYPEFACTOR);
 							//wsal=result1[0].WASTETYPEFACTOR;
-							cantidadequivalente=(result[0].WASTETYPEFACTOR/result1[0].WASTETYPEFACTOR)*cantidad;
+							cantidadequivalente=(result[0].WASTETYPEFACTOR/result1[0].WASTETYPEFACTOR)*lstdetorder[i][1];
 							console.log("equivalencia: "+cantidadequivalente);	
 					   }
 					});

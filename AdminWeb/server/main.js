@@ -485,6 +485,8 @@ io.on('connection', function(socket){
 					var numorder=0;
 					for(var i=0;i<result2.length;i++){
 						console.log("Cuota Imp:" + result2[i].IMPORTERQUOTA);
+						console.log("numorder:" + numorder);
+						console.log("result1.length:" + result1.length);
 						if(numorder < result1.length){
 							break;
 						} 

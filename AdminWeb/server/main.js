@@ -1473,7 +1473,7 @@ function UpdateDetailOrder(socket){
 					throw error;
 					console.log("query1: "+error);
 				}else{
-					console.log("query1: "+result[0].WASTETYPEFACTOR);
+					//console.log("query1: "+result[0].WASTETYPEFACTOR);
 					//went=result[0].WASTETYPEFACTOR;
 					connection.query('UPDATE orders SET ORDEREQUIVALENCE=ORDEREQUIVALENCE+'+result[0].cantidad+' WHERE ORDERID='+data[0]+';',function(err, rows, fields) {
 						if(err){

@@ -1823,6 +1823,7 @@ function equivalencia(typewasteentrada,cantidad,typewastesalida){
 		if(error){
 		    throw error;
 		}else{
+			console.log("query1: "+result[0].WASTETYPEFACTOR);
 		  	went=result[0].WASTETYPEFACTOR;
        }
 	});
@@ -1830,14 +1831,15 @@ function equivalencia(typewasteentrada,cantidad,typewastesalida){
 		if(error){
 		    throw error;
 		}else{
+			console.log("query2: "+result[0].WASTETYPEFACTOR);
 		  	wsal=result[0].WASTETYPEFACTOR;
        }
 	});
-	console.log("waste salida"+wsal);
-	console.log("waste entrada"+went);
+	console.log("waste salida: "+wsal);
+	console.log("waste entrada: "+went);
 
 	equi=(went/wsal)*cantidad;
-	console.log("equivalencia"+equi);
+	console.log("equivalencia: "+equi);
 	return equi; 
 }
 /*

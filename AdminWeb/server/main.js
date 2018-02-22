@@ -475,7 +475,7 @@ io.on('connection', function(socket){
 		if(error1){
 			throw error1;
 		}else{	
-			connection.query("SELECT IMPORTERID, IMPORTERQUOTA,WASTETYPEID FROM importer ORDER BY importerquota DESC;",function(error2, result2){
+			connection.query("SELECT i.IMPORTERID, i.IMPORTERQUOTA,w.WASTETYPEFACTOR FROM importer i,waste_type w WHERE w.WASTETYPEID=i.WASTETYPEID ORDER BY importerquota DESC;",function(error2, result2){
 			if(error2){
 				console.log("Error 2: " + error2);
 			}else{
@@ -483,6 +483,7 @@ io.on('connection', function(socket){
 				if(result2.length!=0){
 					var cont = 0;
 					var numorder=0;
+					var cantidadequivalente=0;
 					for(var i=0;i<result2.length;i++){
 						console.log("Cuota Imp:" + result2[i].IMPORTERQUOTA);
 						console.log("numorder:" + numorder);
@@ -490,25 +491,29 @@ io.on('connection', function(socket){
 						if(numorder < result1.length){
 							console.log("Cuota Importador: " + result2[i].IMPORTERQUOTA);
 							console.log("Cantidad Orden: " + result1[numorder].cantidad);
-							//console.log("Cuota: " + cont);
-							connection.query('SELECT FLOOR((WASTETYPEFACTOR/(SELECT WASTETYPEFACTOR FROM waste_type where WASTETYPEID='+result2[i].WASTETYPEID+'))*'+result1[numorder].cantidad+') as cantidad FROM waste_type where WASTETYPEID=3;',function(error, result3){
+							
+
+							/*connection.query('SELECT FLOOR((WASTETYPEFACTOR/(SELECT WASTETYPEFACTOR FROM waste_type where WASTETYPEID='+result2[i].WASTETYPEID+'))*'+result1[numorder].cantidad+') as cantidad FROM waste_type where WASTETYPEID=3;',function(error, result3){
 								//connection.query('SELECT * FROM waste_type where WASTETYPEID='+lstdetorder[i][0]+';',function(error, result){
 									if(error){
 										throw error;
 										console.log("query1: "+error);
-									}else{
+									}else{*/
+
+
+										cantidadequivalente=Math.floor((1/result2[i].WASTETYPEFACTOR)*result1[numorder].cantidad);
 										if(result2[i].IMPORTERQUOTA > 0){
-											if(result3[0].cantidad <= result2[i].IMPORTERQUOTA){
+											if(cantidadequivalente <= result2[i].IMPORTERQUOTA){
 												console.log("CASO 1");
 												console.log("------------------------------");
-												actualizarCaso1(result1[numorder],result2[i], data.journeyid);
+												actualizarCaso1(cantidadequivalente,result2[i], data.journeyid);
 											}else{
 												console.log("CASO 2");
 												console.log("------------------------------");
-												actualizarCaso2(result1[numorder],result2[i], data.journeyid);
+												actualizarCaso2(cantidadequivalente,result2[i], data.journeyid);
 												//result1[0].cantidad -= result2[i].IMPORTERQUOTA; 
 											}
-											connection.query('UPDATE orders SET ORDEREQUIVALENCE='+result3[0].cantidad+' WHERE ORDERID='+result1[numorder].orderid+';',function(err, rows, fields) {
+											connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+') WHERE ORDERID='+result1[numorder].orderid+';',function(err, rows, fields) {
 												if(err){
 													console.log("Error "+ err.message);
 												}else{
@@ -527,11 +532,11 @@ io.on('connection', function(socket){
 												impAleatorio = Math.floor(Math.random() * result2.length);
 												console.log("aleatorio: " + impAleatorio);
 												console.log("result con aleat = " + result2[impAleatorio]);
-												actualizarCaso3(result1[j],result2[impAleatorio], data.journeyid);
+												actualizarCaso3(cantidadequivalente,result2[impAleatorio], data.journeyid);
 											}
 										}	
-								   }
-							});	
+								 /*  }
+							});	*/
 						} 
 						else{
 							console.log("salio");
@@ -1796,9 +1801,9 @@ function ordenLstImportadores(a, b){
 }
 
 function actualizarCaso1(objeto1, objeto2, viaje){
-    console.log("Order Quantity: " + objeto1.cantidad);
+    console.log("Order Quantity: " + objeto1);
     console.log("Data Importador: " + objeto2.IMPORTERID + " - " + objeto2.IMPORTERQUOTA);
-    var valor = objeto2.IMPORTERQUOTA - objeto1.cantidad;
+    var valor = objeto2.IMPORTERQUOTA - objeto1;
     connection.query('UPDATE importer SET importerquota = ? WHERE importerid= ?',[valor, objeto2.IMPORTERID],function(error){
         if(error){
 			throw error;
@@ -1821,8 +1826,8 @@ function actualizarCaso2(objeto1, objeto2, viaje){
 }
 
 function actualizarCaso3(objeto1, objeto2, viaje){
-    console.log("tamanio: " + objeto2.IMPORTERID, viaje, objeto1.cantidad);
-	connection.query('INSERT INTO journeyximporter (IMPORTERID,JOURNEYID,QUANTITY) VALUES (?,?,?)',[objeto2.IMPORTERID, viaje, objeto1.cantidad],function(error2){
+    console.log("tamanio: " + objeto2.IMPORTERID, viaje, objeto1);
+	connection.query('INSERT INTO journeyximporter (IMPORTERID,JOURNEYID,QUANTITY) VALUES (?,?,?)',[objeto2.IMPORTERID, viaje, objeto1],function(error2){
 		if(error2){
 			connection.query("SELECT QUANTITY FROM journeyximporter WHERE IMPORTERID = " + objeto2.IMPORTERID + " AND JOURNEYID = " + viaje + ";",function(error, result){
 				if(error){
@@ -1830,7 +1835,7 @@ function actualizarCaso3(objeto1, objeto2, viaje){
 				}else{
 					console.log("Cantidad en Importador Actualizada");
 					if(result.length!=0){
-						var auxCant = objeto1.cantidad + result[0].QUANTITY;
+						var auxCant = objeto1 + result[0].QUANTITY;
 						console.log("Nueva cantidad: " + auxCant);
 						connection.query('UPDATE journeyximporter SET QUANTITY = ? WHERE IMPORTERID = ? AND JOURNEYID = ?',[auxCant, objeto2.IMPORTERID, viaje],function(error2){
 							if(error2){

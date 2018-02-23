@@ -1492,7 +1492,7 @@ function UpdateDetailOrder(socket){
 		lstdetorder=data[1];
 		var cantidadequivalente=0;
 		for(var i=0;i<lstdetorder.length;i++){
-			connection.query('SELECT FLOOR((WASTETYPEFACTOR/(SELECT WASTETYPEFACTOR FROM waste_type where WASTETYPEID=3))*'+lstdetorder[i][1]+') as cantidad FROM waste_type where WASTETYPEID='+lstdetorder[i][0]+';',function(error, result){
+			connection.query('SELECT FLOOR((WASTETYPEFACTOR/(SELECT WASTETYPEFACTOR FROM waste_type where WASTETYPEID=4))*'+lstdetorder[i][1]+') as cantidad FROM waste_type where WASTETYPEID='+lstdetorder[i][0]+';',function(error, result){
 			//connection.query('SELECT * FROM waste_type where WASTETYPEID='+lstdetorder[i][0]+';',function(error, result){
 				if(error){
 					throw error;
@@ -1853,7 +1853,7 @@ function actualizarCaso3(objeto1, objeto2, viaje){
 	});
 }
 
-function equivalencia(typewasteentrada,cantidad,typewastesalida){
+/*function equivalencia(typewasteentrada,cantidad,typewastesalida){
 	var equi;
 	console.log("entry");	
 	connection.query('SELECT * FROM waste_type where WASTETYPEID='+typewasteentrada+';',function(error, result){
@@ -1881,7 +1881,7 @@ function equivalencia(typewasteentrada,cantidad,typewastesalida){
 
 	//equi=(went/wsal)*cantidad;
 	console.log("equivalencia: "+equi);	 
-}
+}*/
 /*
 function actualizarCaso1(objeto1, objeto2, viaje){
     console.log("Order Quantity: " + objeto1.cantidad);

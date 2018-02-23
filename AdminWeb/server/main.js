@@ -513,7 +513,7 @@ io.on('connection', function(socket){
 												actualizarCaso2(cantidadequivalente,result2[i], data.journeyid);
 												//result1[0].cantidad -= result2[i].IMPORTERQUOTA; 
 											}
-											connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+') AND IMPORTERID='+result2[i].IMPORTERID+' WHERE ORDERID='+result1[numorder].orderid+';',function(err, rows, fields) {
+											connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+'),IMPORTERID='+result2[i].IMPORTERID+' WHERE ORDERID='+result1[numorder].orderid+';',function(err, rows, fields) {
 												if(err){
 													console.log("Error "+ err.message);
 												}else{
@@ -1493,7 +1493,7 @@ function UpdateDetailOrder(socket){
 		var cantidadreal=0;
 		var cantidadequivalente=0;
 		for(var i=0;i<lstdetorder.length;i++){
-			cantidadreal=cantidadreal+lstdetorder[i][1];
+			cantidadreal+=parseInt(lstdetorder[i][1]);
 			connection.query('SELECT (WASTETYPEFACTOR/(SELECT WASTETYPEFACTOR FROM waste_type where WASTETYPEID='+lstdetorder[i][0]+')*'+lstdetorder[i][1]+') as cantidad FROM waste_type where WASTETYPEID=4;',function(error, result){
 			//connection.query('SELECT * FROM waste_type where WASTETYPEID='+lstdetorder[i][0]+';',function(error, result){
 				if(error){
@@ -1523,6 +1523,7 @@ function UpdateDetailOrder(socket){
 				}
 			});		
 		}
+		console.log("ingreso detalle de orden");
 		connection.query('UPDATE orders SET ORDERQUANTITY='+cantidadreal+' WHERE ORDERID='+data[0]+';',function(err, rows, fields) {
 			if(err){
 				console.log("Error "+ err.message);

@@ -903,6 +903,8 @@ io.on('connection', function(socket){
     SelectMaxOrder(socket)
 	SelectJourneys();
 	SelectActiveOrders();
+	SelectDistributor();
+	SelectOrders();
 	SelectUsers();
 	selectWaste();
 	selectWasteType();
@@ -912,10 +914,8 @@ io.on('connection', function(socket){
 	SelectPersons();
 	SendNotification(socket); 
 	SendNotificationAlert(socket);
-	SelectOrders();
 	SelectDrivers();
 	SelectTrucks();
-	SelectDistributor();
 	UpdateUser(socket);
 	SaveNewUser(socket);
 	SelectTrucks1();

@@ -1490,8 +1490,10 @@ function UpdateManifest(socket){
 function UpdateDetailOrder(socket){
 	socket.on('UpdateDetailOrder',function(data){
 		lstdetorder=data[1];
+		var cantidadreal=0;
 		var cantidadequivalente=0;
 		for(var i=0;i<lstdetorder.length;i++){
+			cantidadreal=cantidadreal+lstdetorder[i][1];
 			connection.query('SELECT (WASTETYPEFACTOR/(SELECT WASTETYPEFACTOR FROM waste_type where WASTETYPEID='+lstdetorder[i][0]+')*'+lstdetorder[i][1]+') as cantidad FROM waste_type where WASTETYPEID=4;',function(error, result){
 			//connection.query('SELECT * FROM waste_type where WASTETYPEID='+lstdetorder[i][0]+';',function(error, result){
 				if(error){
@@ -1521,6 +1523,13 @@ function UpdateDetailOrder(socket){
 				}
 			});		
 		}
+		connection.query('UPDATE orders SET ORDERQUANTITY='+cantidadreal+' WHERE ORDERID='+data[0]+';',function(err, rows, fields) {
+			if(err){
+				console.log("Error "+ err.message);
+			}else{
+				console.log("actualizacion de cantidad ingresada");
+			}
+		});
 			
 	});
 }

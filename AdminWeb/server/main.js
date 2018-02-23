@@ -513,7 +513,7 @@ io.on('connection', function(socket){
 												actualizarCaso2(cantidadequivalente,result2[i], data.journeyid);
 												//result1[0].cantidad -= result2[i].IMPORTERQUOTA; 
 											}
-											connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+') WHERE ORDERID='+result1[numorder].orderid+';',function(err, rows, fields) {
+											connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+') AND IMPORTERID='+result2[i].IMPORTERID+' WHERE ORDERID='+result1[numorder].orderid+';',function(err, rows, fields) {
 												if(err){
 													console.log("Error "+ err.message);
 												}else{

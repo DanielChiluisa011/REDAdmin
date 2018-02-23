@@ -501,7 +501,7 @@ io.on('connection', function(socket){
 									}else{*/
 
 
-										cantidadequivalente=Math.floor((1/result2[i].WASTETYPEFACTOR)*result1[numorder].cantidad);
+										cantidadequivalente=Math.floor(result2[i].WASTETYPEFACTOR*result1[numorder].cantidad);
 										if(result2[i].IMPORTERQUOTA > 0){
 											if(cantidadequivalente <= result2[i].IMPORTERQUOTA){
 												console.log("CASO 1");
@@ -1492,7 +1492,7 @@ function UpdateDetailOrder(socket){
 		lstdetorder=data[1];
 		var cantidadequivalente=0;
 		for(var i=0;i<lstdetorder.length;i++){
-			connection.query('SELECT FLOOR((WASTETYPEFACTOR/(SELECT WASTETYPEFACTOR FROM waste_type where WASTETYPEID=4))*'+lstdetorder[i][1]+') as cantidad FROM waste_type where WASTETYPEID='+lstdetorder[i][0]+';',function(error, result){
+			connection.query('SELECT (WASTETYPEFACTOR/(SELECT WASTETYPEFACTOR FROM waste_type where WASTETYPEID='+lstdetorder[i][0]+')*'+lstdetorder[i][1]+') as cantidad FROM waste_type where WASTETYPEID=4;',function(error, result){
 			//connection.query('SELECT * FROM waste_type where WASTETYPEID='+lstdetorder[i][0]+';',function(error, result){
 				if(error){
 					throw error;

@@ -533,6 +533,13 @@ io.on('connection', function(socket){
 												console.log("aleatorio: " + impAleatorio);
 												console.log("result con aleat = " + result2[impAleatorio]);
 												actualizarCaso3(cantidadequivalente,result2[impAleatorio], data.journeyid);
+												connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+'),IMPORTERID='+result2[impAleatorio].IMPORTERID+' WHERE ORDERID='+result1[numorder].orderid+';',function(err, rows, fields) {
+													if(err){
+														console.log("Error "+ err.message);
+													}else{
+														console.log("cantidad equivalente ingresada");
+													}
+												});
 											}
 										}	
 								 /*  }
@@ -937,7 +944,7 @@ io.on('connection', function(socket){
 	});
 	socket.on('NewOrder',function(data){
 		
-		connection.query('INSERT INTO orders VALUES (?,?,?,?,?,?,?,?,?,?,?,?)',[,data.importer.DistributorId,data.waste.WASTEONU,data.date,data.quantity,"Pendiente","General",null,null,data.time,"0",null],function(err, rows, fields) {
+		connection.query('INSERT INTO orders VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)',[,data.importer.DistributorId,data.waste.WASTEONU,data.date,data.quantity,"Pendiente","General",null,null,data.time,"0",null,null],function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{

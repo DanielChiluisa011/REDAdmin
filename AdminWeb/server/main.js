@@ -185,6 +185,16 @@ io.on('connection', function(socket){
 				}
 			});
 	  });
+	  socket.on('RequestTypeWaste',function(){
+		connection.query("select *from waste_type",function(error,result){
+			if(error){
+				throw error;
+			}else{
+				socket.emit('ResponseTypeWaste',result);
+				//console.log(result[0]);
+			}
+		});
+  });
       socket.on('RequestDistributorData',function(data){
       		connection.query("SELECT DistributorId, DistributorName, DistributorRuc,DistributorAddress,DistributorPhone,DistributorStock,DistributorEnvironmentalLicense,PersonId,ImporterId,X(GeometryFromText(AsText(DistributorCoordinates)))CoordX, Y(GeometryFromText(AsText(DistributorCoordinates))) CoordY FROM distributor where PERSONID='"+data+"'",function(error, result){
 				if(error){
@@ -1095,6 +1105,10 @@ io.on('connection', function(socket){
 	});
 
 	socket.on("RequestInsertNewImporter", function(importer){
+		if(importer.tipodesecho==0){
+			console.log("tipo desecho "+ importer.tipodesecho);
+			importer.tipodesecho=3;
+		}
 		connection.query('INSERT INTO person (PERSONCIRUC,PERSONNAME,PERSONLASTNAME,PERSONPHONE,PERSONADDRESS,PERSONROLE) VALUES (?,?,?,?,?,?)',
 			[importer.personCi,
 			importer.personName,
@@ -1121,7 +1135,7 @@ io.on('connection', function(socket){
 								socket.emit("ResponseImporter",false);
 							}else{
 								console.log(importer.code);
-								connection.query('INSERT INTO importer (IMPORTERNAME,IMPORTERADDRESS,IMPORTERPHONE,IMPORTERRUC,IMPORTERQUOTA,IMPORTERWASTEGENERATORNUMBER,IMPORTERCODE,USEREMAIL,PROVINCEID,IMPORTERCANTON,IMPORTERPARROQUIA) VALUES (?,?,?,?,?,?,?,?,?,?,?)',
+								connection.query('INSERT INTO importer (IMPORTERNAME,IMPORTERADDRESS,IMPORTERPHONE,IMPORTERRUC,IMPORTERQUOTA,IMPORTERWASTEGENERATORNUMBER,IMPORTERCODE,USEREMAIL,PROVINCEID,IMPORTERCANTON,IMPORTERPARROQUIA,WASTETYPEID) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)',
 											[importer.name,
 											importer.address,
 											importer.phone,
@@ -1133,6 +1147,7 @@ io.on('connection', function(socket){
 											importer.provincia,
 											importer.canton,
 											importer.parroquia,
+											importer.tipodesecho,
 											],function(err, rows, fields) {
 									if(err){
 										console.log("Error "+ err.message);

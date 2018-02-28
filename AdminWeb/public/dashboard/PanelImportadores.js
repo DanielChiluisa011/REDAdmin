@@ -5,6 +5,7 @@ var lon=6;
 var code="h";
 var fechaactual;
 var lstProvinces=[];
+var lstWaste=[];
 $(document).ready(function(){
     // alert(rand_code());
     rand_code();
@@ -33,6 +34,19 @@ $(document).ready(function(){
 	   		$('#cmbNewImpProvince').append(new Option(lstProvinces[i].PROVINCENAME, lstProvinces[i].PROVINCEID));
            }
     });
+
+    socket.emit('RequestTypeWaste','');
+    socket.on('ResponseTypeWaste',function(data){
+		lstWaste=[];
+        lstWaste=data;
+        //alert(lstProvinces.length);
+		$('#cmbTypeWaste').empty();
+       	$('#cmbTypeWaste').append('<option value="0" selected>Sin Tipo de Desecho</option>');
+       	for (var i = 0; i < lstWaste.length; i++) {
+	   		$('#cmbTypeWaste').append(new Option(lstWaste[i].WASTETYPENAME, lstWaste[i].WASTETYPEID));
+           }
+    });
+
     socket.on("ResponseImporter",function(Importador){
         lstImporters.length=0;
         // rand_code();
@@ -181,7 +195,8 @@ $("#btnInsertImporter").click(function(){
         personEmail: $("#txtNewImpEmail").val(),
         provincia: lstProvinces[$('#cmbNewImpProvince option:selected').index()-1].PROVINCEID,
         canton: $("#txtNewImpCanton").val(),
-        parroquia: $("#txtNewImpParroquia").val()
+        parroquia: $("#txtNewImpParroquia").val(),
+        tipodesecho: lstWaste[$('#cmbTypeWaste option:selected').index()-1].WASTETYPEID
         // importercode: $("#txtNewImpCode").val()
     } 
     // alert(newImporter.code);

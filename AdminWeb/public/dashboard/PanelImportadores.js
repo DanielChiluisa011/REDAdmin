@@ -179,7 +179,7 @@ $("#btnInsertImporter").click(function(){
         personPhone: $("#txtNewImpPersonPhone").val(),
         personAddress: $("#txtNewImpPersonAddress").val(),
         personEmail: $("#txtNewImpEmail").val(),
-        provincia: $("#cmbNewImpProvince").val(),
+        provincia: lstProvinces[$('#cmbNewImpProvince option:selected').index()-1].PROVINCEID,
         canton: $("#txtNewImpCanton").val(),
         parroquia: $("#txtNewImpParroquia").val()
         // importercode: $("#txtNewImpCode").val()

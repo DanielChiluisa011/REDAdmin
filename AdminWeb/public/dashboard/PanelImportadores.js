@@ -30,7 +30,7 @@ $(document).ready(function(){
 		$('#cmbNewImpProvince').empty();
        	$('#cmbNewImpProvince').append('<option selected>Seleccione una Provincia</option>');
        	for (var i = 0; i < lstProvinces.length; i++) {
-	   		$('#cmbNewImpProvince').append(new Option(lstProvinces[i].PROVINCENAME, 'names'));
+	   		$('#cmbNewImpProvince').append(new Option(lstProvinces[i].PROVINCENAME, lstProvinces[i].PROVINCEID));
            }
     });
     socket.on("ResponseImporter",function(Importador){
@@ -151,7 +151,7 @@ function ShowImporterInformation(i){
 		$("#txtNewImpEmail").val(lstImporters[i].USEREMAIL);
         $("#txtNewImpEmail").attr("disabled",true);
         $("#codigoTelef").hide();
-        $("#cmbNewImpProvincia").val(lstImporters[i].IMPORTERPROVINCIA);
+        $("#cmbNewImpProvincia").val(lstImporters[i].PROVINCEID);
         $("#txtNewImpParroquia").val(lstImporters[i].IMPORTERPARROQUIA);
         $("#txtNewImpCanton").val(lstImporters[i].IMPORTERCANTON);
 
@@ -179,7 +179,7 @@ $("#btnInsertImporter").click(function(){
         personPhone: $("#txtNewImpPersonPhone").val(),
         personAddress: $("#txtNewImpPersonAddress").val(),
         personEmail: $("#txtNewImpEmail").val(),
-        provincia: lstProvinces[$('#cmbNewImpProvince option:selected').index()-1].PROVINCENAME,
+        provincia: $("#cmbNewImpProvince").val(),
         canton: $("#txtNewImpCanton").val(),
         parroquia: $("#txtNewImpParroquia").val()
         // importercode: $("#txtNewImpCode").val()

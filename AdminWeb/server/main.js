@@ -185,7 +185,7 @@ io.on('connection', function(socket){
 				}
 			});
 	  });
-	  socket.on('RequestTypeWaste',function(){
+	socket.on('RequestTypeWaste',function(){
 		connection.query("select *from waste_type",function(error,result){
 			if(error){
 				throw error;
@@ -194,7 +194,17 @@ io.on('connection', function(socket){
 				//console.log(result[0]);
 			}
 		});
-  });
+	  });
+	  socket.on('RequestStateJourney',function(){
+		connection.query("select JOURNEYSTATE from journey where JOURNEYID=99",function(error,result){
+			if(error){
+				throw error;
+			}else{
+				socket.emit('ResponseStateJourney',result[0].JOURNEYSTATE);
+				//console.log(result[0]);
+			}
+		});
+  	});
       socket.on('RequestDistributorData',function(data){
       		connection.query("SELECT DistributorId, DistributorName, DistributorRuc,DistributorAddress,DistributorPhone,DistributorStock,DistributorEnvironmentalLicense,PersonId,ImporterId,X(GeometryFromText(AsText(DistributorCoordinates)))CoordX, Y(GeometryFromText(AsText(DistributorCoordinates))) CoordY FROM distributor where PERSONID='"+data+"'",function(error, result){
 				if(error){

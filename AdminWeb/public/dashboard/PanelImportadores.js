@@ -41,7 +41,7 @@ $(document).ready(function(){
         lstWaste=data;
         //alert(lstProvinces.length);
 		$('#cmbTypeWaste').empty();
-       	$('#cmbTypeWaste').append('<option value="0" selected>Sin Tipo de Desecho</option>');
+       	$('#cmbTypeWaste').append(new Option("Sin Tipo de Desecho","0"));//'<option value="0" selected>Sin Tipo de Desecho</option>');
        	for (var i = 0; i < lstWaste.length; i++) {
 	   		$('#cmbTypeWaste').append(new Option(lstWaste[i].WASTETYPENAME, lstWaste[i].WASTETYPEID));
            }

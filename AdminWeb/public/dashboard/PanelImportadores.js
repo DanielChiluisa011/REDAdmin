@@ -41,7 +41,7 @@ $(document).ready(function(){
         lstWaste=data;
         //alert(lstProvinces.length);
 		$('#cmbTypeWaste').empty();
-       	$('#cmbTypeWaste').append(new Option("Sin Tipo de Desecho","0"));//'<option value="0" selected>Sin Tipo de Desecho</option>');
+       	$('#cmbTypeWaste').append('<option value="0" selected>Sin Tipo de Desecho</option>');
        	for (var i = 0; i < lstWaste.length; i++) {
 	   		$('#cmbTypeWaste').append(new Option(lstWaste[i].WASTETYPENAME, lstWaste[i].WASTETYPEID));
            }
@@ -196,7 +196,7 @@ $("#btnInsertImporter").click(function(){
         provincia: lstProvinces[$('#cmbNewImpProvince option:selected').index()-1].PROVINCEID,
         canton: $("#txtNewImpCanton").val(),
         parroquia: $("#txtNewImpParroquia").val(),
-        tipodesecho: lstWaste[$('#cmbTypeWaste option:selected').index()-1].WASTETYPEID
+        tipodesecho: $('#cmbTypeWaste').val()
         // importercode: $("#txtNewImpCode").val()
     } 
     // alert(newImporter.code);

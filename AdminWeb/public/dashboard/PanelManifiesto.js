@@ -46,6 +46,7 @@ function ActiveButton(i){
 	var b1="btnm"+i;
 	var b2="txobservacion"+i;
 	var obs=document.getElementById(b2).value;
+	alert(obs.length);
 	if(obs=="")
 		document.getElementById(b1).disabled=false;
 	else

@@ -16,7 +16,7 @@ function UpdateManifest(i){
 	var b1="txpeso"+i;
 	var b2="txobservacion"+i;
 	
-	lstObjManifest[i].OBSERVACION=document.getElementById(b2).value;
+	lstObjManifest[i].ORDEROBSERVATION=document.getElementById(b2).value;
 	bootbox.confirm("¿Esta seguro de modificar el manifiesto de la Orden# = "+lstObjManifest[i].ORDERID+" Importador: "+lstObjManifest[i].IMPORTERNAME+" ?", function(result) {
 	   if(result){
 		   	socket.emit('UpdateManifest', lstObjManifest[i]);

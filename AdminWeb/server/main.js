@@ -966,7 +966,7 @@ io.on('connection', function(socket){
 	});
 	socket.on('NewOrder',function(data){
 		
-		connection.query('INSERT INTO orders VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[,data.importer.DistributorId,data.waste.WASTEONU,data.date,data.quantity,"Pendiente","General",null,null,data.time,"0",null,null,null],function(err, rows, fields) {
+		connection.query('INSERT INTO orders VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[,data.importer.DistributorId,data.waste.WASTEONU,data.date,data.quantity,"Pendiente","General",null,null,data.time,"0",null,null,null,null],function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{
@@ -1500,7 +1500,7 @@ function SelectOrdersList(){
 }
 
 function SelectManifest(){
-	connection.query("SELECT jxi.JOURNEYID,jxi.IMPORTERID,i.IMPORTERNAME,jxi.PESO,jxi.OBSERVACION FROM journeyximporter jxi, importer i WHERE jxi.IMPORTERID=i.IMPORTERID;",function(error, result){
+	connection.query("SELECT o.ORDERID, o.JOURNEYID, o.IMPORTERID,i.IMPORTERNAME,j.JOURNEYDATE,j.TRUCKID,p.PERSONNAME,p.PERSONLASTNAME FROM orders o, importer i, journey j, person p,trucks t WHERE o.IMPORTERID=i.IMPORTERID AND j.JOURNEYID=o.JOURNEYID AND j.TRUCKID=t.TRUCKID AND t.PERSONID=p.PERSONID ORDER BY JOURNEYID;",function(error, result){
 		if(error){
 			throw error;
 		}else{

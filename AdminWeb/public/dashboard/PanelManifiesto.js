@@ -40,7 +40,7 @@ function FillTable(){
 			else
 				obs1=data[i].ORDEROBSERVATION;
 				
-			date=data[i].JOURNEYDATE,"T".split("T");;
+			date=data[i].JOURNEYDATE.split("T");
 			
 			$('#ManifestTable').append("<tr align='center'><td>"+data[i].ORDERID+"</td><td>"+data[i].JOURNEYID+"</td><td>"+data[i].IMPORTERNAME+"</td><td>"+date[0]+"</td><td>"+data[i].TRUCKID+"</td><td>"+data[i].PERSONNAME+" "+data[i].PERSONLASTNAME+"</td><td><textarea rows='3' cols='30' id='txobservacion"+i+"'>"+obs1+"</textarea></td><td><button class='btn green' onclick='UpdateManifest("+i+")'><i class='fa fa-save'></i>Modificar</button></td></tr>");
 		}

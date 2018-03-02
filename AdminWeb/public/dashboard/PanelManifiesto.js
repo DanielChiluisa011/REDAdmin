@@ -46,8 +46,13 @@ function ActiveButton(i){
 	var b1="btnm"+i;
 	var b2="txobservacion"+i;
 	var obs=document.getElementById(b2).value;
-	if(obs.length==0)
+	alert(obs.length);
+	if(obs.length==0){
 		document.getElementById(b1).disabled=false;
-	else
+		alert("bloqueo");
+	}
+	else{
 		document.getElementById(b1).disabled=true;
+		alert("desbloqueo");
+	}
 }

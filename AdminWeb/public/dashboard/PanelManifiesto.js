@@ -35,16 +35,12 @@ function FillTable(){
 		var peso1="";
 		var obs1="";
 		for (var i = 0; i < data.length; i++) {
-			if(data[i].PESO==null)
-				peso1="0";
-			else
-				peso1=data[i].PESO;
-			if(data[i].OBSERVACION==null)
+			if(data[i].ORDEROBSERVATION==null)
 				obs1="";
 			else
-				obs1=data[i].OBSERVACION;
+				obs1=data[i].ORDEROBSERVATION;
 				
-				$('#ManifestTable').append("<tr align='center'><td>"+data[i].JOURNEYID+"</td><td>"+data[i].IMPORTERNAME+"</td><td><input type='number' min='0' id='txpeso"+i+"' value="+peso1+"></td><td><textarea rows='3' cols='30' id='txobservacion"+i+"'>"+obs1+"</textarea></td><td><button class='btn green' onclick='UpdateManifest("+i+")'><i class='fa fa-save'></i>Modificar</button></td></tr>");
+				$('#ManifestTable').append("<tr align='center'><td>"+data[i].ORDERID+"</td><td>"+data[i].JOURNEYID+"</td><td>"+data[i].IMPORTERNAME+"</td><td>"+data[i].JOURNEYDATE+"</td><td>"+data[i].TRUCKID+"</td><td>"+data[i].PERSONNAME+" "+data[i].PERSONLASTNAME+"</td><td><textarea rows='3' cols='30' id='txobservacion"+i+"'>"+obs1+"</textarea></td><td><button class='btn green' onclick='UpdateManifest("+i+")'><i class='fa fa-save'></i>Modificar</button></td></tr>");
 		}
 		$('#OrdersHistoryTable').append("</tbody>");
 		lstObjManifest=data;

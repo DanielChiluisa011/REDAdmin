@@ -1500,7 +1500,7 @@ function SelectOrdersList(){
 }
 
 function SelectManifest(){
-	connection.query("SELECT o.ORDERID, o.JOURNEYID, o.IMPORTERID,i.IMPORTERNAME,j.JOURNEYDATE,j.TRUCKID,p.PERSONNAME,p.PERSONLASTNAME FROM orders o, importer i, journey j, person p,trucks t WHERE o.IMPORTERID=i.IMPORTERID AND j.JOURNEYID=o.JOURNEYID AND j.TRUCKID=t.TRUCKID AND t.PERSONID=p.PERSONID ORDER BY JOURNEYID;",function(error, result){
+	connection.query("SELECT o.ORDERID, o.JOURNEYID, o.IMPORTERID,i.IMPORTERNAME,j.JOURNEYDATE,j.TRUCKID,p.PERSONNAME,p.PERSONLASTNAME,o.ORDEROBSERVATION FROM orders o, importer i, journey j, person p,trucks t WHERE o.IMPORTERID=i.IMPORTERID AND j.JOURNEYID=o.JOURNEYID AND j.TRUCKID=t.TRUCKID AND t.PERSONID=p.PERSONID ORDER BY JOURNEYID;",function(error, result){
 		if(error){
 			throw error;
 		}else{

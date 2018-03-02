@@ -15,14 +15,13 @@ $(document).ready(function(){
 function UpdateManifest(i){
 	var b1="txpeso"+i;
 	var b2="txobservacion"+i;
-
-	lstObjManifest[i].PESO=document.getElementById(b1).value;
+	
 	lstObjManifest[i].OBSERVACION=document.getElementById(b2).value;
-	bootbox.confirm("¿Esta seguro de modificar el manifiesto (Viaje: "+lstObjManifest[i].JOURNEYID+" Importador: "+lstObjManifest[i].IMPORTERNAME+" ?", function(result) {
+	bootbox.confirm("¿Esta seguro de modificar el manifiesto de la Orden# = "+lstObjManifest[i].ORDERID+" Importador: "+lstObjManifest[i].IMPORTERNAME+" ?", function(result) {
 	   if(result){
 		   	socket.emit('UpdateManifest', lstObjManifest[i]);
 			$.notific8('Manifiesto modificado');
-			setTimeout("location.reload()",1500);
+			setTimeout("location.reload()",900);
 	   }
 	});
 	

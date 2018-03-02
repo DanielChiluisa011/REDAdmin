@@ -1512,11 +1512,11 @@ function SelectManifest(){
 
 function UpdateManifest(socket){
 	socket.on('UpdateManifest',function(data){
-		connection.query('UPDATE journeyximporter SET PESO="'+data.PESO+'", OBSERVACION="'+data.OBSERVACION+'" WHERE IMPORTERID="'+data.IMPORTERID+'" AND JOURNEYID="'+data.JOURNEYID+'";',function(err, rows, fields) {
+		connection.query('UPDATE orders SET ORDEROBSERVATION="'+data.ORDEROBSERVATION+'" WHERE ORDERID="'+data.ORDERID+';',function(err, rows, fields) {
 			if(err){
 				console.log("Error "+ err.message);
 			}else{
-				console.log("journeyximporter actualizado correctamente");
+				console.log("observacion orden actualizado correctamente");
 			}
 		});
 	});

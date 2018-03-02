@@ -33,13 +33,16 @@ function FillTable(){
 		$('#OrdersHistoryTable').append("<tbody>");
 		var peso1="";
 		var obs1="";
+		var date=[];
 		for (var i = 0; i < data.length; i++) {
 			if(data[i].ORDEROBSERVATION==null)
 				obs1="";
 			else
 				obs1=data[i].ORDEROBSERVATION;
 				
-				$('#ManifestTable').append("<tr align='center'><td>"+data[i].ORDERID+"</td><td>"+data[i].JOURNEYID+"</td><td>"+data[i].IMPORTERNAME+"</td><td>"+data[i].JOURNEYDATE+"</td><td>"+data[i].TRUCKID+"</td><td>"+data[i].PERSONNAME+" "+data[i].PERSONLASTNAME+"</td><td><textarea rows='3' cols='30' id='txobservacion"+i+"'>"+obs1+"</textarea></td><td><button class='btn green' onclick='UpdateManifest("+i+")'><i class='fa fa-save'></i>Modificar</button></td></tr>");
+			date=data[i].JOURNEYDATE,"T".split("T");;
+			
+			$('#ManifestTable').append("<tr align='center'><td>"+data[i].ORDERID+"</td><td>"+data[i].JOURNEYID+"</td><td>"+data[i].IMPORTERNAME+"</td><td>"+date[0]+"</td><td>"+data[i].TRUCKID+"</td><td>"+data[i].PERSONNAME+" "+data[i].PERSONLASTNAME+"</td><td><textarea rows='3' cols='30' id='txobservacion"+i+"'>"+obs1+"</textarea></td><td><button class='btn green' onclick='UpdateManifest("+i+")'><i class='fa fa-save'></i>Modificar</button></td></tr>");
 		}
 		$('#OrdersHistoryTable').append("</tbody>");
 		lstObjManifest=data;

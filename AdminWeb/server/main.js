@@ -1512,7 +1512,7 @@ function SelectManifest(){
 
 function UpdateManifest(socket){
 	socket.on('UpdateManifest',function(data){
-		connection.query('UPDATE orders SET ORDEROBSERVATION="'+data.ORDEROBSERVATION+'" WHERE ORDERID="'+data.ORDERID+';',function(err, rows, fields) {
+		connection.query('UPDATE orders SET ORDEROBSERVATION="'+data.ORDEROBSERVATION+'" WHERE ORDERID='+data.ORDERID+';',function(err, rows, fields) {
 			if(err){
 				console.log("Error "+ err.message);
 			}else{

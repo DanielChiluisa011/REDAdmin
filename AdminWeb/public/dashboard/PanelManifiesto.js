@@ -49,10 +49,8 @@ function ActiveButton(i){
 	alert(obs.length);
 	if(obs.length==0){
 		document.getElementById(b1).disabled=true;
-		alert("bloqueo");
 	}
 	else{
 		document.getElementById(b1).disabled=false;
-		alert("desbloqueo");
 	}
 }

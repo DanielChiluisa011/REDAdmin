@@ -505,7 +505,8 @@ io.on('connection', function(socket){
 					var numorder=0;
 					var cantidadequivalente=0;
 					var pesoequivalente=0;
-					for(var i=0;i<result2.length;i++){
+					var i=0;
+					for(i;i<result2.length;i++){
 						console.log("Cuota Imp:" + result2[i].IMPORTERQUOTA);
 						console.log("numorder:" + numorder);
 						console.log("result1.length:" + result1.length);
@@ -543,6 +544,7 @@ io.on('connection', function(socket){
 												}
 											});
 											numorder+=1;
+											i=0;
 										}else{
 											cont += 1;
 										}

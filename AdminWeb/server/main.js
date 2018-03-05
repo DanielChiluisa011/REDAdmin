@@ -543,6 +543,7 @@ io.on('connection', function(socket){
 													console.log("cantidad equivalente ingresada");
 												}
 											});
+											result2[i].IMPORTERQUOTA=result2[i].IMPORTERQUOTA-cantidadequivalente;
 											numorder+=1;
 											i=0;
 										}else{

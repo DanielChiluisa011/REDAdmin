@@ -547,6 +547,7 @@ io.on('connection', function(socket){
 											result2[i].IMPORTERQUOTA=result2[i].IMPORTERQUOTA-cantidadequivalente;
 											numorder+=1;
 											i=0;
+											console.log("ACTIVO \n\n\n");
 										}else{
 											cont += 1;
 										}

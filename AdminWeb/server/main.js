@@ -513,6 +513,7 @@ io.on('connection', function(socket){
 						if(numorder < result1.length){
 							console.log("Cuota Importador: " + result2[i].IMPORTERQUOTA);
 							console.log("Cantidad Orden: " + result1[numorder].cantidad);
+							console.log("Valor i for: " + i);
 							
 
 							/*connection.query('SELECT FLOOR((WASTETYPEFACTOR/(SELECT WASTETYPEFACTOR FROM waste_type where WASTETYPEID='+result2[i].WASTETYPEID+'))*'+result1[numorder].cantidad+') as cantidad FROM waste_type where WASTETYPEID=3;',function(error, result3){

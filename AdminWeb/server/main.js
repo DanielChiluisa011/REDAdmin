@@ -495,13 +495,17 @@ io.on('connection', function(socket){
 		if(error1){
 			throw error1;
 		}else{	
-			for(var j=0;j<result1.length;j++){
 			connection.query("SELECT i.IMPORTERID, i.IMPORTERQUOTA,w.WASTETYPEFACTOR,w.WASTETYPEWEIGHT FROM importer i,waste_type w WHERE w.WASTETYPEID=i.WASTETYPEID ORDER BY importerquota DESC;",function(error2, result2){
 			if(error2){
 				console.log("Error 2: " + error2);
 			}else{
 				console.log("Obteniedo lista de prioridad");
 				if(result2.length!=0){
+					
+					
+					for(var j=0;j<result1.length;j++){
+
+					
 						var cont = 0;
 						var cantidadequivalente=0;
 						var pesoequivalente=0;
@@ -555,11 +559,10 @@ io.on('connection', function(socket){
 								});
 							}
 						}
-					
+					}
 				}
 			}
 		});
-		}
 		}
 	});			
 		/*

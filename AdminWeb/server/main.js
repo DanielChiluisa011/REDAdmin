@@ -526,7 +526,7 @@ io.on('connection', function(socket){
 									console.log("------------------------------");
 									actualizarCaso2(cantidadequivalente,result2[i], data.journeyid);
 								}
-								connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+'),ORDERWEIGHT='+pesoequivalente+',IMPORTERID='+result2[i].IMPORTERID+' WHERE ORDERID='+result1[numorder].orderid+';',function(err, rows, fields) {
+								connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+'),ORDERWEIGHT='+pesoequivalente+',IMPORTERID='+result2[i].IMPORTERID+' WHERE ORDERID='+result1[j].orderid+';',function(err, rows, fields) {
 									if(err){
 										console.log("Error "+ err.message);
 									}else{
@@ -534,7 +534,7 @@ io.on('connection', function(socket){
 									}
 								});
 								result2[i].IMPORTERQUOTA=result2[i].IMPORTERQUOTA-cantidadequivalente;
-								numorder+=1;
+								
 								console.log("ACTIVO \n\n\n");
 							}else{
 								cont += 1;
@@ -550,7 +550,7 @@ io.on('connection', function(socket){
 								console.log("aleatorio: " + impAleatorio);
 								console.log("result con aleat = " + result2[impAleatorio]);
 								actualizarCaso3(cantidadequivalente,result2[impAleatorio], data.journeyid);
-								connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+'),ORDERWEIGHT='+pesoequivalente+',IMPORTERID='+result2[impAleatorio].IMPORTERID+' WHERE ORDERID='+result1[numorder].orderid+';',function(err, rows, fields) {
+								connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+'),ORDERWEIGHT='+pesoequivalente+',IMPORTERID='+result2[impAleatorio].IMPORTERID+' WHERE ORDERID='+result1[j].orderid+';',function(err, rows, fields) {
 									if(err){
 										console.log("Error "+ err.message);
 									}else{

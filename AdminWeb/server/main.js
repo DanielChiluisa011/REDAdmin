@@ -496,7 +496,7 @@ io.on('connection', function(socket){
 			throw error1;
 		}else{	
 			for(var j=0;j<result1.length;j++){
-				EscogerCaso(result1[j]);
+				EscogerCaso(result1[j],data);
 			}
 		}
 	});			
@@ -1767,7 +1767,7 @@ function ordenLstImportadores(a, b){
 	}
 }
 
-function EscogerCaso(result1){
+function EscogerCaso(result1,data){
 	connection.query("SELECT i.IMPORTERID, i.IMPORTERQUOTA,w.WASTETYPEFACTOR,w.WASTETYPEWEIGHT FROM importer i,waste_type w WHERE w.WASTETYPEID=i.WASTETYPEID ORDER BY importerquota DESC;",function(error2, result2){
 		if(error2){
 			console.log("Error 2: " + error2);

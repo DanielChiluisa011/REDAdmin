@@ -1780,7 +1780,6 @@ function EscogerCaso(result1){
 					var pesoequivalente=0;
 					for(var i=0;i<result2.length;i++){
 						console.log("Cuota Imp:" + result2[i].IMPORTERQUOTA);
-						console.log("numorder:" + j);
 						console.log("result1.length:" + result1.length);
 						console.log("Cantidad Orden: " + result1.cantidad);
 						cantidadequivalente=Math.floor(result2[i].WASTETYPEFACTOR*result1.cantidad);

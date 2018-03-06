@@ -495,91 +495,71 @@ io.on('connection', function(socket){
 		if(error1){
 			throw error1;
 		}else{	
+			for(var j=0;j<result1.length;j++){
 			connection.query("SELECT i.IMPORTERID, i.IMPORTERQUOTA,w.WASTETYPEFACTOR,w.WASTETYPEWEIGHT FROM importer i,waste_type w WHERE w.WASTETYPEID=i.WASTETYPEID ORDER BY importerquota DESC;",function(error2, result2){
 			if(error2){
 				console.log("Error 2: " + error2);
 			}else{
 				console.log("Obteniedo lista de prioridad");
 				if(result2.length!=0){
-					var cont = 0;
-					var numorder=0;
-					var cantidadequivalente=0;
-					var pesoequivalente=0;
-					var i=0;
-					for(i;i<result2.length;i++){
-						console.log("Cuota Imp:" + result2[i].IMPORTERQUOTA);
-						console.log("numorder:" + numorder);
-						console.log("result1.length:" + result1.length);
-						if(numorder < result1.length){
-							console.log("Cuota Importador: " + result2[i].IMPORTERQUOTA);
-							console.log("Cantidad Orden: " + result1[numorder].cantidad);
-							console.log("Valor i for: " + i);
+						var cont = 0;
+						var cantidadequivalente=0;
+						var pesoequivalente=0;
+						for(var i=0;i<result2.length;i++){
+							console.log("Cuota Imp:" + result2[i].IMPORTERQUOTA);
+							console.log("numorder:" + j);
+							console.log("result1.length:" + result1.length);
+							console.log("Cantidad Orden: " + result1[j].cantidad);
+							cantidadequivalente=Math.floor(result2[i].WASTETYPEFACTOR*result1[j].cantidad);
+							pesoequivalente=result2[i].WASTETYPEWEIGHT*cantidadequivalente;
+							if(result2[i].IMPORTERQUOTA > 0){
+								if(cantidadequivalente <= result2[i].IMPORTERQUOTA){
+									console.log("CASO 1");
+									console.log("------------------------------");
+									actualizarCaso1(cantidadequivalente,result2[i], data.journeyid);
+								}else{
+									console.log("CASO 2");
+									console.log("------------------------------");
+									actualizarCaso2(cantidadequivalente,result2[i], data.journeyid);
+								}
+								connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+'),ORDERWEIGHT='+pesoequivalente+',IMPORTERID='+result2[i].IMPORTERID+' WHERE ORDERID='+result1[numorder].orderid+';',function(err, rows, fields) {
+									if(err){
+										console.log("Error "+ err.message);
+									}else{
+										console.log("cantidad equivalente ingresada");
+									}
+								});
+								result2[i].IMPORTERQUOTA=result2[i].IMPORTERQUOTA-cantidadequivalente;
+								numorder+=1;
+								console.log("ACTIVO \n\n\n");
+							}else{
+								cont += 1;
+							}
 							
-
-							/*connection.query('SELECT FLOOR((WASTETYPEFACTOR/(SELECT WASTETYPEFACTOR FROM waste_type where WASTETYPEID='+result2[i].WASTETYPEID+'))*'+result1[numorder].cantidad+') as cantidad FROM waste_type where WASTETYPEID=3;',function(error, result3){
-								//connection.query('SELECT * FROM waste_type where WASTETYPEID='+lstdetorder[i][0]+';',function(error, result){
-									if(error){
-										throw error;
-										console.log("query1: "+error);
-									}else{*/
-
-
-										cantidadequivalente=Math.floor(result2[i].WASTETYPEFACTOR*result1[numorder].cantidad);
-										pesoequivalente=result2[i].WASTETYPEWEIGHT*cantidadequivalente;
-										if(result2[i].IMPORTERQUOTA > 0){
-											if(cantidadequivalente <= result2[i].IMPORTERQUOTA){
-												console.log("CASO 1");
-												console.log("------------------------------");
-												actualizarCaso1(cantidadequivalente,result2[i], data.journeyid);
-											}else{
-												console.log("CASO 2");
-												console.log("------------------------------");
-												actualizarCaso2(cantidadequivalente,result2[i], data.journeyid);
-												//result1[0].cantidad -= result2[i].IMPORTERQUOTA; 
-											}
-											connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+'),ORDERWEIGHT='+pesoequivalente+',IMPORTERID='+result2[i].IMPORTERID+' WHERE ORDERID='+result1[numorder].orderid+';',function(err, rows, fields) {
-												if(err){
-													console.log("Error "+ err.message);
-												}else{
-													console.log("cantidad equivalente ingresada");
-												}
-											});
-											result2[i].IMPORTERQUOTA=result2[i].IMPORTERQUOTA-cantidadequivalente;
-											numorder+=1;
-											i=0;
-											console.log("ACTIVO \n\n\n");
-										}else{
-											cont += 1;
-										}
-										if(cont == result2.length){
-											console.log("CASO 3");
-											console.log("------------------------------");
-											for(var j=0;j<result1.length;j++){
-												var impAleatorio = 0;
-												impAleatorio = Math.floor(Math.random() * result2.length);
-												console.log("aleatorio: " + impAleatorio);
-												console.log("result con aleat = " + result2[impAleatorio]);
-												actualizarCaso3(cantidadequivalente,result2[impAleatorio], data.journeyid);
-												connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+'),ORDERWEIGHT='+pesoequivalente+',IMPORTERID='+result2[impAleatorio].IMPORTERID+' WHERE ORDERID='+result1[numorder].orderid+';',function(err, rows, fields) {
-													if(err){
-														console.log("Error "+ err.message);
-													}else{
-														console.log("cantidad equivalente ingresada");
-													}
-												});
-											}
-										}	
-								 /*  }
-							});	*/
-						} 
-						else{
-							console.log("salio");
-							break;	
 						}
-					}
+						if(cont == result2.length){
+							console.log("CASO 3");
+							console.log("------------------------------");
+							for(var j=0;j<result1.length;j++){
+								var impAleatorio = 0;
+								impAleatorio = Math.floor(Math.random() * result2.length);
+								console.log("aleatorio: " + impAleatorio);
+								console.log("result con aleat = " + result2[impAleatorio]);
+								actualizarCaso3(cantidadequivalente,result2[impAleatorio], data.journeyid);
+								connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+'),ORDERWEIGHT='+pesoequivalente+',IMPORTERID='+result2[impAleatorio].IMPORTERID+' WHERE ORDERID='+result1[numorder].orderid+';',function(err, rows, fields) {
+									if(err){
+										console.log("Error "+ err.message);
+									}else{
+										console.log("cantidad equivalente ingresada");
+									}
+								});
+							}
+						}
+					
 				}
 			}
 		});
+		}
 		}
 	});			
 		/*

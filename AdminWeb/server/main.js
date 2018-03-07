@@ -1779,6 +1779,7 @@ function EscogerCaso(result1,data){
 					var cantidadequivalente=0;
 					var pesoequivalente=0;
 					for(var i=0;i<result2.length;i++){
+						console.log("IMPORTER:" + result2[i].IMPORTERID);
 						console.log("Cuota Imp:" + result2[i].IMPORTERQUOTA);
 						console.log("result1.length:" + result1.length);
 						console.log("Cantidad Orden: " + result1.cantidad);

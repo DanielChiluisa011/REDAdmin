@@ -534,6 +534,7 @@ io.on('connection', function(socket){
 										}
 									});
 									result2[i].IMPORTERQUOTA=result2[i].IMPORTERQUOTA-cantidadequivalente;
+									resul2=ordenarlistaprioridad(result2);
 									numorder+=1;
 									i=0;
 								}else{
@@ -1902,7 +1903,19 @@ function ordenLstImportadores(a, b){
 		}
 	});
 }*/
-
+function ordenarlistaprioridad(list){
+	var temp;
+	for(var i=0;i<list.length;i++){
+    	for(var j=0;j<(list.length-1);j++){
+        	if(parseInt(list[j])<parseInt(list[j+1])){
+            temp=list[j];
+            list[j]=list[j+1];
+            list[j+1]=temp;
+        	}
+    	}
+	}
+	return list;
+}
 function actualizarCaso1(objeto1, objeto2, viaje){
     console.log("Order Quantity: " + objeto1);
     console.log("Data Importador: " + objeto2.IMPORTERID + " - " + objeto2.IMPORTERQUOTA);

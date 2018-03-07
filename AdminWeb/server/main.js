@@ -1904,6 +1904,8 @@ function ordenLstImportadores(a, b){
 	});
 }*/
 function ordenarlistaprioridad(list){
+	console.log("Ordeno Lista");
+	console.log("Primero Actual"+list[0].IMPORTERID);
 	var temp;
 	for(var i=0;i<list.length;i++){
     	for(var j=0;j<(list.length-1);j++){
@@ -1914,6 +1916,7 @@ function ordenarlistaprioridad(list){
         	}
     	}
 	}
+	console.log("Primero Despues"+list[0].IMPORTERID);
 	return list;
 }
 function actualizarCaso1(objeto1, objeto2, viaje){

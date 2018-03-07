@@ -292,7 +292,7 @@
                                                       // Loop through all table rows, and hide those who don't match the search query
                                                       
                                                       for (i = 0; i < tr.length; i++) {
-                                                        td = tr[i].getElementsByTagName("td")[5];
+                                                        td = tr[i].getElementsByTagName("td")[3];
                                                         
                                                         if (td) {
                                                             td=restDate(td.innerHTML);
@@ -334,7 +334,26 @@
                                                     <th><input type="text" id="flPedido0" onkeyup="filterOrder(0)" placeholder="&#x1F50D; Busqueda Numero Orden" style="width:150px;"></th>
                                                     <th><input type="text" id="flPedido1" onkeyup="filterOrder(1)" placeholder="&#x1F50D; Busqueda Numero Viaje"></th>
                                                     <th><input type="text" id="flPedido2" onkeyup="filterOrder(2)" placeholder="&#x1F50D; Busqueda Importador" style="width:150px;"></th>
-                                                    <th><input type="text" id="flPedido3" onkeyup="filterOrder(3)" placeholder="&#x1F50D; Busqueda Fecha" style="width:150px;"></th>
+                                                    <th>
+                                                        <div class="orm-group form-md-line-input has-success">
+                                                            <div class="input-group input-medium date date-picker" data-date-format="dd/mm/yyyy">
+                                                                <input id="flPedidoF1" type="text" onchange="filterOrderF(1)" placeholder="Fecha Inicio">
+                                                                <span class="input-group-addon input-circle-right">
+                                                                            <!-- <button class="btn default" type="button"> -->
+                                                                    <i class="fa fa-calendar default"></i>
+                                                                            <!-- </button> -->
+                                                                </span>
+                                                            </div>
+                                                            <div class="input-group input-medium date date-picker" data-date-format="dd/mm/yyyy">
+                                                                <input id="flPedidoF2" type="text" onchange="filterOrderF(2)" placeholder="Fecha Fin">
+                                                                <span class="input-group-addon input-circle-right">
+                                                                            <!-- <button class="btn default" type="button"> -->
+                                                                    <i class="fa fa-calendar default"></i>
+                                                                            <!-- </button> -->
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </th>
                                                     <th><input type="text" id="flPedido4" onkeyup="filterOrder(4)" placeholder="&#x1F50D; Busqueda Placa" style="width:150px;"></th>
                                                     <th><input type="text" id="flPedido5" onkeyup="filterOrder(5)" placeholder="&#x1F50D; Busqueda Conductor" style="width:150px;"></th>
 

@@ -1909,7 +1909,7 @@ function ordenarlistaprioridad(list){
 	var temp;
 	for(var i=0;i<list.length;i++){
     	for(var j=0;j<(list.length-1);j++){
-        	if(parseInt(list[j])<parseInt(list[j+1])){
+        	if(parseInt(list[j].IMPORTERQUOTA)<parseInt(list[j+1].IMPORTERQUOTA)){
             temp=list[j];
             list[j]=list[j+1];
             list[j+1]=temp;

@@ -1803,7 +1803,7 @@ function EscogerCaso(result1,data){
 								}
 							});
 							result2[i].IMPORTERQUOTA=result2[i].IMPORTERQUOTA-cantidadequivalente;
-							
+							break;
 							console.log("ACTIVO \n\n\n");
 						}else{
 							cont += 1;

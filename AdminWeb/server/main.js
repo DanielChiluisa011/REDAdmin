@@ -556,6 +556,12 @@ io.on('connection', function(socket){
 								impAleatorio = Math.floor(Math.random() * result2.length);
 								console.log("aleatorio: " + impAleatorio);
 								console.log("result con aleat = " + result2[impAleatorio]);
+								console.log("factor: " + result2[impAleatorio].WASTETYPEFACTOR);
+								console.log("cantidadorden = " + result1[j].cantidad);
+								cantidadequivalente=Math.floor(result2[impAleatorio].WASTETYPEFACTOR*result1[j].cantidad);
+								pesoequivalente=result2[impAleatorio].WASTETYPEWEIGHT*cantidadequivalente;
+								console.log("cantidadequivalente: " + cantidadequivalente);
+								console.log("pesoequivalente = " + pesoequivalente);
 								actualizarCaso3(cantidadequivalente,result2[impAleatorio], data.journeyid);
 								connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+'),ORDERWEIGHT='+pesoequivalente+',IMPORTERID='+result2[impAleatorio].IMPORTERID+' WHERE ORDERID='+result1[j].orderid+';',function(err, rows, fields) {
 									if(err){

@@ -286,6 +286,8 @@
                                                       if(input2==""){
                                                           den=dateend;
                                                       }
+                                                      alert(dbe);
+                                                      alert(den);
                                                       datebe=restDate(dbe);
                                                       dateen=restDate(den);
                                                       table = document.getElementById("ManifestTable");
@@ -338,13 +340,13 @@
                                                     <th>
                                                         <div class="orm-group form-md-line-input has-success">
                                                             <div class="input-group input-medium date date-picker" data-date-format="yyyy-mm-dd">
-                                                                <input id="flPedidoF1" type="text" onchange="filterOrderF(1)" placeholder="Fecha Inicio">
+                                                                <input id="flPedidoF1" type="text" onchange="filterOrderF(1)" placeholder="Fecha Inicio" value="">
                                                                 <span class="input-group-addon input-circle-right">
                                                                     <i class="fa fa-calendar default"></i>
                                                                 </span>
                                                             </div>
                                                             <div class="input-group input-medium date date-picker" data-date-format="yyyy-mm-dd">
-                                                                <input id="flPedidoF2" type="text" onchange="filterOrderF(2)" placeholder="Fecha Fin">
+                                                                <input id="flPedidoF2" type="text" onchange="filterOrderF(2)" placeholder="Fecha Fin" value="">
                                                                 <span class="input-group-addon input-circle-right">
                                                                     <i class="fa fa-calendar default"></i>
                                                                 </span>

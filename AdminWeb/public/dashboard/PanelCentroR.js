@@ -152,18 +152,18 @@ $("#btnCancelRC").click(function(){
 });
 function ShowRCInformation(i){
         $("#btnSaveRC").html('Actualizar');
-        $("#txtNewImpName").attr("disabled",true);
-        $("#txtNewImpName").val(lstCR[i].RECYCLINGCENTERNAME);
-		$("#txtNewImpAddress").val(lstCR[i].RECYCLINGCENTERADDRESS);
-		$("#txtNewImpPhone").val(lstCR[i].RECYCLINGCENTERPHONE);
-		$("#txtNewImpPersonName").val(lstCR[i].PERSONNAME);
-        $("#txtNewImpPersonName").attr("disabled",true);
-		$("#txtNewImpPersonLastName").val(lstCR[i].PERSONLASTNAME);
-        $("#txtNewImpPersonLastName").attr("disabled",true);
-		$("#txtNewImpPersonId").val(lstCR[i].PERSONCIRUC);
-        $("#txtNewImpPersonId").attr("disabled",true);
-		$("#txtNewImpPersonPhone").val(lstCR[i].PERSONPHONE);
-		$("#txtNewImpPersonAddress").val(lstCR[i].PERSONADDRESS);
+        $("#txtNewNCName").attr("disabled",true);
+        $("#txtNewNCName").val(lstCR[i].RECYCLINGCENTERNAME);
+		$("#txtNewNCAddress").val(lstCR[i].RECYCLINGCENTERADDRESS);
+		$("#txtNewNCPhone").val(lstCR[i].RECYCLINGCENTERPHONE);
+		$("#txtNewNCPersonName").val(lstCR[i].PERSONNAME);
+        $("#txtNewNCPersonName").attr("disabled",true);
+		$("#txtNewNCPersonLastName").val(lstCR[i].PERSONLASTNAME);
+        $("#txtNewNCPersonLastName").attr("disabled",true);
+		$("#txtNewNCPersonId").val(lstCR[i].PERSONCIRUC);
+        $("#txtNewNCPersonId").attr("disabled",true);
+		$("#txtNewNCPersonPhone").val(lstCR[i].PERSONPHONE);
+		$("#txtNewNCPersonAddress").val(lstCR[i].PERSONADDRESS);
 }
 
 $("#btnSaveRC").click(function(e){

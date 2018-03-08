@@ -264,6 +264,7 @@
                                                     var datebegin="01/01/1980";
                                                     var dateend=curDate();
                                                     var dbe,den;
+
                                                     function filterOrderF(band) {
                                                       // Declare variables 
                                                       
@@ -272,7 +273,7 @@
                                                       input1 = document.getElementById("flPedidoF1").value;
                                                       input2 = document.getElementById("flPedidoF2").value;
                                                       
-                                                      
+                                                      alert("entro");
                                                       if(band==1){
                                                         dbe=input1;
                                                       }else{
@@ -306,12 +307,12 @@
                                                     }
                                                     function restDate(f1){
                                                         var f2=curDate();
-                                                        var aFecha1 = f1.split("/");
-                                                        var aFecha2 = f2.split("/");
+                                                        var aFecha1 = f1.split("-");
+                                                        var aFecha2 = f2.split("-");
                                                         var aucaf2=aFecha1[2].split(" ");
                                                         aFecha1[2]=aucaf2[0];
-                                                        var fFecha1 = Date.UTC(aFecha1[2],aFecha1[1],aFecha1[0]);
-                                                        var fFecha2 = Date.UTC(aFecha2[2],aFecha2[1],aFecha2[0]);
+                                                        var fFecha1 = Date.UTC(aFecha1[0],aFecha1[1],aFecha1[2]);
+                                                        var fFecha2 = Date.UTC(aFecha2[0],aFecha2[1],aFecha2[2]);
                                                         var dif = fFecha2 - fFecha1;
                                                         var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
                                                         return dias;
@@ -321,7 +322,7 @@
                                                         dia = hoy.getDate();
                                                         mes = hoy.getMonth()+1;
                                                         anio= hoy.getFullYear();
-                                                        fecha_actual = String(dia+"/"+mes+"/"+anio);
+                                                        fecha_actual = String(dia+"-"+mes+"-"+anio);
                                                         return fecha_actual;
                                                     }
                                                     
@@ -339,17 +340,13 @@
                                                             <div class="input-group input-medium date date-picker" data-date-format="yyyy-mm-dd">
                                                                 <input id="flPedidoF1" type="text" onchange="filterOrderF(1)" placeholder="Fecha Inicio">
                                                                 <span class="input-group-addon input-circle-right">
-                                                                            <!-- <button class="btn default" type="button"> -->
                                                                     <i class="fa fa-calendar default"></i>
-                                                                            <!-- </button> -->
                                                                 </span>
                                                             </div>
                                                             <div class="input-group input-medium date date-picker" data-date-format="yyyy-mm-dd">
                                                                 <input id="flPedidoF2" type="text" onchange="filterOrderF(2)" placeholder="Fecha Fin">
                                                                 <span class="input-group-addon input-circle-right">
-                                                                            <!-- <button class="btn default" type="button"> -->
                                                                     <i class="fa fa-calendar default"></i>
-                                                                            <!-- </button> -->
                                                                 </span>
                                                             </div>
                                                         </div>

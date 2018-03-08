@@ -1512,7 +1512,7 @@ function SelectManifest(){
 						var aux="";
 						for(var j=0;j<result2.length;j++){
 							if(result[i].ORDERID==result2[j].ORDERID){
-								aux=aux+result2[j].WASTETYPENAME+" "+result2[j].QUANTITY+"\n";
+								aux=aux+"#"+result2[j].WASTETYPENAME+" = "+result2[j].QUANTITY+"\n";
 							}
 						}
 						result[i].detalle = aux;

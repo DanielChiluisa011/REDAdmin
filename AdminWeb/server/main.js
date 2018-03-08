@@ -1504,10 +1504,24 @@ function SelectManifest(){
 		if(error){
 			throw error;
 		}else{
-			io.emit('SelectManifest',result);
-			//console.log("si");
+			connection.query("select d.ORDERID,w.WASTETYPENAME,d.QUANTITY from details_orders d,waste_type w WHERE w.WASTETYPEID=d.WASTETYPEID ORDER BY d.ORDERID;",function(error, result2){
+				if(error){
+					throw error;
+				}else{
+					for(var i=0;i<result.length;i++){
+						var aux="";
+						for(var j=0;j<result2.length;j++){
+							if(result[i].ORDERID==result2[j].ORDERID){
+								aux=aux+result2[j].WASTETYPENAME+" "+result2[j].QUANTITY+"\n";
+							}
+						}
+						result[i].detalle = aux;
+					}
+					io.emit('SelectManifest',result);
+				}
+			});
 		}
-		});	
+	});	
 }
 
 function UpdateManifest(socket){

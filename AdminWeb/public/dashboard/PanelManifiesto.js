@@ -35,7 +35,7 @@ function FillTable(){
 				
 			date=data[i].JOURNEYDATE.split("T");
 
-			$('#ManifestTable').append("<tr align='center'><td>"+data[i].ORDERID+"</td><td>"+data[i].JOURNEYID+"</td><td>"+data[i].IMPORTERNAME+"</td><td>"+date[0]+"</td><td>"+data[i].PERSONNAME+" "+data[i].PERSONLASTNAME+"</td><td><textarea rows='3' cols='30' readonly>"+data[i].detalle+"</textarea></td><td><textarea rows='3' cols='30' id='txobservacion"+i+"' onkeyup='ActiveButton("+i+")'>"+obs1+"</textarea></td><td><button id='btnm"+i+"' class='btn green' disabled onclick='UpdateManifest("+i+")'><i class='fa fa-save'></i>Modificar</button></td></tr>");
+			$('#ManifestTable').append("<tr align='center'><td>"+data[i].ORDERID+"</td><td>"+data[i].JOURNEYID+"</td><td>"+data[i].IMPORTERNAME+"</td><td>"+date[0]+"</td><td>"+data[i].PERSONNAME+" "+data[i].PERSONLASTNAME+"</td><td><textarea rows='4' cols='30' readonly>"+data[i].detalle+"</textarea></td><td><textarea rows='4' cols='30' id='txobservacion"+i+"' onkeyup='ActiveButton("+i+")'>"+obs1+"</textarea></td><td><button id='btnm"+i+"' class='btn green' disabled onclick='UpdateManifest("+i+")'><i class='fa fa-save'></i>Modificar</button></td></tr>");
 		}
 		$('#OrdersHistoryTable').append("</tbody>");
 		lstObjManifest=data;

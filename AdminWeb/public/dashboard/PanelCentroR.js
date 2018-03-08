@@ -30,9 +30,15 @@ $(document).ready(function(){
         lstCR.length=0;
         lstCR=CR;
         
-		// $("#txtNewImpPersonAddress").val("");
-		// $("#txtNewImpEmail").val("");
-        // $("#ImportersTable > tbody").html("");
+		
+        $("#txtNewRCName").val("");
+	    $("#txtNewRCAddress").val("");
+	    $("#txtNewRCPhone").val("");
+	    $("#txtNewRCPersonName").val("");
+	    $("#txtNewRCPersonLastName").val("");
+	    $("#txtNewRCPersonId").val("");
+	    $("#txtNewRCPersonPhone").val("");
+        $("#txtNewRCPersonAddress").val("");
 
         for (var i = 0; i < CR.length; i++) {
             $('#ImportersTable').append("<tbody>"+
@@ -151,7 +157,6 @@ $("#btnCancelRC").click(function(){
         
 });
 function ShowRCInformation(i){
-    alert("entro");
     $("#btnSaveRC").html('Actualizar');
     $("#txtNewRCName").attr("disabled",true);
     $("#txtNewRCName").val(lstCR[i].RECYCLINGCENTERNAME);
@@ -165,7 +170,6 @@ function ShowRCInformation(i){
     $("#txtNewRCPersonId").attr("disabled",true);
 	$("#txtNewRCPersonPhone").val(lstCR[i].PERSONPHONE);
     $("#txtNewRCPersonAddress").val(lstCR[i].PERSONADDRESS);
-    alert("salio");
 }
 
 $("#btnSaveRC").click(function(e){

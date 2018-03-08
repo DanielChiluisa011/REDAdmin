@@ -294,7 +294,7 @@
                                                                 <div class="form-group">
                                                                     <label class="col-md-3 control-label">Telefono</label>
                                                                     <div class="col-md-4">
-                                                                        <select id="codigoTelefC" placeholder="Seleccione el código telefónico" aria-setsize="10">
+                                                                        <select id="codigoTelefC" class="form-control input-circle" placeholder="Seleccione el código telefónico" aria-setsize="10">
                                                                             <option selected>Seleccione una Provincia</option>
                                                                             <option value="02">02 - Pichincha, Santo Domingo</option>
                                                                             <option value="03">03 - Bolívar, Chimborazo, Cotopaxi, Pastaza, Tungurahua</option>
@@ -435,7 +435,7 @@
                                                                                 <div class="form-group">
                                                                                     <label class="col-md-3 control-label"><i class='fa fa-mobile'> </i>Telefono</label>
                                                                                     <div class="col-md-4">
-                                                                                        <select id="codigoTelef" placeholder="Seleccione el código telefónico" aria-setsize="10">
+                                                                                        <select id="codigoTelef" class="form-control input-circle" placeholder="Seleccione el código telefónico" aria-setsize="10">
                                                                                             <option selected>Seleccione una Provincia</option>
                                                                                             <option value="02">02 - Pichincha, Santo Domingo</option>
                                                                                             <option value="03">03 - Bolívar, Chimborazo, Cotopaxi, Pastaza, Tungurahua</option>
@@ -468,37 +468,134 @@
                                                             </form>
                                                         </div>
                                                 </div>
-                                                <!--</form>
-                                                    <form action="#" class="form-horizontal">-->
-                                                        
-                                                        
-                                                    <!--</form>    
-                                                </div>    
-                                                </div>-->
-                                                
-                                            <!--</form>-->
-                                            <!-- END FORM-->
-                                        <!--</div>-->
-                                    <!--</div>-->
+                                               
                             <!--</div>
                             FIN PESTAÑA 2   </div>-->
                             
                             <!-- FIN PESTANIAS -->
                         </div>
                          <!-- /.modal -->
-                        <div class="modal fade" id="addImporter" role="dialog" aria-hidden="true">
+                        <div class="modal fade" id="addCentro" role="dialog" aria-hidden="true">
                             <div class="modal-dialog modal-full">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                        <h4 class="modal-title">Modal Title</h4>
+                                        <h4 class="modal-title"><strong>MODIFICAR CENTRO DE RECICLAJE</strong></h4>
                                     </div>
-                                    <div class="portlet-body">
-                                        <div id="MapIngreso" class="gmaps"> </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Información Centro de Reciclaje</h5>
+                                                </div>
+                                                <div>
+                                                    <br><br>
+                                                    <form action="#" class="form-horizontal">
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label"><i class='fa fa-hospital-o'> </i>  Nombre:</label>
+                                                            <div class="col-md-4">
+                                                                <input id="txtNewRCName" type="text" class="form-control" style="width: 400px" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label"><i class='fa fa-mobile'> </i> Teléfono:</label>
+                                                            
+                                                            <div class="col-md-4">
+                                                                <select id="codigoTelefC" class="form-control input-circle" placeholder="Seleccione el código telefónico" aria-setsize="10" onchange="codnum(this.value)">
+                                                                    <option selected>Seleccione una Provincia</option>
+                                                                    <option value="02">02 - Pichincha, Santo Domingo</option>
+                                                                    <option value="03">03 - Bolívar, Chimborazo, Cotopaxi, Pastaza, Tungurahua</option>
+                                                                    <option value="04">04 - Guayas, Santa Elena</option>
+                                                                    <option value="05">05 - Galápagos, Los Ríos, Manabí</option>
+                                                                    <option value="06">06 - Esmeraldas, Imbabura, Carchi, Napo, Orellana, Sucumbíos</option>
+                                                                    <option value="07">07 - Azuay, Cañar, El Oro, Loja, Morona Santiago2​ y Zamora Chinchipe</option>
+                                                                    <option value="08">08 - Reservado</option>
+                                                                    <option value="09">09 - Telefonia Celular</option>
+                                                                </select>
+           
+                                                                <input id="txtNewRCPhone" type="text" class="form-control" style="width: 400px" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label"><i class='fa fa-slack'> </i> Direccion:</label>
+                                                            <div class="col-md-4">
+                                                                <input id="txtNewRCDirection" type="number" class="form-control" style="width: 400px" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label"><i class='fa fa-tags'> </i> Licencia Ambiental:</label>
+                                                            <div class="col-md-4">
+                                                                <input id="txtNewRCLicence" type="number" class="form-control" style="width: 400px" >
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </form>    
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Información Representante del Centro de Reciclaje</h5>
+                                                </div>
+                                                <div>
+                                                    <br><br>
+                                                    <form action="#" class="form-horizontal">
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label"><i class='fa fa-user'> </i>  Nombre:</label>
+                                                            <div class="col-md-4">
+                                                                <input id="txtNewRCPersonName" type="text" class="form-control" style="width: 350px" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label"><i class='fa fa-user'> </i>  Apellido:</label>
+                                                            <div class="col-md-4">
+                                                                <input id="txtNewRCPersonLastName" type="text" class="form-control" style="width: 350px" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label"><i class='fa fa-credit-card'> </i> Cédula:</label>
+                                                            <div class="col-md-4">
+                                                                <input id="txtNewRCPersonCi" type="number" class="form-control" style="width: 350px" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label"><i class='fa fa-home'> </i> Dirección:</label>
+                                                            <div class="col-md-4">
+                                                                <input id="txtNewRCPersonDirection" type="text" class="form-control" style="width: 350px" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label"><i class='fa fa-mobile'> </i> Teléfono:</label>
+                                                            
+                                                            <div class="col-md-4">
+                                                                <select id="codigoTelefC" class="form-control input-circle" placeholder="Seleccione el código telefónico" aria-setsize="10" onchange="codnum(this.value)">
+                                                                    <option selected>Seleccione una Provincia</option>
+                                                                    <option value="02">02 - Pichincha, Santo Domingo</option>
+                                                                    <option value="03">03 - Bolívar, Chimborazo, Cotopaxi, Pastaza, Tungurahua</option>
+                                                                    <option value="04">04 - Guayas, Santa Elena</option>
+                                                                    <option value="05">05 - Galápagos, Los Ríos, Manabí</option>
+                                                                    <option value="06">06 - Esmeraldas, Imbabura, Carchi, Napo, Orellana, Sucumbíos</option>
+                                                                    <option value="07">07 - Azuay, Cañar, El Oro, Loja, Morona Santiago2​ y Zamora Chinchipe</option>
+                                                                    <option value="08">08 - Reservado</option>
+                                                                    <option value="09">09 - Telefonia Celular</option>
+                                                                </select>
+           
+                                                                <input id="txtNewRCPersonPhone" type="text" class="form-control" style="width: 400px" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label"><i class='fa fa-envelope'> </i>  Correo Electrónico:</label>
+                                                            <div class="col-md-4">
+                                                                <input id="txtNewRCPersonEmail" type="text" class="form-control" style="width: 350px" >
+                                                            </div>
+                                                        </div>
+                                                    </form>    
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn green">Save changes</button>
+                                        <button type="button"data-dismiss="modal" aria-hidden="true" id="btnCancelRC" class="btn dark btn-outline">Cancelar</button>
+                                        <button id="btnSaveRC" type="button" class="btn green" >Guardar</button>
                                     </div>
                                 </div>
                                 <!-- /.modal-content -->

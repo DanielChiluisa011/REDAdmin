@@ -41,7 +41,7 @@ $(document).ready(function(){
                                             "<td>"+CR[i].RECYCLINGCENTERADDRESS+"</td>"+
                                             "<td>"+CR[i].RECYCLINGCENTERPHONE+"</td>"+
                                             "<td>"+CR[i].PERSONNAME+' '+CR[i].PERSONLASTNAME+"</td>"+
-                                            "<td><a class='btn red btn-outline sbold' data-toggle='modal' href='#addImporter' onclick='ShowRCInformation("+i+")'> <i class='fa fa-edit'> </i> Editar </a></td>"+
+                                            "<td><a class='btn red btn-outline sbold' data-toggle='modal' href='#addCentro' onclick='ShowRCInformation("+i+")'> <i class='fa fa-edit'> </i> Editar </a></td>"+
                                         "</tr>"+
                                     "</tbody>");
         }
@@ -151,7 +151,7 @@ $("#btnCancelRC").click(function(){
         
 });
 function ShowRCInformation(i){
-        $("#btnInsertImporter").html('Actualizar');
+        $("#btnSaveRC").html('Actualizar');
         $("#txtNewImpName").attr("disabled",true);
         $("#txtNewImpName").val(lstCR[i].RECYCLINGCENTERNAME);
 		$("#txtNewImpAddress").val(lstCR[i].RECYCLINGCENTERADDRESS);
@@ -187,7 +187,7 @@ $("#btnSaveRC").click(function(e){
     } 
     console.log("NUEVO CR");
     console.log(newCR);
-    alert(newCR.phone+" "+newCR.personPhone);
+    //alert(newCR.phone+" "+newCR.personPhone);
     if($("#btnSaveRC").html()=="Guardar"){
         
         bootbox.confirm("¿Desea guardar la información ingresada? ", function(result) {

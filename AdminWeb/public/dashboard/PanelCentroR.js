@@ -151,10 +151,10 @@ $("#btnCancelRC").click(function(){
         
 });
 function ShowRCInformation(i){
+    $(document).ready(function(){
     $("#btnSaveRC").html('Actualizar');
     $("#txtNewRCName").attr("disabled",true);
-    $("#txtNewRCName").val("IVAN");
-    //$("#txtNewRCName").val(lstCR[i].RECYCLINGCENTERNAME);
+    $("#txtNewRCName").val(lstCR[i].RECYCLINGCENTERNAME);
 	$("#txtNewRCAddress").val(lstCR[i].RECYCLINGCENTERADDRESS);
 	$("#txtNewRCPhone").val(lstCR[i].RECYCLINGCENTERPHONE);
 	$("#txtNewRCPersonName").val(lstCR[i].PERSONNAME);
@@ -164,7 +164,8 @@ function ShowRCInformation(i){
 	$("#txtNewRCPersonId").val(lstCR[i].PERSONCIRUC);
     $("#txtNewRCPersonId").attr("disabled",true);
 	$("#txtNewRCPersonPhone").val(lstCR[i].PERSONPHONE);
-	$("#txtNewRCPersonAddress").val(lstCR[i].PERSONADDRESS);
+    $("#txtNewRCPersonAddress").val(lstCR[i].PERSONADDRESS);
+    });
 }
 
 $("#btnSaveRC").click(function(e){

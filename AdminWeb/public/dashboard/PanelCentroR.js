@@ -57,16 +57,16 @@ $(document).ready(function(){
 });
 function CleanInputText()
 {
-        $("#txtNewRCPersonName").val("");
-		$("#txtNewRCPersonLastName").val("");
-		$("#txtNewRCPersonCi").val("");
-		$("#txtNewRCPersonPhone").val("");
-		$("#txtNewRCPersonDirection").val("");
-		$("#txtNewRCPersonEmail").val("");
-		$("#txtNewRCName").val("");
-		$("#txtNewRCDirection").val("");
-		$("#txtNewRCPhone").val("");
-		$("#txtNewRCLicence").val("");
+    $("#txtNewRCPersonName").val("");
+	$("#txtNewRCPersonLastName").val("");
+	$("#txtNewRCPersonCi").val("");
+	$("#txtNewRCPersonPhone").val("");
+	$("#txtNewRCPersonDirection").val("");
+	$("#txtNewRCPersonEmail").val("");
+	$("#txtNewRCName").val("");
+	$("#txtNewRCDirection").val("");
+	$("#txtNewRCPhone").val("");
+	$("#txtNewRCLicence").val("");
 }
 var geocoder = new google.maps.Geocoder();
 	
@@ -151,7 +151,7 @@ $("#btnCancelRC").click(function(){
         
 });
 function ShowRCInformation(i){
-    $(document).ready(function(){
+    alert("entro");
     $("#btnSaveRC").html('Actualizar');
     $("#txtNewRCName").attr("disabled",true);
     $("#txtNewRCName").val(lstCR[i].RECYCLINGCENTERNAME);
@@ -165,7 +165,7 @@ function ShowRCInformation(i){
     $("#txtNewRCPersonId").attr("disabled",true);
 	$("#txtNewRCPersonPhone").val(lstCR[i].PERSONPHONE);
     $("#txtNewRCPersonAddress").val(lstCR[i].PERSONADDRESS);
-    });
+    alert("salio");
 }
 
 $("#btnSaveRC").click(function(e){
@@ -251,8 +251,5 @@ $("#btnSaveRC").click(function(e){
                 });
             }
         });
-    }
-	
-	
-	
+    }	
 });

@@ -1251,7 +1251,7 @@ io.on('connection', function(socket){
 						"P.PERSONCIRUC,"+
 						"P.PERSONLASTNAME,"+
 						"P.PERSONADDRESS,"+
-						"P.PERSONPHONE "+
+						"P.PERSONPHONE, "+
 						"U.USEREMAIL "+
 						"FROM recycling_centers I, "+
 						"person P, users U "+

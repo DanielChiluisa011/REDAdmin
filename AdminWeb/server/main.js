@@ -1252,9 +1252,10 @@ io.on('connection', function(socket){
 						"P.PERSONLASTNAME,"+
 						"P.PERSONADDRESS,"+
 						"P.PERSONPHONE "+
+						"U.USEREMAIL "+
 						"FROM recycling_centers I, "+
-						"person P "+
-						"WHERE I.PERSONID=P.PERSONID "+
+						"person P, users U "+
+						"WHERE I.PERSONID=P.PERSONID AND U.PERSONID=P.PERSONID "+
 						"ORDER BY I.RECYCLINGCENTERNAME ASC;",function(error, result){
 							if(error){
 								console.log("Error "+ error.message);

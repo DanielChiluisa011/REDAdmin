@@ -72,7 +72,20 @@ function CleanInputText()
 	$("#txtNewRCName").val("");
 	$("#txtNewRCDirection").val("");
 	$("#txtNewRCPhone").val("");
-	$("#txtNewRCLicence").val("");
+    $("#txtNewRCLicence").val("");
+    
+    $("#txtNewRCName2").val("");
+	$("#txtNewRCDirection2").val("");
+    $("#txtNewRCPhone2").val("");
+    $("#txtNewRCLicence2").val("");
+    
+
+	$("#txtNewRCPersonName2").val("");
+	$("#txtNewRCPersonLastName2").val("");
+	$("#txtNewRCPersonCi2").val("");
+    $("#txtNewRCPersonDirection2").val("");
+	$("#txtNewRCPersonPhone2").val("");
+    $("#txtNewRCPersonEmail2").val("");
 }
 var geocoder = new google.maps.Geocoder();
 	
@@ -139,20 +152,7 @@ var MapsGoogle = function () {
     };
 }();
 $("#btnCancelRC").click(function(){
-        // $("#btnInsertImporter").html('Guardar');
-        // $("#txtNewImpName").val(""),
-		// $("#txtNewImpAddress").val("");
-		// $("#txtNewImpPhone").val("");
-		// $("#txtNewImpPersonName").val("");
-		// $("#txtNewImpPersonLastName").val("");
-		// $("#txtNewImpPersonId").val("");
-		// $("#txtNewImpPersonPhone").val("");
-		// $("#txtNewImpPersonAddress").val("");
 
-        // $("#txtNewImpName").attr("disabled",false);
-        // $("#txtNewImpPersonName").attr("disabled",false);
-        // $("#txtNewImpPersonLastName").attr("disabled",false);
-        // $("#txtNewImpPersonId").attr("disabled",false);
         CleanInputText();
         
 });
@@ -163,6 +163,7 @@ function ShowRCInformation(i){
 	$("#txtNewRCDirection2").val(lstCR[i].RECYCLINGCENTERADDRESS);
     $("#txtNewRCPhone2").val(lstCR[i].RECYCLINGCENTERPHONE);
     $("#txtNewRCLicence2").val(lstCR[i].RECYCLINGENVIROMENTALLICENSE);
+    $("#txtNewRCLicence2").attr("disabled",true);
     
 
 	$("#txtNewRCPersonName2").val(lstCR[i].PERSONNAME);
@@ -173,7 +174,8 @@ function ShowRCInformation(i){
     $("#txtNewRCPersonCi2").attr("disabled",true);
     $("#txtNewRCPersonDirection2").val(lstCR[i].PERSONADDRESS);
 	$("#txtNewRCPersonPhone2").val(lstCR[i].PERSONPHONE);
-    $("#txtNewRCPersonEmail2").val(lstCR[i].PERSONADDRESS);
+    $("#txtNewRCPersonEmail2").val(lstCR[i].USEREMAIL);
+    $("#txtNewRCPersonEmail2").attr("disabled",true);
 }
 
 $("#btnSaveRC").click(function(e){
@@ -184,11 +186,11 @@ $("#btnSaveRC").click(function(e){
     var newCR = {
         name: $("#txtNewRCName").val(),
         address: $("#txtNewRCDirection").val(),
-        phone: $('#codigoTelefC option:selected').val()+$("#txtNewRCPhone").val(),
+        phone: $("#txtNewRCPhone").val(),
         personName: $("#txtNewRCPersonName").val(),
         personLastName: $("#txtNewRCPersonLastName").val(),
         personCi: $("#txtNewRCPersonCi").val(),
-        personPhone: $('#codigoTelef option:selected').val()+$("#txtNewRCPersonPhone").val(),
+        personPhone: $("#txtNewRCPersonPhone").val(),
         personAddress: $("#txtNewRCPersonDirection").val(),
         position:marcador.getPosition(),
         CoordX:marcador.position.lat(),
@@ -197,8 +199,7 @@ $("#btnSaveRC").click(function(e){
     } 
     console.log("NUEVO CR");
     console.log(newCR);
-    //alert(newCR.phone+" "+newCR.personPhone);
-    if($("#btnSaveRC").html()=="Guardar"){
+    
         
         bootbox.confirm("¿Desea guardar la información ingresada? ", function(result) {
             if(result){
@@ -229,7 +230,34 @@ $("#btnSaveRC").click(function(e){
                 });
             }
         });
-    }else{
+    
+});
+
+$("#btnSaveRC2").click(function(e){
+    e.preventDefault();
+    // alert(marcador.getPosition());
+    // alert(marcador.position.lat()+" "+marcador.position.lng());
+    // Latitud = y
+    var newCR = {
+        name: $("#txtNewRCName2").val(),
+        address: $("#txtNewRCDirection2").val(),
+        phone: $("#txtNewRCPhone2").val(),
+        licence:$("#txtNewRCLicence2").val(),
+        
+        personName: $("#txtNewRCPersonName2").val(),
+        personLastName: $("#txtNewRCPersonLastName2").val(),
+        personCi: $("#txtNewRCPersonCi2").val(),
+        personPhone: $("#txtNewRCPersonPhone2").val(),
+        personAddress: $("#txtNewRCPersonDirection2").val(),
+        personemail: $("#txtNewRCPersonEmail2").val(),
+        position:marcador.getPosition(),
+        CoordX:marcador.position.lat(),
+        CoordY:marcador.position.lng()
+    } 
+    console.log("NUEVO CR");
+    console.log(newCR);
+    //alert(newCR.phone+" "+newCR.personPhone);
+   
         bootbox.confirm("¿Desea actualizar la información? ", function(result) {
             if(result){
                 socket.emit("RequestUpdateImporter",newCR);
@@ -259,5 +287,5 @@ $("#btnSaveRC").click(function(e){
                 });
             }
         });
-    }	
+    	
 });

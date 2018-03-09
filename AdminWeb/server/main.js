@@ -729,7 +729,7 @@ io.on('connection', function(socket){
 	  });
 	  
 	  socket.on('RequestDistOrdersP',function(data){
-      		connection.query("SELECT ORDERID, DISTRIBUTORID, O.WasteONU, DATE_FORMAT(ORDERDATE, '%Y-%m-%d') ORDERDATE,ORDERQUANTITY,ORDERSTATE,ORDERTYPE,ORDERDEADLINE,JOURNEYID,WASTEDESCRIPTION FROM orders O,waste W WHERE JOURNEYID IS NULL AND W.WasteONU=O.WasteONU AND DISTRIBUTORID="+data+";",function(error, result){
+      		connection.query("SELECT ORDERID, DISTRIBUTORID, O.WasteONU, DATE_FORMAT(ORDERDATE, '%Y-%m-%d') ORDERDATE,ORDERQUANTITY,ORDERSTATE,ORDERTYPE,ORDERDEADLINE,JOURNEYID,WASTEDESCRIPTION FROM orders O,waste W WHERE JOURNEYID IS NULL AND W.WasteONU=O.WasteONU AND DISTRIBUTORID="+data+" ORDER BY OrderDate DESC;",function(error, result){
 				if(error){
 				    throw error;
 				}else{

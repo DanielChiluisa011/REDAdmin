@@ -157,7 +157,7 @@ $("#btnCancelRC").click(function(){
         
 });
 function ShowRCInformation(i){
-    $("#btnSaveRC").html('Actualizar');
+   // $("#btnSaveRC").html('Actualizar');
     $("#txtNewRCName").attr("disabled",true);
     $("#txtNewRCName").val(lstCR[i].RECYCLINGCENTERNAME);
 	$("#txtNewRCDirection").val(lstCR[i].RECYCLINGCENTERADDRESS);

@@ -562,7 +562,7 @@ io.on('connection', function(socket){
 								pesoequivalente=result2[impAleatorio].WASTETYPEWEIGHT*cantidadequivalente;
 								console.log("cantidadequivalente: " + cantidadequivalente);
 								console.log("pesoequivalente = " + pesoequivalente);
-								actualizarCaso3(cantidadequivalente,result2[impAleatorio], data.journeyid);
+								actualizarCaso3(cantidadequivalente,result2[impAleatorio], data.journeyid,pesoequivalente);
 								connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+'),ORDERWEIGHT='+pesoequivalente+',IMPORTERID='+result2[impAleatorio].IMPORTERID+' WHERE ORDERID='+result1[j].orderid+';',function(err, rows, fields) {
 									if(err){
 										console.log("Error "+ err.message);
@@ -1966,9 +1966,9 @@ function actualizarCaso2(objeto1, objeto2, viaje){
     });
 }
 
-function actualizarCaso3(objeto1, objeto2, viaje){
+function actualizarCaso3(objeto1, objeto2, viaje,pesoeq){
     console.log("tamanio: " + objeto2.IMPORTERID, viaje, objeto1);
-	connection.query('INSERT INTO journeyximporter (IMPORTERID,JOURNEYID,QUANTITY) VALUES (?,?,?)',[objeto2.IMPORTERID, viaje, objeto1],function(error2){
+	connection.query('INSERT INTO journeyximporter (IMPORTERID,JOURNEYID,QUANTITY,PESO) VALUES (?,?,?)',[objeto2.IMPORTERID, viaje, objeto1,pesoeq],function(error2){
 		if(error2){
 			connection.query("SELECT QUANTITY FROM journeyximporter WHERE IMPORTERID = " + objeto2.IMPORTERID + " AND JOURNEYID = " + viaje + ";",function(error, result){
 				if(error){

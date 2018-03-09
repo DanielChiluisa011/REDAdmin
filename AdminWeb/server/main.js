@@ -253,7 +253,7 @@ io.on('connection', function(socket){
       socket.on('RequestDistOrders',function(data){
 		//   console.log('DIstributor id'+data);
       		// connection.query("select O.OrderId,DATE_FORMAT(O.OrderDate ,'%Y-%m-%d') AS OrderDate,O.OrderState,O.WasteONU,O.OrderQuantity,J.JourneyId,DATE_FORMAT(J.JourneyDate ,'%Y-%m-%d') AS JourneyDate,J.JourneyState,J.TruckId, P.PersonName,P.PersonLastName,P.PersonPhone from person P, trucks T, orders O, journey J Where O.JourneyId=J.JourneyId AND O.DistributorId="+data+" AND J.TruckId=T.TruckId AND T.PersonId=P.PersonID;",function(error, result){
-				connection.query("select O.OrderId,DAY(O.OrderDate) Oday,MONTH(O.ORDERDATE) Omonth,YEAR(O.OrderDate) Oyear,O.OrderState,O.WasteONU,O.OrderQuantity,J.JourneyId,DAY(J.JourneyDate) Jday, MONTH(J.JourneyDate) Jmonth,YEAR(J.JourneyDate) Jyear,J.JourneyState,J.TruckId, P.PersonName,P.PersonLastName,P.PersonPhone,WasteDescription from person P, trucks T, orders O, journey J, waste W Where W.WasteONU=O.WasteONU AND O.JourneyId=J.JourneyId AND O.DistributorId="+data+" AND J.TruckId=T.TruckId AND T.PersonId=P.PersonID;",function(error, result){
+				connection.query("select O.OrderId,DAY(O.OrderDate) Oday,MONTH(O.ORDERDATE) Omonth,YEAR(O.OrderDate) Oyear,O.OrderState,O.WasteONU,O.OrderQuantity,J.JourneyId,DAY(J.JourneyDate) Jday, MONTH(J.JourneyDate) Jmonth,YEAR(J.JourneyDate) Jyear,J.JourneyState,J.TruckId, P.PersonName,P.PersonLastName,P.PersonPhone,WasteDescription from person P, trucks T, orders O, journey J, waste W Where W.WasteONU=O.WasteONU AND O.JourneyId=J.JourneyId AND O.DistributorId="+data+" AND J.TruckId=T.TruckId AND T.PersonId=P.PersonID ORDER BY OrderDate DESC;",function(error, result){
 				if(error){
 				    throw error;
 				}else{

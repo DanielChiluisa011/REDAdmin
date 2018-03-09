@@ -1246,6 +1246,7 @@ io.on('connection', function(socket){
 						"I.RECYCLINGCENTERNAME,"+
 						"I.RECYCLINGCENTERPHONE,"+
 						"I.RECYCLINGCENTERADDRESS,"+
+						"I.RECYCLINGENVIROMENTALLICENSE,"+
 						"P.PERSONNAME,"+
 						"P.PERSONCIRUC,"+
 						"P.PERSONLASTNAME,"+

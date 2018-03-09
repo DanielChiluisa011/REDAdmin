@@ -160,16 +160,19 @@ function ShowRCInformation(i){
     $("#btnSaveRC").html('Actualizar');
     $("#txtNewRCName").attr("disabled",true);
     $("#txtNewRCName").val(lstCR[i].RECYCLINGCENTERNAME);
-	$("#txtNewRCAddress").val(lstCR[i].RECYCLINGCENTERADDRESS);
-	$("#txtNewRCPhone").val(lstCR[i].RECYCLINGCENTERPHONE);
+	$("#txtNewRCDirection").val(lstCR[i].RECYCLINGCENTERADDRESS);
+    $("#txtNewRCPhone").val(lstCR[i].RECYCLINGCENTERPHONE);
+    $("#txtNewRCLicence").val(lstCR[i].RECYCLINGENVIROMENTALLICENSE);
+    
+
 	$("#txtNewRCPersonName").val(lstCR[i].PERSONNAME);
     $("#txtNewRCPersonName").attr("disabled",true);
 	$("#txtNewRCPersonLastName").val(lstCR[i].PERSONLASTNAME);
     $("#txtNewRCPersonLastName").attr("disabled",true);
-	$("#txtNewRCPersonId").val(lstCR[i].PERSONCIRUC);
-    $("#txtNewRCPersonId").attr("disabled",true);
+	$("#txtNewRCPersonCi").val(lstCR[i].PERSONCIRUC);
+    $("#txtNewRCPersonCi").attr("disabled",true);
 	$("#txtNewRCPersonPhone").val(lstCR[i].PERSONPHONE);
-    $("#txtNewRCPersonAddress").val(lstCR[i].PERSONADDRESS);
+    $("#txtNewRCPersonDirection").val(lstCR[i].PERSONADDRESS);
 }
 
 $("#btnSaveRC").click(function(e){

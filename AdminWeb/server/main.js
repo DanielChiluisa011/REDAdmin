@@ -1968,7 +1968,7 @@ function actualizarCaso2(objeto1, objeto2, viaje){
 
 function actualizarCaso3(objeto1, objeto2, viaje,pesoeq){
     console.log("tamanio: " + objeto2.IMPORTERID, viaje, objeto1);
-	connection.query('INSERT INTO journeyximporter (IMPORTERID,JOURNEYID,QUANTITY,PESO) VALUES (?,?,?)',[objeto2.IMPORTERID, viaje, objeto1,pesoeq],function(error2){
+	connection.query('INSERT INTO journeyximporter (IMPORTERID,JOURNEYID,QUANTITY,PESO) VALUES (?,?,?,?)',[objeto2.IMPORTERID, viaje, objeto1,pesoeq],function(error2){
 		if(error2){
 			connection.query("SELECT QUANTITY FROM journeyximporter WHERE IMPORTERID = " + objeto2.IMPORTERID + " AND JOURNEYID = " + viaje + ";",function(error, result){
 				if(error){

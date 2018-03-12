@@ -85,6 +85,9 @@ function CleanInputText()
     $("#txtNewRCProvince").val("");
     $("#txtNewRCCanton").val("");
     $("#txtNewRCParroquia").val("");
+    $("#txtNewRCProvince2").val("");
+    $("#txtNewRCCanton2").val("");
+    $("#txtNewRCParroquia2").val("");
 
 	$("#txtNewRCPersonName2").val("");
 	$("#txtNewRCPersonLastName2").val("");
@@ -170,12 +173,12 @@ function ShowRCInformation(i){
     $("#txtNewRCPhone2").val(lstCR[i].RECYCLINGCENTERPHONE);
     $("#txtNewRCLicence2").val(lstCR[i].RECYCLINGENVIROMENTALLICENSE);
     $("#txtNewRCLicence2").attr("disabled",true);
-    $("#txtNewRCProvince").val(lstCR[i].RECYCLINGCENTERPROVINCIA);
-    $("#txtNewRCProvince").attr("disabled",true);
-    $("#txtNewRCCanton").val(lstCR[i].RECYCLINGCENTERCANTON);
-    $("#txtNewRCCanton").attr("disabled",true);
-    $("#txtNewRCParroquia").val(lstCR[i].RECYCLINGCENTERPARROQUIA);
-    $("#txtNewRCParroquia").attr("disabled",true);
+    $("#txtNewRCProvince2").val(lstCR[i].RECYCLINGCENTERPROVINCIA);
+    $("#txtNewRCProvince2").attr("disabled",true);
+    $("#txtNewRCCanton2").val(lstCR[i].RECYCLINGCENTERCANTON);
+    $("#txtNewRCCanton2").attr("disabled",true);
+    $("#txtNewRCParroquia2").val(lstCR[i].RECYCLINGCENTERPARROQUIA);
+    $("#txtNewRCParroquia2").attr("disabled",true);
 
 	$("#txtNewRCPersonName2").val(lstCR[i].PERSONNAME);
     $("#txtNewRCPersonName2").attr("disabled",true);

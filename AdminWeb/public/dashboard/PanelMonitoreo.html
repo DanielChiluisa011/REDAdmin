@@ -247,8 +247,129 @@
                                                 </div>
                                                 <div class="portlet-body table-scrollable-users" style="overflow: auto">
                                                     <!-- <div id="ActiveOrders" class="table-scrollable-users"> -->
+                                                            <script>
+                                                                    function filterOrder(band) {
+                                                                      // Declare variables 
+                                                                      
+                                                                      var input, filter, table, tr, td, i;
+                                                                      var band2="flPedido"+band;
+                                        
+                                                                      input = document.getElementById(band2);
+                                                                      filter = input.value.toUpperCase();
+                    
+                                                                      table = document.getElementById("ActiveOrders");
+                                                                      tr = table.getElementsByTagName("tr");
+                                                                    
+                                                                      // Loop through all table rows, and hide those who don't match the search query
+                                                                      
+                                                                      for (i = 0; i < tr.length; i++) {
+                                                                        td = tr[i].getElementsByTagName("td")[band];
+                                                                        
+                                                                        if (td) {
+                                                                          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                                                            tr[i].style.display = "";
+                                                                          } else {
+                                                                            tr[i].style.display = "none";
+                                                                          }
+                                                                        } 
+                                                                      }
+                                                                    }
+                                                                    var datebegin="1980-01-01";
+                                                                    var dateend=curDate();
+                                                                    var dbe,den;
+                
+                                                                    function filterOrderF(band) {
+                                                                      // Declare variables 
+                                                                      
+                                                                      var input1, input2, table, tr, td, i,datebe,dateen,datelist;
+                                        
+                                                                      input1 = document.getElementById("flPedidoF1").value;
+                                                                      input2 = document.getElementById("flPedidoF2").value;
+                                                                      
+                                                                      //alert("entro");
+                                                                      if(band==1){
+                                                                        dbe=input1;
+                                                                      }else{
+                                                                        den=input2;
+                                                                      }
+                    
+                                                                      if(input1==""){
+                                                                          dbe=datebegin;
+                                                                      }
+                                                                      if(input2==""){
+                                                                          den=dateend;
+                                                                      }
+                                                                      
+                                                                      datebe=restDate(dbe);
+                                                                      dateen=restDate(den);
+                                                                      table = document.getElementById("ActiveOrders");
+                                                                      tr = table.getElementsByTagName("tr");
+                                                                      // Loop through all table rows, and hide those who don't match the search query
+                                                                      
+                                                                      for (i = 0; i < tr.length; i++) {
+                                                                        td = tr[i].getElementsByTagName("td")[1];
+                                                                        
+                                                                        if (td) {
+                                                                            td=restDate(td.innerHTML);
+                                                                            if(td<datebe && td>dateen) {
+                                                                                tr[i].style.display = "";
+                                                                            } else {
+                                                                                tr[i].style.display = "none";
+                                                                            }
+                                                                        } 
+                                                                      }
+                                                                    }
+                                                                    function restDate(f1){
+                                                                        var f2=curDate();
+                                                                        var aFecha1 = f1.split("-");
+                                                                        var aFecha2 = f2.split("-");
+                                                                        var aucaf2=aFecha1[2].split(" ");
+                                                                        aFecha1[2]=aucaf2[0];
+                                                                        var fFecha1 = Date.UTC(aFecha1[0],aFecha1[1],aFecha1[2]);
+                                                                        var fFecha2 = Date.UTC(aFecha2[0],aFecha2[1],aFecha2[2]);
+                                                                        var dif = fFecha2 - fFecha1;
+                                                                        var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
+                                                                        return dias;
+                                                                    }
+                                                                    function curDate(){
+                                                                        var hoy = new Date();
+                                                                        dia = hoy.getDate();
+                                                                        mes = hoy.getMonth()+1;
+                                                                        anio= hoy.getFullYear();
+                                                                        fecha_actual = String(anio+"-"+mes+"-"+dia);
+                                                                        return fecha_actual;
+                                                                    }
+                                                                    
+                    
+                                                        </script>
                                                         <table class="table table-striped table-hover table-bordered" id="ActiveOrders">
                                                             <thead>
+                                                                    <tr>
+                                                                            <th><input type="text" id="flPedido0" onkeyup="filterOrder(0)" placeholder="&#x1F50D; Busqueda Id Viaje" style="width:150px;"></th>
+                                                                            
+                                                                            <th>
+                                                                                <div class="orm-group form-md-line-input has-success">
+                                                                                    <div class="input-group input-medium date date-picker" data-date-format="dd/mm/yyyy">
+                                                                                        <input id="flPedidoF1" type="text" onchange="filterOrderF(1)" placeholder="Fecha Inicio">
+                                                                                        <span class="input-group-addon input-circle-right">
+                                                                                                    <!-- <button class="btn default" type="button"> -->
+                                                                                            <i class="fa fa-calendar default"></i>
+                                                                                                    <!-- </button> -->
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <div class="input-group input-medium date date-picker" data-date-format="dd/mm/yyyy">
+                                                                                        <input id="flPedidoF2" type="text" onchange="filterOrderF(2)" placeholder="Fecha Fin">
+                                                                                        <span class="input-group-addon input-circle-right">
+                                                                                                    <!-- <button class="btn default" type="button"> -->
+                                                                                            <i class="fa fa-calendar default"></i>
+                                                                                                    <!-- </button> -->
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </th>
+                                                                            <th><input type="text" id="flPedido2" onkeyup="filterOrder(2)" placeholder="&#x1F50D; Busqueda Vehiculo" style="width:150px;"></th>
+                                                                            <th><input type="text" id="flPedido3" onkeyup="filterOrder(3)" placeholder="&#x1F50D; Busqueda Centro Reciclaje" style="width:150px;"></th>
+                                                                    </tr> 
                                                                 <tr>
                                                                     <th> Id de viaje </th>
                                                                     <th> Fecha </th>

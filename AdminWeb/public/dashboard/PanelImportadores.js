@@ -70,8 +70,7 @@ $(document).ready(function(){
 
         $("#ImportersTable > tbody").html("");
         for (var i = 0; i < Importador.length; i++) {
-            $('#ImportersTable').append("<tbody>"+
-                                        "<tr  align='center'>"+
+            $('#ImportersTable').append("<tr  align='center'>"+
                                             "<td>"+Importador[i].IMPORTERNAME+"</td>"+
                                             "<td>"+Importador[i].IMPORTERRUC+"</td>"+
                                             "<td>"+Importador[i].IMPORTERADDRESS+"</td>"+
@@ -82,8 +81,7 @@ $(document).ready(function(){
                                             "<td>"+Importador[i].USEREMAIL+"</td>"+
                                             "<td>"+Importador[i].IMPORTERCODE+"</td>"+
                                             "<td><a class='btn red btn-outline sbold' data-toggle='modal' href='#addImporter' onclick='ShowImporterInformation("+i+")'> <i class='fa fa-edit'> </i> Editar </a></td>"+
-                                        "</tr>"+
-                                    "</tbody>");
+                                        "</tr>");
         }
     });
 

@@ -45,15 +45,13 @@ $(document).ready(function(){
         $("#txtNewRCParroquia").val("");
 
         for (var i = 0; i < CR.length; i++) {
-            $('#ImportersTable').append("<tbody>"+
-                                        "<tr>"+
+            $('#RecyclerTable').append("<tr align='center'>"+
                                             "<td>"+CR[i].RECYCLINGCENTERNAME+"</td>"+
                                             "<td>"+CR[i].RECYCLINGCENTERADDRESS+"</td>"+
                                             "<td>"+CR[i].RECYCLINGCENTERPHONE+"</td>"+
                                             "<td>"+CR[i].PERSONNAME+' '+CR[i].PERSONLASTNAME+"</td>"+
                                             "<td><a class='btn red btn-outline sbold' data-toggle='modal' href='#addCentro' onclick='ShowRCInformation("+i+")'> <i class='fa fa-edit'> </i> Editar </a></td>"+
-                                        "</tr>"+
-                                    "</tbody>");
+                                        "</tr>");
         }
     });
     marcador=mapa.addMarker({

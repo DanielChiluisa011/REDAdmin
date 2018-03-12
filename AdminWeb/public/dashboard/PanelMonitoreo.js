@@ -87,10 +87,10 @@ $(document).ready(function(data){
 			// });
 			// console.log("sdfghjk");
 			// console.log(driver);
-			$('#ActiveOrders').append("<tbody><tr><td onclick='ShowRouteTest("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='ShowRouteTest("+j+")'>"+
+			$('#ActiveOrders').append("<tr align='center'><td onclick='ShowRouteTest("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='ShowRouteTest("+j+")'>"+
 									lstJourneys[j].JourneyDate+"</td><td onclick='ShowRouteTest("+j+")'>"+lstJourneys[j].truckId+"</td><td onclick='ShowRouteTest("+j+")'>"+RCName+
 									// "</td><td onclick='ShowRouteTest("+j+")'>"+importerName+"</td></tr><tbody>");  
-									"</td></tr><tbody>");  
+									"</td></tr>");  
 		}
 		socket.removeListener("SelectActiveOrders");
     }) 

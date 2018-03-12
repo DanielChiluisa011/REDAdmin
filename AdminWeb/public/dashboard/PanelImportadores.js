@@ -70,7 +70,7 @@ $(document).ready(function(){
 
         $("#ImportersTable > tbody").html("");
         for (var i = 0; i < Importador.length; i++) {
-            $('#ImportersTable').append("<tr  align='center'>"+
+            $('#ImportersTable').append("<tr>"+
                                             "<td>"+Importador[i].IMPORTERNAME+"</td>"+
                                             "<td>"+Importador[i].IMPORTERRUC+"</td>"+
                                             "<td>"+Importador[i].IMPORTERADDRESS+"</td>"+

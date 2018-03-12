@@ -1297,7 +1297,17 @@ io.on('connection', function(socket){
 					if(error){
 						socket.emit("ResponseNewCR",false);
 					}else{
-						connection.query("INSERT INTO recycling_centers (PERSONID,RECYCLINGCENTERNAME,RECYCLINGCENTERPHONE,RECYCLINGCENTERADDRESS,RECYCLINGENVIROMENTALLICENSE,RECYCLINGCENTERPROVINCIA,RECYCLINGCENTERCANTON,RECYCLINGCENTERPARROQUIA,RECYCLINGCENTERCOORDINATES) VALUES (?,?,?,?,?,?,?,?,GeomFromText('POINT("+RC.CoordX+" "+RC.CoordY+")'))",
+						connection.query('INSERT INTO users (USEREMAIL,PERSONID,USERPASSWORD,USERPROFILE,USERSTATE) VALUES (?,?,?,?,?)',
+							[RC.personemail,
+							result[0].max,
+							RC.personemail,
+							"Reciclador",
+							"0"],function(err, rows, fields) {
+							if(err){
+								console.log("Error "+ err.message);
+								socket.emit("ResponseNewCR",false);
+							}else{
+								connection.query("INSERT INTO recycling_centers (PERSONID,RECYCLINGCENTERNAME,RECYCLINGCENTERPHONE,RECYCLINGCENTERADDRESS,RECYCLINGENVIROMENTALLICENSE,RECYCLINGCENTERPROVINCIA,RECYCLINGCENTERCANTON,RECYCLINGCENTERPARROQUIA,RECYCLINGCENTERCOORDINATES) VALUES (?,?,?,?,?,?,?,?,GeomFromText('POINT("+RC.CoordX+" "+RC.CoordY+")'))",
 									[result[0].max,
 									RC.name,
 									RC.phone,
@@ -1313,12 +1323,16 @@ io.on('connection', function(socket){
 										}else{
 											socket.emit("ResponseNewCR",true);
 										}
+								});
+							}
 						});
 					}
 				});
 			}
 		});
 	});
+
+	
 	// socket.on("RequestAsignOrders",function(data){
 	// 	var Total=0;
 	// 	console.log(data);

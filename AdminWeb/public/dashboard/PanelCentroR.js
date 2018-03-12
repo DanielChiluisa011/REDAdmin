@@ -95,6 +95,7 @@ function CleanInputText()
     $("#txtNewRCPersonDirection2").val("");
 	$("#txtNewRCPersonPhone2").val("");
     $("#txtNewRCPersonEmail2").val("");
+    $("#txtNewRCPersonEmail").val("");
 }
 var geocoder = new google.maps.Geocoder();
 	
@@ -207,6 +208,7 @@ $("#btnSaveRC").click(function(e){
         personCi: $("#txtNewRCPersonCi").val(),
         personPhone: $("#txtNewRCPersonPhone").val(),
         personAddress: $("#txtNewRCPersonDirection").val(),
+        personemail:$("#txtNewRCPersonEmail").val(),
         position:marcador.getPosition(),
         CoordX:marcador.position.lat(),
         CoordY:marcador.position.lng(),

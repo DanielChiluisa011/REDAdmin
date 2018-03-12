@@ -52,9 +52,9 @@ $(document).ready(function(){
         lstTrucks.length=0;
         lstTrucks=CR;
         
-        $("#ImportersTable > tbody").html("");
+        $("#TrucksTable > tbody").html("");
         for (var i = 0; i < CR.length; i++) {
-            $('#ImportersTable').append("<tbody>"+
+            $('#TrucksTable').append("<tbody>"+
                                         "<tr>"+
                                             "<td>"+CR[i].TRUCKID+"</td>"+
                                             "<td>"+CR[i].TRUCKMODEL+"</td>"+

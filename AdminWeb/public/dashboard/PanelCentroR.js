@@ -45,7 +45,7 @@ $(document).ready(function(){
         $("#txtNewRCParroquia").val("");
 
         for (var i = 0; i < CR.length; i++) {
-            $('#RecyclerTable').append("<tr align='center'>"+
+            $('#RecyclerTable').append("<tr>"+
                                             "<td>"+CR[i].RECYCLINGCENTERNAME+"</td>"+
                                             "<td>"+CR[i].RECYCLINGCENTERADDRESS+"</td>"+
                                             "<td>"+CR[i].RECYCLINGCENTERPHONE+"</td>"+

@@ -40,6 +40,10 @@ $(document).ready(function(){
 	    $("#txtNewRCPersonPhone").val("");
         $("#txtNewRCPersonAddress").val("");
 
+        $("#txtNewRCProvince").val("");
+        $("#txtNewRCCanton").val("");
+        $("#txtNewRCParroquia").val("");
+
         for (var i = 0; i < CR.length; i++) {
             $('#ImportersTable').append("<tbody>"+
                                         "<tr>"+
@@ -78,7 +82,9 @@ function CleanInputText()
 	$("#txtNewRCDirection2").val("");
     $("#txtNewRCPhone2").val("");
     $("#txtNewRCLicence2").val("");
-    
+    $("#txtNewRCProvince").val("");
+    $("#txtNewRCCanton").val("");
+    $("#txtNewRCParroquia").val("");
 
 	$("#txtNewRCPersonName2").val("");
 	$("#txtNewRCPersonLastName2").val("");
@@ -164,7 +170,12 @@ function ShowRCInformation(i){
     $("#txtNewRCPhone2").val(lstCR[i].RECYCLINGCENTERPHONE);
     $("#txtNewRCLicence2").val(lstCR[i].RECYCLINGENVIROMENTALLICENSE);
     $("#txtNewRCLicence2").attr("disabled",true);
-    
+    $("#txtNewRCProvince").val(lstCR[i].RECYCLINGCENTERPROVINCIA);
+    $("#txtNewRCProvince").attr("disabled",true);
+    $("#txtNewRCCanton").val(lstCR[i].RECYCLINGCENTERCANTON);
+    $("#txtNewRCCanton").attr("disabled",true);
+    $("#txtNewRCParroquia").val(lstCR[i].RECYCLINGCENTERPARROQUIA);
+    $("#txtNewRCParroquia").attr("disabled",true);
 
 	$("#txtNewRCPersonName2").val(lstCR[i].PERSONNAME);
     $("#txtNewRCPersonName2").attr("disabled",true);
@@ -176,6 +187,7 @@ function ShowRCInformation(i){
 	$("#txtNewRCPersonPhone2").val(lstCR[i].PERSONPHONE);
     $("#txtNewRCPersonEmail2").val(lstCR[i].USEREMAIL);
     $("#txtNewRCPersonEmail2").attr("disabled",true);
+
 }
 
 $("#btnSaveRC").click(function(e){
@@ -195,7 +207,10 @@ $("#btnSaveRC").click(function(e){
         position:marcador.getPosition(),
         CoordX:marcador.position.lat(),
         CoordY:marcador.position.lng(),
-        licence:$("#txtNewRCLicence").val()
+        licence:$("#txtNewRCLicence").val(),
+        province:$("#txtNewRCProvince").val(),
+        canton:$("#txtNewRCCanton").val(),
+        parroquia:$("#txtNewRCParroquia").val()
     } 
     console.log("NUEVO CR");
     console.log(newCR);
@@ -252,7 +267,10 @@ $("#btnSaveRC2").click(function(e){
         personemail: $("#txtNewRCPersonEmail2").val(),
         position:marcador.getPosition(),
         CoordX:marcador.position.lat(),
-        CoordY:marcador.position.lng()
+        CoordY:marcador.position.lng(),
+        province:$("#txtNewRCProvince").val(),
+        canton:$("#txtNewRCCanton").val(),
+        parroquia:$("#txtNewRCParroquia").val()
     } 
     console.log("NUEVO CR");
     console.log(newCR);

@@ -1247,6 +1247,9 @@ io.on('connection', function(socket){
 						"I.RECYCLINGCENTERPHONE,"+
 						"I.RECYCLINGCENTERADDRESS,"+
 						"I.RECYCLINGENVIROMENTALLICENSE,"+
+						"I.RECYCLINGCENTERPROVINCIA,"+
+						"I.RECYCLINGCENTERCANTON,"+
+						"I.RECYCLINGCENTERPARROQUIA,"+
 						"P.PERSONNAME,"+
 						"P.PERSONCIRUC,"+
 						"P.PERSONLASTNAME,"+
@@ -1294,16 +1297,15 @@ io.on('connection', function(socket){
 					if(error){
 						socket.emit("ResponseNewCR",false);
 					}else{
-						connection.query("INSERT INTO recycling_centers (PERSONID,RECYCLINGCENTERNAME,RECYCLINGCENTERPHONE,RECYCLINGCENTERADDRESS,RECYCLINGENVIROMENTALLICENSE,RECYCLINGCENTERCOORDINATES) VALUES (?,?,?,?,?,GeomFromText('POINT("+RC.CoordX+" "+RC.CoordY+")'))",
+						connection.query("INSERT INTO recycling_centers (PERSONID,RECYCLINGCENTERNAME,RECYCLINGCENTERPHONE,RECYCLINGCENTERADDRESS,RECYCLINGENVIROMENTALLICENSE,RECYCLINGCENTERPROVINCIA,RECYCLINGCENTERCANTON,RECYCLINGCENTERPARROQUIA,RECYCLINGCENTERCOORDINATES) VALUES (?,?,?,?,?,?,?,?,GeomFromText('POINT("+RC.CoordX+" "+RC.CoordY+")'))",
 									[result[0].max,
 									RC.name,
 									RC.phone,
 									RC.address,
 									RC.licence,
-									// RC.rucImporter,
-									// RC.quota,
-									
-									// RC.personEmail
+									RC.province,
+									RC.canton,
+									RC.parroquia
 									],function(err, rows, fields) {
 										if(err){
 											console.log("Error "+ err.message);

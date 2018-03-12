@@ -77,7 +77,7 @@ $(document).ready(function(){
                                             "<td>"+Importador[i].IMPORTERADDRESS+"</td>"+
                                             "<td>"+Importador[i].IMPORTERPHONE+"</td>"+
                                             "<td>"+Importador[i].IMPORTERQUOTA+"</td>"+
-                                            "<td>"+Importador[i].IMPORTERQUOTAACCOMPLISHED+"</td>"+
+                                            //"<td>"+Importador[i].IMPORTERQUOTAACCOMPLISHED+"</td>"+
                                             "<td>"+Importador[i].PERSONNAME+' '+Importador[i].PERSONLASTNAME+"</td>"+
                                             "<td>"+Importador[i].USEREMAIL+"</td>"+
                                             "<td>"+Importador[i].IMPORTERCODE+"</td>"+

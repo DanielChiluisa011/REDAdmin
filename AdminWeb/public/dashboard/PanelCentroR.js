@@ -167,13 +167,12 @@ $("#btnCancelRC").click(function(){
         
 });
 function ShowRCInformation(i){
-   // $("#btnSaveRC").html('Actualizar');
-    $("#txtNewRCName2").attr("disabled",true);
+   // $("#btnSaveRC").html('Actualizar'); 
     $("#txtNewRCName2").val(lstCR[i].RECYCLINGCENTERNAME);
-	$("#txtNewRCDirection2").val(lstCR[i].RECYCLINGCENTERADDRESS);
+    $("#txtNewRCDirection2").val(lstCR[i].RECYCLINGCENTERADDRESS);
+    $("#txtNewRCDirection2").attr("disabled",true);
     $("#txtNewRCPhone2").val(lstCR[i].RECYCLINGCENTERPHONE);
     $("#txtNewRCLicence2").val(lstCR[i].RECYCLINGENVIROMENTALLICENSE);
-    $("#txtNewRCLicence2").attr("disabled",true);
     $("#txtNewRCProvince2").val(lstCR[i].RECYCLINGCENTERPROVINCIA);
     $("#txtNewRCProvince2").attr("disabled",true);
     $("#txtNewRCCanton2").val(lstCR[i].RECYCLINGCENTERCANTON);
@@ -182,9 +181,7 @@ function ShowRCInformation(i){
     $("#txtNewRCParroquia2").attr("disabled",true);
 
 	$("#txtNewRCPersonName2").val(lstCR[i].PERSONNAME);
-    $("#txtNewRCPersonName2").attr("disabled",true);
 	$("#txtNewRCPersonLastName2").val(lstCR[i].PERSONLASTNAME);
-    $("#txtNewRCPersonLastName2").attr("disabled",true);
 	$("#txtNewRCPersonCi2").val(lstCR[i].PERSONCIRUC);
     $("#txtNewRCPersonCi2").attr("disabled",true);
     $("#txtNewRCPersonDirection2").val(lstCR[i].PERSONADDRESS);

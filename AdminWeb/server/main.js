@@ -206,7 +206,7 @@ io.on('connection', function(socket){
 		});
   	});
       socket.on('RequestDistributorData',function(data){
-      		connection.query("SELECT DistributorId, DistributorName, DistributorRuc,DistributorAddress,DistributorPhone,DistributorStock,DistributorEnvironmentalLicense,PersonId,ImporterId,X(GeometryFromText(AsText(DistributorCoordinates)))CoordX, Y(GeometryFromText(AsText(DistributorCoordinates))) CoordY FROM distributor where PERSONID='"+data+"'",function(error, result){
+      		connection.query("SELECT d.DistributorId, d.DistributorName, d.DistributorRuc,d.DistributorAddress,d.DistributorPhone,d.DistributorStock,d.DistributorEnvironmentalLicense,d.PersonId,d.ImporterId,p.PROVINCENAME,d.DISTRIBUTORCITY,d.DISTRIBUTORPARROQUIA,X(GeometryFromText(AsText(d.DistributorCoordinates)))CoordX, Y(GeometryFromText(AsText(d.DistributorCoordinates))) CoordY FROM distributor d,PROVINCE p  where d.PERSONID='"+data+"' AND p.PROVINCEID=d.PROVINCEID",function(error, result){
 				if(error){
 				    throw error;
 				}else{

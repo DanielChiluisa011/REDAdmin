@@ -819,7 +819,7 @@ io.on('connection', function(socket){
 		//   console.log(data.address+" "+data.phone+" "+data.personid+" "+data.coordx+" "+data.coordy);
 		console.log("updateDistributor2");
 		console.log(data);
-		  connection.query("UPDATE distributor SET DISTRIBUTORADDRESS = ?, DISTRIBUTORPHONE = ?, IMPORTERID=? ,DISTRIBUTORCOORDINATES=GeomFromText('POINT ("+data.coordx+" "+data.coordy+")'),PROVINCEID="+data.province+",DISTRIBUTORCITY='"+data.canton+"',DISTRIBUTORPARROQUIA='"+data.parroquia+"' WHERE PERSONID = ?",[data.address,data.phone,data.importercode,data.personid],function(err, rows, fields) {
+		  connection.query("UPDATE distributor SET DISTRIBUTORNAME=?,DISTRIBUTORADDRESS = ?, DISTRIBUTORPHONE = ?, IMPORTERID=? ,DISTRIBUTORCOORDINATES=GeomFromText('POINT ("+data.coordx+" "+data.coordy+")'),PROVINCEID="+data.province+",DISTRIBUTORCITY='"+data.canton+"',DISTRIBUTORPARROQUIA='"+data.parroquia+"' WHERE PERSONID = ?",[data.name,data.address,data.phone,data.importercode,data.personid],function(err, rows, fields) {
 		 		if(err){
 					 socket.emit('msg',false)
 		 			console.log("Error "+ err.message);

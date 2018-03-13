@@ -27,7 +27,6 @@ $(document).ready(function(){
     socket.on('ResponseProvinces',function(data){
 		lstProvinces=[];
         lstProvinces=data;
-        //alert(lstProvinces.length);
 		$('#cmbNewImpProvince').empty();
        	$('#cmbNewImpProvince').append('<option selected>Seleccione una Provincia</option>');
        	for (var i = 0; i < lstProvinces.length; i++) {

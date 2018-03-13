@@ -1,12 +1,8 @@
 var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
 var lstCR= [];
+var lstProvinces=[];
 var mapa;
 var marcador;
-// var mapa=new GMaps({
-//     div: '#map_centroR',
-//     lat: -0.191611,
-//     lng:  -78.483574
-// });
 
 $(document).ready(function(){
     MapsGoogle.init();
@@ -62,6 +58,16 @@ $(document).ready(function(){
         draggable: true
 	});
     
+    socket.emit('RequestProvinces','');
+    socket.on('ResponseProvinces',function(data){
+		lstProvinces=[];
+        lstProvinces=data;
+		$('#cmbNewImpProvince').empty();
+       	$('#cmbNewImpProvince').append('<option selected>Seleccione una Provincia</option>');
+       	for (var i = 0; i < lstProvinces.length; i++) {
+	   		$('#cmbNewImpProvince').append(new Option(lstProvinces[i].PROVINCENAME, lstProvinces[i].PROVINCEID));
+           }
+    });
 });
 function CleanInputText()
 {
@@ -208,7 +214,7 @@ $("#btnSaveRC").click(function(e){
         CoordX:marcador.position.lat(),
         CoordY:marcador.position.lng(),
         licence:$("#txtNewRCLicence").val(),
-        province:$("#txtNewRCProvince").val(),
+        province: lstProvinces[$('#cmbNewImpProvince option:selected').index()-1].PROVINCEID,
         canton:$("#txtNewRCCanton").val(),
         parroquia:$("#txtNewRCParroquia").val()
     } 

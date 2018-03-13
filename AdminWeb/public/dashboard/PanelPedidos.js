@@ -599,7 +599,7 @@ $('#btnSaveOrder').click(function(e){
 			      zindex: 1500
 			    });
 				
-				setTimeout("location.reload()",1500);	
+				setTimeout("location.reload()",800);	
 	   		}
 	   }
 	});	

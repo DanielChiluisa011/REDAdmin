@@ -17,6 +17,7 @@ function SaveNewUser(i){
 	   if(result){
 		   	socket.emit('SaveNewUserV2', lstObjNewUsers[i]);
 			$.notific8('Usuario guardado correctamente');
+			setTimeout("location.reload()",700);
 	   }
 	});
 	

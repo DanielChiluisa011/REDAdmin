@@ -108,6 +108,15 @@ io.on('connection', function(socket){
 			        }
 	         })
 		});
+		socket.on('AppUpdateDirectionGenerador',function(data){
+			connection.query("UPDATE distributor SET DISTRIBUTORENVIRONMENTALLICENSE=GeomFromText('POINT ("+data[0]+" "+data[1]+")'),DISTRIBUTORADDRESS="+data[2]+" WHERE DISTRIBUTORID="+data[3],function(err, rows, fields) {
+				if(err){
+					console.log("Error distribuidor"+ err.message);
+				}else{
+					console.log("Direccion Distribudor actualizaco");
+				}
+			})
+		});
 
 		// socket.on('EmailNewUserRequest',function(email){
 		// 	connection.query("SELECT PERSONID FROM users WHERE USEREMAIL='"+email+"';",function(error,result){
@@ -819,7 +828,7 @@ io.on('connection', function(socket){
 		//   console.log(data.address+" "+data.phone+" "+data.personid+" "+data.coordx+" "+data.coordy);
 		console.log("updateDistributor2");
 		console.log(data);
-		  connection.query("UPDATE distributor SET DISTRIBUTORNAME=?,DISTRIBUTORADDRESS = ?, DISTRIBUTORPHONE = ?, IMPORTERID=? ,DISTRIBUTORCOORDINATES=GeomFromText('POINT ("+data.coordx+" "+data.coordy+")'),PROVINCEID="+data.province+",DISTRIBUTORCITY='"+data.canton+"',DISTRIBUTORPARROQUIA='"+data.parroquia+"' WHERE PERSONID = ?",[data.name,data.address,data.phone,data.importercode,data.personid],function(err, rows, fields) {
+		  connection.query("UPDATE distributor SET DISTRIBUTORNAME=?,DISTRIBUTORADDRESS = ?, DISTRIBUTORPHONE = ?,PROVINCEID="+data.province+",DISTRIBUTORCITY='"+data.canton+"',DISTRIBUTORPARROQUIA='"+data.parroquia+"' WHERE DISTRIBUTORID = ?",[data.name,data.address,data.phone,data.distributor],function(err, rows, fields) {
 		 		if(err){
 					 socket.emit('msg',false)
 		 			console.log("Error "+ err.message);

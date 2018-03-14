@@ -109,7 +109,7 @@ io.on('connection', function(socket){
 	         })
 		});
 		socket.on('AppUpdateDirectionGenerador',function(data){
-			connection.query("UPDATE distributor SET DISTRIBUTORENVIRONMENTALLICENSE=GeomFromText('POINT ("+data[0]+" "+data[1]+")'),DISTRIBUTORADDRESS='"+data[2]+"' WHERE DISTRIBUTORID="+data[3],function(err, rows, fields) {
+			connection.query("UPDATE distributor SET DISTRIBUTORCOORDINATES=GeomFromText('POINT ("+data[0]+" "+data[1]+")'),DISTRIBUTORADDRESS='"+data[2]+"' WHERE DISTRIBUTORID="+data[3],function(err, rows, fields) {
 				if(err){
 					console.log("Error distribuidor"+ err.message);
 				}else{

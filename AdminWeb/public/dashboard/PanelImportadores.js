@@ -138,6 +138,7 @@ $("#btnCancelImporter").click(function(){
         $("#txtNewImpPersonLastName").attr("disabled",false);
         $("#txtNewImpPersonId").attr("disabled",false);
         $("#txtNewImpEmail").attr("disabled",false);
+        $("#codigoTelef").visible(); 
 });
 function ShowImporterInformation(i){
         $("#btnInsertImporter").html('Actualizar');
@@ -161,8 +162,9 @@ function ShowImporterInformation(i){
 		$("#txtNewImpPersonAddress").val(lstImporters[i].PERSONADDRESS);
 		$("#txtNewImpEmail").val(lstImporters[i].USEREMAIL);
         $("#txtNewImpEmail").attr("disabled",true);
-        $("#codigoTelef").hide();
-        $("#cmbNewImpProvincia").val(lstImporters[i].PROVINCEID);
+        $("#codigoTelef").hide();     
+        $("#cmbTypeWaste").val(lstImporters[i].WASTETYPEID);
+        $("#cmbNewImpProvince").val(lstImporters[i].PROVINCEID);
         $("#txtNewImpParroquia").val(lstImporters[i].IMPORTERPARROQUIA);
         $("#txtNewImpCanton").val(lstImporters[i].IMPORTERCANTON);
 
@@ -258,6 +260,7 @@ $("#btnInsertImporter").click(function(){
                 });
             }
         });
+        $("#codigoTelef").visible(); 
     }
 	
 

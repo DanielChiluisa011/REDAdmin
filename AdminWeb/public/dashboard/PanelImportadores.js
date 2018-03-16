@@ -196,6 +196,8 @@ $("#btnInsertImporter").click(function(){
         tipodesecho: $('#cmbTypeWaste').val()
         // importercode: $("#txtNewImpCode").val()
     } 
+    alert($('#cmbNewImpProvince option:selected').index());
+    alert(newImporter.provincia);
     // alert(newImporter.code);
     console.log("NUEVO IMPORTADOR");
     console.log(newImporter);

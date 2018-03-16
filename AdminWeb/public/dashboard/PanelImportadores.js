@@ -78,7 +78,7 @@ $(document).ready(function(){
                                             //"<td>"+Importador[i].IMPORTERQUOTAACCOMPLISHED+"</td>"+
                                             "<td>"+Importador[i].PERSONNAME+' '+Importador[i].PERSONLASTNAME+"</td>"+
                                             "<td>"+Importador[i].USEREMAIL+"</td>"+
-                                            "<td>"+Importador[i].IMPORTERCODE+"</td>"+
+                                            //"<td>"+Importador[i].IMPORTERCODE+"</td>"+
                                             "<td><a class='btn red btn-outline sbold' data-toggle='modal' href='#addImporter' onclick='ShowImporterInformation("+i+")'> <i class='fa fa-edit'> </i> Editar </a></td>"+
                                         "</tr>");
         }

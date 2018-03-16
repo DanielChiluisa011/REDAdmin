@@ -330,8 +330,8 @@
                                                                 <div class="form-group">
                                                                     <label class="col-md-3 control-label">Telefono:</label>
                                                                     <div class="col-md-4">
-                                                                        <select id="codigoTelefC" class="form-control input-circle" placeholder="Seleccione el código telefónico" aria-setsize="10">
-                                                                            <option selected>Seleccione una Provincia</option>
+                                                                        <select id="codigoTelefC" class="form-control input-circle" placeholder="Seleccione el código telefónico" aria-setsize="10"  onchange="codnum(this.value)">
+                                                                            <option selected>Seleccione el Código Telefónico</option>
                                                                             <option value="02">02 - Pichincha, Santo Domingo</option>
                                                                             <option value="03">03 - Bolívar, Chimborazo, Cotopaxi, Pastaza, Tungurahua</option>
                                                                             <option value="04">04 - Guayas, Santa Elena</option>
@@ -489,8 +489,8 @@
                                                                                 <div class="form-group">
                                                                                     <label class="col-md-3 control-label"><i class='fa fa-mobile'> </i>Telefono</label>
                                                                                     <div class="col-md-4">
-                                                                                        <select id="codigoTelef" class="form-control input-circle" placeholder="Seleccione el código telefónico" aria-setsize="10">
-                                                                                            <option selected>Seleccione una Provincia</option>
+                                                                                        <select id="codigoTelef" class="form-control input-circle" placeholder="Seleccione el código telefónico" aria-setsize="10" onchange="codnum(this.value)">
+                                                                                            <option selected>Seleccione el Código Telefónico</option>
                                                                                             <option value="02">02 - Pichincha, Santo Domingo</option>
                                                                                             <option value="03">03 - Bolívar, Chimborazo, Cotopaxi, Pastaza, Tungurahua</option>
                                                                                             <option value="04">04 - Guayas, Santa Elena</option>
@@ -564,18 +564,6 @@
                                                 <label class="col-md-3 control-label"><i class='fa fa-mobile'> </i> Teléfono:</label>
                                                 
                                                 <div class="col-md-4">
-                                                    <select id="codigoTelefC2" class="form-control input-circle" placeholder="Seleccione el código telefónico" aria-setsize="10" onchange="codnum(this.value)">
-                                                        <option selected>Seleccione el Código Telefónico</option>
-                                                        <option value="02">02 - Pichincha, Santo Domingo</option>
-                                                        <option value="03">03 - Bolívar, Chimborazo, Cotopaxi, Pastaza, Tungurahua</option>
-                                                        <option value="04">04 - Guayas, Santa Elena</option>
-                                                        <option value="05">05 - Galápagos, Los Ríos, Manabí</option>
-                                                        <option value="06">06 - Esmeraldas, Imbabura, Carchi, Napo, Orellana, Sucumbíos</option>
-                                                        <option value="07">07 - Azuay, Cañar, El Oro, Loja, Morona Santiago2​ y Zamora Chinchipe</option>
-                                                        <option value="08">08 - Reservado</option>
-                                                        <option value="09">09 - Telefonia Celular</option>
-                                                    </select>
-
                                                     <input id="txtNewRCPhone2" type="text" class="form-control" style="width: 400px" >
                                                 </div>
                                             </div>
@@ -649,19 +637,7 @@
                                                 <label class="col-md-3 control-label"><i class='fa fa-mobile'> </i> Teléfono:</label>
                                                 
                                                 <div class="col-md-4">
-                                                    <select id="codigoTelefC2" class="form-control input-circle" placeholder="Seleccione el código telefónico" aria-setsize="10" onchange="codnum(this.value)">
-                                                        <option selected>Seleccione una Provincia</option>
-                                                        <option value="02">02 - Pichincha, Santo Domingo</option>
-                                                        <option value="03">03 - Bolívar, Chimborazo, Cotopaxi, Pastaza, Tungurahua</option>
-                                                        <option value="04">04 - Guayas, Santa Elena</option>
-                                                        <option value="05">05 - Galápagos, Los Ríos, Manabí</option>
-                                                        <option value="06">06 - Esmeraldas, Imbabura, Carchi, Napo, Orellana, Sucumbíos</option>
-                                                        <option value="07">07 - Azuay, Cañar, El Oro, Loja, Morona Santiago2​ y Zamora Chinchipe</option>
-                                                        <option value="08">08 - Reservado</option>
-                                                        <option value="09">09 - Telefonia Celular</option>
-                                                    </select>
-
-                                                    <input id="txtNewRCPersonPhone2" type="text" class="form-control" style="width: 350px" >
+                                                   <input id="txtNewRCPersonPhone2" type="text" class="form-control" style="width: 350px" >
                                                 </div>
                                             </div>
                                             <div class="form-group">

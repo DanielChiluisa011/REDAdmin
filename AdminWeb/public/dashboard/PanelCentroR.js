@@ -320,5 +320,8 @@ $("#btnSaveRC2").click(function(e){
 });
 
 function codnum(x){
-    document.getElementById("txtNewRCPhone2").value=x;
+    document.getElementById("txtNewRCPhone").value=x;
+}
+function codnum2(x){
+    document.getElementById("txtNewRCPersonPhone").value=x;
 }

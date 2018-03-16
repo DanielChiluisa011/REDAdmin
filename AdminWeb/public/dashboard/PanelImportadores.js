@@ -147,7 +147,7 @@ function ShowImporterInformation(i){
 		$("#txtNewImpPhone").val(lstImporters[i].IMPORTERPHONE);
         $("#txtNewImpRuc").attr("disabled",true);
 		$("#txtNewImpRuc").val(lstImporters[i].IMPORTERRUC);
-        $("#txtNewImpQuota").attr("disabled",true);
+        //$("#txtNewImpQuota").attr("disabled",true);
 		$("#txtNewImpQuota").val(lstImporters[i].IMPORTERQUOTA);
         $("#txtNewImpLicence").attr("disabled",true);
 		$("#txtNewImpLicence").val(lstImporters[i].IMPORTERWASTEGENERATORNUMBER);

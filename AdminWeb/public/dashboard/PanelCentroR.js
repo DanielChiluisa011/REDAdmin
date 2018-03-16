@@ -318,3 +318,7 @@ $("#btnSaveRC2").click(function(e){
         });
     	
 });
+
+function codnum(x){
+    document.getElementById("txtNewRCPhone2").value=x;
+}

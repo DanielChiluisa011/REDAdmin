@@ -177,8 +177,8 @@ function ShowRCInformation(i){
     $("#txtNewRCDirection2").attr("disabled",true);
     $("#txtNewRCPhone2").val(lstCR[i].RECYCLINGCENTERPHONE);
     $("#txtNewRCLicence2").val(lstCR[i].RECYCLINGENVIROMENTALLICENSE);
-    $("#txtNewRCProvince2").val(lstCR[i].RECYCLINGCENTERPROVINCIA);
-    $("#txtNewRCProvince2").attr("disabled",true);
+    $("#cmbNewImpProvince2").val(lstCR[i].RECYCLINGCENTERPROVINCIA);
+    $("#cmbNewImpProvince2").attr("disabled",true);
     $("#txtNewRCCanton2").val(lstCR[i].RECYCLINGCENTERCANTON);
     $("#txtNewRCCanton2").attr("disabled",true);
     $("#txtNewRCParroquia2").val(lstCR[i].RECYCLINGCENTERPARROQUIA);

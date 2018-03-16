@@ -67,6 +67,11 @@ $(document).ready(function(){
        	for (var i = 0; i < lstProvinces.length; i++) {
 	   		$('#cmbNewImpProvince').append(new Option(lstProvinces[i].PROVINCENAME, lstProvinces[i].PROVINCEID));
            }
+        $('#cmbNewImpProvince2').empty();
+       	$('#cmbNewImpProvince2').append('<option selected>Seleccione una Provincia</option>');
+       	for (var i = 0; i < lstProvinces.length; i++) {
+	   		$('#cmbNewImpProvince2').append(new Option(lstProvinces[i].PROVINCENAME, lstProvinces[i].PROVINCEID));
+           }
     });
 });
 function CleanInputText()

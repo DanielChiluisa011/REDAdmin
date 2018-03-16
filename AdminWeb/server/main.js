@@ -1193,7 +1193,7 @@ io.on('connection', function(socket){
 						"I.IMPORTERRUC,"+
 						"I.IMPORTERQUOTA,"+
 						"I.IMPORTERQUOTAACCOMPLISHED,"+
-						"I.IMPORTERWASTEGENERATORNUMBER,I.PROVINCEID,I.IMPORTERPARROQUIA,I.IMPORTERCANTON,"+
+						"I.IMPORTERWASTEGENERATORNUMBER,PRO.PROVINCENAME,I.IMPORTERPARROQUIA,I.IMPORTERCANTON,"+
 						"I.WASTETYPEID,"+
 						"P.PERSONNAME,"+
 						"P.PERSONCIRUC,"+
@@ -1202,8 +1202,8 @@ io.on('connection', function(socket){
 						"P.PERSONPHONE,"+
 						"I.USEREMAIL "+
 						"FROM importer I, "+
-						"person P, users u "+
-						"WHERE I.USEREMAIL=u.USEREMAIL AND u.PERSONID=P.personid "+
+						"person P, users u,PROVINCE PRO "+
+						"WHERE I.USEREMAIL=u.USEREMAIL AND u.PERSONID=P.personid AND I.PROVINCEID=PRO.PROVINCEID "+
 						"ORDER BY I.IMPORTERNAME ASC;",function(error, result){
 							if(error){
 								console.log(error);

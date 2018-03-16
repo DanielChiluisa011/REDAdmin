@@ -138,7 +138,7 @@ $("#btnCancelImporter").click(function(){
         $("#txtNewImpPersonLastName").attr("disabled",false);
         $("#txtNewImpPersonId").attr("disabled",false);
         $("#txtNewImpEmail").attr("disabled",false);
-        $("#codigoTelef").visible(); 
+        $("#codigoTelef").show(); 
 });
 function ShowImporterInformation(i){
         $("#btnInsertImporter").html('Actualizar');
@@ -260,7 +260,7 @@ $("#btnInsertImporter").click(function(){
                 });
             }
         });
-        $("#codigoTelef").visible(); 
+        $("#codigoTelef").show(); 
     }
 	
 

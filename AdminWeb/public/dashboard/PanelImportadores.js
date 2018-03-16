@@ -179,7 +179,7 @@ $("#btnInsertImporter").click(function(){
     var newImporter = {
         name: $("#txtNewImpName").val(),
         address: $("#txtNewImpAddress").val(),
-        phone: $('#codigoTelef option:selected').val()+$("#txtNewImpPhone").val(),
+        phone: $("#txtNewImpPhone").val(),
         rucImporter: $("#txtNewImpRuc").val(),
         quota: $("#txtNewImpQuota").val(),
         licence: $("#txtNewImpLicence").val(),

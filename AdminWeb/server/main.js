@@ -1203,7 +1203,7 @@ io.on('connection', function(socket){
 						"I.USEREMAIL "+
 						"FROM importer I, "+
 						"person P, users u "+
-						"WHERE I.USEREMAIL=u.USEREMAIL AND u.PERSONID=P.personid AND i.IMPORTERID<>0 "+
+						"WHERE I.USEREMAIL=u.USEREMAIL AND u.PERSONID=P.personid AND I.IMPORTERID<>0 "+
 						"ORDER BY I.IMPORTERNAME ASC;",function(error, result){
 							if(error){
 								console.log(error);

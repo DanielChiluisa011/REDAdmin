@@ -504,7 +504,7 @@ io.on('connection', function(socket){
 			if(error1){
 				throw error1;
 			}else{	
-				connection.query("SELECT i.IMPORTERID, i.IMPORTERQUOTA,w.WASTETYPEFACTOR,w.WASTETYPEWEIGHT FROM importer i,waste_type w WHERE w.WASTETYPEID=i.WASTETYPEID AND i.IMPORTERID<>0 ORDER BY importerquota DESC;",function(error2, result2){
+				connection.query("SELECT i.IMPORTERID, i.IMPORTERQUOTA,w.WASTETYPEFACTOR,w.WASTETYPEWEIGHT,i.IMPORTERCODE FROM importer i,waste_type w WHERE w.WASTETYPEID=i.WASTETYPEID AND i.IMPORTERID<>0 ORDER BY importerquota DESC;",function(error2, result2){
 				if(error2){
 					console.log("Error 2: " + error2);
 				}else{
@@ -535,11 +535,19 @@ io.on('connection', function(socket){
 										console.log("------------------------------");
 										actualizarCaso2(cantidadequivalente,result2[i], data.journeyid);
 									}
-									connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+'),ORDERWEIGHT='+pesoequivalente+',IMPORTERID='+result2[i].IMPORTERID+' WHERE ORDERID='+result1[numorder].orderid+';',function(err, rows, fields) {
+									connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+'),ORDERWEIGHT='+pesoequivalente+',IMPORTERID='+result2[i].IMPORTERID+',CODE="'+result2[i].IMPORTERCODE+'" WHERE ORDERID='+result1[numorder].orderid+';',function(err, rows, fields) {
 										if(err){
 											console.log("Error "+ err.message);
 										}else{
 											console.log("cantidad equivalente ingresada");
+										}
+									});
+									result2[i].IMPORTERCODE=result2[i].IMPORTERCODE+1;
+									connection.query('UPDATE importer SET IMPORTERCODE="'+result2[i].IMPORTERCODE+'" WHERE IMPORTERID='+result2[i].IMPORTERID+';',function(err, rows, fields) {
+										if(err){
+											console.log("Error "+ err.message);
+										}else{
+											console.log("codigo secuencial importador ingresada");
 										}
 									});
 									result2[i].IMPORTERQUOTA=result2[i].IMPORTERQUOTA-cantidadequivalente;
@@ -557,10 +565,10 @@ io.on('connection', function(socket){
 								break;	
 							}
 						}while(i<result2.length);
-						if(cont == result2.length){
+						if(cont == result2.length || numorder < result1.length){
 							console.log("CASO 3");
 							console.log("------------------------------");
-							for(var j=0;j<result1.length;j++){
+							for(var j=numorder;j<result1.length;j++){
 								var impAleatorio = 0;
 								impAleatorio = Math.floor(Math.random() * result2.length);
 								console.log("aleatorio: " + impAleatorio);
@@ -571,14 +579,15 @@ io.on('connection', function(socket){
 								pesoequivalente=result2[impAleatorio].WASTETYPEWEIGHT*cantidadequivalente;
 								console.log("cantidadequivalente: " + cantidadequivalente);
 								console.log("pesoequivalente = " + pesoequivalente);
-								actualizarCaso3(cantidadequivalente,result2[impAleatorio], data.journeyid,pesoequivalente);
-								connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+'),ORDERWEIGHT='+pesoequivalente+',IMPORTERID='+result2[impAleatorio].IMPORTERID+' WHERE ORDERID='+result1[j].orderid+';',function(err, rows, fields) {
+								connection.query('UPDATE orders SET ORDEREQUIVALENCE=FLOOR('+cantidadequivalente+'),ORDERWEIGHT='+pesoequivalente+',IMPORTERID='+result2[impAleatorio].IMPORTERID+',CODE="'+result2[impAleatorio].IMPORTERCODE+'" WHERE ORDERID='+result1[j].orderid+';',function(err, rows, fields) {
 									if(err){
 										console.log("Error "+ err.message);
 									}else{
 										console.log("cantidad equivalente ingresada");
 									}
 								});
+								result2[impAleatorio].IMPORTERCODE=result2[impAleatorio].IMPORTERCODE+1;
+								actualizarCaso3(cantidadequivalente,result2[impAleatorio], data.journeyid,pesoequivalente);
 							}
 						}
 					}

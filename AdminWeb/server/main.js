@@ -542,7 +542,7 @@ io.on('connection', function(socket){
 											console.log("cantidad equivalente ingresada");
 										}
 									});
-									result2[i].IMPORTERCODE=result2[i].IMPORTERCODE+1;
+									result2[i].IMPORTERCODE=parseInt(result2[i].IMPORTERCODE)+1;
 									connection.query('UPDATE importer SET IMPORTERCODE="'+result2[i].IMPORTERCODE+'" WHERE IMPORTERID='+result2[i].IMPORTERID+';',function(err, rows, fields) {
 										if(err){
 											console.log("Error "+ err.message);
@@ -586,7 +586,14 @@ io.on('connection', function(socket){
 										console.log("cantidad equivalente ingresada");
 									}
 								});
-								result2[impAleatorio].IMPORTERCODE=result2[impAleatorio].IMPORTERCODE+1;
+								result2[impAleatorio].IMPORTERCODE=parseInt(result2[impAleatorio].IMPORTERCODE)+1;
+									connection.query('UPDATE importer SET IMPORTERCODE="'+result2[impAleatorio].IMPORTERCODE+'" WHERE IMPORTERID='+result2[impAleatorio].IMPORTERID+';',function(err, rows, fields) {
+										if(err){
+											console.log("Error "+ err.message);
+										}else{
+											console.log("codigo secuencial importador ingresada");
+										}
+									});
 								actualizarCaso3(cantidadequivalente,result2[impAleatorio], data.journeyid,pesoequivalente);
 							}
 						}
@@ -1170,7 +1177,7 @@ io.on('connection', function(socket){
 											importer.rucImporter,
 											importer.quota,
 											importer.licence,
-											"0",
+											"1",
 											importer.personEmail,
 											importer.provincia,
 											importer.canton,

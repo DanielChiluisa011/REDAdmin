@@ -1170,7 +1170,7 @@ io.on('connection', function(socket){
 											importer.rucImporter,
 											importer.quota,
 											importer.licence,
-											importer.code,
+											"0",
 											importer.personEmail,
 											importer.provincia,
 											importer.canton,

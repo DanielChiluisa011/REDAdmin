@@ -2,7 +2,7 @@ var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
 var lstImporters= [];
 var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 var lon=6;
-var code="h";
+var code="0";
 var fechaactual;
 var lstProvinces=[];
 var lstWaste=[];

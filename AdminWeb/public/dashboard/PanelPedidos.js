@@ -322,7 +322,7 @@ jQuery(document).ready(function() {
 
 function showData1(i,TotalQuantity){
 	k=i;
-	$("#cmbDrivers")[0].selectedIndex = 0;//getRandomArbitrary(1, lstDrivers.length);
+	$("#cmbDrivers")[0].selectedIndex = 1;//getRandomArbitrary(1, lstDrivers.length);
 	console.log(getRandomArbitrary(1, lstDrivers.length))
 	$('#txtDriverPhone').val(lstDrivers[$("#cmbDrivers option:selected").index()].PersonPhone);	
 	for (var j = 0; j < lstTrucks.length; j++) {
@@ -399,7 +399,7 @@ function RemoveRow () {
 }
 function ShowData(i){
 	OrderSelected=lstObjOrders[i];
-	$("#cmbDrivers")[0].selectedIndex = getRandomArbitrary(1, lstDrivers.length);
+	$("#cmbDrivers")[0].selectedIndex = 1;//getRandomArbitrary(1, lstDrivers.length);
 	$('#txtDriverPhone').val(lstDrivers[$("#cmbDrivers option:selected").index()].PersonPhone);	
 	for (var j = 0; j < lstTrucks.length; j++) {
 		if(lstTrucks[j].TruckDriver==lstDrivers[$("#cmbDrivers option:selected").index()].PersonCi){

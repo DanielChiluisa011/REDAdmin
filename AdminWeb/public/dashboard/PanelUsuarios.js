@@ -1,5 +1,6 @@
 var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
 var lstUsers=[];
+var beforeci="";
 $(document).ready(function(){
 	FillTable();
 	$("#UsersTable > tbody").html("");
@@ -50,12 +51,12 @@ function ShowPassword(){
 }
 
 function ShowUserInformation(i){
+	beforeci=lstUsers[i].person.PERSONCIRUC;
 	$('#txtPersonName').val(lstUsers[i].person.PERSONNAME);
 	$('#txtPersonLastName').val(lstUsers[i].person.PERSONLASTNAME);
 	$('#txtPersonId').val(lstUsers[i].person.PERSONCIRUC);
 	$('#txtPersonPhone').val(lstUsers[i].person.PERSONPHONE);
 	$('#txtPersonAddress').val(lstUsers[i].person.PERSONADDRESS);
-	$('#txtPersonRuc').val(lstUsers[i].person.PERSONCIRUC);
 	$('#txtPersonRole').val(lstUsers[i].person.PERSONROLE);
 	$('#txtUserEmail').val(lstUsers[i].user.USEREMAIL);
 	$('#txtUserPassword').val(lstUsers[i].user.USERPASSWORD);
@@ -80,7 +81,6 @@ $('#btnUpdateUserInfo').click(function(){
 		ci:			$('#txtPersonId').val(),
 		phone:		$('#txtPersonPhone').val(),
 		address:	$('#txtPersonAddress').val(),
-		ruc:		$('#txtPersonRuc').val(),
 		role:		$('#txtPersonRole').val(),
 		email:		$('#txtUserEmail').val(),
 		password:	$('#txtUserPassword').val(),
@@ -89,8 +89,32 @@ $('#btnUpdateUserInfo').click(function(){
 	bootbox.confirm("¿Desea confirmar los cambios realizados? ", function(result) {
 		if(result){
 			socket.emit('UserUpdate',UserUpdate);
-			$.notific8('Usuario actualizado correctamente');
-			location.reload();
+				$.notific8('Usuario actualizado correctamente');
+				location.reload();
+		   }
+	});
+	for (var i = 0; i < lstUsers.length; i++) {
+		if(lstUsers[i].person.PersonCi==beforeci){
+			var UserUpdate = {
+				personid: lstUsers[i].person.PERSONID,
+				name: 		$('#txtPersonName').val(),
+				lastName:	$('#txtPersonLastName').val(),
+				ci:			$('#txtPersonId').val(),
+				phone:		$('#txtPersonPhone').val(),
+				address:	$('#txtPersonAddress').val(),
+				role:		$('#txtPersonRole').val(),
+				email:		$('#txtUserEmail').val(),
+				password:	$('#txtUserPassword').val(),
+				profile:	$('#txtUserProfile').val()
+			}
+			bootbox.confirm("¿Desea confirmar los cambios realizados? ", function(result) {
+			   if(result){
+				   	socket.emit('UserUpdate',UserUpdate);
+					$.notific8('Usuario actualizado correctamente');
+					location.reload();
+			   }
+			});
+			break;
 		}
-	});			
+	}
 })

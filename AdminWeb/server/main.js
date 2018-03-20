@@ -844,7 +844,7 @@ io.on('connection', function(socket){
 		//   console.log(data.address+" "+data.phone+" "+data.personid+" "+data.coordx+" "+data.coordy);
 		console.log("updateDistributor2");
 		console.log(data);
-		  connection.query("UPDATE distributor SET DISTRIBUTORNAME=?,DISTRIBUTORADDRESS = ?, DISTRIBUTORPHONE = ?,PROVINCEID="+data.province+",DISTRIBUTORCITY='"+data.canton+"',DISTRIBUTORPARROQUIA='"+data.parroquia+"' WHERE DISTRIBUTORID = ?",[data.name,data.address,data.phone,data.distributor],function(err, rows, fields) {
+		  connection.query("UPDATE distributor SET DISTRIBUTORRUC=?,DISTRIBUTORNAME=?,DISTRIBUTORADDRESS = ?, DISTRIBUTORPHONE = ?,PROVINCEID="+data.province+",DISTRIBUTORCITY='"+data.canton+"',DISTRIBUTORPARROQUIA='"+data.parroquia+"' WHERE DISTRIBUTORID = ?",[data.ruc,data.name,data.address,data.phone,data.distributor],function(err, rows, fields) {
 		 		if(err){
 					 socket.emit('msg',false)
 		 			console.log("Error "+ err.message);
@@ -869,7 +869,7 @@ io.on('connection', function(socket){
 	  	SelectActiveOrders();
 	  })
 
-	  socket.on('AppUserUpdate',function(data){
+	socket.on('AppUserUpdate',function(data){
 		connection.query('UPDATE person SET PERSONNAME ="'+data.name+'", PERSONLASTNAME="'+data.lastName+'", PERSONPHONE="'+data.phone+'", PERSONADDRESS="'+data.address+'", PERSONCIRUC="'+data.ruc+'" WHERE PERSONID = "'+data.personid+'"',function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
@@ -878,7 +878,7 @@ io.on('connection', function(socket){
 	 		}
 	 	});
 
-	 	connection.query('UPDATE users SET USERPASSWORD = "'+data.password+'", USEREMAIL = "'+data.email+'" WHERE PERSONID="'+data.personid+'"',function(err, rows, fields) {
+	 	connection.query('UPDATE users SET USERPASSWORD = "'+data.password+'" WHERE PERSONID="'+data.personid+'"',function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{
@@ -1854,7 +1854,7 @@ function SaveNewUser(socket){
 
 function UpdateUser(socket){
 	socket.on('UserUpdate',function(data){
-		connection.query('UPDATE person SET PERSONNAME ="'+data.name+'", PERSONLASTNAME="'+data.lastName+'", PERSONPHONE="'+data.phone+'", PERSONADDRESS="'+data.address+'", PERSONCIRUC="'+data.ruc+'", PERSONROLE="'+data.role+'" WHERE PERSONID = "'+data.ci+'"',function(err, rows, fields) {
+		connection.query('UPDATE person SET PERSONNAME ="'+data.name+'", PERSONLASTNAME="'+data.lastName+'", PERSONPHONE="'+data.phone+'", PERSONADDRESS="'+data.address+'", PERSONCIRUC="'+data.ci+'" WHERE PERSONID = "'+data.personid+'"',function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{

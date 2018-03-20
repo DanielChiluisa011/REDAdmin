@@ -75,24 +75,6 @@ function DeleteUser(i){
 			});
 }
 $('#btnUpdateUserInfo').click(function(){
-	var UserUpdate = {
-		name: 		$('#txtPersonName').val(),
-		lastName:	$('#txtPersonLastName').val(),
-		ci:			$('#txtPersonId').val(),
-		phone:		$('#txtPersonPhone').val(),
-		address:	$('#txtPersonAddress').val(),
-		role:		$('#txtPersonRole').val(),
-		email:		$('#txtUserEmail').val(),
-		password:	$('#txtUserPassword').val(),
-		profile:	$('#txtUserProfile').val()
-	}
-	bootbox.confirm("¿Desea confirmar los cambios realizados? ", function(result) {
-		if(result){
-			socket.emit('UserUpdate',UserUpdate);
-				$.notific8('Usuario actualizado correctamente');
-				location.reload();
-		   }
-	});
 	for (var i = 0; i < lstUsers.length; i++) {
 		if(lstUsers[i].person.PersonCi==beforeci){
 			var UserUpdate = {
@@ -107,10 +89,6 @@ $('#btnUpdateUserInfo').click(function(){
 				password:	$('#txtUserPassword').val(),
 				profile:	$('#txtUserProfile').val()
 			}
-			alert(UserUpdate.personid);
-			alert("telf "+UserUpdate.phone);
-			alert("dir"+UserUpdate.address);
-			alert(UserUpdate.ci);
 			bootbox.confirm("¿Desea confirmar los cambios realizados? ", function(result) {
 			   if(result){
 				   	socket.emit('UserUpdate',UserUpdate);

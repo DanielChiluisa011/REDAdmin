@@ -75,9 +75,8 @@ function DeleteUser(i){
 			});
 }
 $('#btnUpdateUserInfo').click(function(){
-	alert(beforeci);
 	for (var i = 0; i < lstUsers.length; i++) {
-		if(lstUsers[i].person.PersonCi==beforeci){
+		if(lstUsers[i].person.PERSONCIRUC==beforeci){
 			var UserUpdate = {
 				personid: lstUsers[i].person.PERSONID,
 				name: 		$('#txtPersonName').val(),
@@ -90,9 +89,6 @@ $('#btnUpdateUserInfo').click(function(){
 				password:	$('#txtUserPassword').val(),
 				profile:	$('#txtUserProfile').val()
 			}
-			alert(ci);
-			alert(phone);
-			alert(address);
 			bootbox.confirm("¿Desea confirmar los cambios realizados? ", function(result) {
 			   if(result){
 				   	socket.emit('UserUpdate',UserUpdate);

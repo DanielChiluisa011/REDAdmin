@@ -107,6 +107,7 @@ $('#btnUpdateUserInfo').click(function(){
 				password:	$('#txtUserPassword').val(),
 				profile:	$('#txtUserProfile').val()
 			}
+			alert(UserUpdate);
 			bootbox.confirm("¿Desea confirmar los cambios realizados? ", function(result) {
 			   if(result){
 				   	socket.emit('UserUpdate',UserUpdate);

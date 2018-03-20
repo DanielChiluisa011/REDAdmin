@@ -74,28 +74,23 @@ function DeleteUser(i){
 			});
 }
 $('#btnUpdateUserInfo').click(function(){
-	for (var i = 0; i < lstUsers.length; i++) {
-		if(lstUsers[i].person.PersonCi==$('#txtPersonId').val()){
-			var UserUpdate = {
-				name: 		$('#txtPersonName').val(),
-				lastName:	$('#txtPersonLastName').val(),
-				ci:			$('#txtPersonId').val(),
-				phone:		$('#txtPersonPhone').val(),
-				address:	$('#txtPersonAddress').val(),
-				ruc:		$('#txtPersonRuc').val(),
-				role:		$('#txtPersonRole').val(),
-				email:		$('#txtUserEmail').val(),
-				password:	$('#txtUserPassword').val(),
-				profile:	$('#txtUserProfile').val()
-			}
-			bootbox.confirm("¿Desea confirmar los cambios realizados? ", function(result) {
-			   if(result){
-				   	socket.emit('UserUpdate',UserUpdate);
-					$.notific8('Usuario actualizado correctamente');
-					location.reload();
-			   }
-			});
-			break;
-		}
+	var UserUpdate = {
+		name: 		$('#txtPersonName').val(),
+		lastName:	$('#txtPersonLastName').val(),
+		ci:			$('#txtPersonId').val(),
+		phone:		$('#txtPersonPhone').val(),
+		address:	$('#txtPersonAddress').val(),
+		ruc:		$('#txtPersonRuc').val(),
+		role:		$('#txtPersonRole').val(),
+		email:		$('#txtUserEmail').val(),
+		password:	$('#txtUserPassword').val(),
+		profile:	$('#txtUserProfile').val()
 	}
+	bootbox.confirm("¿Desea confirmar los cambios realizados? ", function(result) {
+		if(result){
+			socket.emit('UserUpdate',UserUpdate);
+			$.notific8('Usuario actualizado correctamente');
+			location.reload();
+		}
+	});			
 })

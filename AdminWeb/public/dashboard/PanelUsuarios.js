@@ -107,7 +107,10 @@ $('#btnUpdateUserInfo').click(function(){
 				password:	$('#txtUserPassword').val(),
 				profile:	$('#txtUserProfile').val()
 			}
-			alert(UserUpdate);
+			alert(UserUpdate.personid);
+			alert("telf "+UserUpdate.phone);
+			alert("dir"+UserUpdate.address);
+			alert(UserUpdate.ci);
 			bootbox.confirm("¿Desea confirmar los cambios realizados? ", function(result) {
 			   if(result){
 				   	socket.emit('UserUpdate',UserUpdate);

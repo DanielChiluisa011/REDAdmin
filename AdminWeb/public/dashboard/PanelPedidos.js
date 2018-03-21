@@ -156,7 +156,7 @@ $(document).ready(function(){
 			});
 		}
 		$('#cmbRecyclingCenters').empty();
-		$('#cmbRecyclingCenters').append('<option selected>Seleccione un Centro de Reciclaje</option>');
+		$('#cmbRecyclingCenters').append('<option value="0" selected disabled>Seleccione un Centro de Reciclaje</option>');
 		for (var i = 0; i < lstRecyclingCenters.length; i++) {
 	   		$('#cmbRecyclingCenters').append(new Option(lstRecyclingCenters[i].RecyclingCenterName, 'names', true, true));
 	   	}
@@ -187,7 +187,7 @@ $(document).ready(function(){
        	lstDrivers=data;
 		console.log(lstDrivers.length);
        	$('#cmbDrivers').empty();
-       	$('#cmbDrivers').append('<option selected>Seleccione un Conductor</option>');
+       	$('#cmbDrivers').append('<option value="0" selected disabled>Seleccione un Conductor</option>');
        	for (var i = 0; i < lstDrivers.length; i++) {
 	   		var driver=lstDrivers[i].PERSONNAME+' '+lstDrivers[i].PERSONLASTNAME;
 	   		$('#cmbDrivers').append(new Option(driver, 'names', true, true));
@@ -773,37 +773,41 @@ function rand_code(){
     }
 } 
 $('#btnSaveJourney').click(function(){
-	bootbox.confirm("¿Esta seguro de guardar los cambios?", function(result) {
-	   if(result){
-		   	var JourneyRoute='';
-		   	for (var i = 0; i < RouteSelected.length; i++) {
-		   		JourneyRoute +=RouteSelected[i].DistributorId
-		   		if(i!=RouteSelected.length-1){
-		   			JourneyRoute+=',';	
-		   		}
-		   	}
-			// console.log(lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1]);
-			// console.log('cl');
-			// console.log(lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1].RecyclingCenterId)
-	   		var journey = {
-	   			date: $('#txtNewJourneyDate').val(),
-	   			state: 'Pendiente',
-	   			truckId: $('#txtTruckId').val(),
-	   			RecyclingCenter: lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1].RecyclingCenterId,
-	   			route: JourneyRoute,
-	   			// importer: null,
-	   			quantity: TQ,
-				orders: lstIdOrders
-	   		}
-			//    console.log('Numero de ordenes: '+lstIdOrders.length);
-			//    for(var i=0;i<lstIdOrders.length;i++){
-			// 	   console.log(lstIdOrders[i]);
-			//    }
-	   		socket.emit('SaveJourney', journey);
-			// socket.emit('AsignJourney',lstIdOrders);
-	   		location.reload();
-	   }
-	}); 
+	if($('#cmbRecyclingCenters').val()==0 || $('#cmbDrivers').val()==0){
+		alert("Escoja un Conductor y un Centro de Reciclaje");
+	}else{
+		bootbox.confirm("¿Esta seguro de guardar los cambios?", function(result) {
+		if(result){
+				var JourneyRoute='';
+				for (var i = 0; i < RouteSelected.length; i++) {
+					JourneyRoute +=RouteSelected[i].DistributorId
+					if(i!=RouteSelected.length-1){
+						JourneyRoute+=',';	
+					}
+				}
+				// console.log(lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1]);
+				// console.log('cl');
+				// console.log(lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1].RecyclingCenterId)
+				var journey = {
+					date: $('#txtNewJourneyDate').val(),
+					state: 'Pendiente',
+					truckId: $('#txtTruckId').val(),
+					RecyclingCenter: lstRecyclingCenters[$('#cmbRecyclingCenters option:selected').index()-1].RecyclingCenterId,
+					route: JourneyRoute,
+					// importer: null,
+					quantity: TQ,
+					orders: lstIdOrders
+				}
+				//    console.log('Numero de ordenes: '+lstIdOrders.length);
+				//    for(var i=0;i<lstIdOrders.length;i++){
+				// 	   console.log(lstIdOrders[i]);
+				//    }
+				socket.emit('SaveJourney', journey);
+				// socket.emit('AsignJourney',lstIdOrders);
+				location.reload();
+		}
+		}); 
+	}
 });	
 
 $('#btnCancel').click(function(){

@@ -773,6 +773,8 @@ function rand_code(){
     }
 } 
 $('#btnSaveJourney').click(function(){
+	alert($('#cmbRecyclingCenters').val());
+	alert($('#cmbDrivers').val());
 	if($('#cmbRecyclingCenters').val()==0 || $('#cmbDrivers').val()==0){
 		alert("Escoja un Conductor y un Centro de Reciclaje");
 	}else{

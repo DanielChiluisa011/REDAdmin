@@ -156,9 +156,9 @@ $(document).ready(function(){
 			});
 		}
 		$('#cmbRecyclingCenters').empty();
-		$('#cmbRecyclingCenters').append('<option value="0" selected disabled>Seleccione un Centro de Reciclaje</option>');
+		$('#cmbRecyclingCenters').append('<option value="0" selected>Seleccione un Centro de Reciclaje</option>');
 		for (var i = 0; i < lstRecyclingCenters.length; i++) {
-	   		$('#cmbRecyclingCenters').append(new Option(lstRecyclingCenters[i].RecyclingCenterName, 'names', true, true));
+	   		$('#cmbRecyclingCenters').append(new Option(lstRecyclingCenters[i].RecyclingCenterName, 'names', false, false));
 	   	}
 	   	$("#cmbRecyclingCenters").prop('selectedIndex', 0);
    	})
@@ -187,10 +187,10 @@ $(document).ready(function(){
        	lstDrivers=data;
 		console.log(lstDrivers.length);
        	$('#cmbDrivers').empty();
-       	$('#cmbDrivers').append('<option value="0" selected disabled>Seleccione un Conductor</option>');
+       	$('#cmbDrivers').append('<option value="0" selected>Seleccione un Conductor</option>');
        	for (var i = 0; i < lstDrivers.length; i++) {
 	   		var driver=lstDrivers[i].PERSONNAME+' '+lstDrivers[i].PERSONLASTNAME;
-	   		$('#cmbDrivers').append(new Option(driver, 'names', true, true));
+	   		$('#cmbDrivers').append(new Option(driver, 'names', false, false));
 	   	}
        	$("#cmbDrivers").prop('selectedIndex', 0);
    	})

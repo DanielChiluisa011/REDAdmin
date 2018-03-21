@@ -324,9 +324,9 @@ function showData1(i,TotalQuantity){
 	k=i;
 	$("#cmbDrivers")[0].selectedIndex = 1;//getRandomArbitrary(1, lstDrivers.length);
 	console.log(getRandomArbitrary(1, lstDrivers.length))
-	$('#txtDriverPhone').val(lstDrivers[$("#cmbDrivers option:selected").index()].PersonPhone);	
+	$('#txtDriverPhone').val(lstDrivers[$("#cmbDrivers option:selected").index()-1].PERSONPHONE);	
 	for (var j = 0; j < lstTrucks.length; j++) {
-		if(lstTrucks[j].PERSONID==lstDrivers[$("#cmbDrivers option:selected").index()].PERSONID){
+		if(lstTrucks[j].PERSONID==lstDrivers[$("#cmbDrivers option:selected").index()-1].PERSONID){
 			$('#txtTruckId').val(lstTrucks[j].TRUCKID);
 			break;
 		}else{

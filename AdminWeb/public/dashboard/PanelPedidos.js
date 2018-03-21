@@ -322,7 +322,7 @@ jQuery(document).ready(function() {
 
 function showData1(i,TotalQuantity){
 	k=i;
-	$("#cmbDrivers")[0].selectedIndex = 1;//getRandomArbitrary(1, lstDrivers.length);
+	$("#cmbDrivers")[0].selectedIndex = 0;//getRandomArbitrary(1, lstDrivers.length);
 	console.log(getRandomArbitrary(1, lstDrivers.length))
 	$('#txtDriverPhone').val(lstDrivers[$("#cmbDrivers option:selected").index()].PersonPhone);	
 	for (var j = 0; j < lstTrucks.length; j++) {
@@ -333,7 +333,7 @@ function showData1(i,TotalQuantity){
 			$('#txtTruckId').val('');
 		}
 	}
-	$("#cmbRecyclingCenters")[0].selectedIndex = 1;
+	$("#cmbRecyclingCenters")[0].selectedIndex = 0;
 	$('#txtRecyclingCenterAddress').val(lstRecyclingCenters[$("#cmbRecyclingCenters option:selected").index()-1].RecyclingCenterAddress);
 	$('#txtRecyclingCenterPhone').val(lstRecyclingCenters[$("#cmbRecyclingCenters option:selected").index()-1].RecyclingCenterPhone);
 	finishPosition={

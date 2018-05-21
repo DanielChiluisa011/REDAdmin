@@ -940,7 +940,23 @@ io.on('connection', function(socket){
           io.emit('DeviationNotificationToAdmin',data);
 
           SendNotificationAlert(socket);
-    });
+	});
+	
+	socket.on('ListaPuntos',function(data){
+		var lista="";
+		for(var i=0; i<data.length;i++){
+			console.log("lat:"+data[i].lat+" lng:"+data[i].lng);
+			lista+=data[i].lat+"."+data[i].lng+",";
+		}
+		connection.query('UPDATE journey SET JOURNEYROUTE = ? WHERE JOURNEYID = 35;',[lista],function(err, rows, fields) {
+			if(err){
+				console.log("Error "+ err.message);
+			}else{
+				console.log("ok");
+			}
+		})
+	});
+	  
       //Prueba socket en app movil*****************************
 	socket.on("RequestMaxOrder",function(data){
 		connection.query('SELECT max(OrderId) numMax FROM orders',function(error, result){

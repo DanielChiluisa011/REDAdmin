@@ -248,7 +248,7 @@ io.on('connection', function(socket){
       });
       socket.on('RequestJourneyRoute',function(data){
       	console.log('RequestJourneyRoute cedula: '+data);
-      		connection.query("select j.JourneyId, j.JourneyRoute, j.recyclingcenterid, j.truckid from journey j, trucks t, person p where j.truckid=t.TruckId and t.PersonId=p.PersonId and  p.PersonId='"+data+"'",function(error, result){
+      		connection.query("select j.JourneyId, j.JourneyRoute, j.recyclingcenterid, j.truckid from journey j, trucks t, person p where j.truckid=t.TruckId and t.PersonId=p.PersonId and  p.PersonId='"+data+"' AND j.JOURNEYSTATE='Pendiente'",function(error, result){
 				if(error){
 				    throw error;
 				}else{
@@ -946,7 +946,7 @@ io.on('connection', function(socket){
 		var lista="";
 		for(var i=0; i<data.length;i++){
 			console.log("lat:"+data[i].lat+" lng:"+data[i].lng);
-			lista+=data[i].lat+"."+data[i].lng+",";
+			lista+=data[i].jny+":"+data[i].lat+"."+data[i].lng+",";
 		}
 		connection.query('UPDATE journey SET JOURNEYROUTE = ? WHERE JOURNEYID = 35;',[lista],function(err, rows, fields) {
 			if(err){

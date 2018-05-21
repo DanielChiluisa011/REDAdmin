@@ -948,7 +948,7 @@ io.on('connection', function(socket){
 			console.log("lat:"+data[i].lat+" lng:"+data[i].lng);
 			lista+=data[i].jny+":"+data[i].lat+"."+data[i].lng+",";
 		}
-		connection.query('UPDATE journey SET JOURNEYROUTE = ? WHERE JOURNEYID = 35;',[lista],function(err, rows, fields) {
+		connection.query('UPDATE journey SET JOURNEYROUTE = ? WHERE JOURNEYID = ?;',[lista,data[0].jny],function(err, rows, fields) {
 			if(err){
 				console.log("Error "+ err.message);
 			}else{

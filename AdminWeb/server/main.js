@@ -948,7 +948,7 @@ io.on('connection', function(socket){
 			console.log("lat:"+data[i].lat+" lng:"+data[i].lng);
 			lista+=data[i].jny+":"+data[i].lat+"."+data[i].lng+",";
 		}*/
-		connection.query('INSERT INTO coordinatesjourney (JOURNEYID,COORDINATES) VALUES ('+data[0].jny+",GeomFromText('POINT ("+data[0].lat+" "+data[0].lng+")'))",function(err, rows, fields) {
+		connection.query('INSERT INTO coordinatesjourney (JOURNEYID,COORDINATES) VALUES ('+data.jny+",GeomFromText('POINT ("+data.lat+" "+data.lng+")'))",function(err, rows, fields) {
 			if(err){
 				console.log("Error "+ err.message);
 			}else{

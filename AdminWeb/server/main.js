@@ -944,17 +944,17 @@ io.on('connection', function(socket){
 	
 	socket.on('ListaPuntos',function(data){
 		var lista="";
-		for(var i=0; i<data.length;i++){
+		/*for(var i=0; i<data.length;i++){
 			console.log("lat:"+data[i].lat+" lng:"+data[i].lng);
 			lista+=data[i].jny+":"+data[i].lat+"."+data[i].lng+",";
-		}
-		connection.query('UPDATE journey SET JOURNEYROUTE = ? WHERE JOURNEYID = ?;',[lista,data[0].jny],function(err, rows, fields) {
+		}*/
+		connection.query('INSERT INTO coordinatesjourney VALUES ('+data[0].jny+",GeomFromText('POINT ("+data[0].lat+" "+data[0].lng+")'))",function(err, rows, fields) {
 			if(err){
 				console.log("Error "+ err.message);
 			}else{
 				console.log("ok");
 			}
-		})
+		});
 	});
 	  
       //Prueba socket en app movil*****************************

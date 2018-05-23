@@ -951,6 +951,17 @@ io.on('connection', function(socket){
 			}
 		});
 	});
+
+	socket.on('SelectCoordinates',function(data){
+		connection.query('select MIN(ID),X(GeometryFromText(AsText(COORDINATES))) CoordX, Y(GeometryFromText(AsText(COORDINATES))) CoordY FROM coordinatesjourney WHERE JOURNEYID='+data,function(error, result){
+			if(error){
+				throw error;
+			}else{
+				io.emit('SelectCoordinates',result);
+				// console.log('Select Recycling centers executed');
+		   }
+		})
+	});
 	  
       //Prueba socket en app movil*****************************
 	socket.on("RequestMaxOrder",function(data){

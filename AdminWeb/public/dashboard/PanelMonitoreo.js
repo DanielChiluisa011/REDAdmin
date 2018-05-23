@@ -149,16 +149,22 @@ function ShowRouteTest(i){
 	var ObjJourney = lstJourneys[i];
 	var AuxlstOrders=[];
  	var RouteSelected=[];
-	 var RouteInGo=[];
-	 var RouteItem=[];
-	 var flagCompleted=false;
- 	for (var j = 0; j < lstOrders.length; j++) {
+	var RouteInGo=[];
+	var RouteItem=[];
+	var flagCompleted=false;
+	var BeginPoint;
+	for (var j = 0; j < lstOrders.length; j++) {
  		if(lstOrders[j].JourneyId==lstJourneys[i].JourneyId){
  			AuxlstOrders.push(lstOrders[j])
  		}	
  	}
-	for(var k=0;k<AuxlstOrders.length;k++){
-	}
+	/*for(var k=0;k<AuxlstOrders.length;k++){
+	}*/
+	socket.emit('SelectCoordinates',lstJourneys[i].JourneyId);
+	socket.on('SelectCoordinates', function(data){
+		BeginPoint=data;
+	})
+
 	for(var j=0;j<AuxlstOrders.length;j++){
 		for(var k=0;k<lstDistributors.length;k++){
 			if(AuxlstOrders[j].DistributorId==lstDistributors[k].DistributorId){
@@ -176,10 +182,10 @@ function ShowRouteTest(i){
  					// if(AuxlstOrders[j].OrderState=="En Proceso"){
 					// 	RouteItem.push(AuxlstOrders[j]);	
 					// }
-					if(RouteSelected[k].DistributorId==AuxlstOrders[j].DistributorId){
- 						var aux=AuxlstOrders[k].OrderQuantity
- 					}
- 				}
+			if(RouteSelected[k].DistributorId==AuxlstOrders[j].DistributorId){
+ 				var aux=AuxlstOrders[k].OrderQuantity
+ 			}
+ 		}
 		// alert(RouteItem.length);
 		if(RouteItem.length!=0)
 			for(var l=0;l<RouteItem.length;l++)
@@ -262,7 +268,7 @@ function ShowRouteTest(i){
 
 	if(RouteSelected.length == 1){
 		mapa.travelRoute({
-		    origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
+		    origin: [BeginPoint.CoordX,BeginPoint.CoordY],
 		    destination: [finishPosition.CoordX,finishPosition.CoordY],
 		    travelMode: 'driving',
 		    waypoints: waypnts,
@@ -286,7 +292,7 @@ function ShowRouteTest(i){
 			});
 		}
 		mapa.travelRoute({
-	        origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
+	        origin: [BeginPoint.CoordX,BeginPoint.CoordY],
 	        destination: [finishPosition.CoordX,finishPosition.CoordY],
 	        travelMode: 'DRIVING',
 	        waypoints: waypnts,

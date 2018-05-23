@@ -953,12 +953,12 @@ io.on('connection', function(socket){
 	});
 
 	socket.on('SelectCoordinates',function(data){
-		console.log('COORDINATES');
+		console.log('COORDINATES'+data);
 		connection.query('select MIN(ID),X(GeometryFromText(AsText(COORDINATES))) CoordX, Y(GeometryFromText(AsText(COORDINATES))) CoordY FROM coordinatesjourney WHERE JOURNEYID='+data,function(error, result){
 			if(error){
 				throw error;
 			}else{
-				console.log('Select Coordinates execute');
+				console.log('Select Coordinates execute'+result.CoordX);
 				socket.emit('SelectCoordinates',result);
 		   }
 		})

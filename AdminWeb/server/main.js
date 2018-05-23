@@ -958,7 +958,7 @@ io.on('connection', function(socket){
 				throw error;
 			}else{
 				io.emit('SelectCoordinates',result);
-				// console.log('Select Recycling centers executed');
+				console.log('Select Coordinates execute');
 		   }
 		})
 	});

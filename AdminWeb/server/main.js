@@ -959,7 +959,7 @@ io.on('connection', function(socket){
 				throw error;
 			}else{
 				console.log('Select Coordinates execute');
-				io.emit('SelectCoordinates',result);
+				socket.emit('SelectCoordinates',result);
 		   }
 		})
 	});

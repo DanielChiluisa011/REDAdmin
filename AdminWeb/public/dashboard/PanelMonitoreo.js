@@ -142,6 +142,12 @@ var MapsGoogle = function () {
 }();
 
 function ShowRouteTest(i){
+	socket.emit('SelectCoordinates',lstJourneys[i].JourneyId);
+	socket.on('SelectCoordinates', function(data){
+		BeginPoint=data[0];
+		console.log("BeginX="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
+		console.log("RouteX="+RouteSelected.CoordX+"Y="+RouteSelected.CoordY);
+	});
 	jQuery(document).ready(function() {
 	    MapsGoogle.init();
 		// directionsDisplay.setMap(mapa);
@@ -160,12 +166,7 @@ function ShowRouteTest(i){
  	}
 	/*for(var k=0;k<AuxlstOrders.length;k++){
 	}*/
-	socket.emit('SelectCoordinates',lstJourneys[i].JourneyId);
-	socket.on('SelectCoordinates', function(data){
-		BeginPoint=data[0];
-		console.log("BeginX="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
-		console.log("RouteX="+RouteSelected.CoordX+"Y="+RouteSelected.CoordY);
-	});
+	
 
 	for(var j=0;j<AuxlstOrders.length;j++){
 		for(var k=0;k<lstDistributors.length;k++){

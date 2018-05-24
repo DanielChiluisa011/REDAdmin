@@ -269,7 +269,7 @@ function ShowRouteTest(i){
 	}
 
 	if(RouteSelected.length == 1){
-		console.log("Route99X="+RouteSelected.CoordX+"Y="+RouteSelected.CoordY);
+		console.log("Route99X="+RouteSelected[0].CoordX+"Y="+RouteSelected[0].CoordY);
 		mapa.travelRoute({
 		    origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
 		    destination: [finishPosition.CoordX,finishPosition.CoordY],

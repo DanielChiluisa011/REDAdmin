@@ -163,6 +163,7 @@ function ShowRouteTest(i){
 	socket.emit('SelectCoordinates',lstJourneys[i].JourneyId);
 	socket.on('SelectCoordinates', function(data){
 		BeginPoint=data[0];
+		console.log("X="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
 	});
 
 	for(var j=0;j<AuxlstOrders.length;j++){
@@ -172,6 +173,9 @@ function ShowRouteTest(i){
 			}
 		}
 	}
+
+	console.log("X="+RouteSelected.CoordX+"Y="+RouteSelected.CoordY);
+
 	for (var j = 0; j < AuxlstOrders.length; j++) {
  					if(AuxlstOrders[j].OrderState=="En Proceso"){
 						RouteItem.push(AuxlstOrders[j]);	

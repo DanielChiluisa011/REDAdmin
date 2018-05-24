@@ -164,6 +164,7 @@ function ShowRouteTest(i){
 	socket.on('SelectCoordinates', function(data){
 		BeginPoint=data[0];
 		console.log("BeginX="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
+		console.log("RouteX="+RouteSelected.CoordX+"Y="+RouteSelected.CoordY);
 	});
 
 	for(var j=0;j<AuxlstOrders.length;j++){
@@ -173,9 +174,6 @@ function ShowRouteTest(i){
 			}
 		}
 	}
-
-	console.log("RouteX="+RouteSelected.CoordX+"Y="+RouteSelected.CoordY);
-
 	for (var j = 0; j < AuxlstOrders.length; j++) {
  					if(AuxlstOrders[j].OrderState=="En Proceso"){
 						RouteItem.push(AuxlstOrders[j]);	
@@ -271,8 +269,9 @@ function ShowRouteTest(i){
 	}
 
 	if(RouteSelected.length == 1){
+		console.log("Route99X="+RouteSelected.CoordX+"Y="+RouteSelected.CoordY);
 		mapa.travelRoute({
-		    origin: [BeginPoint.CoordX,BeginPoint.CoordY],
+		    origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
 		    destination: [finishPosition.CoordX,finishPosition.CoordY],
 		    travelMode: 'driving',
 		    waypoints: waypnts,
@@ -296,7 +295,7 @@ function ShowRouteTest(i){
 			});
 		}
 		mapa.travelRoute({
-	        origin: [BeginPoint.CoordX,BeginPoint.CoordY],
+	        origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
 	        destination: [finishPosition.CoordX,finishPosition.CoordY],
 	        travelMode: 'DRIVING',
 	        waypoints: waypnts,

@@ -145,7 +145,7 @@ function ShowRouteTest(i){
 	socket.emit('SelectCoordinates',lstJourneys[i].JourneyId);
 	socket.on('SelectCoordinates', function(data){
 		BeginPoint=data[0];
-		console.log("BeginX="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
+		console.log("BeginsocketX="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
 		console.log("RouteX="+RouteSelected.CoordX+"Y="+RouteSelected.CoordY);
 	});
 	jQuery(document).ready(function() {

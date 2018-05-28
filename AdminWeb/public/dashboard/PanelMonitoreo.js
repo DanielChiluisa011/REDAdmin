@@ -146,7 +146,7 @@ function ShowRouteTest(i){
 	socket.on('SelectCoordinates', function(data){
 		BeginPoint=data[0];
 		console.log("BeginsocketX="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
-	});
+	
 	jQuery(document).ready(function() {
 	    MapsGoogle.init();
 		// directionsDisplay.setMap(mapa);
@@ -311,6 +311,7 @@ function ShowRouteTest(i){
 	        }
 	    });
 	}
+});
 	var flagFirstDrawing=true;
 	socket.on('TruckLocation',function(data){
 		

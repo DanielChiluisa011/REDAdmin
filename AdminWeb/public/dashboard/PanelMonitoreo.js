@@ -148,18 +148,17 @@ function BeginCoordinate(i){
 	socket.on('SelectCoordinates', function(data){
 		BeginPoint=data[0];
 		console.log("BeginsocketX="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
-		mapa.addMarker({
-			lat: BeginPoint.CoordX,
-			lng: BeginPoint.CoordY,
-			title: 'Inicio Trayecto',
-			icon: '../iconos/truck.png',
-		});
 	});
-	setTimeout("ShowRouteTest("+i+")",3000);
+	setTimeout("ShowRouteTest("+i+")",1000);
 }
 
 function ShowRouteTest(i){
-	
+	mapa.addMarker({
+		lat: BeginPoint.CoordX,
+		lng: BeginPoint.CoordY,
+		title: 'Inicio Trayecto',
+		icon: '../iconos/truck.png',
+	});
 	jQuery(document).ready(function() {
 	    MapsGoogle.init();
 		// directionsDisplay.setMap(mapa);

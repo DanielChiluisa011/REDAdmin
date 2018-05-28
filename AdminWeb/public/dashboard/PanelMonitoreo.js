@@ -403,7 +403,6 @@ function ShowRouteTest(i){
 			}	
 		}
 	});
-	ShowRouteTest(i);
 }
 function SortRoute(reference,rt){
 	

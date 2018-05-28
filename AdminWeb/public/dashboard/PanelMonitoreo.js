@@ -145,7 +145,7 @@ function ShowRouteTest(i){
 	socket.emit('SelectCoordinates',lstJourneys[i].JourneyId);
 	socket.on('SelectCoordinates', function(data){
 		BeginPoint=data[0];
-		console.log("BeginsocketX="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
+		console.log("BeginX="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
 		console.log("RouteX="+RouteSelected.CoordX+"Y="+RouteSelected.CoordY);
 	});
 	jQuery(document).ready(function() {
@@ -270,9 +270,9 @@ function ShowRouteTest(i){
 	}
 
 	if(RouteSelected.length == 1){
-		console.log("Route99X="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
+		console.log("Route99X="+RouteSelected[0].CoordX+"Y="+RouteSelected[0].CoordY);
 		mapa.travelRoute({
-		    origin: [-0.1919089,-78.48165590000002],
+		    origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
 		    destination: [finishPosition.CoordX,finishPosition.CoordY],
 		    travelMode: 'driving',
 		    waypoints: waypnts,
@@ -296,7 +296,7 @@ function ShowRouteTest(i){
 			});
 		}
 		mapa.travelRoute({
-	        origin: [-0.1919089,-78.48165590000002],
+	        origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
 	        destination: [finishPosition.CoordX,finishPosition.CoordY],
 	        travelMode: 'DRIVING',
 	        waypoints: waypnts,

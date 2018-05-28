@@ -142,7 +142,7 @@ var MapsGoogle = function () {
     };
 }();
 
-function BeginCoordinate(i){
+function ShowRouteTest(i){
 	socket.emit('SelectCoordinates',lstJourneys[i].JourneyId);
 	socket.on('SelectCoordinates', function(data){
 		BeginPoint=data[0];
@@ -154,15 +154,10 @@ function BeginCoordinate(i){
 			icon: '../iconos/truck.png',
 		});
 	});
-	
-}
-function ShowRouteTest(i){
-	BeginCoordinate(i);
 	jQuery(document).ready(function() {
 	    MapsGoogle.init();
 		// directionsDisplay.setMap(mapa);
 	});
-	console.log("BeginsocketFueraX="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
 	var ObjJourney = lstJourneys[i];
 	var AuxlstOrders=[];
  	var RouteSelected=[];
@@ -265,7 +260,7 @@ function ShowRouteTest(i){
 	if(RouteSelected.length == 1){
 		console.log("Route99X="+RouteSelected[0].CoordX+"Y="+RouteSelected[0].CoordY);
 		mapa.travelRoute({
-		    origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
+		    origin: [BeginPoint.CoordX,BeginPoint.CoordY],
 		    destination: [finishPosition.CoordX,finishPosition.CoordY],
 		    travelMode: 'driving',
 		    waypoints: waypnts,
@@ -289,7 +284,7 @@ function ShowRouteTest(i){
 			});
 		}
 		mapa.travelRoute({
-	        origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
+	        origin: [BeginPoint.CoordX,BeginPoint.CoordY],
 	        destination: [finishPosition.CoordX,finishPosition.CoordY],
 	        travelMode: 'DRIVING',
 	        waypoints: waypnts,

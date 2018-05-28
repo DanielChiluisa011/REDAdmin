@@ -11,6 +11,7 @@ var lstOrders=[];
 var lstAlerts=[];
 var lstTrucks=[];
 var lstUsers=[];
+var BeginPoint;
 var driver;
 var mapa=new GMaps({
     div: '#gmap_basic',
@@ -141,7 +142,7 @@ var MapsGoogle = function () {
     };
 }();
 
-function ShowRouteTest(i){
+function BeginCoordinate(){
 	socket.emit('SelectCoordinates',lstJourneys[i].JourneyId);
 	socket.on('SelectCoordinates', function(data){
 		BeginPoint=data[0];
@@ -153,18 +154,22 @@ function ShowRouteTest(i){
 			icon: '../iconos/truck.png',
 		});
 	});
-	console.log("BeginsocketFueraX="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
+	
+}
+function ShowRouteTest(i){
+	BeginCoordinate();
 	jQuery(document).ready(function() {
 	    MapsGoogle.init();
 		// directionsDisplay.setMap(mapa);
 	});
+	console.log("BeginsocketFueraX="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
 	var ObjJourney = lstJourneys[i];
 	var AuxlstOrders=[];
  	var RouteSelected=[];
 	var RouteInGo=[];
 	var RouteItem=[];
 	var flagCompleted=false;
-	var BeginPoint;
+	
 	for (var j = 0; j < lstOrders.length; j++) {
  		if(lstOrders[j].JourneyId==lstJourneys[i].JourneyId){
  			AuxlstOrders.push(lstOrders[j])

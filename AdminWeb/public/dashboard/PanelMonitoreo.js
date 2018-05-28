@@ -153,6 +153,7 @@ function ShowRouteTest(i){
 			icon: '../iconos/truck.png',
 		});
 	});
+	console.log("BeginsocketFueraX="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
 	jQuery(document).ready(function() {
 	    MapsGoogle.init();
 		// directionsDisplay.setMap(mapa);

@@ -142,7 +142,7 @@ var MapsGoogle = function () {
     };
 }();
 
-function BeginCoordinate(){
+function BeginCoordinate(i){
 	socket.emit('SelectCoordinates',lstJourneys[i].JourneyId);
 	socket.on('SelectCoordinates', function(data){
 		BeginPoint=data[0];
@@ -157,7 +157,7 @@ function BeginCoordinate(){
 	
 }
 function ShowRouteTest(i){
-	BeginCoordinate();
+	BeginCoordinate(i);
 	jQuery(document).ready(function() {
 	    MapsGoogle.init();
 		// directionsDisplay.setMap(mapa);

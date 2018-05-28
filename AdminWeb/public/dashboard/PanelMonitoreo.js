@@ -88,8 +88,8 @@ $(document).ready(function(data){
 			// });
 			// console.log("sdfghjk");
 			// console.log(driver);
-			$('#ActiveOrders').append("<tr align='center'><td onclick='ShowRouteTest("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='ShowRouteTest("+j+")'>"+
-									lstJourneys[j].JourneyDate+"</td><td onclick='ShowRouteTest("+j+")'>"+lstJourneys[j].truckId+"</td><td onclick='ShowRouteTest("+j+")'>"+RCName+
+			$('#ActiveOrders').append("<tr align='center'><td onclick='BeginCoordinate("+j+")'>"+lstJourneys[j].JourneyId+"</td><td onclick='BeginCoordinate("+j+")'>"+
+									lstJourneys[j].JourneyDate+"</td><td onclick='BeginCoordinate("+j+")'>"+lstJourneys[j].truckId+"</td><td onclick='BeginCoordinate("+j+")'>"+RCName+
 									// "</td><td onclick='ShowRouteTest("+j+")'>"+importerName+"</td></tr><tbody>");  
 									"</td></tr>");  
 		}
@@ -142,7 +142,8 @@ var MapsGoogle = function () {
     };
 }();
 
-function ShowRouteTest(i){
+
+function BeginCoordinate(i){
 	socket.emit('SelectCoordinates',lstJourneys[i].JourneyId);
 	socket.on('SelectCoordinates', function(data){
 		BeginPoint=data[0];
@@ -154,6 +155,11 @@ function ShowRouteTest(i){
 			icon: '../iconos/truck.png',
 		});
 	});
+	setTimeout(ShowRouteTest(i), 3000);
+}
+
+function ShowRouteTest(i){
+	
 	jQuery(document).ready(function() {
 	    MapsGoogle.init();
 		// directionsDisplay.setMap(mapa);

@@ -146,6 +146,12 @@ function ShowRouteTest(i){
 	socket.on('SelectCoordinates', function(data){
 		BeginPoint=data[0];
 		console.log("BeginsocketX="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
+		mapa.addMarker({
+			lat: BeginPoint.CoordX,
+			lng: BeginPoint.CoordY,
+			title: 'Inicio Trayecto',
+			icon: '../iconos/truck.png',
+		});
 	});
 	jQuery(document).ready(function() {
 	    MapsGoogle.init();
@@ -249,13 +255,6 @@ function ShowRouteTest(i){
 			});
 		}
 	}
-
-	mapa.addMarker({
-		lat: BeginPoint.CoordX,
-		lng: BeginPoint.CoordY,
-		title: 'Inicio Trayecto',
-		icon: '../iconos/truck.png',
-	});
 
 	if(RouteSelected.length == 1){
 		console.log("Route99X="+RouteSelected[0].CoordX+"Y="+RouteSelected[0].CoordY);

@@ -155,7 +155,7 @@ function BeginCoordinate(i){
 			icon: '../iconos/truck.png',
 		});
 	});
-	setTimeout("ShowRouteTest("+i+")",10000);
+	setTimeout("ShowRouteTest("+i+")",3000);
 }
 
 function ShowRouteTest(i){

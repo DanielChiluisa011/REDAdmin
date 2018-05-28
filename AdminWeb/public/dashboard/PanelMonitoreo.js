@@ -163,10 +163,6 @@ function ShowRouteTest(i){
  			AuxlstOrders.push(lstOrders[j])
  		}	
  	}
-	/*for(var k=0;k<AuxlstOrders.length;k++){
-	}*/
-	
-
 	for(var j=0;j<AuxlstOrders.length;j++){
 		for(var k=0;k<lstDistributors.length;k++){
 			if(AuxlstOrders[j].DistributorId==lstDistributors[k].DistributorId){
@@ -175,15 +171,12 @@ function ShowRouteTest(i){
 		}
 	}
 	for (var j = 0; j < AuxlstOrders.length; j++) {
- 					if(AuxlstOrders[j].OrderState=="En Proceso"){
-						RouteItem.push(AuxlstOrders[j]);	
-					}
+ 		if(AuxlstOrders[j].OrderState=="En Proceso"){
+			RouteItem.push(AuxlstOrders[j]);	
+		}
 	}
 	for(var k=0;k<RouteSelected.length;k++){
 		for (var j = 0; j < AuxlstOrders.length; j++) {
- 					// if(AuxlstOrders[j].OrderState=="En Proceso"){
-					// 	RouteItem.push(AuxlstOrders[j]);	
-					// }
 			if(RouteSelected[k].DistributorId==AuxlstOrders[j].DistributorId){
  				var aux=AuxlstOrders[k].OrderQuantity
  			}
@@ -238,17 +231,6 @@ function ShowRouteTest(i){
 					});
 
 		}	 
-		// mapa.addMarker({
-		// 		   	lat: RouteSelected[k].CoordX,
-		// 		   	lng: RouteSelected[k].CoordY,
-		// 		   	title: 'Centro de Distribución',
-		// 		   	icon: '../iconos/dPendiente.png',
-		// 		   	infoWindow: {
-		// 		        content: '<div id="content"><strong>'+RouteSelected[k].DistributorName+'</strong><br>'
-		// 		       			+'<label>'+RouteSelected[k].DistributorAddress+'</label><br>'
-		// 		       			+'<label>Stock Disponible: '+aux+' <br></div>'
-		// 		    }
-		// 		});
 
 	}
 	for (var i = 0; i < lstRecyclingCenters.length; i++) {
@@ -267,6 +249,13 @@ function ShowRouteTest(i){
 			});
 		}
 	}
+
+	mapa.addMarker({
+		lat: BeginPoint.CoordX,
+		lng: BeginPoint.CoordY,
+		title: 'Inicio Trayecto',
+		icon: '../iconos/truck.png',
+	});
 
 	if(RouteSelected.length == 1){
 		console.log("Route99X="+RouteSelected[0].CoordX+"Y="+RouteSelected[0].CoordY);

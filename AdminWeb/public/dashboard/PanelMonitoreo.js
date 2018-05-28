@@ -272,7 +272,7 @@ function ShowRouteTest(i){
 	if(RouteSelected.length == 1){
 		console.log("Route99X="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
 		mapa.travelRoute({
-		    origin: [BeginPoint.CoordX,BeginPoint.CoordY],
+		    origin: [-0.1919089,-78.48165590000002],
 		    destination: [finishPosition.CoordX,finishPosition.CoordY],
 		    travelMode: 'driving',
 		    waypoints: waypnts,
@@ -296,7 +296,7 @@ function ShowRouteTest(i){
 			});
 		}
 		mapa.travelRoute({
-	        origin: [BeginPoint.CoordX,BeginPoint.CoordY],
+	        origin: [-0.1919089,-78.48165590000002],
 	        destination: [finishPosition.CoordX,finishPosition.CoordY],
 	        travelMode: 'DRIVING',
 	        waypoints: waypnts,

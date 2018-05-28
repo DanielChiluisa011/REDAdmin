@@ -958,7 +958,7 @@ io.on('connection', function(socket){
 			if(error){
 				throw error;
 			}else{
-				console.log('Select Coordinates execute'+result[0].CoordX);
+				console.log('Select Coordinates execute'+result[0].CoordX+result[0].CoordY);
 				socket.emit('SelectCoordinates',result);
 		   }
 		})

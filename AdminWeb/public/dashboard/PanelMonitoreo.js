@@ -146,7 +146,7 @@ function ShowRouteTest(i){
 	socket.on('SelectCoordinates', function(data){
 		BeginPoint=data[0];
 		console.log("BeginsocketX="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
-	
+	});
 	jQuery(document).ready(function() {
 	    MapsGoogle.init();
 		// directionsDisplay.setMap(mapa);
@@ -271,7 +271,7 @@ function ShowRouteTest(i){
 	if(RouteSelected.length == 1){
 		console.log("Route99X="+RouteSelected[0].CoordX+"Y="+RouteSelected[0].CoordY);
 		mapa.travelRoute({
-		    origin: [BeginPoint.CoordX,BeginPoint.CoordY],
+		    origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
 		    destination: [finishPosition.CoordX,finishPosition.CoordY],
 		    travelMode: 'driving',
 		    waypoints: waypnts,
@@ -295,7 +295,7 @@ function ShowRouteTest(i){
 			});
 		}
 		mapa.travelRoute({
-	        origin: [BeginPoint.CoordX,BeginPoint.CoordY],
+	        origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
 	        destination: [finishPosition.CoordX,finishPosition.CoordY],
 	        travelMode: 'DRIVING',
 	        waypoints: waypnts,
@@ -311,7 +311,6 @@ function ShowRouteTest(i){
 	        }
 	    });
 	}
-});
 	var flagFirstDrawing=true;
 	socket.on('TruckLocation',function(data){
 		

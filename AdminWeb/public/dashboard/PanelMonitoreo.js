@@ -263,7 +263,7 @@ function ShowRouteTest(i){
 		title: 'Inicio Trayecto',
 		icon: '../iconos/truck.png',
 	});
-
+	
 	if(RouteSelected.length == 1){
 		console.log("Route99X="+RouteSelected[0].CoordX+"Y="+RouteSelected[0].CoordY);
 		mapa.travelRoute({
@@ -276,7 +276,7 @@ function ShowRouteTest(i){
 		    step: function (e) {
 		            mapa.drawPolyline({
 		                path: e.path,
-		                strokeColor: '#f21004',
+		                strokeColor: '#131540',
 		                strokeOpacity: 0.6,
 		                strokeWeight: 6
 		            });
@@ -300,7 +300,7 @@ function ShowRouteTest(i){
 	        step: function (e) {
 				mapa.drawPolyline({
 					path: e.path,
-					strokeColor: '#f21004',
+					strokeColor: '#131540',
 					strokeOpacity: 0.6,
 					strokeWeight: 6
 				});

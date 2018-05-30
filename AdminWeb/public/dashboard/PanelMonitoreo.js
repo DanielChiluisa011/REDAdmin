@@ -12,6 +12,7 @@ var lstAlerts=[];
 var lstTrucks=[];
 var lstUsers=[];
 var BeginPoint;
+var AllPassPoints;
 var driver;
 var mapa=new GMaps({
     div: '#gmap_basic',
@@ -149,6 +150,10 @@ function BeginCoordinate(i){
 		BeginPoint=data[0];
 		console.log("BeginsocketX="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
 	});
+	socket.emit('SelectALLCoordinates',lstJourneys[i].JourneyId);
+	socket.on('SelectALLCoordinates', function(data){
+		AllPassPoints=data;
+	});
 	setTimeout("ShowRouteTest("+i+")",1000);
 }
 
@@ -263,7 +268,32 @@ function ShowRouteTest(i){
 		title: 'Inicio Trayecto',
 		icon: '../iconos/truck.png',
 	});
-	
+	if(lstJourneys[i].JourneyState=="Completado"){
+		
+		var waypnts=[];
+		for (var i = 0; i < AllPassPoints.length; i++) {
+			waypnts.push({
+				location: new google.maps.LatLng(AllPassPoints[i].CoordX,AllPassPoints[i].CoordY),
+				stopover:false
+			});
+		}
+		mapa.travelRoute({
+	        origin: [AllPassPoints[0].CoordX,AllPassPoints[0].CoordY],
+	        destination: [AllPassPoints[AllPassPoints.length-1].CoordX,AllPassPoints[AllPassPoints.length-1].CoordY],
+	        travelMode: 'DRIVING',
+	        waypoints: waypnts,
+	      	optimizeWaypoints: true,
+	      	provideRouteAlternatives: true,
+	        step: function (e) {
+				mapa.drawPolyline({
+					path: e.path,
+					strokeColor: '#ff0c00',
+					strokeOpacity: 0.6,
+					strokeWeight: 6
+				});
+	        }
+	    });
+	}
 	if(RouteSelected.length == 1){
 		console.log("Route99X="+RouteSelected[0].CoordX+"Y="+RouteSelected[0].CoordY);
 		mapa.travelRoute({

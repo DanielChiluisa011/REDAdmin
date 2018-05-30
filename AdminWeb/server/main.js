@@ -963,6 +963,18 @@ io.on('connection', function(socket){
 		   }
 		})
 	});
+
+	socket.on('SelectALLCoordinates',function(data){
+		console.log('COORDINATES'+data);
+		connection.query('select X(GeometryFromText(AsText(COORDINATES))) CoordX, Y(GeometryFromText(AsText(COORDINATES))) CoordY FROM coordinatesjourney WHERE JOURNEYID='+data+' ORDER BY ID',function(error, result){
+			if(error){
+				throw error;
+			}else{
+				console.log('Select Coordinates execute'+result[0].CoordX+result[0].CoordY);
+				socket.emit('SelectALLCoordinates',result);
+		   }
+		})
+	});
 	  
       //Prueba socket en app movil*****************************
 	socket.on("RequestMaxOrder",function(data){

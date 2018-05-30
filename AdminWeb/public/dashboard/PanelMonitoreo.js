@@ -281,7 +281,7 @@ function ShowRouteTest(i){
 				stopover:false
 			});
 		}
-		mapa.drawRoute({
+		mapa.travelRoute({
 	        origin: [AllPassPoints[0].CoordX,AllPassPoints[0].CoordY],
 	        destination: [AllPassPoints[AllPassPoints.length-1].CoordX,AllPassPoints[AllPassPoints.length-1].CoordY],
 	        travelMode: 'DRIVING',

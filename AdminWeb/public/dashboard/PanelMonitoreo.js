@@ -145,12 +145,13 @@ var MapsGoogle = function () {
 
 
 function BeginCoordinate(i){
-	socket.emit('SelectCoordinates',lstJourneys[i].JourneyId);
-	socket.on('SelectCoordinates', function(data){
-		BeginPoint=data[0];
-		console.log("BeginsocketX="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
-	});
 	if(lstJourneys[i].JourneyState=="Completado"){
+		socket.emit('SelectCoordinates',lstJourneys[i].JourneyId);
+		socket.on('SelectCoordinates', function(data){
+			BeginPoint=data[0];
+			console.log("BeginsocketX="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
+		});
+	
 		socket.emit('SelectALLCoordinates',lstJourneys[i].JourneyId);
 		socket.on('SelectALLCoordinates', function(data){
 			AllPassPoints=data;
@@ -264,14 +265,15 @@ function ShowRouteTest(i){
 		}
 	}
 
-	mapa.addMarker({
-		lat: BeginPoint.CoordX,
-		lng: BeginPoint.CoordY,
-		title: 'Inicio Trayecto',
-		icon: '../iconos/truck.png',
-	});
+	
 	if(lstJourneys[i].JourneyState=="Completado"){
-		
+		mapa.addMarker({
+			lat: BeginPoint.CoordX,
+			lng: BeginPoint.CoordY,
+			title: 'Inicio Trayecto',
+			icon: '../iconos/truck.png',
+		});
+
 		var waypnts=[];
 		for (var i = 0; i < AllPassPoints.length; i++) {
 			waypnts.push({
@@ -299,7 +301,7 @@ function ShowRouteTest(i){
 	if(RouteSelected.length == 1){
 		console.log("Route99X="+RouteSelected[0].CoordX+"Y="+RouteSelected[0].CoordY);
 		mapa.travelRoute({
-		    origin: [BeginPoint.CoordX,BeginPoint.CoordY],
+		    origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
 		    destination: [finishPosition.CoordX,finishPosition.CoordY],
 		    travelMode: 'driving',
 		    waypoints: waypnts,
@@ -323,7 +325,7 @@ function ShowRouteTest(i){
 			});
 		}
 		mapa.travelRoute({
-	        origin: [BeginPoint.CoordX,BeginPoint.CoordY],
+	        origin: [RouteSelected[0].CoordX,RouteSelected[0].CoordY],
 	        destination: [finishPosition.CoordX,finishPosition.CoordY],
 	        travelMode: 'DRIVING',
 	        waypoints: waypnts,

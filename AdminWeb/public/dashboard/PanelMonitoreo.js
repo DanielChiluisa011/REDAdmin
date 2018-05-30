@@ -150,10 +150,12 @@ function BeginCoordinate(i){
 		BeginPoint=data[0];
 		console.log("BeginsocketX="+BeginPoint.CoordX+"Y="+BeginPoint.CoordY);
 	});
-	socket.emit('SelectALLCoordinates',lstJourneys[i].JourneyId);
-	socket.on('SelectALLCoordinates', function(data){
-		AllPassPoints=data;
-	});
+	if(lstJourneys[i].JourneyState=="Completado"){
+		socket.emit('SelectALLCoordinates',lstJourneys[i].JourneyId);
+		socket.on('SelectALLCoordinates', function(data){
+			AllPassPoints=data;
+		});
+	}
 	setTimeout("ShowRouteTest("+i+")",1000);
 }
 

@@ -282,18 +282,18 @@ function ShowRouteTest(i){
 		console.log("allpoints="+AllPassPoints.length);
 		do{
 			rwaypnts.push({
-				location: new google.maps.LatLng(AllPassPoints[i].CoordX,AllPassPoints[i].CoordY),
+				location: new google.maps.LatLng(AllPassPoints[contador].CoordX,AllPassPoints[contador].CoordY),
 				stopover:false
 			});
 			
-			console.log("LATIV="+AllPassPoints[i].CoordX+"LONIV="+AllPassPoints[i].CoordY);
+			console.log("LATIV="+AllPassPoints[contador].CoordX+"LONIV="+AllPassPoints[contador].CoordY);
 			aux=contador*numpoint;
 			console.log("entrocontador"+aux);
 			contador++;
 
 			mapa.addMarker({
-				lat: AllPassPoints[i].CoordX,
-				lng: AllPassPoints[i].CoordY,
+				lat: AllPassPoints[contador].CoordX,
+				lng: AllPassPoints[contador].CoordY,
 				title: 'Centro de Distribución',
 				icon: '../iconos/recycle.png',	
 		 	});

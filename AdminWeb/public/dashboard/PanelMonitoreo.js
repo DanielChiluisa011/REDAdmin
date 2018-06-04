@@ -274,9 +274,9 @@ function ShowRouteTest(i){
 			icon: '../iconos/truck.png',
 		});
 
-		var waypnts=[];
+		var rwaypnts=[];
 		for (var i = 0; i < AllPassPoints.length; i++) {
-			waypnts.push({
+			rwaypnts.push({
 				location: new google.maps.LatLng(AllPassPoints[i].CoordX,AllPassPoints[i].CoordY),
 				stopover:false
 			});
@@ -284,8 +284,8 @@ function ShowRouteTest(i){
 		mapa.travelRoute({
 	        origin: [AllPassPoints[0].CoordX,AllPassPoints[0].CoordY],
 	        destination: [AllPassPoints[AllPassPoints.length-1].CoordX,AllPassPoints[AllPassPoints.length-1].CoordY],
-	        travelMode: 'DRIVING',
-	        waypoints: waypnts,
+	        travelMode: 'walking',
+	        waypoints: rwaypnts,
 	      	optimizeWaypoints: true,
 	      	provideRouteAlternatives: true,
 	        step: function (e) {

@@ -290,6 +290,14 @@ function ShowRouteTest(i){
 			aux=contador*numpoint;
 			console.log("entrocontador"+aux);
 			contador++;
+
+			mapa.addMarker({
+				lat: AllPassPoints[i].CoordX,
+				lng: AllPassPoints[i].CoordY,
+				title: 'Centro de Distribución',
+				icon: '../iconos/recycle.png',	
+		 	});
+
 		}while(aux<AllPassPoints.length);
 
 		mapa.travelRoute({

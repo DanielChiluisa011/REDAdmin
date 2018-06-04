@@ -294,7 +294,7 @@ function ShowRouteTest(i){
 		mapa.travelRoute({
 	        origin: [AllPassPoints[0].CoordX,AllPassPoints[0].CoordY],
 	        destination: [AllPassPoints[AllPassPoints.length-1].CoordX,AllPassPoints[AllPassPoints.length-1].CoordY],
-	        travelMode: 'driving',
+	        travelMode: 'walking',
 	        waypoints: rwaypnts,
 	      	step: function (e) {
 				mapa.drawPolyline({

@@ -284,7 +284,7 @@ function ShowRouteTest(i){
 				location: new google.maps.LatLng(AllPassPoints[i].CoordX,AllPassPoints[i].CoordY),
 				stopover:false
 			});
-			console.log("entrocontador";
+			console.log("entrocontador");
 			contador++;
 		}
 		mapa.travelRoute({

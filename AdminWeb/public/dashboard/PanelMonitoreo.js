@@ -275,11 +275,15 @@ function ShowRouteTest(i){
 		});
 
 		var rwaypnts=[];
-		for (var i = 0; i < AllPassPoints.length; i++) {
+		var contador=1;
+		var numpoint=parseInt(21/AllPassPoints.length);
+
+		for (var i = numpoint*contador; i < AllPassPoints.length; i++) {
 			rwaypnts.push({
 				location: new google.maps.LatLng(AllPassPoints[i].CoordX,AllPassPoints[i].CoordY),
 				stopover:false
 			});
+			contador++;
 		}
 		mapa.travelRoute({
 	        origin: [AllPassPoints[0].CoordX,AllPassPoints[0].CoordY],

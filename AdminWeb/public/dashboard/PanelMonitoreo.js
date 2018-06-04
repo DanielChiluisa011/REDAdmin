@@ -285,9 +285,10 @@ function ShowRouteTest(i){
 				location: new google.maps.LatLng(AllPassPoints[i].CoordX,AllPassPoints[i].CoordY),
 				stopover:false
 			});
-			console.log("entrocontador");
 			
+			console.log("LATIV="+AllPassPoints[i].CoordX+"LONIV="+AllPassPoints[i].CoordY);
 			aux=contador*numpoint;
+			console.log("entrocontador"+aux);
 			contador++;
 		}while(aux<AllPassPoints.length);
 

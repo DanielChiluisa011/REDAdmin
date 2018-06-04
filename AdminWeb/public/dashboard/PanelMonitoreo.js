@@ -277,7 +277,7 @@ function ShowRouteTest(i){
 		var rwaypnts=[];
 		var contador=1;
 		var numpoint=parseInt(21/AllPassPoints.length);
-
+		console.log("CONTADORIVAN="+numpoint);
 		for (var i = numpoint*contador; i < AllPassPoints.length; i++) {
 			rwaypnts.push({
 				location: new google.maps.LatLng(AllPassPoints[i].CoordX,AllPassPoints[i].CoordY),

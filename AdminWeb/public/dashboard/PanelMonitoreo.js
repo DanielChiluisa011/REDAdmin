@@ -296,9 +296,7 @@ function ShowRouteTest(i){
 	        destination: [AllPassPoints[AllPassPoints.length-1].CoordX,AllPassPoints[AllPassPoints.length-1].CoordY],
 	        travelMode: 'driving',
 	        waypoints: rwaypnts,
-	      	optimizeWaypoints: true,
-	      	provideRouteAlternatives: true,
-	        step: function (e) {
+	      	step: function (e) {
 				mapa.drawPolyline({
 					path: e.path,
 					strokeColor: '#ff0c00',

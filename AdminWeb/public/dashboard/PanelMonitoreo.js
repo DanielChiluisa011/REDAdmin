@@ -276,17 +276,21 @@ function ShowRouteTest(i){
 
 		var rwaypnts=[];
 		var contador=1;
-		var numpoint=parseInt(21/AllPassPoints.length);
+		var aux=1;
+		var numpoint=Math.round(AllPassPoints.length/21);
 		console.log("CONTADORIVAN="+numpoint);
 		console.log("allpoints="+AllPassPoints.length);
-		for (var i = numpoint*contador; i < AllPassPoints.length; i++) {
+		do{
 			rwaypnts.push({
 				location: new google.maps.LatLng(AllPassPoints[i].CoordX,AllPassPoints[i].CoordY),
 				stopover:false
 			});
 			console.log("entrocontador");
+			
+			aux=contador*numpoint;
 			contador++;
-		}
+		}while(aux<AllPassPoints.length);
+
 		mapa.travelRoute({
 	        origin: [AllPassPoints[0].CoordX,AllPassPoints[0].CoordY],
 	        destination: [AllPassPoints[AllPassPoints.length-1].CoordX,AllPassPoints[AllPassPoints.length-1].CoordY],

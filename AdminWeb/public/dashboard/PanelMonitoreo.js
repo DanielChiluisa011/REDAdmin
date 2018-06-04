@@ -278,11 +278,13 @@ function ShowRouteTest(i){
 		var contador=1;
 		var numpoint=parseInt(21/AllPassPoints.length);
 		console.log("CONTADORIVAN="+numpoint);
+		console.log("allpoints="+AllPassPoints.length);
 		for (var i = numpoint*contador; i < AllPassPoints.length; i++) {
 			rwaypnts.push({
 				location: new google.maps.LatLng(AllPassPoints[i].CoordX,AllPassPoints[i].CoordY),
 				stopover:false
 			});
+			console.log("entrocontador";
 			contador++;
 		}
 		mapa.travelRoute({

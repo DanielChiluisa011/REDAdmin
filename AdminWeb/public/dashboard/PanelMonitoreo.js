@@ -275,7 +275,7 @@ function ShowRouteTest(i){
 		});
 
 		var rwaypnts=[];
-		var contador=1;
+		var contador=0;
 		var aux=1;
 		var numpoint=Math.round(AllPassPoints.length/21);
 		console.log("CONTADORIVAN="+numpoint);
@@ -303,8 +303,10 @@ function ShowRouteTest(i){
 		mapa.travelRoute({
 	        origin: [AllPassPoints[0].CoordX,AllPassPoints[0].CoordY],
 	        destination: [AllPassPoints[AllPassPoints.length-1].CoordX,AllPassPoints[AllPassPoints.length-1].CoordY],
-	        travelMode: 'walking',
-	        waypoints: rwaypnts,
+	        travelMode: 'driving',
+			waypoints: rwaypnts,
+			optimizeWaypoints: false,
+		  	provideRouteAlternatives: false,
 	      	step: function (e) {
 				mapa.drawPolyline({
 					path: e.path,

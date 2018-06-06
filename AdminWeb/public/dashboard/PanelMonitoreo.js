@@ -285,10 +285,11 @@ function ShowRouteTest(i){
 				location: new google.maps.LatLng(AllPassPoints[aux].CoordX,AllPassPoints[aux].CoordY),
 				stopover:false
 			});*/
-			rwaypnts.push({
-				new :google.maps.LatLng(AllPassPoints[aux].CoordX,AllPassPoints[aux].CoordY)		
-			});
 			
+			rwaypnts.push({
+				lat: AllPassPoints[aux].CoordX, lng: AllPassPoints[aux].CoordY
+			});
+
 			console.log("LATIV="+AllPassPoints[aux].CoordX+"LONIV="+AllPassPoints[aux].CoordY);
 			aux=contador*numpoint;
 			console.log("entrocontador"+aux);
@@ -304,16 +305,23 @@ function ShowRouteTest(i){
 
 		}while(aux<AllPassPoints.length);
 
-		var polyline = new google.maps.Polyline({
-			path: rwaypnts
-			, map: mapa
-			, strokeColor: '#ff0c00'
-			,strokeOpacity: 0.6
-			,strokeWeight: 6
-		});
-
-		/*
-		mapa.travelRoute({
+		/*var flightPlanCoordinates = [
+			{lat: 37.772, lng: -122.214},
+			{lat: 21.291, lng: -157.821},
+			{lat: -18.142, lng: 178.431},
+			{lat: -27.467, lng: 153.027}
+		  ];*/
+		  var flightPath = new google.maps.Polyline({
+			path: rwaypnts,
+			geodesic: true,
+			strokeColor: '#ff0c00',
+			strokeOpacity: 0.6,
+			strokeWeight: 6
+		  });
+		
+		  flightPath.setMap(map);
+		
+		/*mapa.travelRoute({
 	        origin: [AllPassPoints[0].CoordX,AllPassPoints[0].CoordY],
 	        destination: [AllPassPoints[AllPassPoints.length-1].CoordX,AllPassPoints[AllPassPoints.length-1].CoordY],
 	        travelMode: 'driving',
@@ -328,8 +336,7 @@ function ShowRouteTest(i){
 					strokeWeight: 6
 				});
 	        }
-		});
-		*/
+	    });*/
 	}
 	if(RouteSelected.length == 1){
 		console.log("Route99X="+RouteSelected[0].CoordX+"Y="+RouteSelected[0].CoordY);

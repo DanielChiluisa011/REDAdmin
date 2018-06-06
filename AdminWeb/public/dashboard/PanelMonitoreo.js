@@ -280,7 +280,7 @@ function ShowRouteTest(i){
 		var numpoint=Math.round(AllPassPoints.length/21);
 		console.log("CONTADORIVAN="+numpoint);
 		console.log("allpoints="+AllPassPoints.length);
-		while(aux<AllPassPoints.length){
+		do{
 			rwaypnts.push({
 				location: new google.maps.LatLng(AllPassPoints[aux].CoordX,AllPassPoints[aux].CoordY),
 				stopover:false
@@ -290,15 +290,16 @@ function ShowRouteTest(i){
 			aux=contador*numpoint;
 			console.log("entrocontador"+aux);
 			contador++;
-
-			mapa.addMarker({
+			if(aux<AllPassPoints.length){
+			 mapa.addMarker({
 				lat: AllPassPoints[aux].CoordX,
 				lng: AllPassPoints[aux].CoordY,
 				title: 'Centro de Distribución',
 				icon: '../iconos/recycle.png',	
-		 	});
+			 });
+			} 
 
-		};
+		}while(aux<AllPassPoints.length);
 
 		
 		mapa.travelRoute({

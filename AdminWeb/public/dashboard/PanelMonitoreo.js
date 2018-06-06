@@ -301,7 +301,15 @@ function ShowRouteTest(i){
 
 		}while(aux<AllPassPoints.length);
 
-		
+		var polyline = new google.maps.Polyline({
+			path: rwaypnts
+			, map: mapa
+			, strokeColor: '#ff0c00'
+			,strokeOpacity: 0.6
+			,strokeWeight: 6
+		});
+
+		/*
 		mapa.travelRoute({
 	        origin: [AllPassPoints[0].CoordX,AllPassPoints[0].CoordY],
 	        destination: [AllPassPoints[AllPassPoints.length-1].CoordX,AllPassPoints[AllPassPoints.length-1].CoordY],
@@ -317,7 +325,8 @@ function ShowRouteTest(i){
 					strokeWeight: 6
 				});
 	        }
-	    });
+		});
+		*/
 	}
 	if(RouteSelected.length == 1){
 		console.log("Route99X="+RouteSelected[0].CoordX+"Y="+RouteSelected[0].CoordY);

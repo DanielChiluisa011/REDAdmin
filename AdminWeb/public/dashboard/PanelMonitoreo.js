@@ -305,14 +305,17 @@ function ShowRouteTest(i){
 
 		}while(aux<AllPassPoints.length);
 
-		var flightPlanCoordinates = [
-			{lat: 37.772, lng: -122.214},
-			{lat: 21.291, lng: -157.821},
-			{lat: -18.142, lng: 178.431},
-			{lat: -27.467, lng: 153.027}
-		  ];
+	
 		  console.log("rwaypoints"+rwaypnts.length);
-		  var flightPath = new google.maps.Polyline({
+
+		  mapa.drawPolyline({
+			path: rwaypnts,
+			strokeColor: '#ff0c00',
+			strokeOpacity: 0.6,
+			strokeWeight: 6
+		});
+
+		  /*var flightPath = new google.maps.Polyline({
 			path: flightPlanCoordinates,
 			geodesic: true,
 			strokeColor: '#ff0c00',
@@ -320,7 +323,7 @@ function ShowRouteTest(i){
 			strokeWeight: 6
 		  });
 		
-		  mapa.drawPolyline(flightPath);
+		  mapa.drawPolyline(flightPath);*/
 		
 		/*mapa.travelRoute({
 	        origin: [AllPassPoints[0].CoordX,AllPassPoints[0].CoordY],

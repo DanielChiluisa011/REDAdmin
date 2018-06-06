@@ -275,30 +275,30 @@ function ShowRouteTest(i){
 		});
 
 		var rwaypnts=[];
-		var contador=0;
+		var contador=1;
 		var aux=1;
 		var numpoint=Math.round(AllPassPoints.length/21);
 		console.log("CONTADORIVAN="+numpoint);
 		console.log("allpoints="+AllPassPoints.length);
 		do{
 			rwaypnts.push({
-				location: new google.maps.LatLng(AllPassPoints[contador].CoordX,AllPassPoints[contador].CoordY),
+				location: new google.maps.LatLng(AllPassPoints[aux].CoordX,AllPassPoints[aux].CoordY),
 				stopover:false
 			});
 			
-			console.log("LATIV="+AllPassPoints[contador].CoordX+"LONIV="+AllPassPoints[contador].CoordY);
+			console.log("LATIV="+AllPassPoints[aux].CoordX+"LONIV="+AllPassPoints[aux].CoordY);
 			aux=contador*numpoint;
 			console.log("entrocontador"+aux);
 			contador++;
 
 			mapa.addMarker({
-				lat: AllPassPoints[contador].CoordX,
-				lng: AllPassPoints[contador].CoordY,
+				lat: AllPassPoints[aux].CoordX,
+				lng: AllPassPoints[aux].CoordY,
 				title: 'Centro de Distribución',
 				icon: '../iconos/recycle.png',	
 		 	});
 
-		}while(contador<AllPassPoints.length);
+		}while(aux<AllPassPoints.length);
 
 		/*
 		mapa.travelRoute({

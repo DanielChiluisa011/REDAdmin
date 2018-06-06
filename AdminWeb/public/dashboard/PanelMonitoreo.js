@@ -319,7 +319,7 @@ function ShowRouteTest(i){
 			strokeWeight: 6
 		  });
 		
-		  flightPath.setMap(mapa);
+		  mapa.drawPolyline(flightPath);
 		
 		/*mapa.travelRoute({
 	        origin: [AllPassPoints[0].CoordX,AllPassPoints[0].CoordY],

@@ -319,7 +319,7 @@ function ShowRouteTest(i){
 			strokeWeight: 6
 		  });
 		
-		  flightPath.setMap(map);
+		  flightPath.setMap(mapa);
 		
 		/*mapa.travelRoute({
 	        origin: [AllPassPoints[0].CoordX,AllPassPoints[0].CoordY],

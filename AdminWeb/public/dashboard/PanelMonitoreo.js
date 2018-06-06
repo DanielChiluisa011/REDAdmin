@@ -311,6 +311,7 @@ function ShowRouteTest(i){
 			{lat: -18.142, lng: 178.431},
 			{lat: -27.467, lng: 153.027}
 		  ];*/
+		  console.log("rwaypoints"+rwaypnts.length);
 		  var flightPath = new google.maps.Polyline({
 			path: rwaypnts,
 			geodesic: true,

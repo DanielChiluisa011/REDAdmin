@@ -287,7 +287,7 @@ function ShowRouteTest(i){
 			});*/
 			
 			rwaypnts.push({
-				lat: AllPassPoints[aux].CoordX, lng: AllPassPoints[aux].CoordY
+				lat: AllPassPoints[contador].CoordX, lng: AllPassPoints[contador].CoordY
 			});
 
 			console.log("LATIV="+AllPassPoints[aux].CoordX+"LONIV="+AllPassPoints[aux].CoordY);
@@ -303,7 +303,7 @@ function ShowRouteTest(i){
 			 });
 			} 
 
-		}while(aux<AllPassPoints.length);
+		}while(contador<AllPassPoints.length);
 
 	
 		  console.log("rwaypoints"+rwaypnts.length);
@@ -313,7 +313,7 @@ function ShowRouteTest(i){
 			strokeColor: '#ff0c00',
 			strokeOpacity: 0.6,
 			strokeWeight: 6
-		});
+			});
 
 		  /*var flightPath = new google.maps.Polyline({
 			path: flightPlanCoordinates,

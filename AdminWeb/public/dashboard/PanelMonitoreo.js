@@ -275,19 +275,20 @@ function ShowRouteTest(i){
 		});
 
 		var rwaypnts=[];
-		var contador=1;
+		var contador=0;
 		var aux=1;
 		var numpoint=Math.round(AllPassPoints.length/21);
 		console.log("CONTADORIVAN="+numpoint);
 		console.log("allpoints="+AllPassPoints.length);
-		do{
-			/*rwaypnts.push({
+		
+		/*do{
+			rwaypnts.push({
 				location: new google.maps.LatLng(AllPassPoints[aux].CoordX,AllPassPoints[aux].CoordY),
 				stopover:false
-			});*/
+			});
 			
 			rwaypnts.push({
-				lat: AllPassPoints[contador].CoordX, lng: AllPassPoints[contador].CoordY
+				lat: AllPassPoints[aux].CoordX, lng: AllPassPoints[aux].CoordY
 			});
 
 			console.log("LATIV="+AllPassPoints[aux].CoordX+"LONIV="+AllPassPoints[aux].CoordY);
@@ -303,8 +304,20 @@ function ShowRouteTest(i){
 			 });
 			} 
 
-		}while(contador<AllPassPoints.length);
+		}while(aux<AllPassPoints.length);*/
 
+		do{
+			rwaypnts.push({
+				lat: AllPassPoints[contador].CoordX, lng: AllPassPoints[contador].CoordY
+			});
+			mapa.addMarker({
+				lat: AllPassPoints[contador].CoordX,
+				lng: AllPassPoints[contador].CoordY,
+				title: 'Centro de Distribución',
+				icon: '../iconos/recycle.png',	
+			 });
+			 contador++;
+		}while(contador<AllPassPoints.length);
 	
 		  console.log("rwaypoints"+rwaypnts.length);
 

@@ -281,9 +281,12 @@ function ShowRouteTest(i){
 		console.log("CONTADORIVAN="+numpoint);
 		console.log("allpoints="+AllPassPoints.length);
 		do{
-			rwaypnts.push({
+			/*rwaypnts.push({
 				location: new google.maps.LatLng(AllPassPoints[aux].CoordX,AllPassPoints[aux].CoordY),
 				stopover:false
+			});*/
+			rwaypnts.push({
+				new :google.maps.LatLng(AllPassPoints[aux].CoordX,AllPassPoints[aux].CoordY)		
 			});
 			
 			console.log("LATIV="+AllPassPoints[aux].CoordX+"LONIV="+AllPassPoints[aux].CoordY);

@@ -310,12 +310,12 @@ function ShowRouteTest(i){
 			rwaypnts.push({
 				lat: AllPassPoints[contador].CoordX, lng: AllPassPoints[contador].CoordY
 			});
-			mapa.addMarker({
+			/*mapa.addMarker({
 				lat: AllPassPoints[contador].CoordX,
 				lng: AllPassPoints[contador].CoordY,
 				title: 'Centro de Distribución',
 				icon: '../iconos/recycle.png',	
-			 });
+			 });*/
 			 contador++;
 		}while(contador<AllPassPoints.length);
 	

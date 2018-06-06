@@ -280,7 +280,7 @@ function ShowRouteTest(i){
 		var numpoint=Math.round(AllPassPoints.length/21);
 		console.log("CONTADORIVAN="+numpoint);
 		console.log("allpoints="+AllPassPoints.length);
-		do{
+		while(aux<AllPassPoints.length){
 			rwaypnts.push({
 				location: new google.maps.LatLng(AllPassPoints[aux].CoordX,AllPassPoints[aux].CoordY),
 				stopover:false
@@ -298,7 +298,7 @@ function ShowRouteTest(i){
 				icon: '../iconos/recycle.png',	
 		 	});
 
-		}while(aux<AllPassPoints.length);
+		};
 
 		
 		mapa.travelRoute({

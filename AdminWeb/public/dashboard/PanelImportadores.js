@@ -282,13 +282,14 @@ function updateImporterQuota(evt){
 			      zindex: 1500
 			    });
 	   		}else{
-                alert($('#txtUpdateQuantity').val());
-                alert($('#cmbUpdateImporters option:selected').index()-1);
-	   			var quota={
+                var quota={
 					importer:lstImporters[$('#cmbUpdateImporters option:selected').index()-1],
 					quantity: $('#txtUpdateQuantity').val(),
 					monthQuantity: $('#txtUpdateQuantity').val()/12
-				}
+                }
+                alert(quota.importer.IMPORTERID);
+                alert(quota.quantity);
+                alert(quota.monthQuantity);
 				socket.emit('UpdateQuota',quota);
 				location.reload();
 	   		}

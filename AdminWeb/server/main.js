@@ -1106,7 +1106,7 @@ io.on('connection', function(socket){
 		}
 	});
 	socket.on('UpdateQuota',function(data){
-		connection.query('UPDATE importer SET ImporterQuota = ?, ImporterMontlyQuotah = ? where ImporterId = ?;',[data.quantity,data.monthQuantity,data.importer.ImporterId],function(err, rows, fields) {
+		connection.query('UPDATE importer SET IMPORTERQUOTA = ?, IMPORTERMONTLYQUOTAH = ? where IMPORTERID = ?;',[data.quantity,data.monthQuantity,data.importer.IMPORTERID],function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{

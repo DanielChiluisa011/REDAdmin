@@ -86,7 +86,8 @@ $(document).ready(function(){
 
     socket.on('SelectImporters', function(data){
 		lstImporters=[];
-       	lstImporters=data;
+        lstImporters=data;
+        alert("tamaño"+lstImporters.length);
        	// $('#cmbNewOrderImporters').empty();
        	$('#cmbUpdateImporters').empty();
        	$('#cmbUpdateImporters').append('<option selected>Seleccione un importador</option>');
@@ -287,8 +288,8 @@ function updateImporterQuota(evt){
 					quantity: $('#txtUpdateQuantity').val(),
 					monthQuantity: $('#txtUpdateQuantity').val()/12
                 }
-                alert($('#cmbUpdateImporters option:selected').index()-1);
-                alert(lstImporters.length);
+                alert($('#cmbUpdateImporters option:selected').index());
+                alert("tamaño"+lstImporters.length);
                 alert(lstImporters[$('#cmbUpdateImporters option:selected').index()-1]);
                 alert(quota.importer.IMPORTERID);
                 alert(quota.quantity);

@@ -282,6 +282,8 @@ function updateImporterQuota(evt){
 			      zindex: 1500
 			    });
 	   		}else{
+                alert($('#txtUpdateQuantity').val());
+                alert($('#cmbUpdateImporters option:selected').index()-1);
 	   			var quota={
 					importer:lstImporters[$('#cmbUpdateImporters option:selected').index()-1],
 					quantity: $('#txtUpdateQuantity').val(),

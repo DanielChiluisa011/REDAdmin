@@ -1,5 +1,6 @@
 var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
 var lstImporters= [];
+var lstImportersCombox= [];
 var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 var lon=6;
 var code="0";
@@ -85,16 +86,16 @@ $(document).ready(function(){
     });
 
     socket.on('SelectImporters', function(data){
-		lstImporters=[];
-        lstImporters=data;
-        alert("tamaño"+lstImporters.length);
-       	// $('#cmbNewOrderImporters').empty();
+		lstImportersCombox=[];
+        lstImportersCombox=data;
+        // $('#cmbNewOrderImporters').empty();
        	$('#cmbUpdateImporters').empty();
        	$('#cmbUpdateImporters').append('<option selected>Seleccione un importador</option>');
-       	for (var i = 0; i < lstImporters.length; i++) {
+       	for (var i = 0; i < lstImportersCombox.length; i++) {
 	   		// $('#cmbNewOrderImporters').append(new Option(lstImporters[i].ImporterName, 'names', true, true));
-	   		$('#cmbUpdateImporters').append(new Option(lstImporters[i].IMPORTERNAME, 'names'));
-	   	}
+	   		$('#cmbUpdateImporters').append(new Option(lstImportersCombox[i].IMPORTERNAME, 'names'));
+           }
+            
        })
     fechaactual=new Date();
 	//$('#txtUpdateOrderDate').disabled();
@@ -284,20 +285,20 @@ function updateImporterQuota(evt){
 			    });
 	   		}else{
                 var quota={
-					importer: lstImporters[$('#cmbUpdateImporters option:selected').index()-1],
+					importer: lstImportersCombox[$('#cmbUpdateImporters option:selected').index()-1],
 					quantity: $('#txtUpdateQuantity').val(),
 					monthQuantity: $('#txtUpdateQuantity').val()/12
                 }
-                alert($('#cmbUpdateImporters option:selected').index());
-                alert("tamaño"+lstImporters.length);
-                for (var i = 0; i < lstImporters.length; i++) {
+                /*alert($('#cmbUpdateImporters option:selected').index());
+                alert("tamaño"+lstImportersCombox.length);
+                for (var i = 0; i < lstImportersCombox.length; i++) {
                     alert(i);
                     alert(lstImporters[i].IMPORTERNAME);
                 }
                 alert(lstImporters[$('#cmbUpdateImporters option:selected').index()-1]);
                 alert(quota.importer.IMPORTERID);
                 alert(quota.quantity);
-                alert(quota.monthQuantity);
+                alert(quota.monthQuantity);*/
 				socket.emit('UpdateQuota',quota);
 				location.reload();
 	   		}

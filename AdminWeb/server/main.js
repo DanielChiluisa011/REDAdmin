@@ -1712,7 +1712,7 @@ function SelectActiveOrders(){
 	})
 }
 function SelectImporters(){
-	connection.query('SELECT * FROM importer ORDER BY ImporterMontlyQuotah DESC',function(error, result){
+	connection.query('SELECT * FROM importer ORDER BY ImporterMontlyQuotah DESC WHERE IMPORTERID<>0',function(error, result){
 		if(error){
 		    throw error;
 		}else{

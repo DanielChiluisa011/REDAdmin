@@ -290,6 +290,10 @@ function updateImporterQuota(evt){
                 }
                 alert($('#cmbUpdateImporters option:selected').index());
                 alert("tamaño"+lstImporters.length);
+                for (var i = 0; i < lstImporters.length; i++) {
+                    alert(i);
+                    alert(lstImporters[i].IMPORTERNAME);
+                }
                 alert(lstImporters[$('#cmbUpdateImporters option:selected').index()-1]);
                 alert(quota.importer.IMPORTERID);
                 alert(quota.quantity);

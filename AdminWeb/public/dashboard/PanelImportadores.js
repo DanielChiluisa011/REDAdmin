@@ -284,10 +284,13 @@ function updateImporterQuota(evt){
 			      zindex: 1500
 			    });
 	   		}else{
+                var calmonth;
+                calmonth=lstImportersCombox[$('#cmbUpdateImporters option:selected').index()-1].IMPORTERQUOTA+$('#txtUpdateQuantity').val();
+                calmonth=calmonth/12;
                 var quota={
 					importer: lstImportersCombox[$('#cmbUpdateImporters option:selected').index()-1],
 					quantity: $('#txtUpdateQuantity').val(),
-					monthQuantity: $('#txtUpdateQuantity').val()/12
+					monthQuantity: calmonth
                 }
                 /*alert($('#cmbUpdateImporters option:selected').index());
                 alert("tamaño"+lstImportersCombox.length);

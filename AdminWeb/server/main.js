@@ -1106,7 +1106,7 @@ io.on('connection', function(socket){
 		}
 	});
 	socket.on('UpdateQuota',function(data){
-		connection.query('UPDATE importer SET IMPORTERQUOTA = ?, IMPORTERMONTLYQUOTAH = ? where IMPORTERID = ?;',[data.quantity,data.monthQuantity,data.importer.IMPORTERID],function(err, rows, fields) {
+		connection.query('UPDATE importer SET IMPORTERQUOTA = IMPORTERQUOTA + ?, IMPORTERMONTLYQUOTAH = ? where IMPORTERID = ?;',[data.quantity,data.monthQuantity,data.importer.IMPORTERID],function(err, rows, fields) {
 	 		if(err){
 	 			console.log("Error "+ err.message);
 	 		}else{
@@ -1205,7 +1205,7 @@ io.on('connection', function(socket){
 								socket.emit("ResponseImporter",false);
 							}else{
 								console.log(importer.code);
-								connection.query('INSERT INTO importer (IMPORTERNAME,IMPORTERADDRESS,IMPORTERPHONE,IMPORTERRUC,IMPORTERQUOTA,IMPORTERWASTEGENERATORNUMBER,IMPORTERCODE,USEREMAIL,PROVINCEID,IMPORTERCANTON,IMPORTERPARROQUIA,WASTETYPEID) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)',
+								connection.query('INSERT INTO importer (IMPORTERNAME,IMPORTERADDRESS,IMPORTERPHONE,IMPORTERRUC,IMPORTERQUOTA,IMPORTERWASTEGENERATORNUMBER,IMPORTERCODE,USEREMAIL,PROVINCEID,IMPORTERCANTON,IMPORTERPARROQUIA,WASTETYPEID,IMPORTERMONTLYQUOTAH,IMPORTERQUOTAACCOMPLISHED) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
 											[importer.name,
 											importer.address,
 											importer.phone,
@@ -1218,6 +1218,8 @@ io.on('connection', function(socket){
 											importer.canton,
 											importer.parroquia,
 											importer.tipodesecho,
+											"0",
+											"0",
 											],function(err, rows, fields) {
 									if(err){
 										console.log("Error "+ err.message);

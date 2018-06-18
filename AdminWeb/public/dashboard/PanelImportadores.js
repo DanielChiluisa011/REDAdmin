@@ -285,10 +285,8 @@ function updateImporterQuota(evt){
 			    });
 	   		}else{
                 var calmonth;
-                calmonth=lstImportersCombox[$('#cmbUpdateImporters option:selected').index()-1].IMPORTERQUOTA+$('#txtUpdateQuantity').val();
-                alert(calmonth);
-                calmonth=calmonth/12;
-                alert(calmonth);
+                calmonth=parseFloat(lstImportersCombox[$('#cmbUpdateImporters option:selected').index()-1].IMPORTERQUOTA)+parseFloat($('#txtUpdateQuantity').val());
+                calmonth=parseFloat(calmonth/12);
                 var quota={
 					importer: lstImportersCombox[$('#cmbUpdateImporters option:selected').index()-1],
 					quantity: $('#txtUpdateQuantity').val(),

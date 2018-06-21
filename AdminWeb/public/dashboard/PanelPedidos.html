@@ -597,23 +597,16 @@
                                                     fecha_actual = String(dia+"/"+mes+"/"+anio);
                                                     return fecha_actual;
                                                 }
-                                                
-                                                function filterAll(){
-                                                    filterOrder(0);
-                                                    filterOrder(1);
-                                                    filterOrder(2);
-                                                    filterOrder(3);
-                                                    filterOrder(4);
-                                                }
+
                                             </script>
                                             <table class="table" id="OrdersHistoryTable">        
                                                 <thead>
                                                     <tr>
-                                                        <th><input type="text" id="flPedido0" onkeyup="filterAll()" placeholder="&#x1F50D; Busqueda Numero Orden" style="width:150px;"></th>
-                                                        <th><input type="text" id="flPedido1" onkeyup="filterAll()" placeholder="&#x1F50D; Busqueda Nombre Distribuidor"></th>
-                                                        <th><input type="text" id="flPedido2" onkeyup="filterAll()" placeholder="&#x1F50D; Busqueda Cantidad" style="width:150px;"></th>
+                                                        <th><input type="text" id="flPedido0" onkeyup="filterOrder(0)" placeholder="&#x1F50D; Busqueda Numero Orden" style="width:150px;"></th>
+                                                        <th><input type="text" id="flPedido1" onkeyup="filterOrder(1)" placeholder="&#x1F50D; Busqueda Nombre Distribuidor"></th>
+                                                        <th><input type="text" id="flPedido2" onkeyup="filterOrder(2)" placeholder="&#x1F50D; Busqueda Cantidad" style="width:150px;"></th>
                                                         <th>
-                                                            <select name="flPedido3" id="flPedido3" onChange="filterAll()" class="form-control input-circle" style="width:200px;">
+                                                            <select name="flPedido3" id="flPedido3" onChange="filterOrder(3)" class="form-control input-circle" style="width:200px;">
                                                                         <option value="" selected>Todos los tipos</option>
                                                                         <option value="Neumáticos fuera de uso">Neumáticos fuera de uso</option>
                                                                         <option value="Residuos de aparatos eléctricos y electrónicos">Residuos de aparatos eléctricos y electrónicos</option>
@@ -621,7 +614,7 @@
 
                                                         </th>
                                                         <th>
-                                                            <select name="flPedido4" id="flPedido4" onChange="filterAll()" class="form-control input-circle" style="width:200px;">
+                                                            <select name="flPedido4" id="flPedido4" onChange="filterOrder(4)" class="form-control input-circle" style="width:200px;">
                                                                 <option value="" selected>Todos los estados</option>
                                                                 <option value="Completado">Completado</option>
                                                                 <option value="En Proceso">En Proceso</option>

@@ -741,6 +741,7 @@ function SortRoute(reference,rt){
 function VisualizacionPedidosRuta(){
 	k=JourneySelectedinWindow;
 	$('#Orders').empty();
+	lstIdOrders= [];
 	//console.log("Orders: "+lstJourney[k].length);
 	for (var j = 0; j < lstJourney[k].length; j++) {
 		$('#Orders').append('<div class="caption font-green">'

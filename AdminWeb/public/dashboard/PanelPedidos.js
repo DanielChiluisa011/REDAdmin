@@ -789,7 +789,6 @@ function IncludeInRoute(DistId){
 	if(!Exist){
 		for (var i = 0; i < lstDistributors.length; i++) {
 			if(lstDistributors[i].DistributorId==DistId){
-				RouteSelected.push(lstDistributors[i]);
 				var objOrder = {
 					waste:"",
 					order: "",
@@ -805,6 +804,7 @@ function IncludeInRoute(DistId){
 				}
 				if(band){
 					$.notific8(lstDistributors[i].DistributorName+' ha sido agregado a la ruta ');
+					RouteSelected.push(lstDistributors[i]);
 					for (var j = 0; j < lstDistributors.length; j++) {
 						if(lstDistributors[j].DistributorId==DistId){
 							objOrder.importer=lstDistributors[j];

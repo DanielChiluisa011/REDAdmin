@@ -787,36 +787,33 @@ function IncludeInRoute(DistId){
 	}
 
 	if(!Exist){
+		var objOrder = {
+			waste:"",
+			order: "",
+			importer: "",
+			contacto: ""
+		}
+		
 		for (var i = 0; i < lstDistributors.length; i++) {
 			if(lstDistributors[i].DistributorId==DistId){
-				var objOrder = {
-					waste:"",
-					order: "",
-					importer: "",
-					contacto: ""
-				}
-				var band=false;
-				for (var i = 0; i <lstOrders.length; i++) {	
-					if(DistId==lstOrders[i].DistributorId){
-						objOrder.order=lstOrders[i];
-						band=true;
-					}
-				}
-				if(band){
-					$.notific8(lstDistributors[i].DistributorName+' ha sido agregado a la ruta ');
-					RouteSelected.push(lstDistributors[i]);
-					for (var j = 0; j < lstDistributors.length; j++) {
-						if(lstDistributors[j].DistributorId==DistId){
-							objOrder.importer=lstDistributors[j];
-						}
-					}
-					lstObjOrders.push(objOrder);					
-					lstJourney[JourneySelectedinWindow].push(lstObjOrders);
-					VisualizacionPedidosRuta();
-				}else{
-					$.notific8('El distribuidor no tiene ningún pedido, no se puede agregar a la ruta');
-				}	
+				objOrder.importer=lstDistributors[j];
 			}
+		}
+		var band=false;
+		for (var i = 0; i <lstOrders.length; i++) {	
+			if(DistId==lstOrders[i].DistributorId){
+				objOrder.order=lstOrders[i];
+				band=true;
+			}
+		}
+		if(band){
+			$.notific8(lstDistributors[objOrder.importer.DistributorId].DistributorName+' ha sido agregado a la ruta ');
+			RouteSelected.push(lstDistributors[objOrder.importer.DistributorId]);
+			lstObjOrders.push(objOrder);					
+			lstJourney[JourneySelectedinWindow].push(lstObjOrders);
+			VisualizacionPedidosRuta();
+		}else{
+			$.notific8('El distribuidor no tiene ningún pedido, no se puede agregar a la ruta');
 		}
 	}
 	$('#gmap_routes_instructions').empty();

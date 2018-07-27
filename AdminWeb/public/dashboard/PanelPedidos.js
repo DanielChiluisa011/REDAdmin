@@ -30,6 +30,7 @@ var lon=6;
 var code="h";
 var lstDistributorsList=[];
 var lstProvinces=[];
+var JourneySelectedinWindow=0;
 $(document).ready(function(){
 	$('#txtNewJourneyDate').val(CurrentDate());
 	//socket managment
@@ -321,6 +322,7 @@ jQuery(document).ready(function() {
 });
 
 function showData1(i,TotalQuantity){
+	JourneySelectedinWindow=i;
 	k=i;
 	$("#cmbDrivers")[0].selectedIndex = 1;//getRandomArbitrary(1, lstDrivers.length);
 	console.log(getRandomArbitrary(1, lstDrivers.length))
@@ -508,7 +510,7 @@ function LocateDistributors(j){
 		                content: '<div id="content"><strong>'+lstDistributors[i].DistributorName+'</strong><br>'
 		                			+'<label>'+lstDistributors[i].DistributorAddress+'</label><br>'
 		                		//	+'<label>Stock Disponible: '+lstDistributors[i].DistributorStock+' llantas <br>'
-		                		+'<input type="submit" onclick="IncludeInRoute('+lstDistributors[i].DistributorId+')" value="Seleccionar "class=" btn blue"> </div>'
+		                		+'<input type="submit" onclick="IncludeInRoute('+lstDistributors[i].DistributorId+')" value="Seleccionar" class="btn blue"> </div>'
 		            }
 				});
 			Route.push(lstDistributors[i]);
@@ -736,6 +738,32 @@ function SortRoute(reference,rt){
 	}
 }
 
+function VisualizacionPedidosRuta(){
+	k=JourneySelectedinWindow;
+	$('#Orders').empty();
+	//console.log("Orders: "+lstJourney[k].length);
+	for (var j = 0; j < lstJourney[k].length; j++) {
+		$('#Orders').append('<div class="caption font-green">'
+								+'<i class="fa fa-sticky-note font-green"></i>'
+								+'<span class="caption-subject bold uppercase"> Datos del Pedido '+(j+1)+'</span>'
+							+'</div>'
+							+'<div class="form-group form-md-line-input has-success">'
+								+'<input id="txtOrderId" value="'+ lstJourney[k][j].order.OrderId+'" type="text" class="form-control" id="form_control_1" disabled>'
+								+'<label for="form_control_1">Número de orden</label>'
+							+'</div>'
+							+'<div class="form-group form-md-line-input has-success">'
+								+'<input id="txtOrderId" value="'+ lstJourney[k][j].importer.DistributorName +'" type="text" class="form-control" id="form_control_1" disabled>'
+								+'<label for="form_control_1">Distibuidor</label>'
+							+'</div>'
+							+'<div class="form-group form-md-line-input has-success">'
+								+'<input id="txtOrderQuantity" value="'+ lstJourney[k][j].order.OrderQuantity +'" type="text" class="form-control" id="form_control_1" disabled>'
+								+'<label for="form_control_1">Cantidad</label>'
+							+'</div>');
+		// console.log("lstJourney[k][j].order");
+		// console.log(lstJourney[k][j].order);
+		lstIdOrders.push(lstJourney[k][j].order.OrderId);
+	}
+}
 function IncludeInRoute(DistId){
 	mapa.removePolylines();
 	var Exist=false;
@@ -743,7 +771,16 @@ function IncludeInRoute(DistId){
 
 		if(RouteSelected[j].DistributorId==DistId){
 			RouteSelected.splice(j,1);
-			$.notific8(' ha sido eliminado a la ruta ');
+
+			var aux=0;
+			for(var a = 0; a < lstJourney[JourneySelectedinWindow].length; a++){
+				if(lstJourney[JourneySelectedinWindow][a].importer.DistributorId==DistId){
+					aux=a;
+				}
+			}
+			lstJourney[JourneySelectedinWindow].splice(aux,1);
+
+			$.notific8(' ha sido eliminado de la ruta ');
 			Exist=true;
 			break;
 		}
@@ -752,8 +789,33 @@ function IncludeInRoute(DistId){
 	if(!Exist){
 		for (var i = 0; i < lstDistributors.length; i++) {
 			if(lstDistributors[i].DistributorId==DistId){
-				$.notific8(lstDistributors[i].DistributorName+' ha sido agregado a la ruta ');
 				RouteSelected.push(lstDistributors[i]);
+				var objOrder = {
+					waste:"",
+					order: "",
+					importer: "",
+					contacto: ""
+				}
+				var band=false;
+				for (var i = 0; i <lstOrders.length; i++) {	
+					if(DistId==lstOrders[i].DistributorId){
+						objOrder.order=lstOrders[i];
+						band=true;
+					}
+				}
+				if(band){
+					$.notific8(lstDistributors[i].DistributorName+' ha sido agregado a la ruta ');
+					for (var j = 0; j < lstDistributors.length; j++) {
+						if(lstDistributors[j].DistributorId==DistId){
+							objOrder.importer=lstDistributors[j];
+						}
+					}
+					lstObjOrders.push(objOrder);					
+					lstJourney[JourneySelectedinWindow].push(lstObjOrders);
+					VisualizacionPedidosRuta();
+				}else{
+					$.notific8('El distribuidor no tiene ningún pedido, no se puede agregar a la ruta');
+				}	
 			}
 		}
 	}

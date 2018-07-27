@@ -779,7 +779,7 @@ function IncludeInRoute(DistId){
 				}
 			}
 			lstJourney[JourneySelectedinWindow].splice(aux,1);
-
+			VisualizacionPedidosRuta();
 			$.notific8(' ha sido eliminado de la ruta ');
 			Exist=true;
 			break;

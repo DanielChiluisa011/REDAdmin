@@ -781,7 +781,7 @@ function IncludeInRoute(DistId){
 			}
 			lstJourney[JourneySelectedinWindow].splice(aux,1);
 			VisualizacionPedidosRuta();
-			$.notific8(' ha sido eliminado de la ruta ');
+			$.notific8(' Ha sido eliminado de la ruta ');
 			Exist=true;
 			break;
 		}
@@ -808,8 +808,8 @@ function IncludeInRoute(DistId){
 			}
 		}
 		if(band){
-			$.notific8(lstDistributors[objOrder.importer.DistributorId].DistributorName+' ha sido agregado a la ruta ');
-			RouteSelected.push(lstDistributors[objOrder.importer.DistributorId]);
+			$.notific8(objOrder.importer.DistributorName+' ha sido agregado a la ruta ');	
+			RouteSelected.push(objOrder.importer);			
 			lstObjOrders.push(objOrder);					
 			lstJourney[JourneySelectedinWindow].push(lstObjOrders);
 			VisualizacionPedidosRuta();

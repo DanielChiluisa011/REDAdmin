@@ -1703,7 +1703,7 @@ function SelectConfimJourney(socket){
 }
 
 function SelectActiveOrders(){
-	connection.query("SELECT o.OrderId,o.OrderDate,o.OrderQuantity,o.DistributorId,w.WASTEDESCRIPTION,o.OrderState,o.OrderType,DATE_FORMAT(o.OrderDeadLine ,'%Y-%m-%d') AS OrderDeadLine,o.JourneyId FROM orders o,waste w WHERE o.WASTEONU=w.WASTEONU AND (o.OrderState like 'En Proceso' or o.OrderState like 'Completado') ORDER BY o.OrderDeadLine ASC;",function(error, result){
+	connection.query("SELECT o.OrderId,o.OrderDate,o.OrderQuantity,o.DistributorId,o.WASTEONU,w.WASTEDESCRIPTION,o.OrderState,o.OrderType,DATE_FORMAT(o.OrderDeadLine ,'%Y-%m-%d') AS OrderDeadLine,o.JourneyId FROM orders o,waste w WHERE o.WASTEONU=w.WASTEONU AND (o.OrderState like 'En Proceso' or o.OrderState like 'Completado') ORDER BY o.OrderDeadLine ASC;",function(error, result){
 		if(error){
 		    throw error;
 		}else{

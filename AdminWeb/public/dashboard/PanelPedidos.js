@@ -810,8 +810,8 @@ function IncludeInRoute(DistId){
 		if(band){
 			$.notific8(objOrder.importer.DistributorName+' ha sido agregado a la ruta ');	
 			RouteSelected.push(objOrder.importer);			
-			lstObjOrders.push(objOrder);					
-			lstJourney[JourneySelectedinWindow].push(lstObjOrders);
+			//lstObjOrders.push(objOrder);					
+			lstJourney[JourneySelectedinWindow].push(objOrder);
 			VisualizacionPedidosRuta();
 		}else{
 			$.notific8('El distribuidor no tiene ningún pedido, no se puede agregar a la ruta');

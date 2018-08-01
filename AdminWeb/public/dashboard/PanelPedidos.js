@@ -797,7 +797,7 @@ function IncludeInRoute(DistId){
 		
 		for (var i = 0; i < lstDistributors.length; i++) {
 			if(lstDistributors[i].DistributorId==DistId){
-				objOrder.importer=lstDistributors[j];
+				objOrder.importer=lstDistributors[i];
 			}
 		}
 		var band=false;

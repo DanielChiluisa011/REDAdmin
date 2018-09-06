@@ -1671,7 +1671,7 @@ socket.on('SelectJourneyDriver',function(data){
 			  throw error;
 		  }else{
 			var JourneyRoute=result;
-			//console.log(result[0]+" "+result.length);
+			console.log(result[0]+" "+result.length);
 				// console.log(JourneyRoute);
 			io.emit('SelectListRoutes',JourneyRoute);
 			  // console.log('Select Distributors executed');

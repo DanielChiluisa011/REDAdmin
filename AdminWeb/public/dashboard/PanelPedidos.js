@@ -499,7 +499,31 @@ function LocateDistributors(j){
 	LocateRecyclingCenters();
 	// InitialPosition();
 	Route=[];
-	for (var i = 0; i < lstDistributors.length; i++) {
+	
+	for (var i = 0; i <lstOrders.length; i++) {
+		
+		for (var j = 0; j < lstDistributors.length; j++) {
+
+			if(lstDistributors[j].DistributorId==lstOrders[i].DistributorId){
+				mapa.addMarker({
+			    	lat: lstDistributors[j].CoordX,
+			    	lng: lstDistributors[j].CoordY,
+			    	title: 'Centro de Distribución',
+			    	icon: '../iconos/dPendiente.png',
+			    	infoWindow: {
+		                content: '<div id="content"><strong>'+lstDistributors[j].DistributorName+'</strong><br>'
+		                			+'<label>'+lstDistributors[j].DistributorAddress+'</label><br>'
+		                		//	+'<label>Stock Disponible: '+lstDistributors[i].DistributorStock+' llantas <br>'
+		                		+'<input type="submit" onclick="IncludeInRoute('+lstDistributors[j].DistributorId+')" value="Seleccionar" class="btn blue"> </div>'
+		            }
+				});
+				Route.push(lstDistributors[j]);
+			}
+		}
+	
+ }
+
+	/*for (var i = 0; i < lstDistributors.length; i++) {
 		// if(lstDistributors[i].IMPORTER_ImporterId==lstObjOrders[j].importer.ImporterId){
 			mapa.addMarker({
 			    	lat: lstDistributors[i].CoordX,
@@ -515,7 +539,9 @@ function LocateDistributors(j){
 				});
 			Route.push(lstDistributors[i]);
 		// }
-	}
+	}*/
+
+
 	// if(Route.length==0){
 	// 	for (var i = 0; i < lstDistributors.length; i++) {
 	// 		var DistibutorAux=lstDistributors[i];

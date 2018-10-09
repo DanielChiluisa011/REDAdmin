@@ -241,7 +241,8 @@ $(document).ready(function(){
 		//alert("order="+lstObjOrders.length);
 		//alert("waste="+lstWaste.length);
 		//alert("distri="+lstDistributors.length);
-       	// InitialPosition();
+		   // InitialPosition();
+		   console.log("IVANIVANIVANINICIOINICIO="+lstObjOrders.length);
        	if(lstOrders.length!=0){
        		CreateJourney();	
        	}

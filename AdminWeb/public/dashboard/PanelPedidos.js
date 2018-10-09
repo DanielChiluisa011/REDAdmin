@@ -243,7 +243,7 @@ $(document).ready(function(){
 		//alert("waste="+lstWaste.length);
 		//alert("distri="+lstDistributors.length);
 		   // InitialPosition();
-		   lstObjOrdersCheckRoute=lstObjOrders;
+		   
        	if(lstOrders.length!=0){
        		CreateJourney();	
        	}
@@ -759,6 +759,7 @@ function ShowRoute(){
 function CreateJourney(){
 	lstJourney=[];
 	var AuxlstObjOrders=lstObjOrders;
+	lstObjOrdersCheckRoute=lstObjOrders;
 	var NewRouteSelected=[];
 	var j=0;
 	var dateDL=AuxlstObjOrders[j].order.OrderDeadLine;

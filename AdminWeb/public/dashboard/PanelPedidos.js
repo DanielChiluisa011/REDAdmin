@@ -262,8 +262,8 @@ $(document).ready(function(){
 			OrdersTable.append("<tbody align='center'> <tr><td onclick='showData1("+i+","+TotalQuantity+")'>"+lstJourney[i][0].order.OrderDate+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+
 			DetalleCantidad+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+D+"</td>"+checkboxDis+"</tr><tbody>"); 
 		}
-		
-   	})
+		console.log("IVANIVANIVAN="+lstObjOrders.length);
+   	});
    	//////
 	   // InitialPosition();
 	 

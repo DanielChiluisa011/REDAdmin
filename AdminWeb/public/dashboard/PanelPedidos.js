@@ -250,13 +250,14 @@ $(document).ready(function(){
 			var D='';
 			var DetalleCantidad="";
 			var DetalleFechas="";
-			var checkboxDis="";
+			var checkboxDis="<td>";
 			for (var j = 0; j < lstJourney[i].length; j++) {
 				TotalQuantity+=lstJourney[i][j].order.OrderQuantity;
 				DetalleCantidad+=lstJourney[i][j].order.OrderQuantity+'<br>';
 				D+=lstJourney[i][j].importer.DistributorName+'<br>';
-				checkboxDis+="<td><input type='checkbox' onclick='checkPointRoute("+lstJourney[i][j].order.DistributorId+")'></td>";
+				checkboxDis+="<input type='checkbox' onclick='checkPointRoute("+lstJourney[i][j].order.DistributorId+")'></br>";
 			}
+			checkboxDis+="</td>";
 			console.log(DetalleFechas);
 			OrdersTable.append("<tbody align='center'> <tr><td onclick='showData1("+i+","+TotalQuantity+")'>"+lstJourney[i][0].order.OrderDate+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+
 			DetalleCantidad+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+D+"</td>"+checkboxDis+"</tr><tbody>"); 

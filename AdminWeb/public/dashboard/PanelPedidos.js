@@ -275,7 +275,9 @@ function checkPointRoute(iddist){
 	RouteSelected=[];
 	for (var j = 0; j < lstObjOrders.length; j++)
 	{
+		console.log("entro"+lstObjOrders[j].order.DistributorId);
 		if(lstObjOrders[j].order.DistributorId==iddist){
+			console.log("guardo");
 			RouteSelected.push(lstObjOrders[j].importer);
 			JourneySelectedChecks.push(lstObjOrders[j]);
 		}

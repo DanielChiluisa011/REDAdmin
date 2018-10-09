@@ -273,11 +273,12 @@ function checkPointRoute(iddist){
 	var TotalQuantity=0;
 	chooseDriverRecyclingCenter();
 	RouteSelected=[];
+	console.log("funcion");
 	for (var j = 0; j < lstObjOrders.length; j++)
 	{
-		alert("entro"+lstObjOrders[j].order.DistributorId);
+		console.log("entro"+lstObjOrders[j].order.DistributorId);
 		if(lstObjOrders[j].order.DistributorId==iddist){
-			alert("guardo");
+			console.log("guardo");
 			RouteSelected.push(lstObjOrders[j].importer);
 			JourneySelectedChecks.push(lstObjOrders[j]);
 		}

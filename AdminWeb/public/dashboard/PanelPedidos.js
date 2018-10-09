@@ -238,6 +238,7 @@ $(document).ready(function(){
        		// 					objOrder.waste.WasteDescription+"</td><td onclick='ShowData("+i+")'>"+objOrder.order.OrderDeadLine+"</td><td onclick='ShowData("+i+")'>"+objOrder.order.OrderQuantity+
        		// 					"</td><td onclick='ShowData("+i+")'>"+objOrder.importer.DistributorName+"</td></tr><tbody>"); 
 			lstObjOrders.push(objOrder);
+			console.log("INGRESOO9");
 			lstObjOrdersCheckRoute.push(objOrder);
 		}
 		//alert("order="+lstObjOrders.length);

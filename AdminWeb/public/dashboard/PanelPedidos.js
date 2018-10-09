@@ -1,5 +1,6 @@
 var socket = io.connect("http://34.195.35.232:8080",{"forceNew": true});
 var lstObjOrders=[];
+var lstObjOrdersCheckRoute=[];
 var OrdersTable=$('#orderTable');
 var lstDrivers=[];
 var lstTrucks=[];
@@ -242,7 +243,7 @@ $(document).ready(function(){
 		//alert("waste="+lstWaste.length);
 		//alert("distri="+lstDistributors.length);
 		   // InitialPosition();
-		   console.log("IVANIVANIVANINICIOINICIO="+lstObjOrders.length);
+		   lstObjOrdersCheckRoute=lstObjOrders;
        	if(lstOrders.length!=0){
        		CreateJourney();	
        	}
@@ -263,7 +264,6 @@ $(document).ready(function(){
 			OrdersTable.append("<tbody align='center'> <tr><td onclick='showData1("+i+","+TotalQuantity+")'>"+lstJourney[i][0].order.OrderDate+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+
 			DetalleCantidad+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+D+"</td>"+checkboxDis+"</tr><tbody>"); 
 		}
-		console.log("IVANIVANIVAN="+lstObjOrders.length);
    	});
    	//////
 	   // InitialPosition();
@@ -274,14 +274,14 @@ function checkPointRoute(iddist){
 	var TotalQuantity=0;
 	chooseDriverRecyclingCenter();
 	RouteSelected=[];
-	console.log("funcion="+lstObjOrders.length);
-	for (var j = 0; j < lstObjOrders.length; j++)
+	console.log("funcion="+lstObjOrdersCheckRoute.length);
+	for (var j = 0; j < lstObjOrdersCheckRoute.length; j++)
 	{
-		console.log("entro"+lstObjOrders[j].order.DistributorId);
-		if(lstObjOrders[j].order.DistributorId==iddist){
+		console.log("entro"+lstObjOrdersCheckRoute[j].order.DistributorId);
+		if(lstObjOrdersCheckRoute[j].order.DistributorId==iddist){
 			console.log("guardo");
-			RouteSelected.push(lstObjOrders[j].importer);
-			JourneySelectedChecks.push(lstObjOrders[j]);
+			RouteSelected.push(lstObjOrdersCheckRoute[j].importer);
+			JourneySelectedChecks.push(lstObjOrdersCheckRoute[j]);
 		}
 	}
 	LocateDistributors(0);

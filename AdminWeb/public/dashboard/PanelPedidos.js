@@ -31,6 +31,7 @@ var code="h";
 var lstDistributorsList=[];
 var lstProvinces=[];
 var JourneySelectedinWindow=0;
+var JourneySelectedChecks=[];
 $(document).ready(function(){
 	$('#txtNewJourneyDate').val(CurrentDate());
 	//socket managment
@@ -249,14 +250,16 @@ $(document).ready(function(){
 			var D='';
 			var DetalleCantidad="";
 			var DetalleFechas="";
+			var checkboxDis="";
 			for (var j = 0; j < lstJourney[i].length; j++) {
 				TotalQuantity+=lstJourney[i][j].order.OrderQuantity;
 				DetalleCantidad+=lstJourney[i][j].order.OrderQuantity+'<br>';
 				D+=lstJourney[i][j].importer.DistributorName+'<br>';
+				checkboxDis+="<td><input type='checkbox' onclick='checkPointRoute("+lstJourney[i][j].order.DistributorId+")'></td>";
 			}
 			console.log(DetalleFechas);
 			OrdersTable.append("<tbody align='center'> <tr><td onclick='showData1("+i+","+TotalQuantity+")'>"+lstJourney[i][0].order.OrderDate+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+
-			DetalleCantidad+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+D+"</td></tr><tbody>"); 
+			DetalleCantidad+"</td><td onclick='showData1("+i+","+TotalQuantity+")'>"+D+"</td>"+checkboxDis+"</tr><tbody>"); 
 		}
 		
    	})
@@ -264,6 +267,46 @@ $(document).ready(function(){
 	   // InitialPosition();
 	 
 });
+
+function checkPointRoute(iddist){
+	var TotalQuantity=0;
+	chooseDriverRecyclingCenter();
+	RouteSelected=[];
+	for (var j = 0; j < lstObjOrders.length; j++)
+	{
+		if(lstObjOrders[j].order.DistributorId==iddist){
+			RouteSelected.push(lstObjOrders[j].importer);
+			JourneySelectedChecks.push(lstObjOrders[j]);
+		}
+	}
+	LocateDistributors(0);
+	ShowRoute();
+	
+	$('#Orders').empty();
+	for (var j = 0; j < JourneySelectedChecks.length; j++) {
+		$('#Orders').append('<div class="caption font-green">'
+								+'<i class="fa fa-sticky-note font-green"></i>'
+								+'<span class="caption-subject bold uppercase"> Datos del Pedido '+(j+1)+'</span>'
+							+'</div>'
+							+'<div class="form-group form-md-line-input has-success">'
+								+'<input id="txtOrderId" value="'+ JourneySelectedChecks[j].order.OrderId+'" type="text" class="form-control" id="form_control_1" disabled>'
+								+'<label for="form_control_1">Número de orden</label>'
+							+'</div>'
+							+'<div class="form-group form-md-line-input has-success">'
+								+'<input id="txtOrderId" value="'+ JourneySelectedChecks[j].importer.DistributorName +'" type="text" class="form-control" id="form_control_1" disabled>'
+								+'<label for="form_control_1">Distibuidor</label>'
+							+'</div>'
+							+'<div class="form-group form-md-line-input has-success">'
+								+'<input id="txtOrderQuantity" value="'+ JourneySelectedChecks[j].order.OrderQuantity +'" type="text" class="form-control" id="form_control_1" disabled>'
+								+'<label for="form_control_1">Cantidad</label>'
+							+'</div>');
+		TotalQuantity+=JourneySelectedChecks[j].order.OrderQuantity;
+		lstIdOrders.push(JourneySelectedChecks[j].order.OrderId);
+	}
+	$('#txtNewJourneyDate').val(CurrentDate());
+	TQ=TotalQuantity;
+}
+
 var band1ordernotification5=0;
 var aux=0;
 //setInterval("ordernotification5()",3000);
@@ -321,9 +364,7 @@ jQuery(document).ready(function() {
     MapsGoogle.init();
 });
 
-function showData1(i,TotalQuantity){
-	JourneySelectedinWindow=i;
-	k=i;
+function chooseDriverRecyclingCenter(){
 	$("#cmbDrivers")[0].selectedIndex = 1;//getRandomArbitrary(1, lstDrivers.length);
 	console.log(getRandomArbitrary(1, lstDrivers.length))
 	$('#txtDriverPhone').val(lstDrivers[$("#cmbDrivers option:selected").index()-1].PERSONPHONE);	
@@ -342,6 +383,13 @@ function showData1(i,TotalQuantity){
 		CoordX: lstRecyclingCenters[$("#cmbRecyclingCenters option:selected").index()-1].CoordX,
 		CoordY: lstRecyclingCenters[$("#cmbRecyclingCenters option:selected").index()-1].CoordY
 	}
+}
+
+function showData1(i,TotalQuantity){
+	JourneySelectedChecks=[];
+	JourneySelectedinWindow=i;
+	k=i;
+	chooseDriverRecyclingCenter();
 	RouteSelected=[];
 	for (var j = 0; j < lstJourney[i].length; j++) {
 	

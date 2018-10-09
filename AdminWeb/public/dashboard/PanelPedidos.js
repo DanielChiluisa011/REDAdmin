@@ -237,7 +237,8 @@ $(document).ready(function(){
        		// OrdersTable.append("<tbody> <tr><td onclick='ShowData("+i+")'>"+objOrder.order.OrderId+"</td><td onclick='ShowData("+i+")'>"+
        		// 					objOrder.waste.WasteDescription+"</td><td onclick='ShowData("+i+")'>"+objOrder.order.OrderDeadLine+"</td><td onclick='ShowData("+i+")'>"+objOrder.order.OrderQuantity+
        		// 					"</td><td onclick='ShowData("+i+")'>"+objOrder.importer.DistributorName+"</td></tr><tbody>"); 
-       		lstObjOrders.push(objOrder);
+			lstObjOrders.push(objOrder);
+			lstObjOrdersCheckRoute.push(objOrder);
 		}
 		//alert("order="+lstObjOrders.length);
 		//alert("waste="+lstWaste.length);
@@ -759,7 +760,6 @@ function ShowRoute(){
 function CreateJourney(){
 	lstJourney=[];
 	var AuxlstObjOrders=lstObjOrders;
-	lstObjOrdersCheckRoute=lstObjOrders;
 	var NewRouteSelected=[];
 	var j=0;
 	var dateDL=AuxlstObjOrders[j].order.OrderDeadLine;

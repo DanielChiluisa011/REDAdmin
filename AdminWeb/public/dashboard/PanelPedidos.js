@@ -273,7 +273,7 @@ function checkPointRoute(iddist){
 	var TotalQuantity=0;
 	chooseDriverRecyclingCenter();
 	RouteSelected=[];
-	console.log("funcion");
+	console.log("funcion="+lstObjOrders.length);
 	for (var j = 0; j < lstObjOrders.length; j++)
 	{
 		console.log("entro"+lstObjOrders[j].order.DistributorId);

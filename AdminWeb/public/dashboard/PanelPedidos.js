@@ -208,6 +208,7 @@ $(document).ready(function(){
        		$('#txtNewOrderNumber').val(data);	
        	});
 		lstObjOrders=[];
+		lstObjOrdersCheckRoute=[];
 		/*socket.emit("SelectDistributors","");
 		socket.on('SelectDistributors', function(data){
 			lstDistributors=[];
@@ -241,8 +242,6 @@ $(document).ready(function(){
 			
 			lstObjOrdersCheckRoute.push(objOrder);
 		}
-		console.log("INGRESOO="+lstOrders.length);
-		console.log("lstObjOrders="+lstObjOrders.length);
 		//alert("order="+lstObjOrders.length);
 		//alert("waste="+lstWaste.length);
 		//alert("distri="+lstDistributors.length);
@@ -766,7 +765,6 @@ function CreateJourney(){
 	var NewRouteSelected=[];
 	var j=0;
 	var dateDL=AuxlstObjOrders[j].order.OrderDeadLine;
-	console.log("lstObjOrdersCreateJourney="+lstObjOrders.length);
 	do{		
 		if(dateDL==AuxlstObjOrders[j].order.OrderDeadLine){
 			// console.log('Primero: '+AuxlstObjOrders[j].order.OrderId)

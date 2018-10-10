@@ -260,7 +260,7 @@ $(document).ready(function(){
 				TotalQuantity+=lstJourney[i][j].order.OrderQuantity;
 				DetalleCantidad+=lstJourney[i][j].order.OrderQuantity+'<br>';
 				D+=lstJourney[i][j].importer.DistributorName+'<br>';
-				checkboxDis+="<input type='checkbox' onclick='checkPointRoute("+lstJourney[i][j].order.DistributorId+")'></br>";
+				checkboxDis+="<input type='checkbox' id="+lstJourney[i][j].order.DistributorId+" onclick='checkPointRoute("+lstJourney[i][j].order.DistributorId+")'></br>";
 			}
 			checkboxDis+="</td>";
 			console.log(DetalleFechas);
@@ -275,16 +275,26 @@ $(document).ready(function(){
 
 function checkPointRoute(iddist){
 	var TotalQuantity=0;
+	var checkval = document.getElementById(iddist).checked;
 	chooseDriverRecyclingCenter();
-	RouteSelected=[];
-	console.log("funcion="+lstObjOrdersCheckRoute.length);
 	for (var j = 0; j < lstObjOrdersCheckRoute.length; j++)
 	{
-		console.log("entro"+lstObjOrdersCheckRoute[j].order.DistributorId);
 		if(lstObjOrdersCheckRoute[j].order.DistributorId==iddist){
-			console.log("guardo");
-			RouteSelected.push(lstObjOrdersCheckRoute[j].importer);
-			JourneySelectedChecks.push(lstObjOrdersCheckRoute[j]);
+			if(checkval){
+				RouteSelected.push(lstObjOrdersCheckRoute[j].importer);
+				JourneySelectedChecks.push(lstObjOrdersCheckRoute[j]);
+			}else{
+				for(var x=0;x<RouteSelected.length;x++){
+					if(RouteSelected[x].DistributorId==iddist){
+						RouteSelected.splice(x,1);
+					}
+				}
+				for(var y=0;y<JourneySelectedChecks.length;y++){
+					if(JourneySelectedChecks[y].importer.DistributorId==iddist){
+						JourneySelectedChecks.splice(y,1);
+					}	
+				}
+			}
 		}
 	}
 	LocateDistributors(0);
@@ -395,6 +405,7 @@ function chooseDriverRecyclingCenter(){
 
 function showData1(i,TotalQuantity){
 	JourneySelectedChecks=[];
+	lstIdOrders= [];
 	JourneySelectedinWindow=i;
 	k=i;
 	chooseDriverRecyclingCenter();

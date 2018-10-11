@@ -295,6 +295,11 @@ function checkPointRoute(iddist){
 						JourneySelectedChecks.splice(y,1);
 					}	
 				}
+				for(var z=0;z<lstIdOrders.length;z++){
+					if(lstIdOrders[z]==lstObjOrdersCheckRoute[j].order.OrderId){
+						lstIdOrders.splice(z,1);
+					}	
+				}
 			}
 		}
 	}

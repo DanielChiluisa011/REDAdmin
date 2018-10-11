@@ -276,6 +276,7 @@ $(document).ready(function(){
 function checkPointRoute(iddist){
 	var TotalQuantity=0;
 	var checkval = document.getElementById(iddist).checked;
+	$('#Orders').empty();
 	chooseDriverRecyclingCenter();
 	for (var j = 0; j < lstObjOrdersCheckRoute.length; j++)
 	{
@@ -300,7 +301,7 @@ function checkPointRoute(iddist){
 	LocateDistributors(0);
 	ShowRoute();
 	
-	$('#Orders').empty();
+	
 	for (var j = 0; j < JourneySelectedChecks.length; j++) {
 		$('#Orders').append('<div class="caption font-green">'
 								+'<i class="fa fa-sticky-note font-green"></i>'

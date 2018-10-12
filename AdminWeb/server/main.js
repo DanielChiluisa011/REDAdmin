@@ -248,7 +248,7 @@ io.on('connection', function(socket){
       });
       socket.on('RequestJourneyRoute',function(data){
       	console.log('RequestJourneyRoute cedula: '+data);
-      		connection.query("select j.JourneyId, j.JourneyRoute,DATE_FORMAT(j.JOURNEYDATE ,'%Y-%m-%d'), j.recyclingcenterid, j.truckid from journey j, trucks t, person p where j.truckid=t.TruckId and t.PersonId=p.PersonId and  p.PersonId='"+data+"' AND j.JOURNEYSTATE='Pendiente'",function(error, result){
+      		connection.query("select j.JourneyId, j.JourneyRoute,DAY(j.JOURNEYDATE) Oday,MONTH(j.JOURNEYDATE) Omonth,YEAR(j.JOURNEYDATE) Oyear, j.recyclingcenterid, j.truckid from journey j, trucks t, person p where j.truckid=t.TruckId and t.PersonId=p.PersonId and  p.PersonId='"+data+"' AND j.JOURNEYSTATE='Pendiente'",function(error, result){
 				if(error){
 				    throw error;
 				}else{

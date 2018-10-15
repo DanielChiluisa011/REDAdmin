@@ -308,7 +308,9 @@ function checkPointRoute(iddist){
 		}
 	}
 	LocateDistributors(0);
-	ShowRoute();
+	if(RouteSelected.length!=0){
+		ShowRoute();
+	}
 	
 	
 	for (var j = 0; j < JourneySelectedChecks.length; j++) {

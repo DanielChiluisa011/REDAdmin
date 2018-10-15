@@ -284,20 +284,24 @@ function checkPointRoute(iddist){
 			if(checkval){
 				RouteSelected.push(lstObjOrdersCheckRoute[j].importer);
 				JourneySelectedChecks.push(lstObjOrdersCheckRoute[j]);
+				alert("agrego a lista");
 			}else{
 				for(var x=0;x<RouteSelected.length;x++){
 					if(RouteSelected[x].DistributorId==iddist){
 						RouteSelected.splice(x,1);
+						alert("elimino RouteSelected");
 					}
 				}
 				for(var y=0;y<JourneySelectedChecks.length;y++){
 					if(JourneySelectedChecks[y].importer.DistributorId==iddist){
 						JourneySelectedChecks.splice(y,1);
+						alert("elimino JourneySelectedChecks");
 					}	
 				}
 				for(var z=0;z<lstIdOrders.length;z++){
 					if(lstIdOrders[z]==lstObjOrdersCheckRoute[j].order.OrderId){
 						lstIdOrders.splice(z,1);
+						alert("elimino lstIdOrders");
 					}	
 				}
 			}

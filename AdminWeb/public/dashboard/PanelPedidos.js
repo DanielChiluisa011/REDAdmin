@@ -298,20 +298,15 @@ function checkPointRoute(iddist){
 						alert("elimino JourneySelectedChecks");
 					}	
 				}
-				for(var z=0;z<lstIdOrders.length;z++){
-					if(lstIdOrders[z]==lstObjOrdersCheckRoute[j].order.OrderId){
-						lstIdOrders.splice(z,1);
-						alert("elimino lstIdOrders");
-					}	
-				}
 			}
 		}
 	}
+
 	LocateDistributors(0);
 	if(RouteSelected.length!=0){
 		ShowRoute();
 	}
-	
+	lstIdOrders=[];
 	for (var j = 0; j < JourneySelectedChecks.length; j++) {
 		console.log("JourneySelectedChecks="+JourneySelectedChecks[j].order.OrderId);
 	}

@@ -284,18 +284,18 @@ function checkPointRoute(iddist){
 			if(checkval){
 				RouteSelected.push(lstObjOrdersCheckRoute[j].importer);
 				JourneySelectedChecks.push(lstObjOrdersCheckRoute[j]);
-				alert("agrego a lista");
+				//alert("agrego a lista");
 			}else{
 				for(var x=0;x<RouteSelected.length;x++){
 					if(RouteSelected[x].DistributorId==iddist){
 						RouteSelected.splice(x,1);
-						alert("elimino RouteSelected");
+						//alert("elimino RouteSelected");
 					}
 				}
 				for(var y=0;y<JourneySelectedChecks.length;y++){
 					if(JourneySelectedChecks[y].importer.DistributorId==iddist){
 						JourneySelectedChecks.splice(y,1);
-						alert("elimino JourneySelectedChecks");
+						//alert("elimino JourneySelectedChecks");
 					}	
 				}
 			}
@@ -307,9 +307,9 @@ function checkPointRoute(iddist){
 		ShowRoute();
 	}
 	lstIdOrders=[];
-	for (var j = 0; j < JourneySelectedChecks.length; j++) {
+	/*for (var j = 0; j < JourneySelectedChecks.length; j++) {
 		console.log("JourneySelectedChecks="+JourneySelectedChecks[j].order.OrderId);
-	}
+	}*/
 	
 	for (var j = 0; j < JourneySelectedChecks.length; j++) {
 		$('#Orders').append('<div class="caption font-green">'
@@ -331,9 +331,9 @@ function checkPointRoute(iddist){
 		TotalQuantity+=JourneySelectedChecks[j].order.OrderQuantity;
 		lstIdOrders.push(JourneySelectedChecks[j].order.OrderId);
 	}
-	for (var j = 0; j < lstIdOrders.length; j++) {
+	/*for (var j = 0; j < lstIdOrders.length; j++) {
 		console.log("lstIdOrders"+lstIdOrders[j]);
-	}
+	}*/
 	$('#txtNewJourneyDate').val(CurrentDate());
 	TQ=TotalQuantity;
 }

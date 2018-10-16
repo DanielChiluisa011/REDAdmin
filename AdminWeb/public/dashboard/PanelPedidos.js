@@ -417,6 +417,9 @@ function chooseDriverRecyclingCenter(){
 }
 
 function showData1(i,TotalQuantity){
+	for(var y=0;y<JourneySelectedChecks.length;y++){
+		document.getElementById(JourneySelectedChecks[y].importer.DistributorId).checked=false;	
+	}
 	JourneySelectedChecks=[];
 	lstIdOrders= [];
 	JourneySelectedinWindow=i;

@@ -313,7 +313,7 @@ function checkPointRoute(iddist){
 	}
 	
 	for (var j = 0; j < JourneySelectedChecks.length; j++) {
-		console.log(lstIdOrders.push(JourneySelectedChecks[j].order.OrderId));
+		console.log("JourneySelectedChecks="+JourneySelectedChecks[j].order.OrderId);
 	}
 	
 	for (var j = 0; j < JourneySelectedChecks.length; j++) {
@@ -336,8 +336,8 @@ function checkPointRoute(iddist){
 		TotalQuantity+=JourneySelectedChecks[j].order.OrderQuantity;
 		lstIdOrders.push(JourneySelectedChecks[j].order.OrderId);
 	}
-	for (var j = 0; j < JourneySelectedChecks.length; j++) {
-		console.log(lstIdOrders.push(JourneySelectedChecks[j].order.OrderId));
+	for (var j = 0; j < lstIdOrders.length; j++) {
+		console.log("lstIdOrders"+lstIdOrders[j]);
 	}
 	$('#txtNewJourneyDate').val(CurrentDate());
 	TQ=TotalQuantity;
